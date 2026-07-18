@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import heroImage from "@/assets/hero-room.jpg";
+import queEsAAImage from "@/assets/que-es-aa.jpg";
 import { groups } from "@/lib/groups-data";
 import {
   ArrowRight,
@@ -85,6 +86,46 @@ function Home() {
         </div>
       </section>
 
+
+      {/* ¿QUÉ ES ALCOHÓLICOS ANÓNIMOS? */}
+      <section className="bg-paper py-20 md:py-28">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
+            <div className="order-2 md:order-1">
+              <div className="overflow-hidden rounded-3xl shadow-soft">
+                <img
+                  src={queEsAAImage}
+                  alt="Sala de reunión de Alcohólicos Anónimos con personas de espaldas sentadas en círculo"
+                  width={1024}
+                  height={1024}
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            </div>
+            <div className="order-1 md:order-2">
+              <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/60">
+                Sobre nosotros
+              </span>
+              <h2 className="mb-6 font-serif text-4xl italic leading-tight text-brand md:text-5xl lg:text-6xl">
+                ¿Qué es Alcohólicos Anónimos?
+              </h2>
+              <p className="mb-10 text-pretty text-lg leading-relaxed text-ink/75 md:text-xl">
+                Alcohólicos Anónimos es una comunidad de hombres y mujeres que
+                comparten su experiencia, fortaleza y esperanza para resolver su
+                problema común y ayudar a otros a recuperarse del alcoholismo.
+              </p>
+              <Link
+                to="/que-es-aa"
+                className="inline-flex min-h-14 items-center gap-3 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-paper shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-soft hover:shadow-lift focus-visible:ring-4 focus-visible:ring-brand/30"
+              >
+                Conoce más
+                <ArrowRight className="size-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* ¿CÓMO PODEMOS AYUDARTE? */}
       <section className="bg-paper py-20 md:py-28">
