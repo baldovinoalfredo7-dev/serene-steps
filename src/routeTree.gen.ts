@@ -9,38 +9,274 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TestimoniosRouteImport } from './routes/testimonios'
+import { Route as TengoUnProblemaRouteImport } from './routes/tengo-un-problema'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as QueEsAaRouteImport } from './routes/que-es-aa'
+import { Route as PrimeraReunionRouteImport } from './routes/primera-reunion'
+import { Route as NecesitoAyudaRouteImport } from './routes/necesito-ayuda'
+import { Route as LiteraturaRouteImport } from './routes/literatura'
+import { Route as GruposRouteImport } from './routes/grupos'
+import { Route as EventosRouteImport } from './routes/eventos'
+import { Route as ContactoRouteImport } from './routes/contacto'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as GruposSlugRouteImport } from './routes/grupos.$slug'
 
+const TestimoniosRoute = TestimoniosRouteImport.update({
+  id: '/testimonios',
+  path: '/testimonios',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TengoUnProblemaRoute = TengoUnProblemaRouteImport.update({
+  id: '/tengo-un-problema',
+  path: '/tengo-un-problema',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QueEsAaRoute = QueEsAaRouteImport.update({
+  id: '/que-es-aa',
+  path: '/que-es-aa',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrimeraReunionRoute = PrimeraReunionRouteImport.update({
+  id: '/primera-reunion',
+  path: '/primera-reunion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NecesitoAyudaRoute = NecesitoAyudaRouteImport.update({
+  id: '/necesito-ayuda',
+  path: '/necesito-ayuda',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LiteraturaRoute = LiteraturaRouteImport.update({
+  id: '/literatura',
+  path: '/literatura',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GruposRoute = GruposRouteImport.update({
+  id: '/grupos',
+  path: '/grupos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventosRoute = EventosRouteImport.update({
+  id: '/eventos',
+  path: '/eventos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactoRoute = ContactoRouteImport.update({
+  id: '/contacto',
+  path: '/contacto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GruposSlugRoute = GruposSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => GruposRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/contacto': typeof ContactoRoute
+  '/eventos': typeof EventosRoute
+  '/grupos': typeof GruposRouteWithChildren
+  '/literatura': typeof LiteraturaRoute
+  '/necesito-ayuda': typeof NecesitoAyudaRoute
+  '/primera-reunion': typeof PrimeraReunionRoute
+  '/que-es-aa': typeof QueEsAaRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/tengo-un-problema': typeof TengoUnProblemaRoute
+  '/testimonios': typeof TestimoniosRoute
+  '/grupos/$slug': typeof GruposSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/contacto': typeof ContactoRoute
+  '/eventos': typeof EventosRoute
+  '/grupos': typeof GruposRouteWithChildren
+  '/literatura': typeof LiteraturaRoute
+  '/necesito-ayuda': typeof NecesitoAyudaRoute
+  '/primera-reunion': typeof PrimeraReunionRoute
+  '/que-es-aa': typeof QueEsAaRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/tengo-un-problema': typeof TengoUnProblemaRoute
+  '/testimonios': typeof TestimoniosRoute
+  '/grupos/$slug': typeof GruposSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/contacto': typeof ContactoRoute
+  '/eventos': typeof EventosRoute
+  '/grupos': typeof GruposRouteWithChildren
+  '/literatura': typeof LiteraturaRoute
+  '/necesito-ayuda': typeof NecesitoAyudaRoute
+  '/primera-reunion': typeof PrimeraReunionRoute
+  '/que-es-aa': typeof QueEsAaRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/tengo-un-problema': typeof TengoUnProblemaRoute
+  '/testimonios': typeof TestimoniosRoute
+  '/grupos/$slug': typeof GruposSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/contacto'
+    | '/eventos'
+    | '/grupos'
+    | '/literatura'
+    | '/necesito-ayuda'
+    | '/primera-reunion'
+    | '/que-es-aa'
+    | '/sitemap.xml'
+    | '/tengo-un-problema'
+    | '/testimonios'
+    | '/grupos/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/contacto'
+    | '/eventos'
+    | '/grupos'
+    | '/literatura'
+    | '/necesito-ayuda'
+    | '/primera-reunion'
+    | '/que-es-aa'
+    | '/sitemap.xml'
+    | '/tengo-un-problema'
+    | '/testimonios'
+    | '/grupos/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/contacto'
+    | '/eventos'
+    | '/grupos'
+    | '/literatura'
+    | '/necesito-ayuda'
+    | '/primera-reunion'
+    | '/que-es-aa'
+    | '/sitemap.xml'
+    | '/tengo-un-problema'
+    | '/testimonios'
+    | '/grupos/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthRoute: typeof AuthRoute
+  ContactoRoute: typeof ContactoRoute
+  EventosRoute: typeof EventosRoute
+  GruposRoute: typeof GruposRouteWithChildren
+  LiteraturaRoute: typeof LiteraturaRoute
+  NecesitoAyudaRoute: typeof NecesitoAyudaRoute
+  PrimeraReunionRoute: typeof PrimeraReunionRoute
+  QueEsAaRoute: typeof QueEsAaRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  TengoUnProblemaRoute: typeof TengoUnProblemaRoute
+  TestimoniosRoute: typeof TestimoniosRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/testimonios': {
+      id: '/testimonios'
+      path: '/testimonios'
+      fullPath: '/testimonios'
+      preLoaderRoute: typeof TestimoniosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tengo-un-problema': {
+      id: '/tengo-un-problema'
+      path: '/tengo-un-problema'
+      fullPath: '/tengo-un-problema'
+      preLoaderRoute: typeof TengoUnProblemaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/que-es-aa': {
+      id: '/que-es-aa'
+      path: '/que-es-aa'
+      fullPath: '/que-es-aa'
+      preLoaderRoute: typeof QueEsAaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/primera-reunion': {
+      id: '/primera-reunion'
+      path: '/primera-reunion'
+      fullPath: '/primera-reunion'
+      preLoaderRoute: typeof PrimeraReunionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/necesito-ayuda': {
+      id: '/necesito-ayuda'
+      path: '/necesito-ayuda'
+      fullPath: '/necesito-ayuda'
+      preLoaderRoute: typeof NecesitoAyudaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/literatura': {
+      id: '/literatura'
+      path: '/literatura'
+      fullPath: '/literatura'
+      preLoaderRoute: typeof LiteraturaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/grupos': {
+      id: '/grupos'
+      path: '/grupos'
+      fullPath: '/grupos'
+      preLoaderRoute: typeof GruposRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/eventos': {
+      id: '/eventos'
+      path: '/eventos'
+      fullPath: '/eventos'
+      preLoaderRoute: typeof EventosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contacto': {
+      id: '/contacto'
+      path: '/contacto'
+      fullPath: '/contacto'
+      preLoaderRoute: typeof ContactoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +284,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/grupos/$slug': {
+      id: '/grupos/$slug'
+      path: '/$slug'
+      fullPath: '/grupos/$slug'
+      preLoaderRoute: typeof GruposSlugRouteImport
+      parentRoute: typeof GruposRoute
+    }
   }
 }
 
+interface GruposRouteChildren {
+  GruposSlugRoute: typeof GruposSlugRoute
+}
+
+const GruposRouteChildren: GruposRouteChildren = {
+  GruposSlugRoute: GruposSlugRoute,
+}
+
+const GruposRouteWithChildren =
+  GruposRoute._addFileChildren(GruposRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthRoute: AuthRoute,
+  ContactoRoute: ContactoRoute,
+  EventosRoute: EventosRoute,
+  GruposRoute: GruposRouteWithChildren,
+  LiteraturaRoute: LiteraturaRoute,
+  NecesitoAyudaRoute: NecesitoAyudaRoute,
+  PrimeraReunionRoute: PrimeraReunionRoute,
+  QueEsAaRoute: QueEsAaRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  TengoUnProblemaRoute: TengoUnProblemaRoute,
+  TestimoniosRoute: TestimoniosRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
