@@ -44,28 +44,37 @@ function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-brand/85 via-brand/75 to-brand" />
         <div className="relative mx-auto flex min-h-[calc(100svh-4rem)] max-w-6xl flex-col items-center justify-center px-6 py-20 text-center">
           <span className="mb-6 block text-[11px] font-semibold uppercase tracking-[0.35em] text-paper/75 sm:text-xs">
-            Alcohólicos Anónimos · Área 2 Metropolitana
+            Área 2 Metropolitana · Barranquilla
           </span>
-          <h1 className="mb-8 max-w-4xl text-balance font-serif text-[2.4rem] italic leading-[1.05] text-paper sm:text-6xl lg:text-[5.5rem]">
-            La ayuda está más cerca de lo que imaginas.
+          <h1 className="mb-8 max-w-5xl text-balance font-serif text-[2rem] italic leading-[1.08] text-paper sm:text-5xl lg:text-[4.5rem]">
+            Alcohólicos Anónimos — Área 2 Metropolitana — Barranquilla
           </h1>
           <p className="mb-14 max-w-2xl text-pretty text-lg leading-relaxed text-paper/85 sm:text-xl">
-            Si el alcohol está afectando tu vida o la de alguien que amas, no estás solo.
-            Aquí puedes dar el primer paso, con calma y en total anonimato.
+            Una comunidad de hombres y mujeres que comparten su experiencia,
+            fortaleza y esperanza.
           </p>
 
           <Link
             to="/grupos"
-            className="group relative inline-flex min-h-14 items-center gap-4 rounded-full bg-paper px-10 py-5 text-base font-semibold uppercase tracking-[0.15em] text-brand shadow-2xl shadow-black/40 ring-1 ring-paper/40 transition-all hover:-translate-y-1 hover:shadow-[0_28px_60px_-18px_rgba(0,0,0,0.55)] focus-visible:ring-4 focus-visible:ring-paper/60 sm:px-14 sm:py-7 sm:text-lg"
+            className="group relative inline-flex min-h-16 items-center gap-4 rounded-full bg-paper px-12 py-6 text-base font-semibold uppercase tracking-[0.18em] text-brand shadow-2xl shadow-black/50 ring-1 ring-paper/40 transition-all hover:-translate-y-1 hover:shadow-[0_32px_70px_-18px_rgba(0,0,0,0.6)] focus-visible:ring-4 focus-visible:ring-paper/60 sm:px-16 sm:py-8 sm:text-xl"
           >
-            <MapPin className="size-5 sm:size-6" strokeWidth={2} />
+            <MapPin className="size-6 sm:size-7" strokeWidth={2} />
             Encuentra un grupo
-            <ArrowRight className="size-5 transition-transform group-hover:translate-x-1 sm:size-6" />
+            <ArrowRight className="size-6 transition-transform group-hover:translate-x-1 sm:size-7" />
           </Link>
 
-          <p className="mt-10 text-xs uppercase tracking-widest text-paper/60 sm:text-sm sm:tracking-[0.2em] sm:normal-case">
-            Sin inscripción · Sin cuotas · Anonimato garantizado
-          </p>
+          <ul className="mt-14 grid w-full max-w-4xl grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4 sm:gap-8">
+            {heroBadges.map((b) => (
+              <li key={b.label} className="flex flex-col items-center gap-3 text-center">
+                <span className="grid size-12 place-items-center rounded-full bg-paper/10 ring-1 ring-paper/20 backdrop-blur-sm">
+                  <b.icon className="size-5 text-paper" strokeWidth={1.7} />
+                </span>
+                <span className="text-xs font-semibold uppercase tracking-[0.15em] text-paper/85 sm:text-sm">
+                  {b.label}
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
