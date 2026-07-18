@@ -275,6 +275,3 @@ function GroupCard({ g }: { g: Group }) {
     </Link>
   );
 }
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const _keepWeekdayShort = weekdayShort;
