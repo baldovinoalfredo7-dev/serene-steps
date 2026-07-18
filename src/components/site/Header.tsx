@@ -20,21 +20,21 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-brand/5 bg-paper/85 backdrop-blur-md">
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
-        <Link to="/" className="flex items-center gap-4" onClick={() => setOpen(false)}>
+      <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-6 sm:h-28">
+        <Link to="/" className="flex items-center gap-4 sm:gap-5" onClick={() => setOpen(false)}>
           <img
             src={logoAsset.url}
             alt="Alcohólicos Anónimos — Área 2 Metropolitana, Barranquilla"
-            width={56}
-            height={56}
-            className="h-12 w-auto sm:h-14"
+            width={72}
+            height={72}
+            className="h-16 w-auto sm:h-[4.5rem]"
           />
           <div className="leading-tight">
-            <span className="block font-sans text-[13px] font-bold uppercase tracking-[0.18em] text-brand sm:text-sm">
+            <span className="block font-sans text-sm font-bold uppercase tracking-[0.18em] text-brand sm:text-base">
               Alcohólicos Anónimos
             </span>
-            <span className="block text-[11px] font-medium tracking-wide text-ink/60 sm:text-xs">
-              Área 2 Metropolitana · Barranquilla
+            <span className="block text-xs font-medium tracking-wide text-ink/60 sm:text-sm">
+              Área 2 Metropolitana – Barranquilla
             </span>
           </div>
         </Link>
