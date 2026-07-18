@@ -6,6 +6,7 @@ import {
   weekdayShort,
   meetingTypeLabel,
   groups,
+  type Group,
   type Meeting,
 } from "@/lib/groups-data";
 
@@ -40,7 +41,7 @@ export const Route = createFileRoute("/grupos/$slug")({
 });
 
 function GroupDetail() {
-  const { group } = Route.useLoaderData();
+  const { group } = Route.useLoaderData() as { group: Group };
 
   const mapsQuery = encodeURIComponent(group.addressFull);
   const mapEmbedSrc = `https://www.google.com/maps?q=${mapsQuery}&z=15&output=embed`;
