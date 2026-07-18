@@ -147,8 +147,7 @@ function Home() {
             </h2>
           </div>
 
-          <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
-
+          <div className="mx-auto grid max-w-5xl gap-6 sm:gap-8 lg:grid-cols-2">
             {helpCards.map((c) => (
               <Link
                 key={c.title}
@@ -422,18 +421,32 @@ const heroBadges = [
 
 const helpCards = [
   {
-    title: "Busco ayuda para mí",
-    body: "Creo que el alcohol está afectando mi vida.",
-    cta: "Más información",
-    to: "/tengo-un-problema",
+    title: "Quiero asistir a una reunión",
+    body: "Encuentra el grupo más cercano y su próximo horario.",
+    cta: "Ver grupos",
+    to: "/grupos",
+    icon: MapPin,
+  },
+  {
+    title: "Quiero saber qué es Alcohólicos Anónimos",
+    body: "Conoce nuestra comunidad, historia y forma de trabajar.",
+    cta: "Conocer más",
+    to: "/que-es-aa",
     icon: HeartHandshake,
   },
   {
-    title: "Busco ayuda para un familiar o un amigo",
-    body: "Quiero comprender cómo puedo ayudar.",
-    cta: "Conocer más",
-    to: "/que-es-aa",
+    title: "Busco ayuda para un familiar o amigo",
+    body: "Orientación para acompañar a alguien que puede tener un problema con el alcohol.",
+    cta: "Cómo ayudar",
+    to: "/tengo-un-problema",
     icon: Users,
+  },
+  {
+    title: "Soy miembro de AA",
+    body: "Accede al área de servicio con tu correo electrónico.",
+    cta: "Acceso para miembros",
+    to: "/auth",
+    icon: ShieldCheck,
   },
 ] as const;
 
