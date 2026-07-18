@@ -407,13 +407,6 @@ const helpCards = [
     to: "/que-es-aa",
     icon: Users,
   },
-  {
-    title: "Ya soy miembro de AA",
-    body: "Accede a recursos y actividades del Área.",
-    cta: "Área de Servicio",
-    to: "/auth",
-    icon: MapPin,
-  },
 ] as const;
 
 const eventCards = [
