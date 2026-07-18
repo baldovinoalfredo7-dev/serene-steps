@@ -13,8 +13,10 @@ import { Route as TestimoniosRouteImport } from './routes/testimonios'
 import { Route as TengoUnProblemaRouteImport } from './routes/tengo-un-problema'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as QueEsAaRouteImport } from './routes/que-es-aa'
+import { Route as PrivacidadRouteImport } from './routes/privacidad'
 import { Route as PrimeraReunionRouteImport } from './routes/primera-reunion'
 import { Route as NecesitoAyudaRouteImport } from './routes/necesito-ayuda'
+import { Route as MapaDelSitioRouteImport } from './routes/mapa-del-sitio'
 import { Route as LiteraturaRouteImport } from './routes/literatura'
 import { Route as GruposRouteImport } from './routes/grupos'
 import { Route as EventosRouteImport } from './routes/eventos'
@@ -43,6 +45,11 @@ const QueEsAaRoute = QueEsAaRouteImport.update({
   path: '/que-es-aa',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacidadRoute = PrivacidadRouteImport.update({
+  id: '/privacidad',
+  path: '/privacidad',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrimeraReunionRoute = PrimeraReunionRouteImport.update({
   id: '/primera-reunion',
   path: '/primera-reunion',
@@ -51,6 +58,11 @@ const PrimeraReunionRoute = PrimeraReunionRouteImport.update({
 const NecesitoAyudaRoute = NecesitoAyudaRouteImport.update({
   id: '/necesito-ayuda',
   path: '/necesito-ayuda',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MapaDelSitioRoute = MapaDelSitioRouteImport.update({
+  id: '/mapa-del-sitio',
+  path: '/mapa-del-sitio',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LiteraturaRoute = LiteraturaRouteImport.update({
@@ -96,8 +108,10 @@ export interface FileRoutesByFullPath {
   '/eventos': typeof EventosRoute
   '/grupos': typeof GruposRouteWithChildren
   '/literatura': typeof LiteraturaRoute
+  '/mapa-del-sitio': typeof MapaDelSitioRoute
   '/necesito-ayuda': typeof NecesitoAyudaRoute
   '/primera-reunion': typeof PrimeraReunionRoute
+  '/privacidad': typeof PrivacidadRoute
   '/que-es-aa': typeof QueEsAaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tengo-un-problema': typeof TengoUnProblemaRoute
@@ -111,8 +125,10 @@ export interface FileRoutesByTo {
   '/eventos': typeof EventosRoute
   '/grupos': typeof GruposRouteWithChildren
   '/literatura': typeof LiteraturaRoute
+  '/mapa-del-sitio': typeof MapaDelSitioRoute
   '/necesito-ayuda': typeof NecesitoAyudaRoute
   '/primera-reunion': typeof PrimeraReunionRoute
+  '/privacidad': typeof PrivacidadRoute
   '/que-es-aa': typeof QueEsAaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tengo-un-problema': typeof TengoUnProblemaRoute
@@ -127,8 +143,10 @@ export interface FileRoutesById {
   '/eventos': typeof EventosRoute
   '/grupos': typeof GruposRouteWithChildren
   '/literatura': typeof LiteraturaRoute
+  '/mapa-del-sitio': typeof MapaDelSitioRoute
   '/necesito-ayuda': typeof NecesitoAyudaRoute
   '/primera-reunion': typeof PrimeraReunionRoute
+  '/privacidad': typeof PrivacidadRoute
   '/que-es-aa': typeof QueEsAaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tengo-un-problema': typeof TengoUnProblemaRoute
@@ -144,8 +162,10 @@ export interface FileRouteTypes {
     | '/eventos'
     | '/grupos'
     | '/literatura'
+    | '/mapa-del-sitio'
     | '/necesito-ayuda'
     | '/primera-reunion'
+    | '/privacidad'
     | '/que-es-aa'
     | '/sitemap.xml'
     | '/tengo-un-problema'
@@ -159,8 +179,10 @@ export interface FileRouteTypes {
     | '/eventos'
     | '/grupos'
     | '/literatura'
+    | '/mapa-del-sitio'
     | '/necesito-ayuda'
     | '/primera-reunion'
+    | '/privacidad'
     | '/que-es-aa'
     | '/sitemap.xml'
     | '/tengo-un-problema'
@@ -174,8 +196,10 @@ export interface FileRouteTypes {
     | '/eventos'
     | '/grupos'
     | '/literatura'
+    | '/mapa-del-sitio'
     | '/necesito-ayuda'
     | '/primera-reunion'
+    | '/privacidad'
     | '/que-es-aa'
     | '/sitemap.xml'
     | '/tengo-un-problema'
@@ -190,8 +214,10 @@ export interface RootRouteChildren {
   EventosRoute: typeof EventosRoute
   GruposRoute: typeof GruposRouteWithChildren
   LiteraturaRoute: typeof LiteraturaRoute
+  MapaDelSitioRoute: typeof MapaDelSitioRoute
   NecesitoAyudaRoute: typeof NecesitoAyudaRoute
   PrimeraReunionRoute: typeof PrimeraReunionRoute
+  PrivacidadRoute: typeof PrivacidadRoute
   QueEsAaRoute: typeof QueEsAaRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TengoUnProblemaRoute: typeof TengoUnProblemaRoute
@@ -228,6 +254,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof QueEsAaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacidad': {
+      id: '/privacidad'
+      path: '/privacidad'
+      fullPath: '/privacidad'
+      preLoaderRoute: typeof PrivacidadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/primera-reunion': {
       id: '/primera-reunion'
       path: '/primera-reunion'
@@ -240,6 +273,13 @@ declare module '@tanstack/react-router' {
       path: '/necesito-ayuda'
       fullPath: '/necesito-ayuda'
       preLoaderRoute: typeof NecesitoAyudaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mapa-del-sitio': {
+      id: '/mapa-del-sitio'
+      path: '/mapa-del-sitio'
+      fullPath: '/mapa-del-sitio'
+      preLoaderRoute: typeof MapaDelSitioRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/literatura': {
@@ -312,8 +352,10 @@ const rootRouteChildren: RootRouteChildren = {
   EventosRoute: EventosRoute,
   GruposRoute: GruposRouteWithChildren,
   LiteraturaRoute: LiteraturaRoute,
+  MapaDelSitioRoute: MapaDelSitioRoute,
   NecesitoAyudaRoute: NecesitoAyudaRoute,
   PrimeraReunionRoute: PrimeraReunionRoute,
+  PrivacidadRoute: PrivacidadRoute,
   QueEsAaRoute: QueEsAaRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TengoUnProblemaRoute: TengoUnProblemaRoute,
