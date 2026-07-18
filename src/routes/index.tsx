@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import heroImage from "@/assets/hero-room.jpg";
 import queEsAAImage from "@/assets/que-es-aa.jpg";
 import { groups } from "@/lib/groups-data";
+import { MeetingFinder } from "@/components/site/MeetingFinder";
 import {
   ArrowRight,
   CalendarDays,
@@ -172,6 +173,9 @@ function Home() {
           </div>
         </div>
       </section>
+
+      {/* NECESITO UNA REUNIÓN HOY */}
+      <MeetingFinder />
 
       {/* ENCUENTRA UN GRUPO */}
       <section className="bg-soft/60 py-20 md:py-28">
