@@ -113,16 +113,16 @@ function Home() {
               <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/60">
                 Directorio del Área 2
               </span>
-              <h2 className="mb-4 font-serif text-3xl italic text-brand md:text-5xl">
+              <h2 className="mb-4 font-serif text-4xl italic text-brand md:text-5xl lg:text-6xl">
                 Encuentra un grupo
               </h2>
-              <p className="max-w-xl text-ink/60">
+              <p className="max-w-xl text-lg leading-relaxed text-ink/70">
                 Nueve grupos abiertos, en distintos municipios del Área 2 Metropolitana.
               </p>
             </div>
             <Link
               to="/grupos"
-              className="inline-flex items-center gap-2 rounded-sm border border-brand/20 px-5 py-3 text-sm font-semibold text-brand transition-colors hover:bg-brand hover:text-paper"
+              className="inline-flex min-h-12 items-center gap-2 rounded-full border border-brand/25 px-6 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-brand transition-colors hover:bg-brand hover:text-paper"
             >
               Ver directorio completo <ArrowRight className="size-4" />
             </Link>
@@ -150,16 +150,16 @@ function Home() {
               <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/60">
                 Calendario del Área
               </span>
-              <h2 className="mb-4 font-serif text-3xl italic text-brand md:text-5xl">
+              <h2 className="mb-4 font-serif text-4xl italic text-brand md:text-5xl lg:text-6xl">
                 Próximos eventos
               </h2>
-              <p className="max-w-xl text-ink/60">
+              <p className="max-w-xl text-lg leading-relaxed text-ink/70">
                 Espacios abiertos para reforzar la unidad, la experiencia y el servicio.
               </p>
             </div>
             <Link
               to="/eventos"
-              className="inline-flex items-center gap-2 rounded-sm border border-brand/20 px-5 py-3 text-sm font-semibold text-brand transition-colors hover:bg-brand hover:text-paper"
+              className="inline-flex min-h-12 items-center gap-2 rounded-full border border-brand/25 px-6 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-brand transition-colors hover:bg-brand hover:text-paper"
             >
               Ver todos los eventos <ArrowRight className="size-4" />
             </Link>
@@ -169,17 +169,19 @@ function Home() {
             {eventCards.map((e) => (
               <article
                 key={e.title}
-                className="flex flex-col rounded-2xl bg-soft/60 p-8 ring-1 ring-black/5 transition-all hover:-translate-y-0.5 hover:ring-brand/30"
+                className="flex flex-col rounded-3xl bg-soft/60 p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lift md:p-10"
               >
-                <e.icon className="mb-6 size-9 text-brand" />
-                <span className="mb-2 text-xs font-semibold uppercase tracking-widest text-brand/50">
+                <div className="mb-6 grid size-14 place-items-center rounded-2xl bg-brand/10">
+                  <e.icon className="size-7 text-brand" strokeWidth={1.6} />
+                </div>
+                <span className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand/50">
                   {e.tag}
                 </span>
-                <h3 className="mb-3 font-serif text-2xl italic text-brand">{e.title}</h3>
-                <p className="mb-8 text-pretty text-ink/60">{e.body}</p>
+                <h3 className="mb-3 font-serif text-2xl italic text-brand md:text-3xl">{e.title}</h3>
+                <p className="mb-8 text-pretty leading-relaxed text-ink/70">{e.body}</p>
                 <Link
                   to="/eventos"
-                  className="mt-auto inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-brand"
+                  className="mt-auto inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.15em] text-brand"
                 >
                   Ver calendario <ArrowRight className="size-4" />
                 </Link>
