@@ -1,7 +1,22 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import heroImage from "@/assets/hero-room.jpg";
 import { groups } from "@/lib/groups-data";
-import { ArrowRight, Clock, HeartHandshake, MapPin, Users } from "lucide-react";
+import {
+  ArrowRight,
+  CalendarDays,
+  Clock,
+  Ear,
+  HandHeart,
+  HeartHandshake,
+  MapPin,
+  Sparkles,
+  Trophy,
+  Users,
+  UsersRound,
+  ShieldCheck,
+  Wallet,
+  ClipboardX,
+} from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -15,7 +30,7 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <>
-      {/* HERO — casi pantalla completa */}
+      {/* HERO */}
       <section className="relative min-h-[calc(100svh-4rem)] overflow-hidden bg-brand text-paper">
         <img
           src={heroImage}
@@ -37,7 +52,6 @@ function Home() {
             Aquí puedes dar el primer paso, con calma y en total anonimato.
           </p>
 
-          {/* CTA principal — el elemento más importante */}
           <Link
             to="/grupos"
             className="group relative inline-flex items-center gap-4 rounded-md bg-paper px-10 py-6 text-lg font-semibold uppercase tracking-wider text-brand shadow-2xl shadow-black/30 ring-2 ring-paper transition-all hover:-translate-y-1 hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)] sm:px-14 sm:py-7 sm:text-xl"
@@ -89,7 +103,7 @@ function Home() {
         </div>
       </section>
 
-      {/* ENCUENTRA UN GRUPO — 9 tarjetas */}
+      {/* ENCUENTRA UN GRUPO */}
       <section className="bg-soft/60 py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-14 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
@@ -114,15 +128,68 @@ function Home() {
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {groups.map((g) => (
-              <GroupCard key={g.slug} slug={g.slug} name={g.name} municipality={g.municipality} schedule={mainSchedule(g.meetings)} />
+              <GroupCard
+                key={g.slug}
+                slug={g.slug}
+                name={g.name}
+                municipality={g.municipality}
+                schedule={mainSchedule(g.meetings)}
+              />
             ))}
           </div>
         </div>
       </section>
 
-      {/* PRIMERA REUNIÓN */}
+      {/* PRÓXIMOS EVENTOS */}
       <section className="bg-paper py-20 md:py-28">
-        <div className="mx-auto max-w-5xl px-6">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mb-14 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
+            <div>
+              <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/60">
+                Calendario del Área
+              </span>
+              <h2 className="mb-4 font-serif text-3xl italic text-brand md:text-5xl">
+                Próximos eventos
+              </h2>
+              <p className="max-w-xl text-ink/60">
+                Espacios abiertos para reforzar la unidad, la experiencia y el servicio.
+              </p>
+            </div>
+            <Link
+              to="/eventos"
+              className="inline-flex items-center gap-2 rounded-sm border border-brand/20 px-5 py-3 text-sm font-semibold text-brand transition-colors hover:bg-brand hover:text-paper"
+            >
+              Ver todos los eventos <ArrowRight className="size-4" />
+            </Link>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {eventCards.map((e) => (
+              <article
+                key={e.title}
+                className="flex flex-col rounded-2xl bg-soft/60 p-8 ring-1 ring-black/5 transition-all hover:-translate-y-0.5 hover:ring-brand/30"
+              >
+                <e.icon className="mb-6 size-9 text-brand" />
+                <span className="mb-2 text-xs font-semibold uppercase tracking-widest text-brand/50">
+                  {e.tag}
+                </span>
+                <h3 className="mb-3 font-serif text-2xl italic text-brand">{e.title}</h3>
+                <p className="mb-8 text-pretty text-ink/60">{e.body}</p>
+                <Link
+                  to="/eventos"
+                  className="mt-auto inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-brand"
+                >
+                  Ver calendario <ArrowRight className="size-4" />
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PRIMERA REUNIÓN — 6 tarjetas con icono */}
+      <section className="bg-soft/60 py-20 md:py-28">
+        <div className="mx-auto max-w-7xl px-6">
           <div className="mb-14 text-center">
             <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/60">
               Para tu primera vez
@@ -132,16 +199,17 @@ function Home() {
             </h2>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2">
-            {firstMeetingItems.map((item, i) => (
-              <div key={item.title} className="flex gap-5 rounded-2xl bg-soft/60 p-8 ring-1 ring-black/5">
-                <span className="font-serif text-4xl italic text-brand/30">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <div>
-                  <h4 className="mb-2 font-serif text-xl text-brand">{item.title}</h4>
-                  <p className="text-pretty text-ink/60">{item.body}</p>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {firstMeetingItems.map((item) => (
+              <div
+                key={item.title}
+                className="flex flex-col rounded-2xl bg-paper p-8 ring-1 ring-black/5"
+              >
+                <div className="mb-5 grid size-12 place-items-center rounded-full bg-brand/10">
+                  <item.icon className="size-6 text-brand" />
                 </div>
+                <h4 className="mb-2 font-serif text-xl text-brand">{item.title}</h4>
+                <p className="text-pretty text-ink/60">{item.body}</p>
               </div>
             ))}
           </div>
@@ -246,43 +314,78 @@ function mainSchedule(meetings: { weekday: number; start: string; end: string }[
 
 const helpCards = [
   {
-    title: "Creo que tengo problemas con el alcohol",
-    body: "Una auto-evaluación breve y confidencial de 12 preguntas puede ayudarte a reconocer tu situación.",
-    cta: "Hacer la evaluación",
+    title: "Busco ayuda para mí",
+    body: "Creo que el alcohol está afectando mi vida.",
+    cta: "Más información",
     to: "/tengo-un-problema",
     icon: HeartHandshake,
   },
   {
-    title: "Busco ayuda para un familiar o amigo",
-    body: "Información y orientación para acompañar a alguien cercano que enfrenta un problema con la bebida.",
-    cta: "Cómo puedo ayudar",
+    title: "Busco ayuda para un familiar o un amigo",
+    body: "Quiero comprender cómo puedo ayudar.",
+    cta: "Conocer más",
     to: "/que-es-aa",
     icon: Users,
   },
   {
-    title: "Ya soy miembro de Alcohólicos Anónimos",
-    body: "Consulta reuniones, literatura, eventos del área y accede al área privada de servicio.",
-    cta: "Ir al área de servicio",
+    title: "Ya soy miembro de AA",
+    body: "Accede a recursos y actividades del Área.",
+    cta: "Área de Servicio",
     to: "/auth",
     icon: MapPin,
   },
 ] as const;
 
+const eventCards = [
+  {
+    tag: "Foros",
+    title: "Foros de compartimiento",
+    body: "Espacios abiertos donde miembros comparten su experiencia, fortaleza y esperanza.",
+    icon: UsersRound,
+  },
+  {
+    tag: "Congresos",
+    title: "Congresos y convenciones",
+    body: "Encuentros regionales para fortalecer la unidad y el mensaje de recuperación.",
+    icon: CalendarDays,
+  },
+  {
+    tag: "Aniversarios",
+    title: "Aniversarios de grupo",
+    body: "Celebraciones donde miembros comparten sus años de sobriedad con la comunidad.",
+    icon: Trophy,
+  },
+];
+
 const firstMeetingItems = [
   {
     title: "No necesitas inscribirte",
-    body: "Simplemente llega a la dirección indicada. No hay papeleo, ni formularios, ni requisitos previos.",
+    body: "Simplemente llega a la dirección indicada. No hay papeleo ni requisitos previos.",
+    icon: ClipboardX,
   },
   {
-    title: "Puedes solo escuchar",
-    body: "No estás obligado a hablar ni a presentarte. Muchos asisten su primera vez únicamente a escuchar.",
+    title: "Puedes solamente escuchar",
+    body: "No estás obligado a hablar ni a presentarte. Puedes asistir solo a escuchar.",
+    icon: Ear,
   },
   {
     title: "No hay cuotas para asistir",
-    body: "AA se sostiene con contribuciones voluntarias de sus miembros. Asistir es totalmente gratuito.",
+    body: "AA se sostiene con contribuciones voluntarias de sus miembros. Asistir es gratuito.",
+    icon: Wallet,
   },
   {
     title: "Se respeta el anonimato",
-    body: "Lo que se dice en la reunión, se queda en la reunión. Tu privacidad es nuestra prioridad absoluta.",
+    body: "Lo que se dice en la reunión se queda en la reunión. Tu privacidad es prioridad.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Encontrarás personas con experiencias similares",
+    body: "Hombres y mujeres que han vivido lo mismo y hoy comparten su camino con serenidad.",
+    icon: HandHeart,
+  },
+  {
+    title: "Siempre serás bienvenido",
+    body: "No importa tu historia, tu edad o de dónde vengas: aquí hay un lugar para ti.",
+    icon: Sparkles,
   },
 ];
