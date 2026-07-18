@@ -140,14 +140,15 @@ function Home() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-14 text-center">
             <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/60">
-              Empieza aquí
+              Para quienes buscan ayuda
             </span>
             <h2 className="font-serif text-4xl italic text-brand md:text-5xl lg:text-6xl">
               ¿Cómo podemos ayudarte?
             </h2>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
+
             {helpCards.map((c) => (
               <Link
                 key={c.title}
