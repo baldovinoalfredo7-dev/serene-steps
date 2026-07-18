@@ -34,7 +34,7 @@ function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative min-h-[calc(100svh-4rem)] overflow-hidden bg-soft">
+      <section className="relative min-h-[80svh] overflow-hidden bg-soft md:min-h-[calc(100svh-4rem)]">
         <img
           src={heroImage}
           alt="Sala luminosa preparada para una reunión de AA con sillas en círculo"
@@ -43,20 +43,20 @@ function Home() {
           className="absolute inset-0 h-full w-full object-cover"
         />
         {/* Superposición sutil para mejorar el contraste sin oscurecer la imagen */}
-        <div className="absolute inset-0 bg-gradient-to-b from-paper/80 via-paper/55 to-paper/85" />
-        <div className="absolute inset-0 bg-brand/15" />
+        <div className="absolute inset-0 bg-gradient-to-b from-paper/85 via-paper/60 to-paper/90" />
+        <div className="absolute inset-0 bg-brand/20" />
 
-        <div className="relative mx-auto flex min-h-[calc(100svh-4rem)] max-w-6xl flex-col items-center justify-center px-6 py-20 text-center">
-          <h1 className="mb-5 max-w-5xl text-balance font-serif text-[2.5rem] leading-[1.02] text-brand sm:text-6xl lg:text-[4.75rem]">
+        <div className="relative mx-auto flex min-h-[80svh] max-w-6xl flex-col items-center justify-center px-6 py-14 pb-28 text-center md:min-h-[calc(100svh-4rem)] md:py-20 md:pb-20">
+          <h1 className="mb-4 max-w-5xl text-balance font-serif text-[2.25rem] leading-[1.02] text-brand sm:mb-5 sm:text-6xl lg:text-[4.75rem]">
             Alcohólicos Anónimos
           </h1>
-          <p className="mb-10 text-sm font-semibold uppercase tracking-[0.3em] text-brand/80 sm:text-base">
+          <p className="mb-8 text-xs font-semibold uppercase tracking-[0.3em] text-brand/90 sm:mb-10 sm:text-base">
             Área 2 Metropolitana – Barranquilla
           </p>
-          <p className="mb-6 max-w-3xl text-pretty font-serif text-2xl italic leading-snug text-brand sm:text-3xl lg:text-4xl">
+          <p className="mb-5 max-w-3xl text-pretty font-serif text-xl italic leading-snug text-brand sm:mb-6 sm:text-3xl lg:text-4xl">
             La ayuda está más cerca de lo que imaginas.
           </p>
-          <p className="mb-14 max-w-2xl text-pretty text-base leading-relaxed text-ink/75 sm:text-lg">
+          <p className="mb-10 max-w-2xl text-pretty text-base leading-relaxed text-ink/90 sm:mb-14 sm:text-lg">
             Una comunidad de hombres y mujeres que comparten su experiencia,
             fortaleza y esperanza.
           </p>
@@ -64,20 +64,20 @@ function Home() {
 
           <Link
             to="/grupos"
-            className="group relative inline-flex min-h-16 items-center gap-4 rounded-full bg-brand px-12 py-6 text-base font-semibold uppercase tracking-[0.18em] text-paper shadow-lift ring-1 ring-brand/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-soft hover:shadow-[0_28px_60px_-18px_color-mix(in_oklab,var(--brand)_45%,transparent)] focus-visible:ring-4 focus-visible:ring-brand/30 sm:px-16 sm:py-8 sm:text-xl"
+            className="group relative inline-flex min-h-14 items-center gap-3 rounded-full bg-brand px-8 py-5 text-sm font-semibold uppercase tracking-[0.18em] text-paper shadow-lift ring-1 ring-brand/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-soft hover:shadow-[0_28px_60px_-18px_color-mix(in_oklab,var(--brand)_45%,transparent)] focus-visible:ring-4 focus-visible:ring-brand/30 sm:min-h-16 sm:gap-4 sm:px-16 sm:py-8 sm:text-xl"
           >
-            <MapPin className="size-6 sm:size-7" strokeWidth={2} />
+            <MapPin className="size-5 sm:size-7" strokeWidth={2} />
             Encuentra un grupo
-            <ArrowRight className="size-6 transition-transform group-hover:translate-x-1 sm:size-7" />
+            <ArrowRight className="size-5 transition-transform group-hover:translate-x-1 sm:size-7" />
           </Link>
 
-          <ul className="mt-14 grid w-full max-w-4xl grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4 sm:gap-8">
+          <ul className="mt-10 grid w-full max-w-4xl grid-cols-2 gap-x-6 gap-y-6 sm:mt-14 sm:grid-cols-4 sm:gap-8">
             {heroBadges.map((b) => (
               <li key={b.label} className="flex flex-col items-center gap-3 text-center">
                 <span className="grid size-12 place-items-center rounded-full bg-paper/80 ring-1 ring-brand/15 shadow-soft backdrop-blur-sm">
                   <b.icon className="size-5 text-brand" strokeWidth={1.8} />
                 </span>
-                <span className="text-xs font-semibold uppercase tracking-[0.15em] text-brand/80 sm:text-sm">
+                <span className="text-xs font-semibold uppercase tracking-[0.15em] text-brand/90 sm:text-sm">
                   {b.label}
                 </span>
               </li>
