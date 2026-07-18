@@ -16,6 +16,8 @@ import {
   ShieldCheck,
   Wallet,
   ClipboardX,
+  CalendarCheck,
+  UserX,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
