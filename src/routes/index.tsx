@@ -341,6 +341,34 @@ function Home() {
           </div>
         </div>
       </section>
+
+      {/* ACCESO PARA MIEMBROS */}
+      <section className="border-t border-brand/10 bg-soft/60 py-16 md:py-20">
+        <div className="mx-auto max-w-4xl px-6">
+          <div className="flex flex-col items-center gap-6 rounded-3xl bg-paper p-10 text-center shadow-soft md:flex-row md:items-center md:justify-between md:gap-10 md:p-12 md:text-left">
+            <div className="flex-1">
+              <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/60">
+                Área de servicio
+              </span>
+              <h2 className="mb-3 font-serif text-2xl italic text-brand md:text-3xl">
+                ¿Eres miembro de Alcohólicos Anónimos?
+              </h2>
+              <p className="text-pretty leading-relaxed text-ink/70">
+                Ingresa con tu correo electrónico para acceder a herramientas de
+                servicio, gestionar tu grupo, publicar eventos y coordinar el
+                trabajo del Área.
+              </p>
+            </div>
+            <Link
+              to="/auth"
+              className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full border border-brand/25 px-7 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-brand transition-colors hover:bg-brand hover:text-paper"
+            >
+              Acceso para miembros
+              <ArrowRight className="size-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
