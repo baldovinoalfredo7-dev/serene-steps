@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import logoAsset from "@/assets/logo-aa.png.asset.json";
+
 
 const navLinks = [
   { to: "/", label: "Inicio" },
@@ -19,17 +21,24 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-brand/5 bg-paper/85 backdrop-blur-md">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
-        <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          <div className="grid size-10 place-items-center rounded-full bg-brand">
-            <div className="size-4 rotate-45 border-2 border-paper" aria-hidden />
-          </div>
+        <Link to="/" className="flex items-center gap-4" onClick={() => setOpen(false)}>
+          <img
+            src={logoAsset.url}
+            alt="Alcohólicos Anónimos — Área 2 Metropolitana, Barranquilla"
+            width={56}
+            height={56}
+            className="h-12 w-auto sm:h-14"
+          />
           <div className="leading-tight">
-            <span className="block font-serif text-lg text-brand">Área 2 Metropolitana</span>
-            <span className="block text-[10px] uppercase tracking-[0.2em] text-ink/50">
+            <span className="block font-sans text-[13px] font-bold uppercase tracking-[0.18em] text-brand sm:text-sm">
               Alcohólicos Anónimos
+            </span>
+            <span className="block text-[11px] font-medium tracking-wide text-ink/60 sm:text-xs">
+              Área 2 Metropolitana · Barranquilla
             </span>
           </div>
         </Link>
+
 
         <nav className="hidden items-center gap-7 text-sm font-medium text-ink/70 xl:flex">
           {navLinks.map((l) => (

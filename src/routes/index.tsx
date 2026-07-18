@@ -55,10 +55,14 @@ function Home() {
           <p className="mb-8 text-sm font-semibold uppercase tracking-[0.28em] text-brand-soft sm:text-base">
             Área 2 Metropolitana — Barranquilla
           </p>
-          <p className="mb-14 max-w-2xl text-pretty text-lg leading-relaxed text-ink/80 sm:text-xl">
+          <p className="mb-6 max-w-3xl text-pretty font-serif text-2xl italic leading-snug text-brand sm:text-3xl lg:text-4xl">
+            La ayuda está más cerca de lo que imaginas.
+          </p>
+          <p className="mb-14 max-w-2xl text-pretty text-base leading-relaxed text-ink/75 sm:text-lg">
             Una comunidad de hombres y mujeres que comparten su experiencia,
             fortaleza y esperanza.
           </p>
+
 
           <Link
             to="/grupos"
