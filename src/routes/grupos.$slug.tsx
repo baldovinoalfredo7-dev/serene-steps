@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowLeft, MapPin, Navigation, Phone, Clock } from "lucide-react";
+import { ArrowLeft, MapPin, Navigation, Phone, Clock, Coffee, DoorOpen, Sofa, Heart } from "lucide-react";
 import {
   getGroupBySlug,
   weekdayLabels,
@@ -161,6 +161,32 @@ function GroupDetail() {
                 {group.history}
               </p>
             </div>
+
+            {/* Fotografías del salón */}
+            <div>
+              <h2 className="mb-6 font-serif text-2xl italic text-brand">El salón</h2>
+              <p className="mb-6 max-w-[60ch] text-sm text-ink/60">
+                Un espacio sencillo, tranquilo y preparado para recibirte. Sin cámaras, sin
+                nombres, sin exposición.
+              </p>
+              <div className="grid gap-4 sm:grid-cols-3">
+                {[
+                  { icon: Sofa, label: "Sala principal" },
+                  { icon: DoorOpen, label: "Entrada del grupo" },
+                  { icon: Coffee, label: "Rincón del café" },
+                ].map(({ icon: Icon, label }) => (
+                  <div
+                    key={label}
+                    className="flex aspect-[4/3] flex-col items-center justify-center gap-3 rounded-2xl bg-soft/60 p-6 text-center ring-1 ring-black/5"
+                  >
+                    <Icon className="size-8 text-brand/40" strokeWidth={1.5} />
+                    <span className="text-xs font-medium uppercase tracking-widest text-brand/50">
+                      {label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Right: mapa + contacto */}
@@ -202,21 +228,60 @@ function GroupDetail() {
               )}
             </div>
 
-            <div className="rounded-2xl bg-brand p-6 text-paper">
-              <h3 className="mb-2 font-serif text-lg italic">¿Vas por primera vez?</h3>
-              <p className="mb-4 text-sm text-paper/80">
-                No necesitas inscribirte ni pagar. Solo llega, siéntate y escucha.
-              </p>
-              <Link
-                to="/primera-reunion"
-                className="inline-flex items-center gap-2 border-b border-paper/40 pb-0.5 text-sm font-medium hover:border-paper"
-              >
-                Qué esperar de tu primera reunión →
-              </Link>
-            </div>
+            {group.publicInfo && (
+              <div className="rounded-2xl bg-paper p-6 ring-1 ring-black/5">
+                <span className="mb-3 block text-xs font-semibold uppercase tracking-widest text-brand/50">
+                  Información pública
+                </span>
+                {group.publicInfo.name && (
+                  <p className="mb-2 text-sm font-medium text-brand">{group.publicInfo.name}</p>
+                )}
+                {group.publicInfo.phone && (
+                  <a
+                    href={`tel:${group.publicInfo.phone.replace(/\s/g, "")}`}
+                    className="flex items-center gap-2 text-sm text-ink/70 hover:text-brand"
+                  >
+                    <Phone className="size-3.5 text-brand/50" />
+                    {group.publicInfo.phone}
+                  </a>
+                )}
+                {group.publicInfo.email && (
+                  <a
+                    href={`mailto:${group.publicInfo.email}`}
+                    className="mt-1 block text-sm text-ink/70 hover:text-brand"
+                  >
+                    {group.publicInfo.email}
+                  </a>
+                )}
+              </div>
+            )}
           </aside>
         </div>
       </section>
+
+      {/* ¿Es tu primera reunión? */}
+      <section className="bg-brand py-20 text-paper">
+        <div className="mx-auto max-w-3xl px-6 text-center">
+          <Heart className="mx-auto mb-6 size-8 text-paper/50" strokeWidth={1.5} />
+          <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.3em] text-paper/60">
+            Para ti que llegas por primera vez
+          </span>
+          <h2 className="text-balance font-serif text-4xl italic leading-tight md:text-5xl">
+            ¿Es tu primera reunión?
+          </h2>
+          <p className="mx-auto mt-8 max-w-2xl text-pretty text-lg leading-relaxed text-paper/85">
+            Puedes asistir sin inscribirte. Si lo deseas, puedes simplemente escuchar. Se respeta
+            el anonimato y siempre serás bienvenido.
+          </p>
+          <Link
+            to="/primera-reunion"
+            className="mt-10 inline-flex items-center gap-2 border-b border-paper/40 pb-1 text-sm font-medium uppercase tracking-widest hover:border-paper"
+          >
+            Qué esperar de tu primera reunión →
+          </Link>
+        </div>
+      </section>
+
 
       {/* Otros grupos */}
       <section className="border-t border-brand/5 bg-soft/40 py-16">
