@@ -18,58 +18,6 @@ export function Footer() {
 
           <div className="flex flex-wrap gap-14">
             <div className="space-y-4">
-              <h5 className="text-xs font-bold uppercase tracking-widest text-brand">Ayuda</h5>
-              <ul className="space-y-2 text-sm text-ink/70">
-                <li>
-                  <Link to="/grupos" className="hover:text-brand">
-                    Encuentra un grupo
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/primera-reunion" className="hover:text-brand">
-                    Tu primera reunión
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/tengo-un-problema" className="hover:text-brand">
-                    ¿Tienes un problema?
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/necesito-ayuda" className="hover:text-brand">
-                    Necesito ayuda ahora
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div className="space-y-4">
-              <h5 className="text-xs font-bold uppercase tracking-widest text-brand">Comunidad</h5>
-              <ul className="space-y-2 text-sm text-ink/70">
-                <li>
-                  <Link to="/que-es-aa" className="hover:text-brand">
-                    ¿Qué es AA?
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/testimonios" className="hover:text-brand">
-                    Testimonios
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/literatura" className="hover:text-brand">
-                    Literatura
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/eventos" className="hover:text-brand">
-                    Eventos
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div className="space-y-4">
               <h5 className="text-xs font-bold uppercase tracking-widest text-brand">Contacto</h5>
               <ul className="space-y-2 text-sm text-ink/70">
                 <li>
@@ -83,8 +31,60 @@ export function Footer() {
                   </a>
                 </li>
                 <li>
+                  <Link to="/contacto" className="hover:text-brand">
+                    Formulario de contacto
+                  </Link>
+                </li>
+                <li>
                   <Link to="/auth" className="hover:text-brand">
                     Área de servicio
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div className="space-y-4">
+              <h5 className="text-xs font-bold uppercase tracking-widest text-brand">Comunidad</h5>
+              <ul className="space-y-2 text-sm text-ink/70">
+                <li>
+                  <Link to="/grupos" className="hover:text-brand">
+                    Encuentra un grupo
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/que-es-aa" className="hover:text-brand">
+                    ¿Qué es AA?
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/testimonios" className="hover:text-brand">
+                    Testimonios
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/eventos" className="hover:text-brand">
+                    Eventos
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div className="space-y-4">
+              <h5 className="text-xs font-bold uppercase tracking-widest text-brand">Área 2</h5>
+              <ul className="space-y-2 text-sm text-ink/70">
+                <li>
+                  <Link to="/mapa-del-sitio" className="hover:text-brand">
+                    Mapa del sitio
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/privacidad" className="hover:text-brand">
+                    Política de privacidad
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/necesito-ayuda" className="hover:text-brand">
+                    Necesito ayuda ahora
                   </Link>
                 </li>
               </ul>
@@ -93,7 +93,7 @@ export function Footer() {
         </div>
 
         <div className="mt-16 flex flex-col items-start justify-between gap-3 border-t border-brand/5 pt-8 text-[10px] font-medium uppercase tracking-widest text-ink/40 md:flex-row md:items-center">
-          <span>© {new Date().getFullYear()} AA Área 2 Metropolitana</span>
+          <span>© {new Date().getFullYear()} AA Área 2 Metropolitana · Todos los derechos reservados</span>
           <span>Ciudad de México</span>
           <span>El anonimato es la base espiritual de nuestras tradiciones</span>
         </div>
