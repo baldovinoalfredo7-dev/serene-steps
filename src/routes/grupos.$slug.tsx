@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowLeft, MapPin, Navigation, Phone, Clock } from "lucide-react";
+import { ArrowLeft, MapPin, Navigation, Phone, Clock, Coffee, DoorOpen, Sofa, Heart } from "lucide-react";
 import {
   getGroupBySlug,
   weekdayLabels,
