@@ -198,7 +198,7 @@ function Home() {
             <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/60">
               Para tu primera vez
             </span>
-            <h2 className="text-balance font-serif text-3xl italic text-brand md:text-5xl">
+            <h2 className="text-balance font-serif text-4xl italic text-brand md:text-5xl lg:text-6xl">
               ¿Qué puedes esperar de tu primera reunión?
             </h2>
           </div>
@@ -207,13 +207,13 @@ function Home() {
             {firstMeetingItems.map((item) => (
               <div
                 key={item.title}
-                className="flex flex-col rounded-2xl bg-paper p-8 ring-1 ring-black/5"
+                className="flex flex-col rounded-3xl bg-paper p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lift md:p-10"
               >
-                <div className="mb-5 grid size-12 place-items-center rounded-full bg-brand/10">
-                  <item.icon className="size-6 text-brand" />
+                <div className="mb-6 grid size-14 place-items-center rounded-2xl bg-brand/10">
+                  <item.icon className="size-7 text-brand" strokeWidth={1.6} />
                 </div>
-                <h4 className="mb-2 font-serif text-xl text-brand">{item.title}</h4>
-                <p className="text-pretty text-ink/60">{item.body}</p>
+                <h4 className="mb-3 font-serif text-xl italic text-brand md:text-2xl">{item.title}</h4>
+                <p className="text-pretty leading-relaxed text-ink/70">{item.body}</p>
               </div>
             ))}
           </div>
@@ -221,7 +221,7 @@ function Home() {
           <div className="mt-14 text-center">
             <Link
               to="/primera-reunion"
-              className="inline-flex items-center gap-2 rounded-sm border border-brand/20 px-6 py-3 text-sm font-medium text-brand transition-colors hover:bg-brand hover:text-paper"
+              className="inline-flex min-h-12 items-center gap-2 rounded-full border border-brand/25 px-7 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-brand transition-colors hover:bg-brand hover:text-paper"
             >
               Leer más sobre tu primera reunión
               <ArrowRight className="size-4" />
