@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import heroImage from "@/assets/hero-room.jpg";
+import queEsAAImage from "@/assets/que-es-aa.jpg";
 import { groups } from "@/lib/groups-data";
 import {
   ArrowRight,
