@@ -327,6 +327,13 @@ function mainSchedule(meetings: { weekday: number; start: string; end: string }[
   return `${days} día${days > 1 ? "s" : ""} · ${sample.start}–${sample.end} h`;
 }
 
+const heroBadges = [
+  { label: "Sin inscripción", icon: ClipboardX },
+  { label: "Sin cuotas para asistir", icon: Wallet },
+  { label: "Anonimato", icon: ShieldCheck },
+  { label: "Reuniones todos los días", icon: CalendarCheck },
+] as const;
+
 const helpCards = [
   {
     title: "Busco ayuda para mí",
