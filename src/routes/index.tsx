@@ -41,19 +41,16 @@ function Home() {
           height={1200}
           className="absolute inset-0 h-full w-full object-cover"
         />
-        {/* Superposición azul muy suave para legibilidad y sensación de calma */}
-        <div className="absolute inset-0 bg-gradient-to-b from-paper/70 via-brand-tint/60 to-paper/85" />
-        <div className="absolute inset-0 bg-brand/10" />
+        {/* Superposición sutil para mejorar el contraste sin oscurecer la imagen */}
+        <div className="absolute inset-0 bg-gradient-to-b from-paper/80 via-paper/55 to-paper/85" />
+        <div className="absolute inset-0 bg-brand/15" />
 
         <div className="relative mx-auto flex min-h-[calc(100svh-4rem)] max-w-6xl flex-col items-center justify-center px-6 py-20 text-center">
-          <span className="mb-6 block text-[11px] font-semibold uppercase tracking-[0.35em] text-brand/70 sm:text-xs">
-            Área 2 Metropolitana · Barranquilla
-          </span>
-          <h1 className="mb-4 max-w-5xl text-balance font-serif text-[2.25rem] leading-[1.05] text-brand sm:text-5xl lg:text-[4.25rem]">
+          <h1 className="mb-5 max-w-5xl text-balance font-serif text-[2.5rem] leading-[1.02] text-brand sm:text-6xl lg:text-[4.75rem]">
             Alcohólicos Anónimos
           </h1>
-          <p className="mb-8 text-sm font-semibold uppercase tracking-[0.28em] text-brand-soft sm:text-base">
-            Área 2 Metropolitana — Barranquilla
+          <p className="mb-10 text-sm font-semibold uppercase tracking-[0.3em] text-brand/80 sm:text-base">
+            Área 2 Metropolitana – Barranquilla
           </p>
           <p className="mb-6 max-w-3xl text-pretty font-serif text-2xl italic leading-snug text-brand sm:text-3xl lg:text-4xl">
             La ayuda está más cerca de lo que imaginas.
