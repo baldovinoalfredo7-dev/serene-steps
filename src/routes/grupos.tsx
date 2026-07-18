@@ -5,7 +5,6 @@ import {
   groups,
   municipalities,
   weekdayLabels,
-  weekdayShort,
   meetingTypeLabel,
   getTimeOfDay,
   getPrimaryMeeting,
