@@ -37,31 +37,31 @@ function Home() {
           alt="Sala preparada para una reunión de AA con sillas en círculo"
           width={1408}
           height={1600}
-          className="absolute inset-0 h-full w-full object-cover opacity-40"
+          className="absolute inset-0 h-full w-full object-cover opacity-45"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-brand/70 via-brand/60 to-brand/90" />
-        <div className="relative mx-auto flex min-h-[calc(100svh-4rem)] max-w-6xl flex-col items-center justify-center px-6 py-16 text-center">
-          <span className="mb-6 block text-xs font-semibold uppercase tracking-[0.3em] text-paper/70">
+        <div className="absolute inset-0 bg-gradient-to-b from-brand/85 via-brand/75 to-brand" />
+        <div className="relative mx-auto flex min-h-[calc(100svh-4rem)] max-w-6xl flex-col items-center justify-center px-6 py-20 text-center">
+          <span className="mb-6 block text-[11px] font-semibold uppercase tracking-[0.35em] text-paper/75 sm:text-xs">
             Alcohólicos Anónimos · Área 2 Metropolitana
           </span>
-          <h1 className="mb-8 max-w-4xl text-balance font-serif text-4xl italic leading-[1.05] text-paper sm:text-5xl lg:text-7xl">
+          <h1 className="mb-8 max-w-4xl text-balance font-serif text-[2.4rem] italic leading-[1.05] text-paper sm:text-6xl lg:text-[5.5rem]">
             La ayuda está más cerca de lo que imaginas.
           </h1>
-          <p className="mb-12 max-w-2xl text-pretty text-lg text-paper/80 sm:text-xl">
+          <p className="mb-14 max-w-2xl text-pretty text-lg leading-relaxed text-paper/85 sm:text-xl">
             Si el alcohol está afectando tu vida o la de alguien que amas, no estás solo.
             Aquí puedes dar el primer paso, con calma y en total anonimato.
           </p>
 
           <Link
             to="/grupos"
-            className="group relative inline-flex items-center gap-4 rounded-md bg-paper px-10 py-6 text-lg font-semibold uppercase tracking-wider text-brand shadow-2xl shadow-black/30 ring-2 ring-paper transition-all hover:-translate-y-1 hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)] sm:px-14 sm:py-7 sm:text-xl"
+            className="group relative inline-flex min-h-14 items-center gap-4 rounded-full bg-paper px-10 py-5 text-base font-semibold uppercase tracking-[0.15em] text-brand shadow-2xl shadow-black/40 ring-1 ring-paper/40 transition-all hover:-translate-y-1 hover:shadow-[0_28px_60px_-18px_rgba(0,0,0,0.55)] focus-visible:ring-4 focus-visible:ring-paper/60 sm:px-14 sm:py-7 sm:text-lg"
           >
-            <MapPin className="size-6" />
+            <MapPin className="size-5 sm:size-6" strokeWidth={2} />
             Encuentra un grupo
-            <ArrowRight className="size-6 transition-transform group-hover:translate-x-1" />
+            <ArrowRight className="size-5 transition-transform group-hover:translate-x-1 sm:size-6" />
           </Link>
 
-          <p className="mt-10 text-sm text-paper/60">
+          <p className="mt-10 text-xs uppercase tracking-widest text-paper/60 sm:text-sm sm:tracking-[0.2em] sm:normal-case">
             Sin inscripción · Sin cuotas · Anonimato garantizado
           </p>
         </div>
@@ -74,7 +74,7 @@ function Home() {
             <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/60">
               Empieza aquí
             </span>
-            <h2 className="font-serif text-3xl italic text-brand md:text-5xl">
+            <h2 className="font-serif text-4xl italic text-brand md:text-5xl lg:text-6xl">
               ¿Cómo podemos ayudarte?
             </h2>
           </div>
@@ -84,16 +84,18 @@ function Home() {
               <Link
                 key={c.title}
                 to={c.to}
-                className="group flex flex-col rounded-2xl bg-soft p-8 ring-1 ring-black/5 transition-all hover:-translate-y-1 hover:bg-brand hover:text-paper hover:ring-brand"
+                className="group flex flex-col rounded-3xl bg-soft/70 p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:bg-brand hover:text-paper hover:shadow-lift md:p-10"
               >
-                <c.icon className="mb-6 size-9 text-brand transition-colors group-hover:text-paper" />
-                <h3 className="mb-3 font-serif text-2xl italic text-brand transition-colors group-hover:text-paper">
+                <div className="mb-6 grid size-14 place-items-center rounded-2xl bg-brand/10 transition-colors group-hover:bg-paper/15">
+                  <c.icon className="size-7 text-brand transition-colors group-hover:text-paper" strokeWidth={1.6} />
+                </div>
+                <h3 className="mb-3 font-serif text-2xl italic text-brand transition-colors group-hover:text-paper md:text-3xl">
                   {c.title}
                 </h3>
-                <p className="mb-8 text-pretty text-ink/60 transition-colors group-hover:text-paper/80">
+                <p className="mb-8 text-pretty leading-relaxed text-ink/70 transition-colors group-hover:text-paper/85">
                   {c.body}
                 </p>
-                <span className="mt-auto inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-brand transition-colors group-hover:text-paper">
+                <span className="mt-auto inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.15em] text-brand transition-colors group-hover:text-paper">
                   {c.cta}
                   <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                 </span>
@@ -111,16 +113,16 @@ function Home() {
               <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/60">
                 Directorio del Área 2
               </span>
-              <h2 className="mb-4 font-serif text-3xl italic text-brand md:text-5xl">
+              <h2 className="mb-4 font-serif text-4xl italic text-brand md:text-5xl lg:text-6xl">
                 Encuentra un grupo
               </h2>
-              <p className="max-w-xl text-ink/60">
+              <p className="max-w-xl text-lg leading-relaxed text-ink/70">
                 Nueve grupos abiertos, en distintos municipios del Área 2 Metropolitana.
               </p>
             </div>
             <Link
               to="/grupos"
-              className="inline-flex items-center gap-2 rounded-sm border border-brand/20 px-5 py-3 text-sm font-semibold text-brand transition-colors hover:bg-brand hover:text-paper"
+              className="inline-flex min-h-12 items-center gap-2 rounded-full border border-brand/25 px-6 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-brand transition-colors hover:bg-brand hover:text-paper"
             >
               Ver directorio completo <ArrowRight className="size-4" />
             </Link>
@@ -148,16 +150,16 @@ function Home() {
               <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/60">
                 Calendario del Área
               </span>
-              <h2 className="mb-4 font-serif text-3xl italic text-brand md:text-5xl">
+              <h2 className="mb-4 font-serif text-4xl italic text-brand md:text-5xl lg:text-6xl">
                 Próximos eventos
               </h2>
-              <p className="max-w-xl text-ink/60">
+              <p className="max-w-xl text-lg leading-relaxed text-ink/70">
                 Espacios abiertos para reforzar la unidad, la experiencia y el servicio.
               </p>
             </div>
             <Link
               to="/eventos"
-              className="inline-flex items-center gap-2 rounded-sm border border-brand/20 px-5 py-3 text-sm font-semibold text-brand transition-colors hover:bg-brand hover:text-paper"
+              className="inline-flex min-h-12 items-center gap-2 rounded-full border border-brand/25 px-6 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-brand transition-colors hover:bg-brand hover:text-paper"
             >
               Ver todos los eventos <ArrowRight className="size-4" />
             </Link>
@@ -167,17 +169,19 @@ function Home() {
             {eventCards.map((e) => (
               <article
                 key={e.title}
-                className="flex flex-col rounded-2xl bg-soft/60 p-8 ring-1 ring-black/5 transition-all hover:-translate-y-0.5 hover:ring-brand/30"
+                className="flex flex-col rounded-3xl bg-soft/60 p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lift md:p-10"
               >
-                <e.icon className="mb-6 size-9 text-brand" />
-                <span className="mb-2 text-xs font-semibold uppercase tracking-widest text-brand/50">
+                <div className="mb-6 grid size-14 place-items-center rounded-2xl bg-brand/10">
+                  <e.icon className="size-7 text-brand" strokeWidth={1.6} />
+                </div>
+                <span className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand/50">
                   {e.tag}
                 </span>
-                <h3 className="mb-3 font-serif text-2xl italic text-brand">{e.title}</h3>
-                <p className="mb-8 text-pretty text-ink/60">{e.body}</p>
+                <h3 className="mb-3 font-serif text-2xl italic text-brand md:text-3xl">{e.title}</h3>
+                <p className="mb-8 text-pretty leading-relaxed text-ink/70">{e.body}</p>
                 <Link
                   to="/eventos"
-                  className="mt-auto inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-brand"
+                  className="mt-auto inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.15em] text-brand"
                 >
                   Ver calendario <ArrowRight className="size-4" />
                 </Link>
@@ -194,7 +198,7 @@ function Home() {
             <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/60">
               Para tu primera vez
             </span>
-            <h2 className="text-balance font-serif text-3xl italic text-brand md:text-5xl">
+            <h2 className="text-balance font-serif text-4xl italic text-brand md:text-5xl lg:text-6xl">
               ¿Qué puedes esperar de tu primera reunión?
             </h2>
           </div>
@@ -203,13 +207,13 @@ function Home() {
             {firstMeetingItems.map((item) => (
               <div
                 key={item.title}
-                className="flex flex-col rounded-2xl bg-paper p-8 ring-1 ring-black/5"
+                className="flex flex-col rounded-3xl bg-paper p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lift md:p-10"
               >
-                <div className="mb-5 grid size-12 place-items-center rounded-full bg-brand/10">
-                  <item.icon className="size-6 text-brand" />
+                <div className="mb-6 grid size-14 place-items-center rounded-2xl bg-brand/10">
+                  <item.icon className="size-7 text-brand" strokeWidth={1.6} />
                 </div>
-                <h4 className="mb-2 font-serif text-xl text-brand">{item.title}</h4>
-                <p className="text-pretty text-ink/60">{item.body}</p>
+                <h4 className="mb-3 font-serif text-xl italic text-brand md:text-2xl">{item.title}</h4>
+                <p className="text-pretty leading-relaxed text-ink/70">{item.body}</p>
               </div>
             ))}
           </div>
@@ -217,7 +221,7 @@ function Home() {
           <div className="mt-14 text-center">
             <Link
               to="/primera-reunion"
-              className="inline-flex items-center gap-2 rounded-sm border border-brand/20 px-6 py-3 text-sm font-medium text-brand transition-colors hover:bg-brand hover:text-paper"
+              className="inline-flex min-h-12 items-center gap-2 rounded-full border border-brand/25 px-7 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-brand transition-colors hover:bg-brand hover:text-paper"
             >
               Leer más sobre tu primera reunión
               <ArrowRight className="size-4" />
@@ -284,19 +288,19 @@ function GroupCard({
   schedule: string;
 }) {
   return (
-    <div className="group flex flex-col rounded-2xl bg-paper p-8 ring-1 ring-black/5 transition-all hover:-translate-y-0.5 hover:ring-brand/30">
-      <span className="mb-3 text-xs font-semibold uppercase tracking-widest text-brand/50">
+    <div className="group flex flex-col rounded-3xl bg-paper p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
+      <span className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-brand/60">
         {municipality}
       </span>
-      <h3 className="mb-4 font-serif text-xl text-brand">{name}</h3>
-      <div className="mb-8 flex items-center gap-2 text-sm text-ink/60">
-        <Clock className="size-4 text-brand/60" />
+      <h3 className="mb-4 font-serif text-2xl italic text-brand">{name}</h3>
+      <div className="mb-8 flex items-center gap-2 text-sm text-ink/70">
+        <Clock className="size-4 text-brand/60" strokeWidth={1.8} />
         <span>{schedule}</span>
       </div>
       <Link
         to="/grupos/$slug"
         params={{ slug }}
-        className="mt-auto inline-flex items-center justify-between gap-2 rounded-sm bg-brand px-5 py-3 text-sm font-semibold uppercase tracking-wider text-paper transition-all hover:bg-brand/90"
+        className="mt-auto inline-flex min-h-12 items-center justify-between gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-paper transition-all hover:bg-brand/90"
       >
         Ver información
         <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
