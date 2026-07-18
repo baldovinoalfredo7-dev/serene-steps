@@ -37,31 +37,31 @@ function Home() {
           alt="Sala preparada para una reunión de AA con sillas en círculo"
           width={1408}
           height={1600}
-          className="absolute inset-0 h-full w-full object-cover opacity-40"
+          className="absolute inset-0 h-full w-full object-cover opacity-45"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-brand/70 via-brand/60 to-brand/90" />
-        <div className="relative mx-auto flex min-h-[calc(100svh-4rem)] max-w-6xl flex-col items-center justify-center px-6 py-16 text-center">
-          <span className="mb-6 block text-xs font-semibold uppercase tracking-[0.3em] text-paper/70">
+        <div className="absolute inset-0 bg-gradient-to-b from-brand/85 via-brand/75 to-brand" />
+        <div className="relative mx-auto flex min-h-[calc(100svh-4rem)] max-w-6xl flex-col items-center justify-center px-6 py-20 text-center">
+          <span className="mb-6 block text-[11px] font-semibold uppercase tracking-[0.35em] text-paper/75 sm:text-xs">
             Alcohólicos Anónimos · Área 2 Metropolitana
           </span>
-          <h1 className="mb-8 max-w-4xl text-balance font-serif text-4xl italic leading-[1.05] text-paper sm:text-5xl lg:text-7xl">
+          <h1 className="mb-8 max-w-4xl text-balance font-serif text-[2.4rem] italic leading-[1.05] text-paper sm:text-6xl lg:text-[5.5rem]">
             La ayuda está más cerca de lo que imaginas.
           </h1>
-          <p className="mb-12 max-w-2xl text-pretty text-lg text-paper/80 sm:text-xl">
+          <p className="mb-14 max-w-2xl text-pretty text-lg leading-relaxed text-paper/85 sm:text-xl">
             Si el alcohol está afectando tu vida o la de alguien que amas, no estás solo.
             Aquí puedes dar el primer paso, con calma y en total anonimato.
           </p>
 
           <Link
             to="/grupos"
-            className="group relative inline-flex items-center gap-4 rounded-md bg-paper px-10 py-6 text-lg font-semibold uppercase tracking-wider text-brand shadow-2xl shadow-black/30 ring-2 ring-paper transition-all hover:-translate-y-1 hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)] sm:px-14 sm:py-7 sm:text-xl"
+            className="group relative inline-flex min-h-14 items-center gap-4 rounded-full bg-paper px-10 py-5 text-base font-semibold uppercase tracking-[0.15em] text-brand shadow-2xl shadow-black/40 ring-1 ring-paper/40 transition-all hover:-translate-y-1 hover:shadow-[0_28px_60px_-18px_rgba(0,0,0,0.55)] focus-visible:ring-4 focus-visible:ring-paper/60 sm:px-14 sm:py-7 sm:text-lg"
           >
-            <MapPin className="size-6" />
+            <MapPin className="size-5 sm:size-6" strokeWidth={2} />
             Encuentra un grupo
-            <ArrowRight className="size-6 transition-transform group-hover:translate-x-1" />
+            <ArrowRight className="size-5 transition-transform group-hover:translate-x-1 sm:size-6" />
           </Link>
 
-          <p className="mt-10 text-sm text-paper/60">
+          <p className="mt-10 text-xs uppercase tracking-widest text-paper/60 sm:text-sm sm:tracking-[0.2em] sm:normal-case">
             Sin inscripción · Sin cuotas · Anonimato garantizado
           </p>
         </div>
