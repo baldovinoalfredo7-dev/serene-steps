@@ -288,19 +288,19 @@ function GroupCard({
   schedule: string;
 }) {
   return (
-    <div className="group flex flex-col rounded-2xl bg-paper p-8 ring-1 ring-black/5 transition-all hover:-translate-y-0.5 hover:ring-brand/30">
-      <span className="mb-3 text-xs font-semibold uppercase tracking-widest text-brand/50">
+    <div className="group flex flex-col rounded-3xl bg-paper p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
+      <span className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-brand/60">
         {municipality}
       </span>
-      <h3 className="mb-4 font-serif text-xl text-brand">{name}</h3>
-      <div className="mb-8 flex items-center gap-2 text-sm text-ink/60">
-        <Clock className="size-4 text-brand/60" />
+      <h3 className="mb-4 font-serif text-2xl italic text-brand">{name}</h3>
+      <div className="mb-8 flex items-center gap-2 text-sm text-ink/70">
+        <Clock className="size-4 text-brand/60" strokeWidth={1.8} />
         <span>{schedule}</span>
       </div>
       <Link
         to="/grupos/$slug"
         params={{ slug }}
-        className="mt-auto inline-flex items-center justify-between gap-2 rounded-sm bg-brand px-5 py-3 text-sm font-semibold uppercase tracking-wider text-paper transition-all hover:bg-brand/90"
+        className="mt-auto inline-flex min-h-12 items-center justify-between gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-paper transition-all hover:bg-brand/90"
       >
         Ver información
         <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
