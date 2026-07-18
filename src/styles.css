@@ -38,6 +38,11 @@
   --color-ink: var(--ink);
   --color-soft: var(--soft);
   --color-brand: var(--brand);
+
+  --shadow-soft: 0 1px 2px -1px color-mix(in oklab, var(--brand) 8%, transparent),
+                 0 8px 24px -12px color-mix(in oklab, var(--brand) 14%, transparent);
+  --shadow-lift: 0 4px 8px -2px color-mix(in oklab, var(--brand) 10%, transparent),
+                 0 20px 40px -18px color-mix(in oklab, var(--brand) 22%, transparent);
 }
 
 :root {
