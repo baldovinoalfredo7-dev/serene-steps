@@ -74,7 +74,7 @@ function Home() {
             <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/60">
               Empieza aquí
             </span>
-            <h2 className="font-serif text-3xl italic text-brand md:text-5xl">
+            <h2 className="font-serif text-4xl italic text-brand md:text-5xl lg:text-6xl">
               ¿Cómo podemos ayudarte?
             </h2>
           </div>
@@ -84,16 +84,18 @@ function Home() {
               <Link
                 key={c.title}
                 to={c.to}
-                className="group flex flex-col rounded-2xl bg-soft p-8 ring-1 ring-black/5 transition-all hover:-translate-y-1 hover:bg-brand hover:text-paper hover:ring-brand"
+                className="group flex flex-col rounded-3xl bg-soft/70 p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:bg-brand hover:text-paper hover:shadow-lift md:p-10"
               >
-                <c.icon className="mb-6 size-9 text-brand transition-colors group-hover:text-paper" />
-                <h3 className="mb-3 font-serif text-2xl italic text-brand transition-colors group-hover:text-paper">
+                <div className="mb-6 grid size-14 place-items-center rounded-2xl bg-brand/10 transition-colors group-hover:bg-paper/15">
+                  <c.icon className="size-7 text-brand transition-colors group-hover:text-paper" strokeWidth={1.6} />
+                </div>
+                <h3 className="mb-3 font-serif text-2xl italic text-brand transition-colors group-hover:text-paper md:text-3xl">
                   {c.title}
                 </h3>
-                <p className="mb-8 text-pretty text-ink/60 transition-colors group-hover:text-paper/80">
+                <p className="mb-8 text-pretty leading-relaxed text-ink/70 transition-colors group-hover:text-paper/85">
                   {c.body}
                 </p>
-                <span className="mt-auto inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-brand transition-colors group-hover:text-paper">
+                <span className="mt-auto inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.15em] text-brand transition-colors group-hover:text-paper">
                   {c.cta}
                   <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                 </span>
