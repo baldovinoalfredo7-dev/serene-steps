@@ -71,6 +71,14 @@ function Home() {
             <ArrowRight className="size-5 transition-transform group-hover:translate-x-1 sm:size-7" />
           </Link>
 
+          <Link
+            to="/auth"
+            className="mt-6 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.2em] text-brand/70 underline-offset-4 transition-colors hover:text-brand hover:underline sm:text-sm"
+          >
+            Acceso para miembros
+            <ArrowRight className="size-3.5" />
+          </Link>
+
           <ul className="mt-10 grid w-full max-w-4xl grid-cols-2 gap-x-6 gap-y-6 sm:mt-14 sm:grid-cols-4 sm:gap-8">
             {heroBadges.map((b) => (
               <li key={b.label} className="flex flex-col items-center gap-3 text-center">
