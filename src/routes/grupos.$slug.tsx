@@ -161,6 +161,32 @@ function GroupDetail() {
                 {group.history}
               </p>
             </div>
+
+            {/* Fotografías del salón */}
+            <div>
+              <h2 className="mb-6 font-serif text-2xl italic text-brand">El salón</h2>
+              <p className="mb-6 max-w-[60ch] text-sm text-ink/60">
+                Un espacio sencillo, tranquilo y preparado para recibirte. Sin cámaras, sin
+                nombres, sin exposición.
+              </p>
+              <div className="grid gap-4 sm:grid-cols-3">
+                {[
+                  { icon: Sofa, label: "Sala principal" },
+                  { icon: DoorOpen, label: "Entrada del grupo" },
+                  { icon: Coffee, label: "Rincón del café" },
+                ].map(({ icon: Icon, label }) => (
+                  <div
+                    key={label}
+                    className="flex aspect-[4/3] flex-col items-center justify-center gap-3 rounded-2xl bg-soft/60 p-6 text-center ring-1 ring-black/5"
+                  >
+                    <Icon className="size-8 text-brand/40" strokeWidth={1.5} />
+                    <span className="text-xs font-medium uppercase tracking-widest text-brand/50">
+                      {label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Right: mapa + contacto */}
