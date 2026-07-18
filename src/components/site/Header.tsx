@@ -1,18 +1,30 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import {
+  CalendarDays,
+  HelpCircle,
+  Home,
+  Info,
+  LogIn,
+  Mail,
+  MapPin,
+  Menu,
+  Clock,
+  X,
+  type LucideIcon,
+} from "lucide-react";
 import logoAsset from "@/assets/logo-aa.png.asset.json";
 
+type NavLink = { to: string; label: string; icon: LucideIcon };
 
-const navLinks = [
-  { to: "/", label: "Inicio" },
-  { to: "/grupos", label: "Encuentra un Grupo" },
-  { to: "/que-es-aa", label: "¿Qué es AA?" },
-  { to: "/tengo-un-problema", label: "¿Tienes un problema?" },
-  { to: "/literatura", label: "Literatura" },
-  { to: "/testimonios", label: "Testimonios" },
-  { to: "/eventos", label: "Eventos" },
-  { to: "/contacto", label: "Contacto" },
+const navLinks: readonly NavLink[] = [
+  { to: "/", label: "Inicio", icon: Home },
+  { to: "/que-es-aa", label: "¿Qué es Alcohólicos Anónimos?", icon: Info },
+  { to: "/grupos", label: "Encuentra un grupo", icon: MapPin },
+  { to: "/horarios", label: "Horarios de reuniones", icon: Clock },
+  { to: "/preguntas-frecuentes", label: "Preguntas frecuentes", icon: HelpCircle },
+  { to: "/eventos", label: "Noticias y eventos", icon: CalendarDays },
+  { to: "/contacto", label: "Contacto", icon: Mail },
 ] as const;
 
 export function Header() {
@@ -20,27 +32,30 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-brand/5 bg-paper/85 backdrop-blur-md">
-      <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-6 sm:h-28">
-        <Link to="/" className="flex items-center gap-4 sm:gap-5" onClick={() => setOpen(false)}>
+      <div className="mx-auto flex h-24 max-w-7xl items-center justify-between gap-4 px-6 sm:h-28">
+        <Link
+          to="/"
+          className="flex min-w-0 items-center gap-4 sm:gap-5"
+          onClick={() => setOpen(false)}
+        >
           <img
             src={logoAsset.url}
             alt="Alcohólicos Anónimos — Área 2 Metropolitana, Barranquilla"
             width={72}
             height={72}
-            className="h-16 w-auto sm:h-[4.5rem]"
+            className="h-16 w-auto shrink-0 sm:h-[4.5rem]"
           />
-          <div className="leading-tight">
-            <span className="block font-sans text-sm font-bold uppercase tracking-[0.18em] text-brand sm:text-base">
+          <div className="min-w-0 leading-tight">
+            <span className="block truncate font-sans text-sm font-bold uppercase tracking-[0.18em] text-brand sm:text-base">
               Alcohólicos Anónimos
             </span>
-            <span className="block text-xs font-medium tracking-wide text-ink/60 sm:text-sm">
+            <span className="block truncate text-xs font-medium tracking-wide text-ink/60 sm:text-sm">
               Área 2 Metropolitana – Barranquilla
             </span>
           </div>
         </Link>
 
-
-        <nav className="hidden items-center gap-7 text-sm font-medium text-ink/70 xl:flex">
+        <nav className="hidden items-center gap-6 text-sm font-medium text-ink/70 xl:flex">
           {navLinks.map((l) => (
             <Link
               key={l.to}
@@ -54,15 +69,15 @@ export function Header() {
           ))}
           <Link
             to="/auth"
-            className="rounded-sm border border-brand/20 px-3 py-1.5 text-xs uppercase tracking-widest text-brand transition-colors hover:bg-brand hover:text-paper"
+            className="inline-flex items-center gap-1.5 rounded-full border border-brand/25 px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-brand transition-colors hover:bg-brand hover:text-paper"
           >
-            Área de servicio
+            <LogIn className="size-3.5" /> Acceso para miembros
           </Link>
         </nav>
 
         <button
           type="button"
-          className="text-ink/60 xl:hidden"
+          className="grid size-11 shrink-0 place-items-center rounded-full text-ink/70 transition-colors hover:bg-soft hover:text-brand xl:hidden"
           aria-label={open ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
@@ -72,26 +87,29 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="border-t border-brand/5 bg-paper xl:hidden">
-          <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-6 py-4 text-base">
+        <div className="border-t border-brand/10 bg-paper shadow-lift xl:hidden">
+          <nav className="mx-auto flex max-w-7xl flex-col gap-1.5 px-4 py-4 text-base sm:px-6">
             {navLinks.map((l) => (
               <Link
                 key={l.to}
                 to={l.to}
                 onClick={() => setOpen(false)}
-                activeProps={{ className: "text-brand font-semibold" }}
+                activeProps={{ className: "bg-soft text-brand font-semibold" }}
                 activeOptions={{ exact: l.to === "/" }}
-                className="rounded-md px-2 py-2 text-ink/80 transition-colors hover:bg-soft hover:text-brand"
+                className="flex items-center gap-4 rounded-2xl px-4 py-3.5 text-ink/80 transition-colors hover:bg-soft hover:text-brand"
               >
-                {l.label}
+                <span className="grid size-9 shrink-0 place-items-center rounded-full bg-brand/10 text-brand">
+                  <l.icon className="size-4" strokeWidth={1.8} />
+                </span>
+                <span className="min-w-0 truncate">{l.label}</span>
               </Link>
             ))}
             <Link
               to="/auth"
               onClick={() => setOpen(false)}
-              className="mt-2 rounded-sm border border-brand/20 px-3 py-2 text-center text-sm uppercase tracking-widest text-brand"
+              className="mt-3 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-paper transition-colors hover:bg-brand-soft"
             >
-              Área de servicio
+              <LogIn className="size-4" /> Acceso para miembros
             </Link>
           </nav>
         </div>
@@ -99,3 +117,4 @@ export function Header() {
     </header>
   );
 }
+

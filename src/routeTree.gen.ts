@@ -15,9 +15,11 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as QueEsAaRouteImport } from './routes/que-es-aa'
 import { Route as PrivacidadRouteImport } from './routes/privacidad'
 import { Route as PrimeraReunionRouteImport } from './routes/primera-reunion'
+import { Route as PreguntasFrecuentesRouteImport } from './routes/preguntas-frecuentes'
 import { Route as NecesitoAyudaRouteImport } from './routes/necesito-ayuda'
 import { Route as MapaDelSitioRouteImport } from './routes/mapa-del-sitio'
 import { Route as LiteraturaRouteImport } from './routes/literatura'
+import { Route as HorariosRouteImport } from './routes/horarios'
 import { Route as GruposRouteImport } from './routes/grupos'
 import { Route as EventosRouteImport } from './routes/eventos'
 import { Route as ContactoRouteImport } from './routes/contacto'
@@ -55,6 +57,11 @@ const PrimeraReunionRoute = PrimeraReunionRouteImport.update({
   path: '/primera-reunion',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PreguntasFrecuentesRoute = PreguntasFrecuentesRouteImport.update({
+  id: '/preguntas-frecuentes',
+  path: '/preguntas-frecuentes',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NecesitoAyudaRoute = NecesitoAyudaRouteImport.update({
   id: '/necesito-ayuda',
   path: '/necesito-ayuda',
@@ -68,6 +75,11 @@ const MapaDelSitioRoute = MapaDelSitioRouteImport.update({
 const LiteraturaRoute = LiteraturaRouteImport.update({
   id: '/literatura',
   path: '/literatura',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HorariosRoute = HorariosRouteImport.update({
+  id: '/horarios',
+  path: '/horarios',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GruposRoute = GruposRouteImport.update({
@@ -107,9 +119,11 @@ export interface FileRoutesByFullPath {
   '/contacto': typeof ContactoRoute
   '/eventos': typeof EventosRoute
   '/grupos': typeof GruposRouteWithChildren
+  '/horarios': typeof HorariosRoute
   '/literatura': typeof LiteraturaRoute
   '/mapa-del-sitio': typeof MapaDelSitioRoute
   '/necesito-ayuda': typeof NecesitoAyudaRoute
+  '/preguntas-frecuentes': typeof PreguntasFrecuentesRoute
   '/primera-reunion': typeof PrimeraReunionRoute
   '/privacidad': typeof PrivacidadRoute
   '/que-es-aa': typeof QueEsAaRoute
@@ -124,9 +138,11 @@ export interface FileRoutesByTo {
   '/contacto': typeof ContactoRoute
   '/eventos': typeof EventosRoute
   '/grupos': typeof GruposRouteWithChildren
+  '/horarios': typeof HorariosRoute
   '/literatura': typeof LiteraturaRoute
   '/mapa-del-sitio': typeof MapaDelSitioRoute
   '/necesito-ayuda': typeof NecesitoAyudaRoute
+  '/preguntas-frecuentes': typeof PreguntasFrecuentesRoute
   '/primera-reunion': typeof PrimeraReunionRoute
   '/privacidad': typeof PrivacidadRoute
   '/que-es-aa': typeof QueEsAaRoute
@@ -142,9 +158,11 @@ export interface FileRoutesById {
   '/contacto': typeof ContactoRoute
   '/eventos': typeof EventosRoute
   '/grupos': typeof GruposRouteWithChildren
+  '/horarios': typeof HorariosRoute
   '/literatura': typeof LiteraturaRoute
   '/mapa-del-sitio': typeof MapaDelSitioRoute
   '/necesito-ayuda': typeof NecesitoAyudaRoute
+  '/preguntas-frecuentes': typeof PreguntasFrecuentesRoute
   '/primera-reunion': typeof PrimeraReunionRoute
   '/privacidad': typeof PrivacidadRoute
   '/que-es-aa': typeof QueEsAaRoute
@@ -161,9 +179,11 @@ export interface FileRouteTypes {
     | '/contacto'
     | '/eventos'
     | '/grupos'
+    | '/horarios'
     | '/literatura'
     | '/mapa-del-sitio'
     | '/necesito-ayuda'
+    | '/preguntas-frecuentes'
     | '/primera-reunion'
     | '/privacidad'
     | '/que-es-aa'
@@ -178,9 +198,11 @@ export interface FileRouteTypes {
     | '/contacto'
     | '/eventos'
     | '/grupos'
+    | '/horarios'
     | '/literatura'
     | '/mapa-del-sitio'
     | '/necesito-ayuda'
+    | '/preguntas-frecuentes'
     | '/primera-reunion'
     | '/privacidad'
     | '/que-es-aa'
@@ -195,9 +217,11 @@ export interface FileRouteTypes {
     | '/contacto'
     | '/eventos'
     | '/grupos'
+    | '/horarios'
     | '/literatura'
     | '/mapa-del-sitio'
     | '/necesito-ayuda'
+    | '/preguntas-frecuentes'
     | '/primera-reunion'
     | '/privacidad'
     | '/que-es-aa'
@@ -213,9 +237,11 @@ export interface RootRouteChildren {
   ContactoRoute: typeof ContactoRoute
   EventosRoute: typeof EventosRoute
   GruposRoute: typeof GruposRouteWithChildren
+  HorariosRoute: typeof HorariosRoute
   LiteraturaRoute: typeof LiteraturaRoute
   MapaDelSitioRoute: typeof MapaDelSitioRoute
   NecesitoAyudaRoute: typeof NecesitoAyudaRoute
+  PreguntasFrecuentesRoute: typeof PreguntasFrecuentesRoute
   PrimeraReunionRoute: typeof PrimeraReunionRoute
   PrivacidadRoute: typeof PrivacidadRoute
   QueEsAaRoute: typeof QueEsAaRoute
@@ -268,6 +294,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrimeraReunionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/preguntas-frecuentes': {
+      id: '/preguntas-frecuentes'
+      path: '/preguntas-frecuentes'
+      fullPath: '/preguntas-frecuentes'
+      preLoaderRoute: typeof PreguntasFrecuentesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/necesito-ayuda': {
       id: '/necesito-ayuda'
       path: '/necesito-ayuda'
@@ -287,6 +320,13 @@ declare module '@tanstack/react-router' {
       path: '/literatura'
       fullPath: '/literatura'
       preLoaderRoute: typeof LiteraturaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/horarios': {
+      id: '/horarios'
+      path: '/horarios'
+      fullPath: '/horarios'
+      preLoaderRoute: typeof HorariosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/grupos': {
@@ -351,9 +391,11 @@ const rootRouteChildren: RootRouteChildren = {
   ContactoRoute: ContactoRoute,
   EventosRoute: EventosRoute,
   GruposRoute: GruposRouteWithChildren,
+  HorariosRoute: HorariosRoute,
   LiteraturaRoute: LiteraturaRoute,
   MapaDelSitioRoute: MapaDelSitioRoute,
   NecesitoAyudaRoute: NecesitoAyudaRoute,
+  PreguntasFrecuentesRoute: PreguntasFrecuentesRoute,
   PrimeraReunionRoute: PrimeraReunionRoute,
   PrivacidadRoute: PrivacidadRoute,
   QueEsAaRoute: QueEsAaRoute,
