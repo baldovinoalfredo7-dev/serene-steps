@@ -38,21 +38,26 @@
   --color-ink: var(--ink);
   --color-soft: var(--soft);
   --color-brand: var(--brand);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-tint: var(--brand-tint);
 
-  --shadow-soft: 0 1px 2px -1px color-mix(in oklab, var(--brand) 8%, transparent),
-                 0 8px 24px -12px color-mix(in oklab, var(--brand) 14%, transparent);
-  --shadow-lift: 0 4px 8px -2px color-mix(in oklab, var(--brand) 10%, transparent),
-                 0 20px 40px -18px color-mix(in oklab, var(--brand) 22%, transparent);
+  --shadow-soft: 0 1px 2px -1px color-mix(in oklab, var(--brand) 10%, transparent),
+                 0 10px 30px -14px color-mix(in oklab, var(--brand) 18%, transparent);
+  --shadow-lift: 0 6px 14px -4px color-mix(in oklab, var(--brand) 14%, transparent),
+                 0 24px 50px -22px color-mix(in oklab, var(--brand) 30%, transparent);
 }
 
-:root {
-  --radius: 0.5rem;
 
-  /* Editorial sereno palette */
-  --paper: oklch(0.992 0.002 90);        /* #fcfcfc */
-  --soft: oklch(0.958 0.002 90);         /* #f2f2f2 */
-  --ink: oklch(0.18 0.005 285);          /* near-black */
-  --brand: oklch(0.24 0.05 260);         /* #13213c azul oscuro */
+:root {
+  --radius: 0.75rem;
+
+  /* AA Colombia – paleta institucional luminosa */
+  --paper: oklch(1 0 0);                    /* #ffffff */
+  --soft: oklch(0.968 0.018 240);           /* #eaf3fb azul muy claro */
+  --ink: oklch(0.35 0 0);                   /* #444444 gris oscuro */
+  --brand: oklch(0.56 0.13 250);            /* #2f6fb6 azul institucional */
+  --brand-soft: oklch(0.68 0.11 250);       /* #5f93cf azul secundario */
+  --brand-tint: oklch(0.968 0.018 240);     /* #eaf3fb */
 
   --background: var(--paper);
   --foreground: var(--ink);
@@ -65,15 +70,16 @@
   --secondary: var(--soft);
   --secondary-foreground: var(--brand);
   --muted: var(--soft);
-  --muted-foreground: oklch(0.45 0.01 260);
+  --muted-foreground: oklch(0.5 0.01 250);
   --accent: var(--soft);
   --accent-foreground: var(--brand);
-  --destructive: oklch(0.52 0.19 25);
+  --destructive: oklch(0.55 0.19 25);
   --destructive-foreground: var(--paper);
-  --border: oklch(0.9 0.005 260);
-  --input: oklch(0.9 0.005 260);
+  --border: oklch(0.92 0.012 240);
+  --input: oklch(0.92 0.012 240);
   --ring: var(--brand);
 }
+
 
 @layer base {
   * {

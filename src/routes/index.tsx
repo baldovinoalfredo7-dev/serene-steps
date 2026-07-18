@@ -33,30 +33,36 @@ function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative min-h-[calc(100svh-4rem)] overflow-hidden bg-brand text-paper">
+      <section className="relative min-h-[calc(100svh-4rem)] overflow-hidden bg-soft">
         <img
           src={heroImage}
-          alt="Sala preparada para una reunión de AA con sillas en círculo"
-          width={1408}
-          height={1600}
-          className="absolute inset-0 h-full w-full object-cover opacity-45"
+          alt="Sala luminosa preparada para una reunión de AA con sillas en círculo"
+          width={1600}
+          height={1200}
+          className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-brand/85 via-brand/75 to-brand" />
+        {/* Superposición azul muy suave para legibilidad y sensación de calma */}
+        <div className="absolute inset-0 bg-gradient-to-b from-paper/70 via-brand-tint/60 to-paper/85" />
+        <div className="absolute inset-0 bg-brand/10" />
+
         <div className="relative mx-auto flex min-h-[calc(100svh-4rem)] max-w-6xl flex-col items-center justify-center px-6 py-20 text-center">
-          <span className="mb-6 block text-[11px] font-semibold uppercase tracking-[0.35em] text-paper/75 sm:text-xs">
+          <span className="mb-6 block text-[11px] font-semibold uppercase tracking-[0.35em] text-brand/70 sm:text-xs">
             Área 2 Metropolitana · Barranquilla
           </span>
-          <h1 className="mb-8 max-w-5xl text-balance font-serif text-[2rem] italic leading-[1.08] text-paper sm:text-5xl lg:text-[4.5rem]">
-            Alcohólicos Anónimos — Área 2 Metropolitana — Barranquilla
+          <h1 className="mb-4 max-w-5xl text-balance font-serif text-[2.25rem] leading-[1.05] text-brand sm:text-5xl lg:text-[4.25rem]">
+            Alcohólicos Anónimos
           </h1>
-          <p className="mb-14 max-w-2xl text-pretty text-lg leading-relaxed text-paper/85 sm:text-xl">
+          <p className="mb-8 text-sm font-semibold uppercase tracking-[0.28em] text-brand-soft sm:text-base">
+            Área 2 Metropolitana — Barranquilla
+          </p>
+          <p className="mb-14 max-w-2xl text-pretty text-lg leading-relaxed text-ink/80 sm:text-xl">
             Una comunidad de hombres y mujeres que comparten su experiencia,
             fortaleza y esperanza.
           </p>
 
           <Link
             to="/grupos"
-            className="group relative inline-flex min-h-16 items-center gap-4 rounded-full bg-paper px-12 py-6 text-base font-semibold uppercase tracking-[0.18em] text-brand shadow-2xl shadow-black/50 ring-1 ring-paper/40 transition-all hover:-translate-y-1 hover:shadow-[0_32px_70px_-18px_rgba(0,0,0,0.6)] focus-visible:ring-4 focus-visible:ring-paper/60 sm:px-16 sm:py-8 sm:text-xl"
+            className="group relative inline-flex min-h-16 items-center gap-4 rounded-full bg-brand px-12 py-6 text-base font-semibold uppercase tracking-[0.18em] text-paper shadow-lift ring-1 ring-brand/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-soft hover:shadow-[0_28px_60px_-18px_color-mix(in_oklab,var(--brand)_45%,transparent)] focus-visible:ring-4 focus-visible:ring-brand/30 sm:px-16 sm:py-8 sm:text-xl"
           >
             <MapPin className="size-6 sm:size-7" strokeWidth={2} />
             Encuentra un grupo
@@ -66,10 +72,10 @@ function Home() {
           <ul className="mt-14 grid w-full max-w-4xl grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4 sm:gap-8">
             {heroBadges.map((b) => (
               <li key={b.label} className="flex flex-col items-center gap-3 text-center">
-                <span className="grid size-12 place-items-center rounded-full bg-paper/10 ring-1 ring-paper/20 backdrop-blur-sm">
-                  <b.icon className="size-5 text-paper" strokeWidth={1.7} />
+                <span className="grid size-12 place-items-center rounded-full bg-paper/80 ring-1 ring-brand/15 shadow-soft backdrop-blur-sm">
+                  <b.icon className="size-5 text-brand" strokeWidth={1.8} />
                 </span>
-                <span className="text-xs font-semibold uppercase tracking-[0.15em] text-paper/85 sm:text-sm">
+                <span className="text-xs font-semibold uppercase tracking-[0.15em] text-brand/80 sm:text-sm">
                   {b.label}
                 </span>
               </li>
@@ -77,6 +83,7 @@ function Home() {
           </ul>
         </div>
       </section>
+
 
       {/* ¿CÓMO PODEMOS AYUDARTE? */}
       <section className="bg-paper py-20 md:py-28">
