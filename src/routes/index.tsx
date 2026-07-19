@@ -467,7 +467,6 @@ const helpCards = [
     icon: Briefcase,
   },
 ] as const;
-] as const;
 
 const eventCards = [
   {
