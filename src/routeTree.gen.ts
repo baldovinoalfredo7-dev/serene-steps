@@ -31,6 +31,8 @@ import { Route as GruposSlugRouteImport } from './routes/grupos.$slug'
 import { Route as AuthenticatedServicioRouteImport } from './routes/_authenticated/servicio'
 import { Route as AuthenticatedPerfilRouteImport } from './routes/_authenticated/perfil'
 import { Route as AuthenticatedServicioIndexRouteImport } from './routes/_authenticated/servicio.index'
+import { Route as AuthenticatedServicioGruposIndexRouteImport } from './routes/_authenticated/servicio.grupos.index'
+import { Route as AuthenticatedServicioGruposNuevoRouteImport } from './routes/_authenticated/servicio.grupos.nuevo'
 
 const TestimoniosRoute = TestimoniosRouteImport.update({
   id: '/testimonios',
@@ -142,6 +144,18 @@ const AuthenticatedServicioIndexRoute =
     path: '/',
     getParentRoute: () => AuthenticatedServicioRoute,
   } as any)
+const AuthenticatedServicioGruposIndexRoute =
+  AuthenticatedServicioGruposIndexRouteImport.update({
+    id: '/grupos/',
+    path: '/grupos/',
+    getParentRoute: () => AuthenticatedServicioRoute,
+  } as any)
+const AuthenticatedServicioGruposNuevoRoute =
+  AuthenticatedServicioGruposNuevoRouteImport.update({
+    id: '/grupos/nuevo',
+    path: '/grupos/nuevo',
+    getParentRoute: () => AuthenticatedServicioRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -165,6 +179,8 @@ export interface FileRoutesByFullPath {
   '/servicio': typeof AuthenticatedServicioRouteWithChildren
   '/grupos/$slug': typeof GruposSlugRoute
   '/servicio/': typeof AuthenticatedServicioIndexRoute
+  '/servicio/grupos/nuevo': typeof AuthenticatedServicioGruposNuevoRoute
+  '/servicio/grupos/': typeof AuthenticatedServicioGruposIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -187,6 +203,8 @@ export interface FileRoutesByTo {
   '/perfil': typeof AuthenticatedPerfilRoute
   '/grupos/$slug': typeof GruposSlugRoute
   '/servicio': typeof AuthenticatedServicioIndexRoute
+  '/servicio/grupos/nuevo': typeof AuthenticatedServicioGruposNuevoRoute
+  '/servicio/grupos': typeof AuthenticatedServicioGruposIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -212,6 +230,8 @@ export interface FileRoutesById {
   '/_authenticated/servicio': typeof AuthenticatedServicioRouteWithChildren
   '/grupos/$slug': typeof GruposSlugRoute
   '/_authenticated/servicio/': typeof AuthenticatedServicioIndexRoute
+  '/_authenticated/servicio/grupos/nuevo': typeof AuthenticatedServicioGruposNuevoRoute
+  '/_authenticated/servicio/grupos/': typeof AuthenticatedServicioGruposIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -237,6 +257,8 @@ export interface FileRouteTypes {
     | '/servicio'
     | '/grupos/$slug'
     | '/servicio/'
+    | '/servicio/grupos/nuevo'
+    | '/servicio/grupos/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -259,6 +281,8 @@ export interface FileRouteTypes {
     | '/perfil'
     | '/grupos/$slug'
     | '/servicio'
+    | '/servicio/grupos/nuevo'
+    | '/servicio/grupos'
   id:
     | '__root__'
     | '/'
@@ -283,6 +307,8 @@ export interface FileRouteTypes {
     | '/_authenticated/servicio'
     | '/grupos/$slug'
     | '/_authenticated/servicio/'
+    | '/_authenticated/servicio/grupos/nuevo'
+    | '/_authenticated/servicio/grupos/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -462,15 +488,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedServicioIndexRouteImport
       parentRoute: typeof AuthenticatedServicioRoute
     }
+    '/_authenticated/servicio/grupos/': {
+      id: '/_authenticated/servicio/grupos/'
+      path: '/grupos'
+      fullPath: '/servicio/grupos/'
+      preLoaderRoute: typeof AuthenticatedServicioGruposIndexRouteImport
+      parentRoute: typeof AuthenticatedServicioRoute
+    }
+    '/_authenticated/servicio/grupos/nuevo': {
+      id: '/_authenticated/servicio/grupos/nuevo'
+      path: '/grupos/nuevo'
+      fullPath: '/servicio/grupos/nuevo'
+      preLoaderRoute: typeof AuthenticatedServicioGruposNuevoRouteImport
+      parentRoute: typeof AuthenticatedServicioRoute
+    }
   }
 }
 
 interface AuthenticatedServicioRouteChildren {
   AuthenticatedServicioIndexRoute: typeof AuthenticatedServicioIndexRoute
+  AuthenticatedServicioGruposNuevoRoute: typeof AuthenticatedServicioGruposNuevoRoute
+  AuthenticatedServicioGruposIndexRoute: typeof AuthenticatedServicioGruposIndexRoute
 }
 
 const AuthenticatedServicioRouteChildren: AuthenticatedServicioRouteChildren = {
   AuthenticatedServicioIndexRoute: AuthenticatedServicioIndexRoute,
+  AuthenticatedServicioGruposNuevoRoute: AuthenticatedServicioGruposNuevoRoute,
+  AuthenticatedServicioGruposIndexRoute: AuthenticatedServicioGruposIndexRoute,
 }
 
 const AuthenticatedServicioRouteWithChildren =
