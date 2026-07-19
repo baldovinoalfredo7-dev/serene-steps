@@ -71,14 +71,14 @@ function HomeContent({ groups }: { groups: import("@/lib/groups-data").Group[] }
             La ayuda está más cerca de lo que imaginas.
           </p>
           <p className="mb-7 max-w-2xl text-pretty text-sm leading-relaxed text-ink/85 sm:mb-14 sm:text-lg">
-            Una comunidad de hombres y mujeres que comparten su experiencia,
-            fortaleza y esperanza.
+            Aquí encontrarás una puerta abierta. Elige por dónde quieres
+            entrar y te recibimos con calma, respeto y esperanza.
           </p>
 
 
           <ul
             role="list"
-            aria-label="Elige la opción que corresponde a tu perfil"
+            aria-label="Tres puertas de entrada: elige la que corresponde a ti"
             className="grid w-full max-w-5xl gap-4 sm:gap-6 md:grid-cols-3"
           >
             {heroEntries.map((entry) => (
@@ -413,15 +413,15 @@ function HomeContent({ groups }: { groups: import("@/lib/groups-data").Group[] }
           <div className="flex flex-col items-center gap-6 rounded-3xl bg-paper p-10 text-center shadow-soft md:flex-row md:items-center md:justify-between md:gap-10 md:p-12 md:text-left">
             <div className="flex-1">
               <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand">
-                Área de servicio
+                Puerta para miembros
               </span>
               <h2 className="mb-3 font-serif text-2xl italic text-brand md:text-3xl">
-                ¿Eres miembro de Alcohólicos Anónimos?
+                ¿Ya haces parte de Alcohólicos Anónimos?
               </h2>
               <p className="text-pretty leading-relaxed text-ink/85">
-                Ingresa con tu correo electrónico para acceder a herramientas de
-                servicio, gestionar tu grupo, publicar eventos y coordinar el
-                trabajo del Área.
+                Ingresa con las credenciales que recibiste en tu grupo o en el
+                Área para acompañar a tu comunidad y seguir sirviendo con
+                sencillez.
               </p>
             </div>
             <Link
@@ -480,26 +480,26 @@ function mainSchedule(meetings: { weekday: number; start: string; end: string }[
 
 const heroEntries = [
   {
-    eyebrow: "Para quien busca ayuda",
+    eyebrow: "Si buscas ayuda",
     title: "Necesito ayuda",
-    body: "Para mí o para un familiar. Encuentra una reunión hoy y da tu primer paso con acompañamiento.",
-    cta: "Empezar aquí",
+    body: "Para ti o para alguien que quieres. Aquí hay una reunión cerca y personas dispuestas a escucharte, sin juicios ni requisitos.",
+    cta: "Entrar por aquí",
     to: "/necesito-ayuda",
     icon: LifeBuoy,
   },
   {
-    eyebrow: "Para miembros de AA",
+    eyebrow: "Si ya caminas con nosotros",
     title: "Ya soy miembro",
-    body: "Accede al Área de Servicio con tu correo. Gestiona tu grupo, publica eventos y coordina el trabajo del Área.",
+    body: "Bienvenido de vuelta. Ingresa con tus credenciales para acompañar a tu grupo y seguir compartiendo experiencia, fortaleza y esperanza.",
     cta: "Acceso para miembros",
     to: "/auth",
     icon: ShieldCheck,
   },
   {
-    eyebrow: "Salud, justicia, educación",
+    eyebrow: "Si acompañas a otros",
     title: "Soy profesional o institución",
-    body: "Coordina con Información Pública para orientar a personas que puedan necesitar la ayuda de AA.",
-    cta: "Información Pública",
+    body: "Trabajas en salud, justicia, educación o comunidad. Cuenta con nosotros para orientar a quien pueda encontrar en AA un lugar seguro.",
+    cta: "Hablemos",
     to: "/contacto",
     icon: Briefcase,
   },
@@ -515,22 +515,22 @@ const heroBadges = [
 const helpCards = [
   {
     title: "Busco ayuda",
-    body: "Para mí o para un familiar. Encuentra una reunión hoy, entiende qué es AA y da tu primer paso con acompañamiento.",
+    body: "Para ti o para alguien que quieres. Encuentra una reunión cerca, conoce qué es AA y da tu primer paso acompañado.",
     cta: "Empezar",
     to: "/grupos",
     icon: LifeBuoy,
   },
   {
     title: "Ya soy miembro de AA",
-    body: "Accede al Área de Servicio con tu correo. Gestiona tu grupo, publica eventos y coordina el trabajo del Área.",
+    body: "Ingresa con las credenciales que recibiste en tu grupo o en el Área para acompañar a tu comunidad.",
     cta: "Acceso para miembros",
     to: "/auth",
     icon: ShieldCheck,
   },
   {
     title: "Soy profesional o institución",
-    body: "Salud, justicia, educación o comunidad. Coordina con Información Pública para orientar a personas que puedan necesitar AA.",
-    cta: "Información Pública",
+    body: "Salud, justicia, educación o comunidad: podemos orientar juntos a quien pueda encontrar en AA un lugar seguro.",
+    cta: "Escríbenos",
     to: "/contacto",
     icon: Briefcase,
   },
