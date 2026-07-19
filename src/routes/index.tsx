@@ -235,63 +235,20 @@ function Home() {
         </div>
       </section>
 
-      {/* PRÓXIMOS EVENTOS */}
-      <section className="bg-paper py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-14 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
-            <div>
-              <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/60">
-                Calendario del Área
-              </span>
-              <h2 className="mb-4 font-serif text-4xl italic text-brand md:text-5xl lg:text-6xl">
-                Próximos eventos
-              </h2>
-              <p className="max-w-xl text-lg leading-relaxed text-ink/70">
-                Espacios abiertos para reforzar la unidad, la experiencia y el servicio.
-              </p>
-            </div>
-            <Link
-              to="/eventos"
-              className="inline-flex min-h-12 items-center gap-2 rounded-full border border-brand/25 px-6 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-brand transition-colors hover:bg-brand hover:text-paper"
-            >
-              Ver todos los eventos <ArrowRight className="size-4" />
-            </Link>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-3">
-            {eventCards.map((e) => (
-              <article
-                key={e.title}
-                className="flex flex-col rounded-3xl bg-soft/60 p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lift md:p-10"
-              >
-                <div className="mb-6 grid size-14 place-items-center rounded-2xl bg-brand/10">
-                  <e.icon className="size-7 text-brand" strokeWidth={1.6} />
-                </div>
-                <span className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand/50">
-                  {e.tag}
-                </span>
-                <h3 className="mb-3 font-serif text-2xl italic text-brand md:text-3xl">{e.title}</h3>
-                <p className="mb-8 text-pretty leading-relaxed text-ink/70">{e.body}</p>
-                <Link
-                  to="/eventos"
-                  className="mt-auto inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.15em] text-brand"
-                >
-                  Ver calendario <ArrowRight className="size-4" />
-                </Link>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PRIMERA REUNIÓN — 6 tarjetas con icono */}
-      <section className="bg-soft/60 py-20 md:py-28">
+      {/* PRIMERA REUNIÓN — información acogedora para quien nunca ha ido */}
+      <section
+        aria-labelledby="primera-reunion-heading"
+        className="bg-paper py-20 md:py-28"
+      >
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-14 text-center">
-            <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/60">
+            <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand">
               Para tu primera vez
             </span>
-            <h2 className="text-balance font-serif text-4xl italic text-brand md:text-5xl lg:text-6xl">
+            <h2
+              id="primera-reunion-heading"
+              className="text-balance font-serif text-4xl italic text-brand md:text-5xl lg:text-6xl"
+            >
               ¿Qué puedes esperar de tu primera reunión?
             </h2>
           </div>
@@ -300,13 +257,17 @@ function Home() {
             {firstMeetingItems.map((item) => (
               <div
                 key={item.title}
-                className="flex flex-col rounded-3xl bg-paper p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lift md:p-10"
+                className="flex flex-col rounded-3xl bg-soft/60 p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lift md:p-10"
               >
                 <div className="mb-6 grid size-14 place-items-center rounded-2xl bg-brand/10">
                   <item.icon className="size-7 text-brand" strokeWidth={1.6} />
                 </div>
-                <h4 className="mb-3 font-serif text-xl italic text-brand md:text-2xl">{item.title}</h4>
-                <p className="text-pretty leading-relaxed text-ink/70">{item.body}</p>
+                <h4 className="mb-3 font-serif text-xl italic text-brand md:text-2xl">
+                  {item.title}
+                </h4>
+                <p className="text-pretty leading-relaxed text-ink/85">
+                  {item.body}
+                </p>
               </div>
             ))}
           </div>
@@ -322,6 +283,66 @@ function Home() {
           </div>
         </div>
       </section>
+
+      {/* PRÓXIMOS EVENTOS */}
+      <section
+        aria-labelledby="eventos-heading"
+        className="bg-soft/60 py-20 md:py-28"
+      >
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mb-14 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
+            <div>
+              <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand">
+                Calendario del Área
+              </span>
+              <h2
+                id="eventos-heading"
+                className="mb-4 font-serif text-4xl italic text-brand md:text-5xl lg:text-6xl"
+              >
+                Próximos eventos
+              </h2>
+              <p className="max-w-xl text-lg leading-relaxed text-ink/85">
+                Espacios abiertos para reforzar la unidad, la experiencia y el servicio.
+              </p>
+            </div>
+            <Link
+              to="/eventos"
+              className="inline-flex min-h-12 items-center gap-2 rounded-full border border-brand/25 px-6 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-brand transition-colors hover:bg-brand hover:text-paper"
+            >
+              Ver todos los eventos <ArrowRight className="size-4" />
+            </Link>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {eventCards.map((e) => (
+              <article
+                key={e.title}
+                className="flex flex-col rounded-3xl bg-paper p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lift md:p-10"
+              >
+                <div className="mb-6 grid size-14 place-items-center rounded-2xl bg-brand/10">
+                  <e.icon className="size-7 text-brand" strokeWidth={1.6} />
+                </div>
+                <span className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand">
+                  {e.tag}
+                </span>
+                <h3 className="mb-3 font-serif text-2xl italic text-brand md:text-3xl">
+                  {e.title}
+                </h3>
+                <p className="mb-8 text-pretty leading-relaxed text-ink/85">
+                  {e.body}
+                </p>
+                <Link
+                  to="/eventos"
+                  className="mt-auto inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.15em] text-brand"
+                >
+                  Ver calendario <ArrowRight className="size-4" />
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
 
       {/* TESTIMONIOS */}
       <section className="bg-brand py-20 text-paper md:py-24">
