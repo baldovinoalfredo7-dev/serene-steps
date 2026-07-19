@@ -413,15 +413,15 @@ function HomeContent({ groups }: { groups: import("@/lib/groups-data").Group[] }
           <div className="flex flex-col items-center gap-6 rounded-3xl bg-paper p-10 text-center shadow-soft md:flex-row md:items-center md:justify-between md:gap-10 md:p-12 md:text-left">
             <div className="flex-1">
               <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand">
-                Área de servicio
+                Puerta para miembros
               </span>
               <h2 className="mb-3 font-serif text-2xl italic text-brand md:text-3xl">
-                ¿Eres miembro de Alcohólicos Anónimos?
+                ¿Ya haces parte de Alcohólicos Anónimos?
               </h2>
               <p className="text-pretty leading-relaxed text-ink/85">
-                Ingresa con tu correo electrónico para acceder a herramientas de
-                servicio, gestionar tu grupo, publicar eventos y coordinar el
-                trabajo del Área.
+                Ingresa con las credenciales que recibiste en tu grupo o en el
+                Área para acompañar a tu comunidad y seguir sirviendo con
+                sencillez.
               </p>
             </div>
             <Link
