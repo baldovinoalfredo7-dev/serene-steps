@@ -98,9 +98,10 @@ function EventDetailPage() {
     const url = typeof window !== "undefined" ? window.location.href : "";
     setSharing(true);
     try {
-      const nav: Navigator | undefined =
-        typeof navigator !== "undefined" ? navigator : undefined;
-      if (nav && "share" in nav) {
+      const nav = (typeof navigator !== "undefined" ? navigator : null) as
+        | (Navigator & { share?: (d: { title?: string; url?: string }) => Promise<void> })
+        | null;
+      if (nav?.share) {
         await nav.share({ title: e.title, url });
       } else if (nav?.clipboard) {
         await nav.clipboard.writeText(url);
