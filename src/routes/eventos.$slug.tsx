@@ -24,7 +24,7 @@ export const Route = createFileRoute("/eventos/$slug")({
     if (!data) throw notFound();
     return data;
   },
-  head: ({ loaderData }) => {
+  head: ({ loaderData, params }) => {
     if (!loaderData) {
       return {
         meta: [
@@ -35,14 +35,17 @@ export const Route = createFileRoute("/eventos/$slug")({
     }
     const e = loaderData as PublicEvent;
     const desc = (e.description ?? "Evento del Área 2 Metropolitana de AA").slice(0, 160);
+    const url = `/eventos/${params.slug}`;
     return {
       meta: [
         { title: `${e.title} — Eventos AA Área 2` },
         { name: "description", content: desc },
         { property: "og:title", content: e.title },
         { property: "og:description", content: desc },
+        { property: "og:url", content: url },
         ...(e.imageUrl ? [{ property: "og:image", content: e.imageUrl }] : []),
       ],
+      links: [{ rel: "canonical", href: url }],
     };
   },
   errorComponent: ({ error }) => (

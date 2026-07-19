@@ -16,7 +16,7 @@ export const Route = createFileRoute("/grupos/$slug")({
     if (!group) throw notFound();
     return { slug: params.slug, groupName: group.name, addressLine: group.addressLine, municipality: group.municipality };
   },
-  head: ({ loaderData }) => {
+  head: ({ loaderData, params }) => {
     if (!loaderData) {
       return {
         meta: [
@@ -27,13 +27,16 @@ export const Route = createFileRoute("/grupos/$slug")({
     }
     const title = `${loaderData.groupName} — ${loaderData.municipality} · AA Área 2`;
     const desc = `Reuniones de Alcohólicos Anónimos en ${loaderData.addressLine}, ${loaderData.municipality}.`;
+    const url = `/grupos/${params.slug}`;
     return {
       meta: [
         { title },
         { name: "description", content: desc },
         { property: "og:title", content: title },
         { property: "og:description", content: desc },
+        { property: "og:url", content: url },
       ],
+      links: [{ rel: "canonical", href: url }],
     };
   },
   notFoundComponent: () => (

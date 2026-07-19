@@ -234,7 +234,7 @@ function Field({
           autoComplete={autoComplete}
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className={`w-full rounded-xl border border-brand/15 bg-white px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-brand ${icon ? "pl-10" : ""}`}
+          className={`w-full rounded-xl border border-brand/15 bg-paper px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-brand ${icon ? "pl-10" : ""}`}
         />
       </div>
       {hint && <span className="mt-1 block text-xs text-ink/50">{hint}</span>}

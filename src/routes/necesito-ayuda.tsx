@@ -14,7 +14,9 @@ export const Route = createFileRoute("/necesito-ayuda")({
         property: "og:description",
         content: "Línea de ayuda 24h y acceso directo a los grupos del Área 2 Metropolitana.",
       },
+      { property: "og:url", content: "/necesito-ayuda" },
     ],
+    links: [{ rel: "canonical", href: "/necesito-ayuda" }],
   }),
   component: NecesitoAyuda,
 });

@@ -15,7 +15,9 @@ export const Route = createFileRoute("/privacidad")({
         property: "og:description",
         content: "Compromiso con el anonimato y el manejo responsable de datos personales.",
       },
+      { property: "og:url", content: "/privacidad" },
     ],
+    links: [{ rel: "canonical", href: "/privacidad" }],
   }),
   component: Privacidad,
 });

@@ -15,7 +15,9 @@ export const Route = createFileRoute("/contacto")({
         property: "og:description",
         content: "Teléfonos y correo de la oficina de información pública del Área 2.",
       },
+      { property: "og:url", content: "/contacto" },
     ],
+    links: [{ rel: "canonical", href: "/contacto" }],
   }),
   component: Contacto,
 });

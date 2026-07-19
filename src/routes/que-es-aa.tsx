@@ -16,7 +16,9 @@ export const Route = createFileRoute("/que-es-aa")({
         property: "og:description",
         content: "Conoce qué es AA, cómo funciona y por qué el anonimato es fundamental.",
       },
+      { property: "og:url", content: "/que-es-aa" },
     ],
+    links: [{ rel: "canonical", href: "/que-es-aa" }],
   }),
   component: QueEsAA,
 });
