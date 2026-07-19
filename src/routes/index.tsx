@@ -203,13 +203,13 @@ function Home() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-14 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
             <div>
-              <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/60">
+              <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand">
                 Directorio del Área 2
               </span>
               <h2 className="mb-4 font-serif text-4xl italic text-brand md:text-5xl lg:text-6xl">
                 Encuentra un grupo
               </h2>
-              <p className="max-w-xl text-lg leading-relaxed text-ink/70">
+              <p className="max-w-xl text-lg leading-relaxed text-ink/85">
                 Nueve grupos abiertos, en distintos municipios del Área 2 Metropolitana.
               </p>
             </div>
@@ -371,7 +371,7 @@ function Home() {
                 de comunidad y de entender que solo por hoy podemos estar bien."
               </p>
               <cite className="text-sm font-medium not-italic opacity-60">
-                — Miembro de AA, Grupo San Ángel
+                — Miembro de AA, Área 2 Metropolitana
               </cite>
             </blockquote>
           </div>
@@ -392,13 +392,13 @@ function Home() {
         <div className="mx-auto max-w-4xl px-6">
           <div className="flex flex-col items-center gap-6 rounded-3xl bg-paper p-10 text-center shadow-soft md:flex-row md:items-center md:justify-between md:gap-10 md:p-12 md:text-left">
             <div className="flex-1">
-              <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/60">
+              <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand">
                 Área de servicio
               </span>
               <h2 className="mb-3 font-serif text-2xl italic text-brand md:text-3xl">
                 ¿Eres miembro de Alcohólicos Anónimos?
               </h2>
-              <p className="text-pretty leading-relaxed text-ink/70">
+              <p className="text-pretty leading-relaxed text-ink/85">
                 Ingresa con tu correo electrónico para acceder a herramientas de
                 servicio, gestionar tu grupo, publicar eventos y coordinar el
                 trabajo del Área.
@@ -431,12 +431,12 @@ function GroupCard({
 }) {
   return (
     <div className="group flex flex-col rounded-3xl bg-paper p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
-      <span className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-brand/60">
+      <span className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-brand">
         {municipality}
       </span>
       <h3 className="mb-4 font-serif text-2xl italic text-brand">{name}</h3>
-      <div className="mb-8 flex items-center gap-2 text-sm text-ink/70">
-        <Clock className="size-4 text-brand/60" strokeWidth={1.8} />
+      <div className="mb-8 flex items-center gap-2 text-sm text-ink/85">
+        <Clock className="size-4 text-brand/80" strokeWidth={1.8} />
         <span>{schedule}</span>
       </div>
       <Link
