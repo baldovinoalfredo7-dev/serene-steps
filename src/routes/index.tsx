@@ -5,21 +5,20 @@ import { groups } from "@/lib/groups-data";
 import { MeetingFinder } from "@/components/site/MeetingFinder";
 import {
   ArrowRight,
+  Briefcase,
   CalendarDays,
   Clock,
   Ear,
   HandHeart,
-  HeartHandshake,
   MapPin,
   Sparkles,
   Trophy,
-  Users,
   UsersRound,
   ShieldCheck,
   Wallet,
   ClipboardX,
   CalendarCheck,
-  UserX,
+  LifeBuoy,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
