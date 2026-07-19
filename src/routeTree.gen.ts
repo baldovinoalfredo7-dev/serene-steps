@@ -30,6 +30,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as GruposSlugRouteImport } from './routes/grupos.$slug'
 import { Route as AuthenticatedServicioRouteImport } from './routes/_authenticated/servicio'
 import { Route as AuthenticatedPerfilRouteImport } from './routes/_authenticated/perfil'
+import { Route as AuthenticatedServicioIndexRouteImport } from './routes/_authenticated/servicio.index'
 
 const TestimoniosRoute = TestimoniosRouteImport.update({
   id: '/testimonios',
@@ -135,6 +136,12 @@ const AuthenticatedPerfilRoute = AuthenticatedPerfilRouteImport.update({
   path: '/perfil',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedServicioIndexRoute =
+  AuthenticatedServicioIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedServicioRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -155,8 +162,9 @@ export interface FileRoutesByFullPath {
   '/tengo-un-problema': typeof TengoUnProblemaRoute
   '/testimonios': typeof TestimoniosRoute
   '/perfil': typeof AuthenticatedPerfilRoute
-  '/servicio': typeof AuthenticatedServicioRoute
+  '/servicio': typeof AuthenticatedServicioRouteWithChildren
   '/grupos/$slug': typeof GruposSlugRoute
+  '/servicio/': typeof AuthenticatedServicioIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -177,8 +185,8 @@ export interface FileRoutesByTo {
   '/tengo-un-problema': typeof TengoUnProblemaRoute
   '/testimonios': typeof TestimoniosRoute
   '/perfil': typeof AuthenticatedPerfilRoute
-  '/servicio': typeof AuthenticatedServicioRoute
   '/grupos/$slug': typeof GruposSlugRoute
+  '/servicio': typeof AuthenticatedServicioIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -201,8 +209,9 @@ export interface FileRoutesById {
   '/tengo-un-problema': typeof TengoUnProblemaRoute
   '/testimonios': typeof TestimoniosRoute
   '/_authenticated/perfil': typeof AuthenticatedPerfilRoute
-  '/_authenticated/servicio': typeof AuthenticatedServicioRoute
+  '/_authenticated/servicio': typeof AuthenticatedServicioRouteWithChildren
   '/grupos/$slug': typeof GruposSlugRoute
+  '/_authenticated/servicio/': typeof AuthenticatedServicioIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -227,6 +236,7 @@ export interface FileRouteTypes {
     | '/perfil'
     | '/servicio'
     | '/grupos/$slug'
+    | '/servicio/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -247,8 +257,8 @@ export interface FileRouteTypes {
     | '/tengo-un-problema'
     | '/testimonios'
     | '/perfil'
-    | '/servicio'
     | '/grupos/$slug'
+    | '/servicio'
   id:
     | '__root__'
     | '/'
@@ -272,6 +282,7 @@ export interface FileRouteTypes {
     | '/_authenticated/perfil'
     | '/_authenticated/servicio'
     | '/grupos/$slug'
+    | '/_authenticated/servicio/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -444,17 +455,37 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedPerfilRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/servicio/': {
+      id: '/_authenticated/servicio/'
+      path: '/'
+      fullPath: '/servicio/'
+      preLoaderRoute: typeof AuthenticatedServicioIndexRouteImport
+      parentRoute: typeof AuthenticatedServicioRoute
+    }
   }
 }
 
+interface AuthenticatedServicioRouteChildren {
+  AuthenticatedServicioIndexRoute: typeof AuthenticatedServicioIndexRoute
+}
+
+const AuthenticatedServicioRouteChildren: AuthenticatedServicioRouteChildren = {
+  AuthenticatedServicioIndexRoute: AuthenticatedServicioIndexRoute,
+}
+
+const AuthenticatedServicioRouteWithChildren =
+  AuthenticatedServicioRoute._addFileChildren(
+    AuthenticatedServicioRouteChildren,
+  )
+
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedPerfilRoute: typeof AuthenticatedPerfilRoute
-  AuthenticatedServicioRoute: typeof AuthenticatedServicioRoute
+  AuthenticatedServicioRoute: typeof AuthenticatedServicioRouteWithChildren
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedPerfilRoute: AuthenticatedPerfilRoute,
-  AuthenticatedServicioRoute: AuthenticatedServicioRoute,
+  AuthenticatedServicioRoute: AuthenticatedServicioRouteWithChildren,
 }
 
 const AuthenticatedRouteRouteWithChildren =
