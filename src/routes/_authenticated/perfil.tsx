@@ -29,7 +29,9 @@ export const Route = createFileRoute("/_authenticated/perfil")({
     });
   },
   errorComponent: ({ error }) => (
-    <PageShell title="No pudimos cargar tu cuenta" intro={error.message} />
+    <PageShell title="No pudimos cargar tu cuenta" intro={error.message}>
+      <div />
+    </PageShell>
   ),
   component: ProfilePage,
 });
