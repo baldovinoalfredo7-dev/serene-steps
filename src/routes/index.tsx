@@ -160,7 +160,7 @@ function HomeContent({ groups }: { groups: import("@/lib/groups-data").Group[] }
       </section>
 
       {/* NECESITO UNA REUNIÓN HOY — acción principal para quien busca ayuda */}
-      <MeetingFinder />
+      <MeetingFinder groups={groups} />
 
       {/* ¿QUÉ ES ALCOHÓLICOS ANÓNIMOS? — contexto institucional, después de la acción */}
       <section
