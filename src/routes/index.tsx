@@ -515,22 +515,22 @@ const heroBadges = [
 const helpCards = [
   {
     title: "Busco ayuda",
-    body: "Para mí o para un familiar. Encuentra una reunión hoy, entiende qué es AA y da tu primer paso con acompañamiento.",
+    body: "Para ti o para alguien que quieres. Encuentra una reunión cerca, conoce qué es AA y da tu primer paso acompañado.",
     cta: "Empezar",
     to: "/grupos",
     icon: LifeBuoy,
   },
   {
     title: "Ya soy miembro de AA",
-    body: "Accede al Área de Servicio con tu correo. Gestiona tu grupo, publica eventos y coordina el trabajo del Área.",
+    body: "Ingresa con las credenciales que recibiste en tu grupo o en el Área para acompañar a tu comunidad.",
     cta: "Acceso para miembros",
     to: "/auth",
     icon: ShieldCheck,
   },
   {
     title: "Soy profesional o institución",
-    body: "Salud, justicia, educación o comunidad. Coordina con Información Pública para orientar a personas que puedan necesitar AA.",
-    cta: "Información Pública",
+    body: "Salud, justicia, educación o comunidad: podemos orientar juntos a quien pueda encontrar en AA un lugar seguro.",
+    cta: "Escríbenos",
     to: "/contacto",
     icon: Briefcase,
   },
