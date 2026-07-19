@@ -71,8 +71,8 @@ function HomeContent({ groups }: { groups: import("@/lib/groups-data").Group[] }
             La ayuda está más cerca de lo que imaginas.
           </p>
           <p className="mb-7 max-w-2xl text-pretty text-sm leading-relaxed text-ink/85 sm:mb-14 sm:text-lg">
-            Una comunidad de hombres y mujeres que comparten su experiencia,
-            fortaleza y esperanza.
+            Aquí encontrarás una puerta abierta. Elige por dónde quieres
+            entrar y te recibimos con calma, respeto y esperanza.
           </p>
 
 
