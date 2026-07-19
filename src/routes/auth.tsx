@@ -1,9 +1,10 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
-import { Lock, Mail, LogIn, UserPlus, KeyRound } from "lucide-react";
+import { Lock, Mail, LogIn, KeyRound, Info, ArrowLeft } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
 import { supabase } from "@/integrations/supabase/client";
+import { getMustChangePassword } from "@/lib/members.functions";
 
 export const Route = createFileRoute("/auth")({
   ssr: false,
@@ -20,17 +21,15 @@ export const Route = createFileRoute("/auth")({
   component: AuthPage,
 });
 
-type Tab = "login" | "signup" | "forgot";
+type Tab = "login" | "forgot";
 
 function AuthPage() {
   const navigate = useNavigate();
   const [tab, setTab] = useState<Tab>("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [fullName, setFullName] = useState("");
   const [busy, setBusy] = useState(false);
 
-  // If already authenticated, send to /_authenticated/perfil
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
       if (data.user) navigate({ to: "/servicio", replace: true });
@@ -41,26 +40,23 @@ function AuthPage() {
     e.preventDefault();
     setBusy(true);
     const { error } = await supabase.auth.signInWithPassword({ email, password });
-    setBusy(false);
-    if (error) return toast.error(error.message);
+    if (error) {
+      setBusy(false);
+      return toast.error(error.message);
+    }
+    // Check if user must change temporary password before entering the service center
+    try {
+      const { must } = await getMustChangePassword();
+      setBusy(false);
+      if (must) {
+        toast.info("Debes cambiar tu contraseña temporal antes de continuar.");
+        navigate({ to: "/reset-password", search: { force: 1 }, replace: true });
+        return;
+      }
+    } catch {
+      setBusy(false);
+    }
     toast.success("Sesión iniciada.");
-    navigate({ to: "/servicio", replace: true });
-  }
-
-  async function onSignup(e: React.FormEvent) {
-    e.preventDefault();
-    setBusy(true);
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        emailRedirectTo: window.location.origin,
-        data: { full_name: fullName || null },
-      },
-    });
-    setBusy(false);
-    if (error) return toast.error(error.message);
-    toast.success("Cuenta creada. Iniciando sesión…");
     navigate({ to: "/servicio", replace: true });
   }
 
@@ -80,7 +76,7 @@ function AuthPage() {
     <PageShell
       eyebrow="Área de servicio"
       title="Acceso para miembros"
-      intro="Espacio privado para servidores autorizados del Área 2 Metropolitana. El acceso es solo para miembros con responsabilidades de servicio."
+      intro="Espacio privado para servidores autorizados del Área 2 Metropolitana. El acceso es exclusivo para miembros con credenciales emitidas por el Área."
     >
       <div className="mx-auto max-w-md">
         <div className="rounded-3xl border border-brand/10 bg-paper p-8 shadow-lift">
@@ -89,9 +85,7 @@ function AuthPage() {
               <Lock className="size-5" />
             </span>
             <h2 className="font-serif text-xl text-brand">
-              {tab === "login" && "Iniciar sesión"}
-              {tab === "signup" && "Crear cuenta"}
-              {tab === "forgot" && "Recuperar contraseña"}
+              {tab === "login" ? "Iniciar sesión" : "Recuperar contraseña"}
             </h2>
           </div>
 
@@ -119,39 +113,6 @@ function AuthPage() {
             </form>
           )}
 
-          {tab === "signup" && (
-            <form onSubmit={onSignup} className="space-y-4">
-              <Field
-                label="Nombre completo"
-                type="text"
-                value={fullName}
-                onChange={setFullName}
-                autoComplete="name"
-              />
-              <Field
-                label="Correo electrónico"
-                type="email"
-                icon={<Mail className="size-4" />}
-                value={email}
-                onChange={setEmail}
-                autoComplete="email"
-              />
-              <Field
-                label="Contraseña"
-                type="password"
-                icon={<KeyRound className="size-4" />}
-                value={password}
-                onChange={setPassword}
-                autoComplete="new-password"
-                minLength={8}
-                hint="Mínimo 8 caracteres. Se comprueba contra contraseñas filtradas conocidas."
-              />
-              <Submit busy={busy} icon={<UserPlus className="size-4" />}>
-                Crear cuenta
-              </Submit>
-            </form>
-          )}
-
           {tab === "forgot" && (
             <form onSubmit={onForgot} className="space-y-4">
               <Field
@@ -165,26 +126,36 @@ function AuthPage() {
               <Submit busy={busy} icon={<KeyRound className="size-4" />}>
                 Enviar instrucciones
               </Submit>
+              <button
+                type="button"
+                onClick={() => setTab("login")}
+                className="mt-1 inline-flex items-center gap-1 text-xs text-ink/70 hover:text-brand"
+              >
+                <ArrowLeft className="size-3.5" /> Volver a iniciar sesión
+              </button>
             </form>
           )}
 
-          <div className="mt-6 flex flex-col gap-2 border-t border-brand/10 pt-6 text-center text-sm text-ink/70">
-            {tab !== "login" && (
-              <button type="button" className="hover:text-brand" onClick={() => setTab("login")}>
-                ¿Ya tienes cuenta? Inicia sesión
-              </button>
-            )}
-            {tab !== "signup" && (
-              <button type="button" className="hover:text-brand" onClick={() => setTab("signup")}>
-                ¿Nuevo servidor? Crear cuenta
-              </button>
-            )}
-            {tab !== "forgot" && (
-              <button type="button" className="hover:text-brand" onClick={() => setTab("forgot")}>
-                ¿Olvidaste tu contraseña?
-              </button>
-            )}
+          {tab === "login" && (
+            <button
+              type="button"
+              className="mt-6 block w-full border-t border-brand/10 pt-6 text-center text-sm text-ink/70 hover:text-brand"
+              onClick={() => setTab("forgot")}
+            >
+              ¿Olvidaste tu contraseña?
+            </button>
+          )}
+        </div>
+
+        <div className="mt-6 rounded-2xl border border-brand/10 bg-brand-soft/40 p-5 text-sm text-ink/85">
+          <div className="mb-2 flex items-center gap-2 font-semibold text-brand">
+            <Info className="size-4" /> ¿Cómo obtengo una cuenta?
           </div>
+          <p>
+            Las credenciales son entregadas por el <strong>Área 2 Metropolitana</strong> o por el
+            servidor responsable de tu grupo. No existe registro público. Si necesitas acceso,
+            comunícate con el Comité de Información Pública o con tu representante de grupo.
+          </p>
         </div>
 
         <p className="mt-6 text-center text-xs text-ink/60">

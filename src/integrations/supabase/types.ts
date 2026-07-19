@@ -370,18 +370,21 @@ export type Database = {
           created_at: string
           full_name: string | null
           id: string
+          must_change_password: boolean
           updated_at: string
         }
         Insert: {
           created_at?: string
           full_name?: string | null
           id: string
+          must_change_password?: boolean
           updated_at?: string
         }
         Update: {
           created_at?: string
           full_name?: string | null
           id?: string
+          must_change_password?: boolean
           updated_at?: string
         }
         Relationships: []
@@ -443,6 +446,7 @@ export type Database = {
     Functions: {
       admin_exists: { Args: never; Returns: boolean }
       bootstrap_first_admin: { Args: never; Returns: boolean }
+      clear_password_change_flag: { Args: never; Returns: boolean }
       has_permission: {
         Args: { _code: string; _user_id: string }
         Returns: boolean
@@ -454,6 +458,7 @@ export type Database = {
         }
         Returns: boolean
       }
+      my_must_change_password: { Args: never; Returns: boolean }
     }
     Enums: {
       app_role: "admin" | "editor" | "member"
