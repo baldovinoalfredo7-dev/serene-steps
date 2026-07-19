@@ -150,17 +150,16 @@ function AuthPage() {
 
         <div className="mt-6 rounded-2xl border border-brand/10 bg-brand-soft/40 p-5 text-sm text-ink/85">
           <div className="mb-2 flex items-center gap-2 font-semibold text-brand">
-            <Info className="size-4" /> ¿Cómo obtengo una cuenta?
+            <Info className="size-4" /> ¿Aún no tienes tus credenciales?
           </div>
           <p>
-            Las credenciales son entregadas por el <strong>Área 2 Metropolitana</strong> o por el
-            servidor responsable de tu grupo. No existe registro público. Si necesitas acceso,
-            comunícate con el Comité de Información Pública o con tu representante de grupo.
+            Solicítalas en tu grupo de Alcohólicos Anónimos o comunícate con nosotros. Con gusto
+            te orientaremos.
           </p>
         </div>
 
         <p className="mt-6 text-center text-xs text-ink/60">
-          ¿No eres servidor? Vuelve al{" "}
+          ¿Llegaste aquí por error? Vuelve al{" "}
           <Link to="/" className="text-brand underline-offset-4 hover:underline">
             portal público
           </Link>
