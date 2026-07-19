@@ -32,10 +32,10 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-brand/5 bg-paper/85 backdrop-blur-md">
-      <div className="mx-auto flex h-24 max-w-7xl items-center justify-between gap-4 px-6 sm:h-28">
+      <div className="mx-auto grid h-20 max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 sm:h-24 sm:px-6 sm:gap-4 xl:h-28">
         <Link
           to="/"
-          className="flex min-w-0 items-center gap-4 sm:gap-5"
+          className="flex min-w-0 items-center gap-3 sm:gap-4 xl:gap-5"
           onClick={() => setOpen(false)}
         >
           <img
@@ -43,13 +43,13 @@ export function Header() {
             alt="Alcohólicos Anónimos — Área 2 Metropolitana, Barranquilla"
             width={72}
             height={72}
-            className="h-16 w-auto shrink-0 sm:h-[4.5rem]"
+            className="h-12 w-auto shrink-0 sm:h-16 xl:h-[4.5rem]"
           />
           <div className="min-w-0 leading-tight">
-            <span className="block truncate font-sans text-sm font-bold uppercase tracking-[0.18em] text-brand sm:text-base">
+            <span className="block truncate font-sans text-[0.7rem] font-bold uppercase tracking-[0.14em] text-brand sm:text-sm sm:tracking-[0.18em] xl:text-base">
               Alcohólicos Anónimos
             </span>
-            <span className="block truncate text-xs font-medium tracking-wide text-ink/60 sm:text-sm">
+            <span className="block truncate text-[0.65rem] font-medium tracking-wide text-ink/60 sm:text-xs xl:text-sm">
               Área 2 Metropolitana – Barranquilla
             </span>
           </div>
