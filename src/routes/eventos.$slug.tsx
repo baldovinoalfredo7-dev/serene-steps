@@ -98,10 +98,12 @@ function EventDetailPage() {
     const url = typeof window !== "undefined" ? window.location.href : "";
     setSharing(true);
     try {
-      if (typeof navigator !== "undefined" && "share" in navigator) {
-        await (navigator as Navigator).share({ title: e.title, url });
-      } else if (typeof navigator !== "undefined" && navigator.clipboard) {
-        await navigator.clipboard.writeText(url);
+      const nav: Navigator | undefined =
+        typeof navigator !== "undefined" ? navigator : undefined;
+      if (nav && "share" in nav) {
+        await nav.share({ title: e.title, url });
+      } else if (nav?.clipboard) {
+        await nav.clipboard.writeText(url);
         toast.success("Enlace copiado");
       }
     } catch {
