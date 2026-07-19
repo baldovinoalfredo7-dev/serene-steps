@@ -414,6 +414,8 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      admin_exists: { Args: never; Returns: boolean }
+      bootstrap_first_admin: { Args: never; Returns: boolean }
       has_permission: {
         Args: { _code: string; _user_id: string }
         Returns: boolean
