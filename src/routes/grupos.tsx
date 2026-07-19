@@ -51,6 +51,7 @@ type MunicipalityFilter = "todos" | (typeof municipalities)[number];
 type TimeFilter = "todos" | TimeOfDay;
 
 function GruposIndex() {
+  const { data: groups } = useSuspenseQuery(groupsQueryOptions());
   const [municipality, setMunicipality] = useState<MunicipalityFilter>("todos");
   const [day, setDay] = useState<DayFilter>("todos");
   const [time, setTime] = useState<TimeFilter>("todos");
