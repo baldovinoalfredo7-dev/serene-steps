@@ -1,8 +1,8 @@
 import { createFileRoute, Link, Outlet, useMatches } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { ArrowRight, MapPin, Clock, Search } from "lucide-react";
 import {
-  groups,
   municipalities,
   weekdayLabels,
   meetingTypeLabel,
@@ -11,9 +11,11 @@ import {
   type TimeOfDay,
   type Group,
 } from "@/lib/groups-data";
+import { groupsQueryOptions } from "@/lib/groups-queries";
 import { PageShell } from "@/components/site/PageShell";
 
 export const Route = createFileRoute("/grupos")({
+  loader: ({ context }) => context.queryClient.ensureQueryData(groupsQueryOptions()),
   head: () => ({
     meta: [
       { title: "Encuentra un Grupo — AA Área 2 Metropolitana" },
@@ -29,6 +31,11 @@ export const Route = createFileRoute("/grupos")({
       },
     ],
   }),
+  errorComponent: ({ error }) => (
+    <div className="mx-auto max-w-2xl p-10 text-center text-ink/80">
+      No pudimos cargar los grupos: {error.message}
+    </div>
+  ),
   component: GruposLayout,
 });
 
@@ -44,6 +51,7 @@ type MunicipalityFilter = "todos" | (typeof municipalities)[number];
 type TimeFilter = "todos" | TimeOfDay;
 
 function GruposIndex() {
+  const { data: groups } = useSuspenseQuery(groupsQueryOptions());
   const [municipality, setMunicipality] = useState<MunicipalityFilter>("todos");
   const [day, setDay] = useState<DayFilter>("todos");
   const [time, setTime] = useState<TimeFilter>("todos");

@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import heroImage from "@/assets/hero-room.jpg";
 import queEsAAImage from "@/assets/que-es-aa.jpg";
-import { groups } from "@/lib/groups-data";
+import { groupsQueryOptions } from "@/lib/groups-queries";
 import { MeetingFinder } from "@/components/site/MeetingFinder";
 import {
   ArrowRight,
@@ -22,15 +23,26 @@ import {
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
+  loader: ({ context }) => context.queryClient.ensureQueryData(groupsQueryOptions()),
   head: () => ({
     meta: [
       { property: "og:image", content: "https://project--b2ac4377-59f2-46ea-a581-d53e687bd969.lovable.app/og.jpg" },
     ],
   }),
+  errorComponent: ({ error }) => (
+    <div className="mx-auto max-w-2xl p-10 text-center text-ink/80">
+      No pudimos cargar el contenido: {error.message}
+    </div>
+  ),
   component: Home,
 });
 
 function Home() {
+  const { data: groups } = useSuspenseQuery(groupsQueryOptions());
+  return HomeContent({ groups });
+}
+
+function HomeContent({ groups }: { groups: import("@/lib/groups-data").Group[] }) {
   return (
     <>
       {/* HERO */}
@@ -148,7 +160,7 @@ function Home() {
       </section>
 
       {/* NECESITO UNA REUNIÓN HOY — acción principal para quien busca ayuda */}
-      <MeetingFinder />
+      <MeetingFinder groups={groups} />
 
       {/* ¿QUÉ ES ALCOHÓLICOS ANÓNIMOS? — contexto institucional, después de la acción */}
       <section
