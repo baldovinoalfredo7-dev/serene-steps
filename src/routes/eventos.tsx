@@ -83,7 +83,7 @@ const events = [
     day: "20",
     tag: "Taller",
     title: "Taller de servicio y tradiciones",
-    location: "Grupo San Ángel, Coyoacán",
+    location: "Casa del Área 2, Barranquilla",
     time: "16:00 – 19:00",
   },
   {

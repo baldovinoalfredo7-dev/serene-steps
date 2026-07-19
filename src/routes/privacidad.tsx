@@ -55,8 +55,8 @@ function Privacidad() {
           <h2 className="mb-3 font-serif text-2xl text-brand">Contacto</h2>
           <p>
             Si tienes preguntas sobre esta política, escríbenos a{" "}
-            <a href="mailto:info@aa-area2.org.mx" className="text-brand underline">
-              info@aa-area2.org.mx
+            <a href="mailto:contacto@aa-area2.org" className="text-brand underline">
+              contacto@aa-area2.org
             </a>
             .
           </p>

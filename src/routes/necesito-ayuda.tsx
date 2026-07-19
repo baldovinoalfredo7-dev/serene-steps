@@ -35,11 +35,11 @@ function NecesitoAyuda() {
         </p>
 
         <a
-          href="tel:+525555550000"
+          href="tel:+573000000000"
           className="mb-6 inline-flex items-center gap-3 rounded-sm bg-paper px-10 py-5 text-lg font-semibold uppercase tracking-wider text-brand shadow-2xl transition-transform hover:-translate-y-0.5"
         >
           <Phone className="size-5" />
-          55 5555 0000
+          +57 300 000 0000
         </a>
         <p className="text-sm text-paper/60">Disponible las 24 horas, los 365 días del año.</p>
 
