@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
-import { groups } from "@/lib/groups-data";
+import { listGroupsFn } from "@/lib/groups.functions";
 
 const BASE_URL = "";
 
@@ -14,6 +14,7 @@ export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
+        const groups = await listGroupsFn();
         const entries: SitemapEntry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
           { path: "/grupos", changefreq: "weekly", priority: "0.9" },
