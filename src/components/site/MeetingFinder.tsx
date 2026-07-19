@@ -8,7 +8,7 @@ import {
   MapPin,
   Search,
 } from "lucide-react";
-import { groups, municipalities } from "@/lib/groups-data";
+import { municipalities, type Group } from "@/lib/groups-data";
 
 const dayNames = [
   "Domingo",
