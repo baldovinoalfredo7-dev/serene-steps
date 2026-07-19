@@ -34,6 +34,7 @@ import { Route as AuthenticatedServicioIndexRouteImport } from './routes/_authen
 import { Route as AuthenticatedServicioPerfilRouteImport } from './routes/_authenticated/servicio.perfil'
 import { Route as AuthenticatedServicioReunionesIndexRouteImport } from './routes/_authenticated/servicio.reuniones.index'
 import { Route as AuthenticatedServicioGruposIndexRouteImport } from './routes/_authenticated/servicio.grupos.index'
+import { Route as AuthenticatedServicioEventosIndexRouteImport } from './routes/_authenticated/servicio.eventos.index'
 import { Route as AuthenticatedServicioGruposNuevoRouteImport } from './routes/_authenticated/servicio.grupos.nuevo'
 import { Route as AuthenticatedServicioGruposIdRouteImport } from './routes/_authenticated/servicio.grupos.$id'
 
@@ -165,6 +166,12 @@ const AuthenticatedServicioGruposIndexRoute =
     path: '/grupos/',
     getParentRoute: () => AuthenticatedServicioRoute,
   } as any)
+const AuthenticatedServicioEventosIndexRoute =
+  AuthenticatedServicioEventosIndexRouteImport.update({
+    id: '/eventos/',
+    path: '/eventos/',
+    getParentRoute: () => AuthenticatedServicioRoute,
+  } as any)
 const AuthenticatedServicioGruposNuevoRoute =
   AuthenticatedServicioGruposNuevoRouteImport.update({
     id: '/grupos/nuevo',
@@ -203,6 +210,7 @@ export interface FileRoutesByFullPath {
   '/servicio/': typeof AuthenticatedServicioIndexRoute
   '/servicio/grupos/$id': typeof AuthenticatedServicioGruposIdRoute
   '/servicio/grupos/nuevo': typeof AuthenticatedServicioGruposNuevoRoute
+  '/servicio/eventos/': typeof AuthenticatedServicioEventosIndexRoute
   '/servicio/grupos/': typeof AuthenticatedServicioGruposIndexRoute
   '/servicio/reuniones/': typeof AuthenticatedServicioReunionesIndexRoute
 }
@@ -230,6 +238,7 @@ export interface FileRoutesByTo {
   '/servicio': typeof AuthenticatedServicioIndexRoute
   '/servicio/grupos/$id': typeof AuthenticatedServicioGruposIdRoute
   '/servicio/grupos/nuevo': typeof AuthenticatedServicioGruposNuevoRoute
+  '/servicio/eventos': typeof AuthenticatedServicioEventosIndexRoute
   '/servicio/grupos': typeof AuthenticatedServicioGruposIndexRoute
   '/servicio/reuniones': typeof AuthenticatedServicioReunionesIndexRoute
 }
@@ -260,6 +269,7 @@ export interface FileRoutesById {
   '/_authenticated/servicio/': typeof AuthenticatedServicioIndexRoute
   '/_authenticated/servicio/grupos/$id': typeof AuthenticatedServicioGruposIdRoute
   '/_authenticated/servicio/grupos/nuevo': typeof AuthenticatedServicioGruposNuevoRoute
+  '/_authenticated/servicio/eventos/': typeof AuthenticatedServicioEventosIndexRoute
   '/_authenticated/servicio/grupos/': typeof AuthenticatedServicioGruposIndexRoute
   '/_authenticated/servicio/reuniones/': typeof AuthenticatedServicioReunionesIndexRoute
 }
@@ -290,6 +300,7 @@ export interface FileRouteTypes {
     | '/servicio/'
     | '/servicio/grupos/$id'
     | '/servicio/grupos/nuevo'
+    | '/servicio/eventos/'
     | '/servicio/grupos/'
     | '/servicio/reuniones/'
   fileRoutesByTo: FileRoutesByTo
@@ -317,6 +328,7 @@ export interface FileRouteTypes {
     | '/servicio'
     | '/servicio/grupos/$id'
     | '/servicio/grupos/nuevo'
+    | '/servicio/eventos'
     | '/servicio/grupos'
     | '/servicio/reuniones'
   id:
@@ -346,6 +358,7 @@ export interface FileRouteTypes {
     | '/_authenticated/servicio/'
     | '/_authenticated/servicio/grupos/$id'
     | '/_authenticated/servicio/grupos/nuevo'
+    | '/_authenticated/servicio/eventos/'
     | '/_authenticated/servicio/grupos/'
     | '/_authenticated/servicio/reuniones/'
   fileRoutesById: FileRoutesById
@@ -548,6 +561,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedServicioGruposIndexRouteImport
       parentRoute: typeof AuthenticatedServicioRoute
     }
+    '/_authenticated/servicio/eventos/': {
+      id: '/_authenticated/servicio/eventos/'
+      path: '/eventos'
+      fullPath: '/servicio/eventos/'
+      preLoaderRoute: typeof AuthenticatedServicioEventosIndexRouteImport
+      parentRoute: typeof AuthenticatedServicioRoute
+    }
     '/_authenticated/servicio/grupos/nuevo': {
       id: '/_authenticated/servicio/grupos/nuevo'
       path: '/grupos/nuevo'
@@ -570,6 +590,7 @@ interface AuthenticatedServicioRouteChildren {
   AuthenticatedServicioIndexRoute: typeof AuthenticatedServicioIndexRoute
   AuthenticatedServicioGruposIdRoute: typeof AuthenticatedServicioGruposIdRoute
   AuthenticatedServicioGruposNuevoRoute: typeof AuthenticatedServicioGruposNuevoRoute
+  AuthenticatedServicioEventosIndexRoute: typeof AuthenticatedServicioEventosIndexRoute
   AuthenticatedServicioGruposIndexRoute: typeof AuthenticatedServicioGruposIndexRoute
   AuthenticatedServicioReunionesIndexRoute: typeof AuthenticatedServicioReunionesIndexRoute
 }
@@ -579,6 +600,8 @@ const AuthenticatedServicioRouteChildren: AuthenticatedServicioRouteChildren = {
   AuthenticatedServicioIndexRoute: AuthenticatedServicioIndexRoute,
   AuthenticatedServicioGruposIdRoute: AuthenticatedServicioGruposIdRoute,
   AuthenticatedServicioGruposNuevoRoute: AuthenticatedServicioGruposNuevoRoute,
+  AuthenticatedServicioEventosIndexRoute:
+    AuthenticatedServicioEventosIndexRoute,
   AuthenticatedServicioGruposIndexRoute: AuthenticatedServicioGruposIndexRoute,
   AuthenticatedServicioReunionesIndexRoute:
     AuthenticatedServicioReunionesIndexRoute,
