@@ -478,6 +478,33 @@ function mainSchedule(meetings: { weekday: number; start: string; end: string }[
   return `${days} día${days > 1 ? "s" : ""} · ${sample.start}–${sample.end} h`;
 }
 
+const heroEntries = [
+  {
+    eyebrow: "Para quien busca ayuda",
+    title: "Necesito ayuda",
+    body: "Para mí o para un familiar. Encuentra una reunión hoy y da tu primer paso con acompañamiento.",
+    cta: "Empezar aquí",
+    to: "/necesito-ayuda",
+    icon: LifeBuoy,
+  },
+  {
+    eyebrow: "Para miembros de AA",
+    title: "Ya soy miembro",
+    body: "Accede al Área de Servicio con tu correo. Gestiona tu grupo, publica eventos y coordina el trabajo del Área.",
+    cta: "Acceso para miembros",
+    to: "/auth",
+    icon: ShieldCheck,
+  },
+  {
+    eyebrow: "Salud, justicia, educación",
+    title: "Soy profesional o institución",
+    body: "Coordina con Información Pública para orientar a personas que puedan necesitar la ayuda de AA.",
+    cta: "Información Pública",
+    to: "/contacto",
+    icon: Briefcase,
+  },
+] as const;
+
 const heroBadges = [
   { label: "Sin inscripción", icon: ClipboardX },
   { label: "Sin cuotas para asistir", icon: Wallet },
@@ -508,6 +535,7 @@ const helpCards = [
     icon: Briefcase,
   },
 ] as const;
+
 
 const eventCards = [
   {
