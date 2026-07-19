@@ -135,44 +135,71 @@ export type Database = {
       }
       events: {
         Row: {
+          address_line: string | null
+          contact_email: string | null
+          contact_name: string | null
+          contact_phone: string | null
           created_at: string
           description: string | null
           ends_at: string | null
           event_type: Database["public"]["Enums"]["event_type"]
           group_id: string | null
           id: string
+          image_url: string | null
+          is_featured: boolean
           is_published: boolean
           location: string | null
           municipality_id: string | null
+          organizer: string | null
+          slug: string
           starts_at: string
+          status: string
           title: string
           updated_at: string
         }
         Insert: {
+          address_line?: string | null
+          contact_email?: string | null
+          contact_name?: string | null
+          contact_phone?: string | null
           created_at?: string
           description?: string | null
           ends_at?: string | null
           event_type?: Database["public"]["Enums"]["event_type"]
           group_id?: string | null
           id?: string
+          image_url?: string | null
+          is_featured?: boolean
           is_published?: boolean
           location?: string | null
           municipality_id?: string | null
+          organizer?: string | null
+          slug: string
           starts_at: string
+          status?: string
           title: string
           updated_at?: string
         }
         Update: {
+          address_line?: string | null
+          contact_email?: string | null
+          contact_name?: string | null
+          contact_phone?: string | null
           created_at?: string
           description?: string | null
           ends_at?: string | null
           event_type?: Database["public"]["Enums"]["event_type"]
           group_id?: string | null
           id?: string
+          image_url?: string | null
+          is_featured?: boolean
           is_published?: boolean
           location?: string | null
           municipality_id?: string | null
+          organizer?: string | null
+          slug?: string
           starts_at?: string
+          status?: string
           title?: string
           updated_at?: string
         }

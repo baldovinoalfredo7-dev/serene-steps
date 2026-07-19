@@ -31,7 +31,7 @@ const items: Item[] = [
   { to: "/servicio", label: "Inicio", icon: LayoutDashboard, exact: true },
   { to: "/servicio/grupos", label: "Grupos", icon: Users },
   { to: "/servicio/reuniones", label: "Reuniones", icon: Clock },
-  { to: "/servicio/eventos", label: "Eventos", icon: CalendarDays, disabled: true },
+  { to: "/servicio/eventos", label: "Eventos", icon: CalendarDays },
   { to: "/servicio/literatura", label: "Literatura", icon: BookOpen, disabled: true },
   { to: "/servicio/documentos", label: "Documentos", icon: FileText, disabled: true },
 ];
