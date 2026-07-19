@@ -75,9 +75,9 @@ function AuthPage() {
 
   return (
     <PageShell
-      eyebrow="Área de servicio"
+      eyebrow="Área de miembros"
       title="Acceso para miembros"
-      intro="Espacio privado para servidores autorizados del Área 2 Metropolitana. El acceso es exclusivo para miembros con credenciales emitidas por el Área."
+      intro="Espacio privado para los miembros de Alcohólicos Anónimos. Si ya haces parte de nuestra comunidad y recibiste tus credenciales de acceso, ingresa para acceder a los servicios disponibles para los miembros."
     >
       <div className="mx-auto max-w-md">
         <div className="rounded-3xl border border-brand/10 bg-paper p-8 shadow-lift">
