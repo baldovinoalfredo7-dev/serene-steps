@@ -1,20 +1,20 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { ArrowLeft, MapPin, Navigation, Phone, Clock, Coffee, DoorOpen, Sofa, Heart } from "lucide-react";
 import {
-  getGroupBySlug,
   weekdayLabels,
   weekdayShort,
   meetingTypeLabel,
-  groups,
-  type Group,
   type Meeting,
 } from "@/lib/groups-data";
+import { groupsQueryOptions, findGroupBySlug } from "@/lib/groups-queries";
 
 export const Route = createFileRoute("/grupos/$slug")({
-  loader: ({ params }) => {
-    const group = getGroupBySlug(params.slug);
+  loader: async ({ params, context }) => {
+    const groups = await context.queryClient.ensureQueryData(groupsQueryOptions());
+    const group = findGroupBySlug(groups, params.slug);
     if (!group) throw notFound();
-    return { group };
+    return { slug: params.slug, groupName: group.name, addressLine: group.addressLine, municipality: group.municipality };
   },
   head: ({ loaderData }) => {
     if (!loaderData) {
@@ -25,9 +25,8 @@ export const Route = createFileRoute("/grupos/$slug")({
         ],
       };
     }
-    const { group } = loaderData;
-    const title = `${group.name} — ${group.municipality} · AA Área 2`;
-    const desc = `Reuniones de Alcohólicos Anónimos en ${group.addressLine}, ${group.municipality}.`;
+    const title = `${loaderData.groupName} — ${loaderData.municipality} · AA Área 2`;
+    const desc = `Reuniones de Alcohólicos Anónimos en ${loaderData.addressLine}, ${loaderData.municipality}.`;
     return {
       meta: [
         { title },
@@ -37,11 +36,24 @@ export const Route = createFileRoute("/grupos/$slug")({
       ],
     };
   },
+  notFoundComponent: () => (
+    <div className="mx-auto max-w-2xl p-16 text-center">
+      <h1 className="mb-4 font-serif text-3xl text-brand">Grupo no encontrado</h1>
+      <Link to="/grupos" className="text-brand underline">Volver al directorio</Link>
+    </div>
+  ),
+  errorComponent: ({ error }) => (
+    <div className="mx-auto max-w-2xl p-10 text-center text-ink/80">
+      No pudimos cargar la información del grupo: {error.message}
+    </div>
+  ),
   component: GroupDetail,
 });
 
 function GroupDetail() {
-  const { group } = Route.useLoaderData() as { group: Group };
+  const { slug } = Route.useLoaderData();
+  const { data: groups } = useSuspenseQuery(groupsQueryOptions());
+  const group = findGroupBySlug(groups, slug)!;
 
   const mapsQuery = encodeURIComponent(group.addressFull);
   const mapEmbedSrc = `https://www.google.com/maps?q=${mapsQuery}&z=15&output=embed`;
