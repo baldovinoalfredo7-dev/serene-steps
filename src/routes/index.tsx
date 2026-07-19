@@ -74,19 +74,19 @@ function Home() {
 
           <Link
             to="/auth"
-            className="mt-6 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.2em] text-brand/70 underline-offset-4 transition-colors hover:text-brand hover:underline sm:text-sm"
+            className="mt-5 inline-flex items-center gap-2 text-[0.7rem] font-medium uppercase tracking-[0.2em] text-brand/70 underline-offset-4 transition-colors hover:text-brand hover:underline sm:mt-6 sm:text-sm"
           >
             Acceso para miembros
             <ArrowRight className="size-3.5" />
           </Link>
 
-          <ul className="mt-10 grid w-full max-w-4xl grid-cols-2 gap-x-6 gap-y-6 sm:mt-14 sm:grid-cols-4 sm:gap-8">
+          <ul className="mt-8 grid w-full max-w-4xl grid-cols-2 gap-x-4 gap-y-4 sm:mt-14 sm:grid-cols-4 sm:gap-8">
             {heroBadges.map((b) => (
-              <li key={b.label} className="flex flex-col items-center gap-3 text-center">
-                <span className="grid size-12 place-items-center rounded-full bg-paper/80 ring-1 ring-brand/15 shadow-soft backdrop-blur-sm">
-                  <b.icon className="size-5 text-brand" strokeWidth={1.8} />
+              <li key={b.label} className="flex flex-col items-center gap-2 text-center sm:gap-3">
+                <span className="grid size-10 place-items-center rounded-full bg-paper/80 ring-1 ring-brand/15 shadow-soft backdrop-blur-sm sm:size-12">
+                  <b.icon className="size-4 text-brand sm:size-5" strokeWidth={1.8} />
                 </span>
-                <span className="text-xs font-semibold uppercase tracking-[0.15em] text-brand/90 sm:text-sm">
+                <span className="text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-brand/90 sm:text-sm sm:tracking-[0.15em]">
                   {b.label}
                 </span>
               </li>
