@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import heroImage from "@/assets/hero-room.jpg";
 import queEsAAImage from "@/assets/que-es-aa.jpg";
-import { groups } from "@/lib/groups-data";
+import { groupsQueryOptions } from "@/lib/groups-queries";
 import { MeetingFinder } from "@/components/site/MeetingFinder";
 import {
   ArrowRight,
