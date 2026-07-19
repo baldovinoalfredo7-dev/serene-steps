@@ -20,7 +20,7 @@ import {
   type MemberRow,
 } from "@/lib/members.functions";
 
-export const Route = createFileRoute("/_authenticated/servicio.usuarios")({
+export const Route = createFileRoute("/_authenticated/servicio/usuarios")({
   head: () => ({
     meta: [
       { title: "Usuarios · Centro de servicio · AA Área 2" },

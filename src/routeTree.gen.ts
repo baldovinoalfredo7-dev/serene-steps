@@ -32,6 +32,7 @@ import { Route as EventosSlugRouteImport } from './routes/eventos.$slug'
 import { Route as AuthenticatedServicioRouteImport } from './routes/_authenticated/servicio'
 import { Route as AuthenticatedPerfilRouteImport } from './routes/_authenticated/perfil'
 import { Route as AuthenticatedServicioIndexRouteImport } from './routes/_authenticated/servicio.index'
+import { Route as AuthenticatedServicioUsuariosRouteImport } from './routes/_authenticated/servicio.usuarios'
 import { Route as AuthenticatedServicioPerfilRouteImport } from './routes/_authenticated/servicio.perfil'
 import { Route as AuthenticatedServicioReunionesIndexRouteImport } from './routes/_authenticated/servicio.reuniones.index'
 import { Route as AuthenticatedServicioGruposIndexRouteImport } from './routes/_authenticated/servicio.grupos.index'
@@ -156,6 +157,12 @@ const AuthenticatedServicioIndexRoute =
     path: '/',
     getParentRoute: () => AuthenticatedServicioRoute,
   } as any)
+const AuthenticatedServicioUsuariosRoute =
+  AuthenticatedServicioUsuariosRouteImport.update({
+    id: '/usuarios',
+    path: '/usuarios',
+    getParentRoute: () => AuthenticatedServicioRoute,
+  } as any)
 const AuthenticatedServicioPerfilRoute =
   AuthenticatedServicioPerfilRouteImport.update({
     id: '/perfil',
@@ -228,6 +235,7 @@ export interface FileRoutesByFullPath {
   '/eventos/$slug': typeof EventosSlugRoute
   '/grupos/$slug': typeof GruposSlugRoute
   '/servicio/perfil': typeof AuthenticatedServicioPerfilRoute
+  '/servicio/usuarios': typeof AuthenticatedServicioUsuariosRoute
   '/servicio/': typeof AuthenticatedServicioIndexRoute
   '/servicio/eventos/$id': typeof AuthenticatedServicioEventosIdRoute
   '/servicio/eventos/nuevo': typeof AuthenticatedServicioEventosNuevoRoute
@@ -259,6 +267,7 @@ export interface FileRoutesByTo {
   '/eventos/$slug': typeof EventosSlugRoute
   '/grupos/$slug': typeof GruposSlugRoute
   '/servicio/perfil': typeof AuthenticatedServicioPerfilRoute
+  '/servicio/usuarios': typeof AuthenticatedServicioUsuariosRoute
   '/servicio': typeof AuthenticatedServicioIndexRoute
   '/servicio/eventos/$id': typeof AuthenticatedServicioEventosIdRoute
   '/servicio/eventos/nuevo': typeof AuthenticatedServicioEventosNuevoRoute
@@ -293,6 +302,7 @@ export interface FileRoutesById {
   '/eventos/$slug': typeof EventosSlugRoute
   '/grupos/$slug': typeof GruposSlugRoute
   '/_authenticated/servicio/perfil': typeof AuthenticatedServicioPerfilRoute
+  '/_authenticated/servicio/usuarios': typeof AuthenticatedServicioUsuariosRoute
   '/_authenticated/servicio/': typeof AuthenticatedServicioIndexRoute
   '/_authenticated/servicio/eventos/$id': typeof AuthenticatedServicioEventosIdRoute
   '/_authenticated/servicio/eventos/nuevo': typeof AuthenticatedServicioEventosNuevoRoute
@@ -327,6 +337,7 @@ export interface FileRouteTypes {
     | '/eventos/$slug'
     | '/grupos/$slug'
     | '/servicio/perfil'
+    | '/servicio/usuarios'
     | '/servicio/'
     | '/servicio/eventos/$id'
     | '/servicio/eventos/nuevo'
@@ -358,6 +369,7 @@ export interface FileRouteTypes {
     | '/eventos/$slug'
     | '/grupos/$slug'
     | '/servicio/perfil'
+    | '/servicio/usuarios'
     | '/servicio'
     | '/servicio/eventos/$id'
     | '/servicio/eventos/nuevo'
@@ -391,6 +403,7 @@ export interface FileRouteTypes {
     | '/eventos/$slug'
     | '/grupos/$slug'
     | '/_authenticated/servicio/perfil'
+    | '/_authenticated/servicio/usuarios'
     | '/_authenticated/servicio/'
     | '/_authenticated/servicio/eventos/$id'
     | '/_authenticated/servicio/eventos/nuevo'
@@ -585,6 +598,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedServicioIndexRouteImport
       parentRoute: typeof AuthenticatedServicioRoute
     }
+    '/_authenticated/servicio/usuarios': {
+      id: '/_authenticated/servicio/usuarios'
+      path: '/usuarios'
+      fullPath: '/servicio/usuarios'
+      preLoaderRoute: typeof AuthenticatedServicioUsuariosRouteImport
+      parentRoute: typeof AuthenticatedServicioRoute
+    }
     '/_authenticated/servicio/perfil': {
       id: '/_authenticated/servicio/perfil'
       path: '/perfil'
@@ -646,6 +666,7 @@ declare module '@tanstack/react-router' {
 
 interface AuthenticatedServicioRouteChildren {
   AuthenticatedServicioPerfilRoute: typeof AuthenticatedServicioPerfilRoute
+  AuthenticatedServicioUsuariosRoute: typeof AuthenticatedServicioUsuariosRoute
   AuthenticatedServicioIndexRoute: typeof AuthenticatedServicioIndexRoute
   AuthenticatedServicioEventosIdRoute: typeof AuthenticatedServicioEventosIdRoute
   AuthenticatedServicioEventosNuevoRoute: typeof AuthenticatedServicioEventosNuevoRoute
@@ -658,6 +679,7 @@ interface AuthenticatedServicioRouteChildren {
 
 const AuthenticatedServicioRouteChildren: AuthenticatedServicioRouteChildren = {
   AuthenticatedServicioPerfilRoute: AuthenticatedServicioPerfilRoute,
+  AuthenticatedServicioUsuariosRoute: AuthenticatedServicioUsuariosRoute,
   AuthenticatedServicioIndexRoute: AuthenticatedServicioIndexRoute,
   AuthenticatedServicioEventosIdRoute: AuthenticatedServicioEventosIdRoute,
   AuthenticatedServicioEventosNuevoRoute:

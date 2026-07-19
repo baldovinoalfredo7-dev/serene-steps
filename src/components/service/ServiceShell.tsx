@@ -9,6 +9,7 @@ import {
   BookOpen,
   FileText,
   UserRound,
+  UsersRound,
   LogOut,
   Menu,
   X,
@@ -32,6 +33,7 @@ const items: Item[] = [
   { to: "/servicio/grupos", label: "Grupos", icon: Users },
   { to: "/servicio/reuniones", label: "Reuniones", icon: Clock },
   { to: "/servicio/eventos", label: "Eventos", icon: CalendarDays },
+  { to: "/servicio/usuarios", label: "Usuarios", icon: UsersRound },
   { to: "/servicio/literatura", label: "Literatura", icon: BookOpen, disabled: true },
   { to: "/servicio/documentos", label: "Documentos", icon: FileText, disabled: true },
 ];
