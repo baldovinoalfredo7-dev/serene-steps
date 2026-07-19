@@ -1,9 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { ArrowRight, Clock } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
-import { groups } from "@/lib/groups-data";
+import { groupsQueryOptions } from "@/lib/groups-queries";
 
 export const Route = createFileRoute("/horarios")({
+  loader: ({ context }) => context.queryClient.ensureQueryData(groupsQueryOptions()),
   head: () => ({
     meta: [
       { title: "Horarios de reuniones — AA Área 2 Metropolitana" },
@@ -19,12 +21,18 @@ export const Route = createFileRoute("/horarios")({
       },
     ],
   }),
+  errorComponent: ({ error }) => (
+    <div className="mx-auto max-w-2xl p-10 text-center text-ink/80">
+      No pudimos cargar los horarios: {error.message}
+    </div>
+  ),
   component: HorariosPage,
 });
 
 const dayNames = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
 
 function HorariosPage() {
+  const { data: groups } = useSuspenseQuery(groupsQueryOptions());
   return (
     <PageShell
       eyebrow="Área 2 Metropolitana"
