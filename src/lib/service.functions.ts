@@ -185,7 +185,21 @@ export const updateGroup = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((data: UpsertGroupInput & { id: string }) => data)
   .handler(async ({ context, data }): Promise<{ ok: true }> => {
-    const patch: Record<string, unknown> = {};
+    const patch: Partial<{
+      name: string;
+      slug: string;
+      municipality_id: string;
+      address_line: string;
+      address_full: string;
+      lat: number | null;
+      lng: number | null;
+      phone: string | null;
+      history: string | null;
+      public_info_name: string | null;
+      public_info_phone: string | null;
+      public_info_email: string | null;
+      is_published: boolean;
+    }> = {};
     if (data.name !== undefined) patch.name = data.name.trim();
     if (data.slug !== undefined) patch.slug = data.slug.trim();
     if (data.municipalityId) patch.municipality_id = data.municipalityId;
@@ -204,6 +218,7 @@ export const updateGroup = createServerFn({ method: "POST" })
     if (error) throw new Error(error.message);
     return { ok: true };
   });
+
 
 export const setGroupPublished = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
