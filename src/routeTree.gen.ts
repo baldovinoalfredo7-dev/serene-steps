@@ -28,6 +28,7 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as GruposSlugRouteImport } from './routes/grupos.$slug'
+import { Route as AuthenticatedServicioRouteImport } from './routes/_authenticated/servicio'
 import { Route as AuthenticatedPerfilRouteImport } from './routes/_authenticated/perfil'
 
 const TestimoniosRoute = TestimoniosRouteImport.update({
@@ -124,6 +125,11 @@ const GruposSlugRoute = GruposSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => GruposRoute,
 } as any)
+const AuthenticatedServicioRoute = AuthenticatedServicioRouteImport.update({
+  id: '/servicio',
+  path: '/servicio',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedPerfilRoute = AuthenticatedPerfilRouteImport.update({
   id: '/perfil',
   path: '/perfil',
@@ -149,6 +155,7 @@ export interface FileRoutesByFullPath {
   '/tengo-un-problema': typeof TengoUnProblemaRoute
   '/testimonios': typeof TestimoniosRoute
   '/perfil': typeof AuthenticatedPerfilRoute
+  '/servicio': typeof AuthenticatedServicioRoute
   '/grupos/$slug': typeof GruposSlugRoute
 }
 export interface FileRoutesByTo {
@@ -170,6 +177,7 @@ export interface FileRoutesByTo {
   '/tengo-un-problema': typeof TengoUnProblemaRoute
   '/testimonios': typeof TestimoniosRoute
   '/perfil': typeof AuthenticatedPerfilRoute
+  '/servicio': typeof AuthenticatedServicioRoute
   '/grupos/$slug': typeof GruposSlugRoute
 }
 export interface FileRoutesById {
@@ -193,6 +201,7 @@ export interface FileRoutesById {
   '/tengo-un-problema': typeof TengoUnProblemaRoute
   '/testimonios': typeof TestimoniosRoute
   '/_authenticated/perfil': typeof AuthenticatedPerfilRoute
+  '/_authenticated/servicio': typeof AuthenticatedServicioRoute
   '/grupos/$slug': typeof GruposSlugRoute
 }
 export interface FileRouteTypes {
@@ -216,6 +225,7 @@ export interface FileRouteTypes {
     | '/tengo-un-problema'
     | '/testimonios'
     | '/perfil'
+    | '/servicio'
     | '/grupos/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -237,6 +247,7 @@ export interface FileRouteTypes {
     | '/tengo-un-problema'
     | '/testimonios'
     | '/perfil'
+    | '/servicio'
     | '/grupos/$slug'
   id:
     | '__root__'
@@ -259,6 +270,7 @@ export interface FileRouteTypes {
     | '/tengo-un-problema'
     | '/testimonios'
     | '/_authenticated/perfil'
+    | '/_authenticated/servicio'
     | '/grupos/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -418,6 +430,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GruposSlugRouteImport
       parentRoute: typeof GruposRoute
     }
+    '/_authenticated/servicio': {
+      id: '/_authenticated/servicio'
+      path: '/servicio'
+      fullPath: '/servicio'
+      preLoaderRoute: typeof AuthenticatedServicioRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/perfil': {
       id: '/_authenticated/perfil'
       path: '/perfil'
@@ -430,10 +449,12 @@ declare module '@tanstack/react-router' {
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedPerfilRoute: typeof AuthenticatedPerfilRoute
+  AuthenticatedServicioRoute: typeof AuthenticatedServicioRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedPerfilRoute: AuthenticatedPerfilRoute,
+  AuthenticatedServicioRoute: AuthenticatedServicioRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
