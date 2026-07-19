@@ -14,16 +14,285 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      documents: {
+        Row: {
+          category: string | null
+          created_at: string
+          description: string | null
+          external_url: string | null
+          file_url: string | null
+          id: string
+          is_published: boolean
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          category?: string | null
+          created_at?: string
+          description?: string | null
+          external_url?: string | null
+          file_url?: string | null
+          id?: string
+          is_published?: boolean
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string | null
+          created_at?: string
+          description?: string | null
+          external_url?: string | null
+          file_url?: string | null
+          id?: string
+          is_published?: boolean
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      events: {
+        Row: {
+          created_at: string
+          description: string | null
+          ends_at: string | null
+          event_type: Database["public"]["Enums"]["event_type"]
+          group_id: string | null
+          id: string
+          is_published: boolean
+          location: string | null
+          municipality_id: string | null
+          starts_at: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          ends_at?: string | null
+          event_type?: Database["public"]["Enums"]["event_type"]
+          group_id?: string | null
+          id?: string
+          is_published?: boolean
+          location?: string | null
+          municipality_id?: string | null
+          starts_at: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          ends_at?: string | null
+          event_type?: Database["public"]["Enums"]["event_type"]
+          group_id?: string | null
+          id?: string
+          is_published?: boolean
+          location?: string | null
+          municipality_id?: string | null
+          starts_at?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "events_group_id_fkey"
+            columns: ["group_id"]
+            isOneToOne: false
+            referencedRelation: "groups"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "events_municipality_id_fkey"
+            columns: ["municipality_id"]
+            isOneToOne: false
+            referencedRelation: "municipalities"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      groups: {
+        Row: {
+          address_full: string
+          address_line: string
+          created_at: string
+          history: string | null
+          id: string
+          is_published: boolean
+          lat: number | null
+          lng: number | null
+          municipality_id: string
+          name: string
+          phone: string | null
+          public_info_email: string | null
+          public_info_name: string | null
+          public_info_phone: string | null
+          slug: string
+          updated_at: string
+        }
+        Insert: {
+          address_full: string
+          address_line: string
+          created_at?: string
+          history?: string | null
+          id?: string
+          is_published?: boolean
+          lat?: number | null
+          lng?: number | null
+          municipality_id: string
+          name: string
+          phone?: string | null
+          public_info_email?: string | null
+          public_info_name?: string | null
+          public_info_phone?: string | null
+          slug: string
+          updated_at?: string
+        }
+        Update: {
+          address_full?: string
+          address_line?: string
+          created_at?: string
+          history?: string | null
+          id?: string
+          is_published?: boolean
+          lat?: number | null
+          lng?: number | null
+          municipality_id?: string
+          name?: string
+          phone?: string | null
+          public_info_email?: string | null
+          public_info_name?: string | null
+          public_info_phone?: string | null
+          slug?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "groups_municipality_id_fkey"
+            columns: ["municipality_id"]
+            isOneToOne: false
+            referencedRelation: "municipalities"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      meetings: {
+        Row: {
+          created_at: string
+          end_time: string
+          group_id: string
+          id: string
+          start_time: string
+          type: Database["public"]["Enums"]["meeting_type"]
+          weekday: number
+        }
+        Insert: {
+          created_at?: string
+          end_time: string
+          group_id: string
+          id?: string
+          start_time: string
+          type?: Database["public"]["Enums"]["meeting_type"]
+          weekday: number
+        }
+        Update: {
+          created_at?: string
+          end_time?: string
+          group_id?: string
+          id?: string
+          start_time?: string
+          type?: Database["public"]["Enums"]["meeting_type"]
+          weekday?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "meetings_group_id_fkey"
+            columns: ["group_id"]
+            isOneToOne: false
+            referencedRelation: "groups"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      municipalities: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+          slug: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+          slug: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+          slug?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          full_name: string | null
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          full_name?: string | null
+          id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "editor" | "member"
+      event_type: "foro" | "aniversario" | "congreso" | "otro"
+      meeting_type: "abierta" | "cerrada" | "mixta"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +419,10 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "editor", "member"],
+      event_type: ["foro", "aniversario", "congreso", "otro"],
+      meeting_type: ["abierta", "cerrada", "mixta"],
+    },
   },
 } as const
