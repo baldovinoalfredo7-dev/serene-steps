@@ -34,7 +34,7 @@ function todayWeekday() {
   return new Date().getDay();
 }
 
-export function MeetingFinder() {
+export function MeetingFinder({ groups }: { groups: Group[] }) {
   const [municipality, setMunicipality] = useState<string>("all");
   const [day, setDay] = useState<string>(String(todayWeekday()));
   const [submitted, setSubmitted] = useState(false);
