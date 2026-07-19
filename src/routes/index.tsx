@@ -446,33 +446,27 @@ const heroBadges = [
 
 const helpCards = [
   {
-    title: "Quiero asistir a una reunión",
-    body: "Encuentra el grupo más cercano y su próximo horario.",
-    cta: "Ver grupos",
+    title: "Busco ayuda",
+    body: "Para mí o para un familiar. Encuentra una reunión hoy, entiende qué es AA y da tu primer paso con acompañamiento.",
+    cta: "Empezar",
     to: "/grupos",
-    icon: MapPin,
+    icon: LifeBuoy,
   },
   {
-    title: "Quiero saber qué es Alcohólicos Anónimos",
-    body: "Conoce nuestra comunidad, historia y forma de trabajar.",
-    cta: "Conocer más",
-    to: "/que-es-aa",
-    icon: HeartHandshake,
-  },
-  {
-    title: "Busco ayuda para un familiar o amigo",
-    body: "Orientación para acompañar a alguien que puede tener un problema con el alcohol.",
-    cta: "Cómo ayudar",
-    to: "/tengo-un-problema",
-    icon: Users,
-  },
-  {
-    title: "Soy miembro de AA",
-    body: "Accede al área de servicio con tu correo electrónico.",
+    title: "Ya soy miembro de AA",
+    body: "Accede al Área de Servicio con tu correo. Gestiona tu grupo, publica eventos y coordina el trabajo del Área.",
     cta: "Acceso para miembros",
     to: "/auth",
     icon: ShieldCheck,
   },
+  {
+    title: "Soy profesional o institución",
+    body: "Salud, justicia, educación o comunidad. Coordina con Información Pública para orientar a personas que puedan necesitar AA.",
+    cta: "Información Pública",
+    to: "/contacto",
+    icon: Briefcase,
+  },
+] as const;
 ] as const;
 
 const eventCards = [
