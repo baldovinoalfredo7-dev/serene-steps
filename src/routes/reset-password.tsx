@@ -75,7 +75,7 @@ function ResetPasswordPage() {
                   autoComplete="new-password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full rounded-xl border border-brand/15 bg-white px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-brand"
+                  className="w-full rounded-xl border border-brand/15 bg-paper px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-brand"
                 />
               </label>
               <button
