@@ -76,35 +76,41 @@ function HomeContent({ groups }: { groups: import("@/lib/groups-data").Group[] }
           </p>
 
 
-          <Link
-            to="/grupos"
-            className="group relative inline-flex min-h-14 items-center gap-3 rounded-full bg-brand px-8 py-5 text-sm font-semibold uppercase tracking-[0.18em] text-paper shadow-lift ring-1 ring-brand/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-soft hover:shadow-[0_28px_60px_-18px_color-mix(in_oklab,var(--brand)_45%,transparent)] focus-visible:ring-4 focus-visible:ring-brand/30 sm:min-h-16 sm:gap-4 sm:px-16 sm:py-8 sm:text-xl"
+          <ul
+            role="list"
+            aria-label="Elige la opción que corresponde a tu perfil"
+            className="grid w-full max-w-5xl gap-4 sm:gap-6 md:grid-cols-3"
           >
-            <MapPin className="size-5 sm:size-7" strokeWidth={2} />
-            Encuentra un grupo
-            <ArrowRight className="size-5 transition-transform group-hover:translate-x-1 sm:size-7" />
-          </Link>
-
-          <Link
-            to="/auth"
-            className="mt-5 inline-flex items-center gap-2 text-[0.7rem] font-medium uppercase tracking-[0.2em] text-brand/70 underline-offset-4 transition-colors hover:text-brand hover:underline sm:mt-6 sm:text-sm"
-          >
-            Acceso para miembros
-            <ArrowRight className="size-3.5" />
-          </Link>
-
-          <ul className="mt-8 grid w-full max-w-4xl grid-cols-2 gap-x-4 gap-y-4 sm:mt-14 sm:grid-cols-4 sm:gap-8">
-            {heroBadges.map((b) => (
-              <li key={b.label} className="flex flex-col items-center gap-2 text-center sm:gap-3">
-                <span className="grid size-10 place-items-center rounded-full bg-paper/80 ring-1 ring-brand/15 shadow-soft backdrop-blur-sm sm:size-12">
-                  <b.icon className="size-4 text-brand sm:size-5" strokeWidth={1.8} />
-                </span>
-                <span className="text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-brand/90 sm:text-sm sm:tracking-[0.15em]">
-                  {b.label}
-                </span>
+            {heroEntries.map((entry) => (
+              <li key={entry.title} className="flex">
+                <Link
+                  to={entry.to}
+                  className="group flex min-h-[13rem] w-full flex-col rounded-3xl bg-paper/95 p-6 text-left shadow-lift ring-1 ring-brand/15 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-brand hover:text-paper hover:ring-brand focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand/40 sm:min-h-[15rem] sm:p-8"
+                >
+                  <span className="mb-5 grid size-12 place-items-center rounded-2xl bg-brand/10 transition-colors group-hover:bg-paper/15 sm:size-14">
+                    <entry.icon
+                      className="size-6 text-brand transition-colors group-hover:text-paper sm:size-7"
+                      strokeWidth={1.7}
+                    />
+                  </span>
+                  <span className="mb-2 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-brand/70 transition-colors group-hover:text-paper/80 sm:text-xs">
+                    {entry.eyebrow}
+                  </span>
+                  <h2 className="mb-3 font-serif text-xl italic leading-tight text-brand transition-colors group-hover:text-paper sm:text-2xl">
+                    {entry.title}
+                  </h2>
+                  <p className="mb-6 text-sm leading-relaxed text-ink/80 transition-colors group-hover:text-paper/90 sm:text-base">
+                    {entry.body}
+                  </p>
+                  <span className="mt-auto inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand transition-colors group-hover:text-paper sm:text-sm">
+                    {entry.cta}
+                    <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                  </span>
+                </Link>
               </li>
             ))}
           </ul>
+
         </div>
       </section>
 
@@ -472,6 +478,33 @@ function mainSchedule(meetings: { weekday: number; start: string; end: string }[
   return `${days} día${days > 1 ? "s" : ""} · ${sample.start}–${sample.end} h`;
 }
 
+const heroEntries = [
+  {
+    eyebrow: "Para quien busca ayuda",
+    title: "Necesito ayuda",
+    body: "Para mí o para un familiar. Encuentra una reunión hoy y da tu primer paso con acompañamiento.",
+    cta: "Empezar aquí",
+    to: "/necesito-ayuda",
+    icon: LifeBuoy,
+  },
+  {
+    eyebrow: "Para miembros de AA",
+    title: "Ya soy miembro",
+    body: "Accede al Área de Servicio con tu correo. Gestiona tu grupo, publica eventos y coordina el trabajo del Área.",
+    cta: "Acceso para miembros",
+    to: "/auth",
+    icon: ShieldCheck,
+  },
+  {
+    eyebrow: "Salud, justicia, educación",
+    title: "Soy profesional o institución",
+    body: "Coordina con Información Pública para orientar a personas que puedan necesitar la ayuda de AA.",
+    cta: "Información Pública",
+    to: "/contacto",
+    icon: Briefcase,
+  },
+] as const;
+
 const heroBadges = [
   { label: "Sin inscripción", icon: ClipboardX },
   { label: "Sin cuotas para asistir", icon: Wallet },
@@ -502,6 +535,7 @@ const helpCards = [
     icon: Briefcase,
   },
 ] as const;
+
 
 const eventCards = [
   {
