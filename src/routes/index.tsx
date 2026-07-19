@@ -97,7 +97,65 @@ function Home() {
 
 
       {/* ¿QUÉ ES ALCOHÓLICOS ANÓNIMOS? */}
-      <section className="bg-paper py-20 md:py-28">
+      {/* ¿CÓMO PODEMOS AYUDARTE? — 3 rutas prioritarias, acción antes que información */}
+      <section
+        aria-labelledby="ayuda-heading"
+        className="bg-paper py-20 md:py-28"
+      >
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mb-14 text-center">
+            <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand">
+              Empieza aquí
+            </span>
+            <h2
+              id="ayuda-heading"
+              className="font-serif text-4xl italic text-brand md:text-5xl lg:text-6xl"
+            >
+              ¿Cómo podemos ayudarte?
+            </h2>
+            <p className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-ink/85 md:text-lg">
+              Elige el camino que mejor te describe. Cada uno te lleva a la
+              información y contacto que necesitas.
+            </p>
+          </div>
+
+          <div className="mx-auto grid max-w-6xl gap-6 sm:gap-8 md:grid-cols-3">
+            {helpCards.map((c) => (
+              <Link
+                key={c.title}
+                to={c.to}
+                className="group flex flex-col rounded-3xl bg-soft/70 p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:bg-brand hover:text-paper hover:shadow-lift md:p-10"
+              >
+                <div className="mb-6 grid size-14 place-items-center rounded-2xl bg-brand/10 transition-colors group-hover:bg-paper/15">
+                  <c.icon
+                    className="size-7 text-brand transition-colors group-hover:text-paper"
+                    strokeWidth={1.6}
+                  />
+                </div>
+                <h3 className="mb-3 font-serif text-2xl italic text-brand transition-colors group-hover:text-paper md:text-3xl">
+                  {c.title}
+                </h3>
+                <p className="mb-8 text-pretty leading-relaxed text-ink/85 transition-colors group-hover:text-paper/90">
+                  {c.body}
+                </p>
+                <span className="mt-auto inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.15em] text-brand transition-colors group-hover:text-paper">
+                  {c.cta}
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* NECESITO UNA REUNIÓN HOY — acción principal para quien busca ayuda */}
+      <MeetingFinder />
+
+      {/* ¿QUÉ ES ALCOHÓLICOS ANÓNIMOS? — contexto institucional, después de la acción */}
+      <section
+        aria-labelledby="que-es-aa-heading"
+        className="bg-soft/40 py-20 md:py-28"
+      >
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
             <div className="order-2 md:order-1">
@@ -113,13 +171,16 @@ function Home() {
               </div>
             </div>
             <div className="order-1 md:order-2">
-              <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/60">
+              <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand">
                 Sobre nosotros
               </span>
-              <h2 className="mb-6 font-serif text-4xl italic leading-tight text-brand md:text-5xl lg:text-6xl">
+              <h2
+                id="que-es-aa-heading"
+                className="mb-6 font-serif text-4xl italic leading-tight text-brand md:text-5xl lg:text-6xl"
+              >
                 ¿Qué es Alcohólicos Anónimos?
               </h2>
-              <p className="mb-10 text-pretty text-lg leading-relaxed text-ink/75 md:text-xl">
+              <p className="mb-10 text-pretty text-lg leading-relaxed text-ink/85 md:text-xl">
                 Alcohólicos Anónimos es una comunidad de hombres y mujeres que
                 comparten su experiencia, fortaleza y esperanza para resolver su
                 problema común y ayudar a otros a recuperarse del alcoholismo.
@@ -136,46 +197,7 @@ function Home() {
         </div>
       </section>
 
-      {/* ¿CÓMO PODEMOS AYUDARTE? */}
-      <section className="bg-paper py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-14 text-center">
-            <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/60">
-              Para quienes buscan ayuda
-            </span>
-            <h2 className="font-serif text-4xl italic text-brand md:text-5xl lg:text-6xl">
-              ¿Cómo podemos ayudarte?
-            </h2>
-          </div>
 
-          <div className="mx-auto grid max-w-5xl gap-6 sm:gap-8 lg:grid-cols-2">
-            {helpCards.map((c) => (
-              <Link
-                key={c.title}
-                to={c.to}
-                className="group flex flex-col rounded-3xl bg-soft/70 p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:bg-brand hover:text-paper hover:shadow-lift md:p-10"
-              >
-                <div className="mb-6 grid size-14 place-items-center rounded-2xl bg-brand/10 transition-colors group-hover:bg-paper/15">
-                  <c.icon className="size-7 text-brand transition-colors group-hover:text-paper" strokeWidth={1.6} />
-                </div>
-                <h3 className="mb-3 font-serif text-2xl italic text-brand transition-colors group-hover:text-paper md:text-3xl">
-                  {c.title}
-                </h3>
-                <p className="mb-8 text-pretty leading-relaxed text-ink/70 transition-colors group-hover:text-paper/85">
-                  {c.body}
-                </p>
-                <span className="mt-auto inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.15em] text-brand transition-colors group-hover:text-paper">
-                  {c.cta}
-                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* NECESITO UNA REUNIÓN HOY */}
-      <MeetingFinder />
 
       {/* ENCUENTRA UN GRUPO */}
       <section className="bg-soft/60 py-20 md:py-28">
