@@ -36,7 +36,7 @@ function PrimeraReunion() {
             </span>
             <div>
               <h4 className="mb-2 font-serif text-xl text-brand">{item.title}</h4>
-              <p className="max-w-[60ch] text-pretty text-ink/70">{item.body}</p>
+              <p className="max-w-[60ch] text-pretty text-ink/85">{item.body}</p>
             </div>
           </div>
         ))}

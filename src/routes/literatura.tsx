@@ -34,10 +34,10 @@ function Literatura() {
             key={it.title}
             className="flex flex-col rounded-2xl bg-paper p-8 ring-1 ring-black/5"
           >
-            <BookOpen className="mb-4 size-6 text-brand/60" />
+            <BookOpen className="mb-4 size-6 text-brand/80" />
             <h3 className="mb-2 font-serif text-xl text-brand">{it.title}</h3>
-            <p className="text-sm text-ink/60">{it.desc}</p>
-            <span className="mt-6 inline-flex w-fit rounded-full bg-soft px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-brand/50">
+            <p className="text-sm text-ink/80">{it.desc}</p>
+            <span className="mt-6 inline-flex w-fit rounded-full bg-soft px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-brand/80">
               Próximamente
             </span>
           </article>

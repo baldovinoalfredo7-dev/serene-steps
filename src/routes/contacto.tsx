@@ -57,7 +57,7 @@ function ContactCard({
       <span className="mb-4 grid size-10 place-items-center rounded-full bg-brand/10 text-brand">
         {icon}
       </span>
-      <span className="text-xs font-semibold uppercase tracking-widest text-brand/50">{label}</span>
+      <span className="text-xs font-semibold uppercase tracking-widest text-brand/80">{label}</span>
       <span className="mt-2 font-serif text-xl text-brand">{value}</span>
     </>
   );

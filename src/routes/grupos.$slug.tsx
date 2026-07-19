@@ -58,19 +58,19 @@ function GroupDetail() {
         <div className="mx-auto max-w-6xl px-6">
           <Link
             to="/grupos"
-            className="mb-8 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-brand/60 hover:text-brand"
+            className="mb-8 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-brand/80 hover:text-brand"
           >
             <ArrowLeft className="size-3.5" />
             Todos los grupos
           </Link>
-          <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/60">
+          <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/80">
             {group.municipality}
           </span>
           <h1 className="max-w-3xl text-balance font-serif text-4xl italic leading-tight text-brand md:text-6xl">
             {group.name}
           </h1>
-          <p className="mt-6 flex items-center gap-2 text-lg text-ink/70">
-            <MapPin className="size-5 text-brand/60" />
+          <p className="mt-6 flex items-center gap-2 text-lg text-ink/85">
+            <MapPin className="size-5 text-brand/80" />
             {group.addressLine}
           </p>
         </div>
@@ -115,7 +115,7 @@ function GroupDetail() {
                               <div className="text-[11px] font-semibold text-brand">
                                 {m.start}
                               </div>
-                              <div className="text-[9px] uppercase tracking-wide text-brand/50">
+                              <div className="text-[9px] uppercase tracking-wide text-brand/80">
                                 {m.type}
                               </div>
                             </div>
@@ -141,10 +141,10 @@ function GroupDetail() {
                         <div className="font-semibold text-brand">
                           {weekdayLabels[m.weekday]}
                         </div>
-                        <div className="text-sm text-ink/60">{meetingTypeLabel[m.type]}</div>
+                        <div className="text-sm text-ink/80">{meetingTypeLabel[m.type]}</div>
                       </div>
                       <div className="flex items-center gap-2 text-brand">
-                        <Clock className="size-4 text-brand/50" />
+                        <Clock className="size-4 text-brand/80" />
                         <span className="font-mono text-sm tabular-nums">
                           {m.start} – {m.end}
                         </span>
@@ -157,7 +157,7 @@ function GroupDetail() {
             {/* Historia */}
             <div>
               <h2 className="mb-6 font-serif text-2xl italic text-brand">Sobre este grupo</h2>
-              <p className="max-w-[65ch] text-pretty text-lg leading-relaxed text-ink/70">
+              <p className="max-w-[65ch] text-pretty text-lg leading-relaxed text-ink/85">
                 {group.history}
               </p>
             </div>
@@ -165,7 +165,7 @@ function GroupDetail() {
             {/* Fotografías del salón */}
             <div>
               <h2 className="mb-6 font-serif text-2xl italic text-brand">El salón</h2>
-              <p className="mb-6 max-w-[60ch] text-sm text-ink/60">
+              <p className="mb-6 max-w-[60ch] text-sm text-ink/80">
                 Un espacio sencillo, tranquilo y preparado para recibirte. Sin cámaras, sin
                 nombres, sin exposición.
               </p>
@@ -180,7 +180,7 @@ function GroupDetail() {
                     className="flex aspect-[4/3] flex-col items-center justify-center gap-3 rounded-2xl bg-soft/60 p-6 text-center ring-1 ring-black/5"
                   >
                     <Icon className="size-8 text-brand/40" strokeWidth={1.5} />
-                    <span className="text-xs font-medium uppercase tracking-widest text-brand/50">
+                    <span className="text-xs font-medium uppercase tracking-widest text-brand/80">
                       {label}
                     </span>
                   </div>
@@ -202,7 +202,7 @@ function GroupDetail() {
             </div>
 
             <div className="rounded-2xl bg-paper p-6 ring-1 ring-black/5">
-              <span className="mb-3 block text-xs font-semibold uppercase tracking-widest text-brand/50">
+              <span className="mb-3 block text-xs font-semibold uppercase tracking-widest text-brand/80">
                 Dirección
               </span>
               <p className="mb-6 text-sm text-ink/80">{group.addressFull}</p>
@@ -230,7 +230,7 @@ function GroupDetail() {
 
             {group.publicInfo && (
               <div className="rounded-2xl bg-paper p-6 ring-1 ring-black/5">
-                <span className="mb-3 block text-xs font-semibold uppercase tracking-widest text-brand/50">
+                <span className="mb-3 block text-xs font-semibold uppercase tracking-widest text-brand/80">
                   Información pública
                 </span>
                 {group.publicInfo.name && (
@@ -239,16 +239,16 @@ function GroupDetail() {
                 {group.publicInfo.phone && (
                   <a
                     href={`tel:${group.publicInfo.phone.replace(/\s/g, "")}`}
-                    className="flex items-center gap-2 text-sm text-ink/70 hover:text-brand"
+                    className="flex items-center gap-2 text-sm text-ink/85 hover:text-brand"
                   >
-                    <Phone className="size-3.5 text-brand/50" />
+                    <Phone className="size-3.5 text-brand/80" />
                     {group.publicInfo.phone}
                   </a>
                 )}
                 {group.publicInfo.email && (
                   <a
                     href={`mailto:${group.publicInfo.email}`}
-                    className="mt-1 block text-sm text-ink/70 hover:text-brand"
+                    className="mt-1 block text-sm text-ink/85 hover:text-brand"
                   >
                     {group.publicInfo.email}
                   </a>
@@ -302,7 +302,7 @@ function GroupDetail() {
                     {g.municipality}
                   </span>
                   <h3 className="mt-2 font-serif text-lg text-brand">{g.name}</h3>
-                  <p className="mt-1 text-sm text-ink/60">{g.addressLine}</p>
+                  <p className="mt-1 text-sm text-ink/80">{g.addressLine}</p>
                 </Link>
               ))}
           </div>

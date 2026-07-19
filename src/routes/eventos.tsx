@@ -40,14 +40,14 @@ function Eventos() {
               <span className="font-serif text-3xl italic leading-none">{e.day}</span>
             </div>
             <div className="flex-1">
-              <span className="mb-1 block text-xs font-semibold uppercase tracking-widest text-brand/50">
+              <span className="mb-1 block text-xs font-semibold uppercase tracking-widest text-brand/80">
                 {e.tag}
               </span>
               <h3 className="mb-1 font-serif text-xl text-brand">{e.title}</h3>
-              <p className="text-sm text-ink/60">{e.location}</p>
+              <p className="text-sm text-ink/80">{e.location}</p>
             </div>
-            <div className="text-sm text-ink/60">
-              <Calendar className="mb-1 size-4 text-brand/60" />
+            <div className="text-sm text-ink/80">
+              <Calendar className="mb-1 size-4 text-brand/80" />
               {e.time}
             </div>
           </article>

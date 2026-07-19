@@ -13,7 +13,7 @@ export function PageShell({ eyebrow, title, intro, children }: PageShellProps) {
       <section className="border-b border-brand/5 bg-soft/40 py-16 md:py-24">
         <div className="mx-auto max-w-4xl px-6 text-center">
           {eyebrow && (
-            <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/60">
+            <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/80">
               {eyebrow}
             </span>
           )}
@@ -21,7 +21,7 @@ export function PageShell({ eyebrow, title, intro, children }: PageShellProps) {
             {title}
           </h1>
           {intro && (
-            <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg text-ink/70">{intro}</p>
+            <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg text-ink/85">{intro}</p>
           )}
         </div>
       </section>

@@ -28,7 +28,7 @@ function Auth() {
           <Lock className="size-5" />
         </span>
         <h3 className="mb-2 font-serif text-2xl italic text-brand">Próximamente</h3>
-        <p className="text-sm text-ink/60">
+        <p className="text-sm text-ink/80">
           El módulo de acceso para servidores estará habilitado en la siguiente fase, junto con la
           administración de grupos, eventos y contenidos.
         </p>

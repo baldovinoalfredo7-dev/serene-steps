@@ -32,7 +32,7 @@ function Testimonios() {
             <p className="mb-4 text-pretty font-serif text-2xl italic leading-tight text-brand md:text-3xl">
               "{t.body}"
             </p>
-            <cite className="text-sm font-medium not-italic text-ink/60">— {t.author}</cite>
+            <cite className="text-sm font-medium not-italic text-ink/80">— {t.author}</cite>
           </blockquote>
         ))}
       </div>

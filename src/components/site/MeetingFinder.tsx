@@ -83,7 +83,7 @@ export function MeetingFinder() {
     >
       <div className="mx-auto max-w-6xl px-6">
         <div className="mb-10 text-center md:mb-14">
-          <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/60">
+          <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/80">
             Acceso rápido
           </span>
           <h2
@@ -92,7 +92,7 @@ export function MeetingFinder() {
           >
             Necesito una reunión hoy
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-pretty text-lg leading-relaxed text-ink/70">
+          <p className="mx-auto mt-5 max-w-2xl text-pretty text-lg leading-relaxed text-ink/85">
             Elige tu municipio y el día. Te mostramos las reuniones disponibles
             en el Área 2 Metropolitana.
           </p>
@@ -154,7 +154,7 @@ export function MeetingFinder() {
           </div>
 
           {!submitted && (
-            <p className="mt-4 text-sm text-ink/60">
+            <p className="mt-4 text-sm text-ink/80">
               {filteredCount > 0
                 ? `${filteredCount} reunión${filteredCount === 1 ? "" : "es"} coincidente${
                     filteredCount === 1 ? "" : "s"
@@ -170,7 +170,7 @@ export function MeetingFinder() {
               <p className="font-serif text-xl italic text-brand">
                 No encontramos reuniones con estos filtros.
               </p>
-              <p className="mt-3 text-ink/70">
+              <p className="mt-3 text-ink/85">
                 Intenta con otro día o selecciona “Todos los municipios”.
               </p>
             </div>
@@ -195,7 +195,7 @@ export function MeetingFinder() {
               <p className="font-serif text-xl italic text-brand">
                 Los resultados aparecerán aquí.
               </p>
-              <p className="mt-3 text-ink/70">
+              <p className="mt-3 text-ink/85">
                 Al pulsar “Buscar reuniones” verás los grupos con dirección,
                 horario y cómo llegar.
               </p>
@@ -210,20 +210,20 @@ export function MeetingFinder() {
 function ResultCard({ r }: { r: Result }) {
   return (
     <article className="flex flex-col rounded-3xl bg-paper p-7 shadow-soft transition-all hover:-translate-y-1 hover:shadow-lift md:p-8">
-      <span className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand/60">
+      <span className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand/80">
         {r.municipality}
       </span>
       <h3 className="mb-4 font-serif text-2xl italic text-brand">{r.name}</h3>
 
       <ul className="mb-6 space-y-2 text-sm text-ink/75">
         <li className="flex items-start gap-2">
-          <Clock className="mt-0.5 size-4 shrink-0 text-brand/60" strokeWidth={1.8} />
+          <Clock className="mt-0.5 size-4 shrink-0 text-brand/80" strokeWidth={1.8} />
           <span>
             {r.dayLabel} · {r.time}
           </span>
         </li>
         <li className="flex items-start gap-2">
-          <MapPin className="mt-0.5 size-4 shrink-0 text-brand/60" strokeWidth={1.8} />
+          <MapPin className="mt-0.5 size-4 shrink-0 text-brand/80" strokeWidth={1.8} />
           <span>{r.addressLine}</span>
         </li>
       </ul>
