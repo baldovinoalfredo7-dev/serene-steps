@@ -10,10 +10,12 @@ import {
   MapPin,
   Menu,
   Clock,
+  UserRound,
   X,
   type LucideIcon,
 } from "lucide-react";
 import logoAsset from "@/assets/logo-aa.png.asset.json";
+import { useAuth } from "@/hooks/use-auth";
 
 type NavLink = { to: string; label: string; icon: LucideIcon };
 
