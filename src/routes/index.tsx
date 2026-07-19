@@ -35,7 +35,7 @@ function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative min-h-[80svh] overflow-hidden bg-soft md:min-h-[calc(100svh-4rem)]">
+      <section className="relative min-h-[calc(100svh-5rem)] overflow-hidden bg-soft md:min-h-[calc(100svh-6rem)]">
         <img
           src={heroImage}
           alt="Sala luminosa preparada para una reunión de AA con sillas en círculo"
@@ -47,17 +47,17 @@ function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-paper/85 via-paper/60 to-paper/90" />
         <div className="absolute inset-0 bg-brand/20" />
 
-        <div className="relative mx-auto flex min-h-[80svh] max-w-6xl flex-col items-center justify-center px-6 py-14 pb-28 text-center md:min-h-[calc(100svh-4rem)] md:py-20 md:pb-20">
-          <h1 className="mb-4 max-w-5xl text-balance font-serif text-[2.25rem] leading-[1.02] text-brand sm:mb-5 sm:text-6xl lg:text-[4.75rem]">
+        <div className="relative mx-auto flex min-h-[calc(100svh-5rem)] max-w-6xl flex-col items-center justify-center px-6 py-10 pb-24 text-center md:min-h-[calc(100svh-6rem)] md:py-20 md:pb-20">
+          <h1 className="mb-3 max-w-5xl text-balance font-serif text-[2rem] leading-[1.05] text-brand sm:mb-5 sm:text-6xl lg:text-[4.75rem]">
             Alcohólicos Anónimos
           </h1>
-          <p className="mb-8 text-xs font-semibold uppercase tracking-[0.3em] text-brand/90 sm:mb-10 sm:text-base">
+          <p className="mb-6 text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-brand/90 sm:mb-10 sm:text-base sm:tracking-[0.3em]">
             Área 2 Metropolitana – Barranquilla
           </p>
-          <p className="mb-5 max-w-3xl text-pretty font-serif text-xl italic leading-snug text-brand sm:mb-6 sm:text-3xl lg:text-4xl">
+          <p className="mb-4 max-w-3xl text-pretty font-serif text-lg italic leading-snug text-brand sm:mb-6 sm:text-3xl lg:text-4xl">
             La ayuda está más cerca de lo que imaginas.
           </p>
-          <p className="mb-10 max-w-2xl text-pretty text-base leading-relaxed text-ink/90 sm:mb-14 sm:text-lg">
+          <p className="mb-7 max-w-2xl text-pretty text-sm leading-relaxed text-ink/85 sm:mb-14 sm:text-lg">
             Una comunidad de hombres y mujeres que comparten su experiencia,
             fortaleza y esperanza.
           </p>
