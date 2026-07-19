@@ -28,7 +28,14 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as GruposSlugRouteImport } from './routes/grupos.$slug'
+import { Route as AuthenticatedServicioRouteImport } from './routes/_authenticated/servicio'
 import { Route as AuthenticatedPerfilRouteImport } from './routes/_authenticated/perfil'
+import { Route as AuthenticatedServicioIndexRouteImport } from './routes/_authenticated/servicio.index'
+import { Route as AuthenticatedServicioPerfilRouteImport } from './routes/_authenticated/servicio.perfil'
+import { Route as AuthenticatedServicioReunionesIndexRouteImport } from './routes/_authenticated/servicio.reuniones.index'
+import { Route as AuthenticatedServicioGruposIndexRouteImport } from './routes/_authenticated/servicio.grupos.index'
+import { Route as AuthenticatedServicioGruposNuevoRouteImport } from './routes/_authenticated/servicio.grupos.nuevo'
+import { Route as AuthenticatedServicioGruposIdRouteImport } from './routes/_authenticated/servicio.grupos.$id'
 
 const TestimoniosRoute = TestimoniosRouteImport.update({
   id: '/testimonios',
@@ -124,11 +131,52 @@ const GruposSlugRoute = GruposSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => GruposRoute,
 } as any)
+const AuthenticatedServicioRoute = AuthenticatedServicioRouteImport.update({
+  id: '/servicio',
+  path: '/servicio',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedPerfilRoute = AuthenticatedPerfilRouteImport.update({
   id: '/perfil',
   path: '/perfil',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedServicioIndexRoute =
+  AuthenticatedServicioIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedServicioRoute,
+  } as any)
+const AuthenticatedServicioPerfilRoute =
+  AuthenticatedServicioPerfilRouteImport.update({
+    id: '/perfil',
+    path: '/perfil',
+    getParentRoute: () => AuthenticatedServicioRoute,
+  } as any)
+const AuthenticatedServicioReunionesIndexRoute =
+  AuthenticatedServicioReunionesIndexRouteImport.update({
+    id: '/reuniones/',
+    path: '/reuniones/',
+    getParentRoute: () => AuthenticatedServicioRoute,
+  } as any)
+const AuthenticatedServicioGruposIndexRoute =
+  AuthenticatedServicioGruposIndexRouteImport.update({
+    id: '/grupos/',
+    path: '/grupos/',
+    getParentRoute: () => AuthenticatedServicioRoute,
+  } as any)
+const AuthenticatedServicioGruposNuevoRoute =
+  AuthenticatedServicioGruposNuevoRouteImport.update({
+    id: '/grupos/nuevo',
+    path: '/grupos/nuevo',
+    getParentRoute: () => AuthenticatedServicioRoute,
+  } as any)
+const AuthenticatedServicioGruposIdRoute =
+  AuthenticatedServicioGruposIdRouteImport.update({
+    id: '/grupos/$id',
+    path: '/grupos/$id',
+    getParentRoute: () => AuthenticatedServicioRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -149,7 +197,14 @@ export interface FileRoutesByFullPath {
   '/tengo-un-problema': typeof TengoUnProblemaRoute
   '/testimonios': typeof TestimoniosRoute
   '/perfil': typeof AuthenticatedPerfilRoute
+  '/servicio': typeof AuthenticatedServicioRouteWithChildren
   '/grupos/$slug': typeof GruposSlugRoute
+  '/servicio/perfil': typeof AuthenticatedServicioPerfilRoute
+  '/servicio/': typeof AuthenticatedServicioIndexRoute
+  '/servicio/grupos/$id': typeof AuthenticatedServicioGruposIdRoute
+  '/servicio/grupos/nuevo': typeof AuthenticatedServicioGruposNuevoRoute
+  '/servicio/grupos/': typeof AuthenticatedServicioGruposIndexRoute
+  '/servicio/reuniones/': typeof AuthenticatedServicioReunionesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -171,6 +226,12 @@ export interface FileRoutesByTo {
   '/testimonios': typeof TestimoniosRoute
   '/perfil': typeof AuthenticatedPerfilRoute
   '/grupos/$slug': typeof GruposSlugRoute
+  '/servicio/perfil': typeof AuthenticatedServicioPerfilRoute
+  '/servicio': typeof AuthenticatedServicioIndexRoute
+  '/servicio/grupos/$id': typeof AuthenticatedServicioGruposIdRoute
+  '/servicio/grupos/nuevo': typeof AuthenticatedServicioGruposNuevoRoute
+  '/servicio/grupos': typeof AuthenticatedServicioGruposIndexRoute
+  '/servicio/reuniones': typeof AuthenticatedServicioReunionesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -193,7 +254,14 @@ export interface FileRoutesById {
   '/tengo-un-problema': typeof TengoUnProblemaRoute
   '/testimonios': typeof TestimoniosRoute
   '/_authenticated/perfil': typeof AuthenticatedPerfilRoute
+  '/_authenticated/servicio': typeof AuthenticatedServicioRouteWithChildren
   '/grupos/$slug': typeof GruposSlugRoute
+  '/_authenticated/servicio/perfil': typeof AuthenticatedServicioPerfilRoute
+  '/_authenticated/servicio/': typeof AuthenticatedServicioIndexRoute
+  '/_authenticated/servicio/grupos/$id': typeof AuthenticatedServicioGruposIdRoute
+  '/_authenticated/servicio/grupos/nuevo': typeof AuthenticatedServicioGruposNuevoRoute
+  '/_authenticated/servicio/grupos/': typeof AuthenticatedServicioGruposIndexRoute
+  '/_authenticated/servicio/reuniones/': typeof AuthenticatedServicioReunionesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -216,7 +284,14 @@ export interface FileRouteTypes {
     | '/tengo-un-problema'
     | '/testimonios'
     | '/perfil'
+    | '/servicio'
     | '/grupos/$slug'
+    | '/servicio/perfil'
+    | '/servicio/'
+    | '/servicio/grupos/$id'
+    | '/servicio/grupos/nuevo'
+    | '/servicio/grupos/'
+    | '/servicio/reuniones/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -238,6 +313,12 @@ export interface FileRouteTypes {
     | '/testimonios'
     | '/perfil'
     | '/grupos/$slug'
+    | '/servicio/perfil'
+    | '/servicio'
+    | '/servicio/grupos/$id'
+    | '/servicio/grupos/nuevo'
+    | '/servicio/grupos'
+    | '/servicio/reuniones'
   id:
     | '__root__'
     | '/'
@@ -259,7 +340,14 @@ export interface FileRouteTypes {
     | '/tengo-un-problema'
     | '/testimonios'
     | '/_authenticated/perfil'
+    | '/_authenticated/servicio'
     | '/grupos/$slug'
+    | '/_authenticated/servicio/perfil'
+    | '/_authenticated/servicio/'
+    | '/_authenticated/servicio/grupos/$id'
+    | '/_authenticated/servicio/grupos/nuevo'
+    | '/_authenticated/servicio/grupos/'
+    | '/_authenticated/servicio/reuniones/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -418,6 +506,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GruposSlugRouteImport
       parentRoute: typeof GruposRoute
     }
+    '/_authenticated/servicio': {
+      id: '/_authenticated/servicio'
+      path: '/servicio'
+      fullPath: '/servicio'
+      preLoaderRoute: typeof AuthenticatedServicioRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/perfil': {
       id: '/_authenticated/perfil'
       path: '/perfil'
@@ -425,15 +520,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedPerfilRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/servicio/': {
+      id: '/_authenticated/servicio/'
+      path: '/'
+      fullPath: '/servicio/'
+      preLoaderRoute: typeof AuthenticatedServicioIndexRouteImport
+      parentRoute: typeof AuthenticatedServicioRoute
+    }
+    '/_authenticated/servicio/perfil': {
+      id: '/_authenticated/servicio/perfil'
+      path: '/perfil'
+      fullPath: '/servicio/perfil'
+      preLoaderRoute: typeof AuthenticatedServicioPerfilRouteImport
+      parentRoute: typeof AuthenticatedServicioRoute
+    }
+    '/_authenticated/servicio/reuniones/': {
+      id: '/_authenticated/servicio/reuniones/'
+      path: '/reuniones'
+      fullPath: '/servicio/reuniones/'
+      preLoaderRoute: typeof AuthenticatedServicioReunionesIndexRouteImport
+      parentRoute: typeof AuthenticatedServicioRoute
+    }
+    '/_authenticated/servicio/grupos/': {
+      id: '/_authenticated/servicio/grupos/'
+      path: '/grupos'
+      fullPath: '/servicio/grupos/'
+      preLoaderRoute: typeof AuthenticatedServicioGruposIndexRouteImport
+      parentRoute: typeof AuthenticatedServicioRoute
+    }
+    '/_authenticated/servicio/grupos/nuevo': {
+      id: '/_authenticated/servicio/grupos/nuevo'
+      path: '/grupos/nuevo'
+      fullPath: '/servicio/grupos/nuevo'
+      preLoaderRoute: typeof AuthenticatedServicioGruposNuevoRouteImport
+      parentRoute: typeof AuthenticatedServicioRoute
+    }
+    '/_authenticated/servicio/grupos/$id': {
+      id: '/_authenticated/servicio/grupos/$id'
+      path: '/grupos/$id'
+      fullPath: '/servicio/grupos/$id'
+      preLoaderRoute: typeof AuthenticatedServicioGruposIdRouteImport
+      parentRoute: typeof AuthenticatedServicioRoute
+    }
   }
 }
 
+interface AuthenticatedServicioRouteChildren {
+  AuthenticatedServicioPerfilRoute: typeof AuthenticatedServicioPerfilRoute
+  AuthenticatedServicioIndexRoute: typeof AuthenticatedServicioIndexRoute
+  AuthenticatedServicioGruposIdRoute: typeof AuthenticatedServicioGruposIdRoute
+  AuthenticatedServicioGruposNuevoRoute: typeof AuthenticatedServicioGruposNuevoRoute
+  AuthenticatedServicioGruposIndexRoute: typeof AuthenticatedServicioGruposIndexRoute
+  AuthenticatedServicioReunionesIndexRoute: typeof AuthenticatedServicioReunionesIndexRoute
+}
+
+const AuthenticatedServicioRouteChildren: AuthenticatedServicioRouteChildren = {
+  AuthenticatedServicioPerfilRoute: AuthenticatedServicioPerfilRoute,
+  AuthenticatedServicioIndexRoute: AuthenticatedServicioIndexRoute,
+  AuthenticatedServicioGruposIdRoute: AuthenticatedServicioGruposIdRoute,
+  AuthenticatedServicioGruposNuevoRoute: AuthenticatedServicioGruposNuevoRoute,
+  AuthenticatedServicioGruposIndexRoute: AuthenticatedServicioGruposIndexRoute,
+  AuthenticatedServicioReunionesIndexRoute:
+    AuthenticatedServicioReunionesIndexRoute,
+}
+
+const AuthenticatedServicioRouteWithChildren =
+  AuthenticatedServicioRoute._addFileChildren(
+    AuthenticatedServicioRouteChildren,
+  )
+
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedPerfilRoute: typeof AuthenticatedPerfilRoute
+  AuthenticatedServicioRoute: typeof AuthenticatedServicioRouteWithChildren
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedPerfilRoute: AuthenticatedPerfilRoute,
+  AuthenticatedServicioRoute: AuthenticatedServicioRouteWithChildren,
 }
 
 const AuthenticatedRouteRouteWithChildren =

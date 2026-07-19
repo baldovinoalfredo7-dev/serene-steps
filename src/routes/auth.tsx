@@ -33,7 +33,7 @@ function AuthPage() {
   // If already authenticated, send to /_authenticated/perfil
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
-      if (data.user) navigate({ to: "/perfil", replace: true });
+      if (data.user) navigate({ to: "/servicio", replace: true });
     });
   }, [navigate]);
 
@@ -44,7 +44,7 @@ function AuthPage() {
     setBusy(false);
     if (error) return toast.error(error.message);
     toast.success("Sesión iniciada.");
-    navigate({ to: "/perfil", replace: true });
+    navigate({ to: "/servicio", replace: true });
   }
 
   async function onSignup(e: React.FormEvent) {
@@ -61,7 +61,7 @@ function AuthPage() {
     setBusy(false);
     if (error) return toast.error(error.message);
     toast.success("Cuenta creada. Iniciando sesión…");
-    navigate({ to: "/perfil", replace: true });
+    navigate({ to: "/servicio", replace: true });
   }
 
   async function onForgot(e: React.FormEvent) {
