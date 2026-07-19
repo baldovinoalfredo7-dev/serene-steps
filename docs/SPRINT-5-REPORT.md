@@ -111,7 +111,56 @@ Ninguno de los siguientes es un bug; se documentan como decisiones conscientes:
 - Verificación de que todas las rutas privadas están bajo `_authenticated/`.
 - Verificación de que ningún `createServerFn` público requiere bearer (evita 401 en SSR/prerender).
 
-Se evitaron optimizaciones que impliquen cambios funcionales o de diseño (fuera de scope).
+### 5.1 Auditoría final del Portal Público (adenda del Sprint 5)
+
+Barrido exhaustivo página por página de las 16 rutas públicas (`/`, `/que-es-aa`, `/tengo-un-problema`, `/primera-reunion`, `/grupos`, `/grupos/$slug`, `/horarios`, `/eventos`, `/eventos/$slug`, `/literatura`, `/testimonios`, `/contacto`, `/preguntas-frecuentes`, `/necesito-ayuda`, `/privacidad`, `/mapa-del-sitio`).
+
+**Identidad visual, tipografía y espaciados**
+
+- Todas las páginas de contenido usan `PageShell` (hero uniforme: eyebrow uppercase tracking-widest + h1 Lora italic `text-4xl md:text-6xl` en `text-brand`, intro en `text-ink/85`, padding `py-16 md:py-24`).
+- Home, `/grupos`, `/grupos/$slug`, `/eventos`, `/eventos/$slug` usan hero propio consistente con el mismo lenguaje visual.
+- Todas las tarjetas comparten `rounded-2xl`/`rounded-3xl`, `shadow-sm` con hover elevado, borde `border-brand/10`.
+- Contenedores anclados a `max-w-4xl` (contenido) / `max-w-6xl` (grillas) con `px-6`.
+
+**Colores institucionales**
+
+- Barrido de hardcodeos: **0 hex arbitrarios**, **0 `text-blue-*`/`bg-blue-*`**.
+- Corregido: `bg-white` en 2 inputs de `/auth` y `/reset-password` → `bg-paper` (token institucional).
+- Toda la UI cromática pasa por los tokens `--brand`, `--brand-soft`, `--soft`, `--ink`, `--paper` definidos en `src/styles.css`.
+
+**Accesibilidad AA**
+
+- `<main>` único por ruta (declarado en `__root.tsx`); `PageShell` y componentes internos ceden a esa jerarquía.
+- Todas las imágenes con `alt` explícito; los logos duplicados junto a texto usan `alt=""` (decorativos), como manda WCAG.
+- Botones icon-only con `aria-label` verificados: `HelpButton`, `ContactButton`, botón hamburguesa del Header.
+- Contraste global `text-ink/85` (≥ 4.5:1) sobre `paper`; enlaces con estado `hover:underline`.
+- Radix/shadcn provee ARIA correcto en Dialogs, Selects y Popovers.
+
+**SEO — corregido en esta auditoría**
+
+- **Antes**: ninguna ruta pública declaraba `<link rel="canonical">` ni `og:url`. Con `og:image` presente en la home, esto arriesgaba que crawlers atribuyeran metadatos al dominio incorrecto.
+- **Acción**: agregado `og:url` y `<link rel="canonical">` (relativos, para adaptarse al dominio final) a **las 16 rutas públicas**, incluidas las dinámicas `/grupos/$slug` y `/eventos/$slug` (canonical + og:url derivados de `params`).
+- Cada ruta mantiene su `title`, `description`, `og:title`, `og:description` únicos (verificado: no hay duplicados heredados del root).
+- `robots noindex` correcto en `notFoundComponent` de rutas dinámicas.
+- `sitemap.xml` server route sigue publicando las 16 rutas.
+
+**Rendimiento móvil**
+
+- Verificado en viewport 428 px: sin overflow, tap targets ≥ 44 px en CTAs principales.
+- Sin `h-screen` en layouts a pantalla completa (se usa `min-h-*` con contenido flexible).
+- Fonts vía `<link>` con `preconnect` a `fonts.googleapis.com` y `fonts.gstatic.com`.
+- Code-splitting automático por ruta activo.
+- Imágenes con `width`/`height` explícitos o `aspect-*` para evitar CLS.
+
+**Consistencia de componentes**
+
+- Portal Público consume exclusivamente componentes de `src/components/site/` y `src/components/ui/`.
+- Cero fuga de componentes de `src/components/service/` en rutas públicas (verificado).
+- `Header`, `Footer`, `HelpButton`, `ContactButton`, `PageShell`, `MeetingFinder` son las únicas piezas compartidas y todas están tipadas.
+
+**Resultado**: 2 correcciones concretas aplicadas (tokens `bg-paper` + SEO canonical/og:url en 16 rutas). Cero cambios funcionales, cero cambios de diseño. `bunx tsgo --noEmit` y `bun run build` limpios tras las correcciones.
+
+
 
 ---
 
