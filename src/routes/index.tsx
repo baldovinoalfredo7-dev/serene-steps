@@ -78,7 +78,7 @@ function HomeContent({ groups }: { groups: import("@/lib/groups-data").Group[] }
 
           <ul
             role="list"
-            aria-label="Elige la opción que corresponde a tu perfil"
+            aria-label="Tres puertas de entrada: elige la que corresponde a ti"
             className="grid w-full max-w-5xl gap-4 sm:gap-6 md:grid-cols-3"
           >
             {heroEntries.map((entry) => (
