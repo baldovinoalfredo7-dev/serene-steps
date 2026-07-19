@@ -32,7 +32,7 @@ const navLinks: readonly NavLink[] = [
 export function Header() {
   const [open, setOpen] = useState(false);
   const { user } = useAuth();
-  const memberHref = user ? "/perfil" : "/auth";
+  const memberHref = user ? "/servicio" : "/auth";
   const memberLabel = user ? "Mi cuenta" : "Acceso para miembros";
   const MemberIcon = user ? UserRound : LogIn;
 
