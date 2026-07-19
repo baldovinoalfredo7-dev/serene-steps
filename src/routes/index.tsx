@@ -26,8 +26,10 @@ export const Route = createFileRoute("/")({
   loader: ({ context }) => context.queryClient.ensureQueryData(groupsQueryOptions()),
   head: () => ({
     meta: [
+      { property: "og:url", content: "/" },
       { property: "og:image", content: "https://project--b2ac4377-59f2-46ea-a581-d53e687bd969.lovable.app/og.jpg" },
     ],
+    links: [{ rel: "canonical", href: "/" }],
   }),
   errorComponent: ({ error }) => (
     <div className="mx-auto max-w-2xl p-10 text-center text-ink/80">
