@@ -31,6 +31,10 @@ const navLinks: readonly NavLink[] = [
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const { user } = useAuth();
+  const memberHref = user ? "/perfil" : "/auth";
+  const memberLabel = user ? "Mi cuenta" : "Acceso para miembros";
+  const MemberIcon = user ? UserRound : LogIn;
 
   return (
     <header className="sticky top-0 z-40 border-b border-brand/5 bg-paper/85 backdrop-blur-md">
