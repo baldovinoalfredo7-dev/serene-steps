@@ -40,7 +40,7 @@ function TengoProblema() {
       </ol>
 
       <div className="mt-14 rounded-2xl bg-soft/60 p-8 text-center">
-        <p className="mb-6 max-w-2xl text-pretty text-ink/70">
+        <p className="mb-6 max-w-2xl text-pretty text-ink/85">
           Si respondiste "sí" a cuatro o más preguntas, es posible que tengas un problema con el
           alcohol. Nosotros lo tuvimos también, y encontramos una salida.
         </p>

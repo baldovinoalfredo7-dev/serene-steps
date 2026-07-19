@@ -37,14 +37,14 @@ function HorariosPage() {
             key={g.slug}
             className="flex flex-col rounded-3xl bg-paper p-8 shadow-soft transition-all hover:-translate-y-1 hover:shadow-lift"
           >
-            <span className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand/60">
+            <span className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand/80">
               {g.municipality}
             </span>
             <h2 className="mb-4 font-serif text-2xl italic text-brand">{g.name}</h2>
             <ul className="mb-6 space-y-2 text-sm text-ink/75">
               {g.meetings.map((m, i) => (
                 <li key={i} className="flex items-center gap-2">
-                  <Clock className="size-4 text-brand/60" strokeWidth={1.8} />
+                  <Clock className="size-4 text-brand/80" strokeWidth={1.8} />
                   <span>
                     {dayNames[m.weekday]} · {m.start}–{m.end} h
                   </span>

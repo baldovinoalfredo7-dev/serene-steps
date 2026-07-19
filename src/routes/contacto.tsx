@@ -28,9 +28,9 @@ function Contacto() {
       intro="Estamos aquí para responder tus preguntas sobre AA, orientarte hacia un grupo o coordinar actividades de información pública."
     >
       <div className="grid gap-6 md:grid-cols-3">
-        <ContactCard icon={<Phone className="size-5" />} label="Teléfono 24h" value="55 5555 0000" href="tel:+525555550000" />
-        <ContactCard icon={<Mail className="size-5" />} label="Correo" value="info@aa-area2.org.mx" href="mailto:info@aa-area2.org.mx" />
-        <ContactCard icon={<MapPin className="size-5" />} label="Oficina" value="Ciudad de México" />
+        <ContactCard icon={<Phone className="size-5" />} label="Teléfono 24h" value="+57 300 000 0000" href="tel:+573000000000" />
+        <ContactCard icon={<Mail className="size-5" />} label="Correo" value="contacto@aa-area2.org" href="mailto:contacto@aa-area2.org" />
+        <ContactCard icon={<MapPin className="size-5" />} label="Oficina" value="Barranquilla, Colombia" />
       </div>
 
       <p className="mx-auto mt-14 max-w-2xl text-center text-sm text-ink/55">
@@ -57,7 +57,7 @@ function ContactCard({
       <span className="mb-4 grid size-10 place-items-center rounded-full bg-brand/10 text-brand">
         {icon}
       </span>
-      <span className="text-xs font-semibold uppercase tracking-widest text-brand/50">{label}</span>
+      <span className="text-xs font-semibold uppercase tracking-widest text-brand/80">{label}</span>
       <span className="mt-2 font-serif text-xl text-brand">{value}</span>
     </>
   );

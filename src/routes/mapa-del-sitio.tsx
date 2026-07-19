@@ -50,7 +50,7 @@ function Mapa() {
               <Link
                 to="/grupos/$slug"
                 params={{ slug: g.slug }}
-                className="text-ink/70 hover:text-brand"
+                className="text-ink/85 hover:text-brand"
               >
                 {g.name} — {g.municipality}
               </Link>
@@ -74,7 +74,7 @@ function Column({ title, children }: { title: string; children: React.ReactNode 
 function Item({ to, children }: { to: string; children: React.ReactNode }) {
   return (
     <li>
-      <Link to={to} className="text-ink/70 hover:text-brand">
+      <Link to={to} className="text-ink/85 hover:text-brand">
         {children}
       </Link>
     </li>

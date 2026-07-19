@@ -178,7 +178,7 @@ function GruposIndex() {
 
       {filtered.length === 0 ? (
         <div className="rounded-2xl bg-soft/60 p-12 text-center">
-          <p className="text-ink/60">
+          <p className="text-ink/80">
             No encontramos reuniones con esos criterios. Prueba ampliar el municipio, el día o el
             horario.
           </p>
@@ -197,7 +197,7 @@ function GruposIndex() {
 function FilterField({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
-      <span className="mb-3 block text-[11px] font-bold uppercase tracking-[0.2em] text-brand/50">
+      <span className="mb-3 block text-[11px] font-bold uppercase tracking-[0.2em] text-brand/80">
         {label}
       </span>
       {children}
@@ -222,7 +222,7 @@ function SegBtn({
         "rounded-lg px-3 py-3 text-xs font-semibold transition " +
         (active
           ? "bg-brand text-paper shadow-sm"
-          : "bg-soft text-ink/60 hover:bg-brand/5 hover:text-brand")
+          : "bg-soft text-ink/80 hover:bg-brand/5 hover:text-brand")
       }
     >
       {label}
@@ -242,14 +242,14 @@ function GroupCard({ g }: { g: Group }) {
         {g.municipality}
       </span>
       <h3 className="mb-3 font-serif text-xl text-brand">{g.name}</h3>
-      <p className="mb-5 flex items-start gap-2 text-sm text-ink/60">
+      <p className="mb-5 flex items-start gap-2 text-sm text-ink/80">
         <MapPin className="mt-0.5 size-4 shrink-0 text-brand/40" />
         <span>{g.addressLine}</span>
       </p>
 
       {primary && (
-        <div className="mb-3 flex items-center gap-2 text-sm text-ink/70">
-          <Clock className="size-4 text-brand/50" />
+        <div className="mb-3 flex items-center gap-2 text-sm text-ink/85">
+          <Clock className="size-4 text-brand/80" />
           <span>
             {weekdayLabels[primary.weekday]}{" "}
             <span className="font-mono tabular-nums">{primary.start}</span>

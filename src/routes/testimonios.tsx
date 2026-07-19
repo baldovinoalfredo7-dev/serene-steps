@@ -32,7 +32,7 @@ function Testimonios() {
             <p className="mb-4 text-pretty font-serif text-2xl italic leading-tight text-brand md:text-3xl">
               "{t.body}"
             </p>
-            <cite className="text-sm font-medium not-italic text-ink/60">— {t.author}</cite>
+            <cite className="text-sm font-medium not-italic text-ink/80">— {t.author}</cite>
           </blockquote>
         ))}
       </div>
@@ -47,7 +47,7 @@ const testimonials = [
   },
   {
     body: "No sabía que existía una solución tan sencilla. No se trata de religión, se trata de comunidad y de entender que solo por hoy podemos estar bien.",
-    author: "Miembro de AA, Grupo San Ángel",
+    author: "Miembro de AA, Área 2 Metropolitana",
   },
   {
     body: "Pensaba que era el único al que le pasaba esto. La primera vez que escuché a otra persona contar mi propia historia, supe que había llegado a casa.",

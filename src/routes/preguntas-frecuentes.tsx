@@ -70,7 +70,7 @@ function FaqPage() {
           >
             <summary className="flex cursor-pointer list-none items-start justify-between gap-4 font-serif text-lg italic text-brand md:text-xl">
               {f.q}
-              <span className="mt-1 shrink-0 text-brand/60 transition-transform group-open:rotate-45">
+              <span className="mt-1 shrink-0 text-brand/80 transition-transform group-open:rotate-45">
                 +
               </span>
             </summary>

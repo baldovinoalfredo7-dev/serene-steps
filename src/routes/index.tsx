@@ -5,21 +5,20 @@ import { groups } from "@/lib/groups-data";
 import { MeetingFinder } from "@/components/site/MeetingFinder";
 import {
   ArrowRight,
+  Briefcase,
   CalendarDays,
   Clock,
   Ear,
   HandHeart,
-  HeartHandshake,
   MapPin,
   Sparkles,
   Trophy,
-  Users,
   UsersRound,
   ShieldCheck,
   Wallet,
   ClipboardX,
   CalendarCheck,
-  UserX,
+  LifeBuoy,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -97,7 +96,65 @@ function Home() {
 
 
       {/* ¿QUÉ ES ALCOHÓLICOS ANÓNIMOS? */}
-      <section className="bg-paper py-20 md:py-28">
+      {/* ¿CÓMO PODEMOS AYUDARTE? — 3 rutas prioritarias, acción antes que información */}
+      <section
+        aria-labelledby="ayuda-heading"
+        className="bg-paper py-20 md:py-28"
+      >
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mb-14 text-center">
+            <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand">
+              Empieza aquí
+            </span>
+            <h2
+              id="ayuda-heading"
+              className="font-serif text-4xl italic text-brand md:text-5xl lg:text-6xl"
+            >
+              ¿Cómo podemos ayudarte?
+            </h2>
+            <p className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-ink/85 md:text-lg">
+              Elige el camino que mejor te describe. Cada uno te lleva a la
+              información y contacto que necesitas.
+            </p>
+          </div>
+
+          <div className="mx-auto grid max-w-6xl gap-6 sm:gap-8 md:grid-cols-3">
+            {helpCards.map((c) => (
+              <Link
+                key={c.title}
+                to={c.to}
+                className="group flex flex-col rounded-3xl bg-soft/70 p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:bg-brand hover:text-paper hover:shadow-lift md:p-10"
+              >
+                <div className="mb-6 grid size-14 place-items-center rounded-2xl bg-brand/10 transition-colors group-hover:bg-paper/15">
+                  <c.icon
+                    className="size-7 text-brand transition-colors group-hover:text-paper"
+                    strokeWidth={1.6}
+                  />
+                </div>
+                <h3 className="mb-3 font-serif text-2xl italic text-brand transition-colors group-hover:text-paper md:text-3xl">
+                  {c.title}
+                </h3>
+                <p className="mb-8 text-pretty leading-relaxed text-ink/85 transition-colors group-hover:text-paper/90">
+                  {c.body}
+                </p>
+                <span className="mt-auto inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.15em] text-brand transition-colors group-hover:text-paper">
+                  {c.cta}
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* NECESITO UNA REUNIÓN HOY — acción principal para quien busca ayuda */}
+      <MeetingFinder />
+
+      {/* ¿QUÉ ES ALCOHÓLICOS ANÓNIMOS? — contexto institucional, después de la acción */}
+      <section
+        aria-labelledby="que-es-aa-heading"
+        className="bg-soft/40 py-20 md:py-28"
+      >
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
             <div className="order-2 md:order-1">
@@ -113,13 +170,16 @@ function Home() {
               </div>
             </div>
             <div className="order-1 md:order-2">
-              <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/60">
+              <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand">
                 Sobre nosotros
               </span>
-              <h2 className="mb-6 font-serif text-4xl italic leading-tight text-brand md:text-5xl lg:text-6xl">
+              <h2
+                id="que-es-aa-heading"
+                className="mb-6 font-serif text-4xl italic leading-tight text-brand md:text-5xl lg:text-6xl"
+              >
                 ¿Qué es Alcohólicos Anónimos?
               </h2>
-              <p className="mb-10 text-pretty text-lg leading-relaxed text-ink/75 md:text-xl">
+              <p className="mb-10 text-pretty text-lg leading-relaxed text-ink/85 md:text-xl">
                 Alcohólicos Anónimos es una comunidad de hombres y mujeres que
                 comparten su experiencia, fortaleza y esperanza para resolver su
                 problema común y ayudar a otros a recuperarse del alcoholismo.
@@ -136,59 +196,20 @@ function Home() {
         </div>
       </section>
 
-      {/* ¿CÓMO PODEMOS AYUDARTE? */}
-      <section className="bg-paper py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-14 text-center">
-            <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/60">
-              Para quienes buscan ayuda
-            </span>
-            <h2 className="font-serif text-4xl italic text-brand md:text-5xl lg:text-6xl">
-              ¿Cómo podemos ayudarte?
-            </h2>
-          </div>
 
-          <div className="mx-auto grid max-w-5xl gap-6 sm:gap-8 lg:grid-cols-2">
-            {helpCards.map((c) => (
-              <Link
-                key={c.title}
-                to={c.to}
-                className="group flex flex-col rounded-3xl bg-soft/70 p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:bg-brand hover:text-paper hover:shadow-lift md:p-10"
-              >
-                <div className="mb-6 grid size-14 place-items-center rounded-2xl bg-brand/10 transition-colors group-hover:bg-paper/15">
-                  <c.icon className="size-7 text-brand transition-colors group-hover:text-paper" strokeWidth={1.6} />
-                </div>
-                <h3 className="mb-3 font-serif text-2xl italic text-brand transition-colors group-hover:text-paper md:text-3xl">
-                  {c.title}
-                </h3>
-                <p className="mb-8 text-pretty leading-relaxed text-ink/70 transition-colors group-hover:text-paper/85">
-                  {c.body}
-                </p>
-                <span className="mt-auto inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.15em] text-brand transition-colors group-hover:text-paper">
-                  {c.cta}
-                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* NECESITO UNA REUNIÓN HOY */}
-      <MeetingFinder />
 
       {/* ENCUENTRA UN GRUPO */}
       <section className="bg-soft/60 py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-14 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
             <div>
-              <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/60">
+              <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand">
                 Directorio del Área 2
               </span>
               <h2 className="mb-4 font-serif text-4xl italic text-brand md:text-5xl lg:text-6xl">
                 Encuentra un grupo
               </h2>
-              <p className="max-w-xl text-lg leading-relaxed text-ink/70">
+              <p className="max-w-xl text-lg leading-relaxed text-ink/85">
                 Nueve grupos abiertos, en distintos municipios del Área 2 Metropolitana.
               </p>
             </div>
@@ -214,63 +235,20 @@ function Home() {
         </div>
       </section>
 
-      {/* PRÓXIMOS EVENTOS */}
-      <section className="bg-paper py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-14 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
-            <div>
-              <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/60">
-                Calendario del Área
-              </span>
-              <h2 className="mb-4 font-serif text-4xl italic text-brand md:text-5xl lg:text-6xl">
-                Próximos eventos
-              </h2>
-              <p className="max-w-xl text-lg leading-relaxed text-ink/70">
-                Espacios abiertos para reforzar la unidad, la experiencia y el servicio.
-              </p>
-            </div>
-            <Link
-              to="/eventos"
-              className="inline-flex min-h-12 items-center gap-2 rounded-full border border-brand/25 px-6 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-brand transition-colors hover:bg-brand hover:text-paper"
-            >
-              Ver todos los eventos <ArrowRight className="size-4" />
-            </Link>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-3">
-            {eventCards.map((e) => (
-              <article
-                key={e.title}
-                className="flex flex-col rounded-3xl bg-soft/60 p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lift md:p-10"
-              >
-                <div className="mb-6 grid size-14 place-items-center rounded-2xl bg-brand/10">
-                  <e.icon className="size-7 text-brand" strokeWidth={1.6} />
-                </div>
-                <span className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand/50">
-                  {e.tag}
-                </span>
-                <h3 className="mb-3 font-serif text-2xl italic text-brand md:text-3xl">{e.title}</h3>
-                <p className="mb-8 text-pretty leading-relaxed text-ink/70">{e.body}</p>
-                <Link
-                  to="/eventos"
-                  className="mt-auto inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.15em] text-brand"
-                >
-                  Ver calendario <ArrowRight className="size-4" />
-                </Link>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PRIMERA REUNIÓN — 6 tarjetas con icono */}
-      <section className="bg-soft/60 py-20 md:py-28">
+      {/* PRIMERA REUNIÓN — información acogedora para quien nunca ha ido */}
+      <section
+        aria-labelledby="primera-reunion-heading"
+        className="bg-paper py-20 md:py-28"
+      >
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-14 text-center">
-            <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/60">
+            <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand">
               Para tu primera vez
             </span>
-            <h2 className="text-balance font-serif text-4xl italic text-brand md:text-5xl lg:text-6xl">
+            <h2
+              id="primera-reunion-heading"
+              className="text-balance font-serif text-4xl italic text-brand md:text-5xl lg:text-6xl"
+            >
               ¿Qué puedes esperar de tu primera reunión?
             </h2>
           </div>
@@ -279,13 +257,17 @@ function Home() {
             {firstMeetingItems.map((item) => (
               <div
                 key={item.title}
-                className="flex flex-col rounded-3xl bg-paper p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lift md:p-10"
+                className="flex flex-col rounded-3xl bg-soft/60 p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lift md:p-10"
               >
                 <div className="mb-6 grid size-14 place-items-center rounded-2xl bg-brand/10">
                   <item.icon className="size-7 text-brand" strokeWidth={1.6} />
                 </div>
-                <h4 className="mb-3 font-serif text-xl italic text-brand md:text-2xl">{item.title}</h4>
-                <p className="text-pretty leading-relaxed text-ink/70">{item.body}</p>
+                <h4 className="mb-3 font-serif text-xl italic text-brand md:text-2xl">
+                  {item.title}
+                </h4>
+                <p className="text-pretty leading-relaxed text-ink/85">
+                  {item.body}
+                </p>
               </div>
             ))}
           </div>
@@ -301,6 +283,66 @@ function Home() {
           </div>
         </div>
       </section>
+
+      {/* PRÓXIMOS EVENTOS */}
+      <section
+        aria-labelledby="eventos-heading"
+        className="bg-soft/60 py-20 md:py-28"
+      >
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mb-14 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
+            <div>
+              <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand">
+                Calendario del Área
+              </span>
+              <h2
+                id="eventos-heading"
+                className="mb-4 font-serif text-4xl italic text-brand md:text-5xl lg:text-6xl"
+              >
+                Próximos eventos
+              </h2>
+              <p className="max-w-xl text-lg leading-relaxed text-ink/85">
+                Espacios abiertos para reforzar la unidad, la experiencia y el servicio.
+              </p>
+            </div>
+            <Link
+              to="/eventos"
+              className="inline-flex min-h-12 items-center gap-2 rounded-full border border-brand/25 px-6 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-brand transition-colors hover:bg-brand hover:text-paper"
+            >
+              Ver todos los eventos <ArrowRight className="size-4" />
+            </Link>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {eventCards.map((e) => (
+              <article
+                key={e.title}
+                className="flex flex-col rounded-3xl bg-paper p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lift md:p-10"
+              >
+                <div className="mb-6 grid size-14 place-items-center rounded-2xl bg-brand/10">
+                  <e.icon className="size-7 text-brand" strokeWidth={1.6} />
+                </div>
+                <span className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand">
+                  {e.tag}
+                </span>
+                <h3 className="mb-3 font-serif text-2xl italic text-brand md:text-3xl">
+                  {e.title}
+                </h3>
+                <p className="mb-8 text-pretty leading-relaxed text-ink/85">
+                  {e.body}
+                </p>
+                <Link
+                  to="/eventos"
+                  className="mt-auto inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.15em] text-brand"
+                >
+                  Ver calendario <ArrowRight className="size-4" />
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
 
       {/* TESTIMONIOS */}
       <section className="bg-brand py-20 text-paper md:py-24">
@@ -329,7 +371,7 @@ function Home() {
                 de comunidad y de entender que solo por hoy podemos estar bien."
               </p>
               <cite className="text-sm font-medium not-italic opacity-60">
-                — Miembro de AA, Grupo San Ángel
+                — Miembro de AA, Área 2 Metropolitana
               </cite>
             </blockquote>
           </div>
@@ -350,13 +392,13 @@ function Home() {
         <div className="mx-auto max-w-4xl px-6">
           <div className="flex flex-col items-center gap-6 rounded-3xl bg-paper p-10 text-center shadow-soft md:flex-row md:items-center md:justify-between md:gap-10 md:p-12 md:text-left">
             <div className="flex-1">
-              <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/60">
+              <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand">
                 Área de servicio
               </span>
               <h2 className="mb-3 font-serif text-2xl italic text-brand md:text-3xl">
                 ¿Eres miembro de Alcohólicos Anónimos?
               </h2>
-              <p className="text-pretty leading-relaxed text-ink/70">
+              <p className="text-pretty leading-relaxed text-ink/85">
                 Ingresa con tu correo electrónico para acceder a herramientas de
                 servicio, gestionar tu grupo, publicar eventos y coordinar el
                 trabajo del Área.
@@ -389,12 +431,12 @@ function GroupCard({
 }) {
   return (
     <div className="group flex flex-col rounded-3xl bg-paper p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
-      <span className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-brand/60">
+      <span className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-brand">
         {municipality}
       </span>
       <h3 className="mb-4 font-serif text-2xl italic text-brand">{name}</h3>
-      <div className="mb-8 flex items-center gap-2 text-sm text-ink/70">
-        <Clock className="size-4 text-brand/60" strokeWidth={1.8} />
+      <div className="mb-8 flex items-center gap-2 text-sm text-ink/85">
+        <Clock className="size-4 text-brand/80" strokeWidth={1.8} />
         <span>{schedule}</span>
       </div>
       <Link
@@ -425,32 +467,25 @@ const heroBadges = [
 
 const helpCards = [
   {
-    title: "Quiero asistir a una reunión",
-    body: "Encuentra el grupo más cercano y su próximo horario.",
-    cta: "Ver grupos",
+    title: "Busco ayuda",
+    body: "Para mí o para un familiar. Encuentra una reunión hoy, entiende qué es AA y da tu primer paso con acompañamiento.",
+    cta: "Empezar",
     to: "/grupos",
-    icon: MapPin,
+    icon: LifeBuoy,
   },
   {
-    title: "Quiero saber qué es Alcohólicos Anónimos",
-    body: "Conoce nuestra comunidad, historia y forma de trabajar.",
-    cta: "Conocer más",
-    to: "/que-es-aa",
-    icon: HeartHandshake,
-  },
-  {
-    title: "Busco ayuda para un familiar o amigo",
-    body: "Orientación para acompañar a alguien que puede tener un problema con el alcohol.",
-    cta: "Cómo ayudar",
-    to: "/tengo-un-problema",
-    icon: Users,
-  },
-  {
-    title: "Soy miembro de AA",
-    body: "Accede al área de servicio con tu correo electrónico.",
+    title: "Ya soy miembro de AA",
+    body: "Accede al Área de Servicio con tu correo. Gestiona tu grupo, publica eventos y coordina el trabajo del Área.",
     cta: "Acceso para miembros",
     to: "/auth",
     icon: ShieldCheck,
+  },
+  {
+    title: "Soy profesional o institución",
+    body: "Salud, justicia, educación o comunidad. Coordina con Información Pública para orientar a personas que puedan necesitar AA.",
+    cta: "Información Pública",
+    to: "/contacto",
+    icon: Briefcase,
   },
 ] as const;
 

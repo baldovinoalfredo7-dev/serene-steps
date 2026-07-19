@@ -46,10 +46,10 @@ export function Header() {
             className="h-12 w-auto shrink-0 sm:h-16 xl:h-[4.5rem]"
           />
           <div className="min-w-0 leading-tight">
-            <span className="block truncate font-sans text-[0.7rem] font-bold uppercase tracking-[0.14em] text-brand sm:text-sm sm:tracking-[0.18em] xl:text-base">
+            <span className="block truncate font-sans text-[0.72rem] font-bold uppercase tracking-[0.14em] text-brand sm:text-sm sm:tracking-[0.18em] xl:text-base">
               Alcohólicos Anónimos
             </span>
-            <span className="block truncate text-[0.65rem] font-medium tracking-wide text-ink/60 sm:text-xs xl:text-sm">
+            <span className="block truncate text-[0.68rem] font-medium tracking-wide text-ink/80 sm:text-xs xl:text-sm">
               Área 2 Metropolitana – Barranquilla
             </span>
           </div>
