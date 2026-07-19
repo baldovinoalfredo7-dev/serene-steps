@@ -75,9 +75,9 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-const SITE_TITLE = "AA Área 2 Metropolitana — La ayuda está más cerca de lo que imaginas";
+const SITE_TITLE = "Alcohólicos Anónimos · Área 2 Metropolitana Barranquilla";
 const SITE_DESCRIPTION =
-  "Portal informativo de Alcohólicos Anónimos, Área 2 Metropolitana. Encuentra un grupo, conoce nuestras reuniones y da tu primer paso hacia la recuperación.";
+  "La ayuda está más cerca de lo que imaginas. Encuentra una reunión de Alcohólicos Anónimos en Barranquilla, Soledad, Malambo, Galapa y Puerto Colombia. Sin inscripción, sin cuotas, anonimato garantizado.";
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
