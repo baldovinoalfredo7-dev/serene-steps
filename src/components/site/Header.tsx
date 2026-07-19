@@ -10,10 +10,12 @@ import {
   MapPin,
   Menu,
   Clock,
+  UserRound,
   X,
   type LucideIcon,
 } from "lucide-react";
 import logoAsset from "@/assets/logo-aa.png.asset.json";
+import { useAuth } from "@/hooks/use-auth";
 
 type NavLink = { to: string; label: string; icon: LucideIcon };
 
@@ -29,6 +31,10 @@ const navLinks: readonly NavLink[] = [
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const { user } = useAuth();
+  const memberHref = user ? "/perfil" : "/auth";
+  const memberLabel = user ? "Mi cuenta" : "Acceso para miembros";
+  const MemberIcon = user ? UserRound : LogIn;
 
   return (
     <header className="sticky top-0 z-40 border-b border-brand/5 bg-paper/85 backdrop-blur-md">
@@ -68,10 +74,10 @@ export function Header() {
             </Link>
           ))}
           <Link
-            to="/auth"
+            to={memberHref}
             className="inline-flex items-center gap-1.5 rounded-full border border-brand/25 px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-brand transition-colors hover:bg-brand hover:text-paper"
           >
-            <LogIn className="size-3.5" /> Acceso para miembros
+            <MemberIcon className="size-3.5" /> {memberLabel}
           </Link>
         </nav>
 
@@ -105,11 +111,11 @@ export function Header() {
               </Link>
             ))}
             <Link
-              to="/auth"
+              to={memberHref}
               onClick={() => setOpen(false)}
               className="mt-3 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-paper transition-colors hover:bg-brand-soft"
             >
-              <LogIn className="size-4" /> Acceso para miembros
+              <MemberIcon className="size-4" /> {memberLabel}
             </Link>
           </nav>
         </div>

@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TestimoniosRouteImport } from './routes/testimonios'
 import { Route as TengoUnProblemaRouteImport } from './routes/tengo-un-problema'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as QueEsAaRouteImport } from './routes/que-es-aa'
 import { Route as PrivacidadRouteImport } from './routes/privacidad'
 import { Route as PrimeraReunionRouteImport } from './routes/primera-reunion'
@@ -24,8 +25,10 @@ import { Route as GruposRouteImport } from './routes/grupos'
 import { Route as EventosRouteImport } from './routes/eventos'
 import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as GruposSlugRouteImport } from './routes/grupos.$slug'
+import { Route as AuthenticatedPerfilRouteImport } from './routes/_authenticated/perfil'
 
 const TestimoniosRoute = TestimoniosRouteImport.update({
   id: '/testimonios',
@@ -40,6 +43,11 @@ const TengoUnProblemaRoute = TengoUnProblemaRouteImport.update({
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
 const QueEsAaRoute = QueEsAaRouteImport.update({
@@ -102,6 +110,10 @@ const AuthRoute = AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -111,6 +123,11 @@ const GruposSlugRoute = GruposSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
   getParentRoute: () => GruposRoute,
+} as any)
+const AuthenticatedPerfilRoute = AuthenticatedPerfilRouteImport.update({
+  id: '/perfil',
+  path: '/perfil',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -127,9 +144,11 @@ export interface FileRoutesByFullPath {
   '/primera-reunion': typeof PrimeraReunionRoute
   '/privacidad': typeof PrivacidadRoute
   '/que-es-aa': typeof QueEsAaRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tengo-un-problema': typeof TengoUnProblemaRoute
   '/testimonios': typeof TestimoniosRoute
+  '/perfil': typeof AuthenticatedPerfilRoute
   '/grupos/$slug': typeof GruposSlugRoute
 }
 export interface FileRoutesByTo {
@@ -146,14 +165,17 @@ export interface FileRoutesByTo {
   '/primera-reunion': typeof PrimeraReunionRoute
   '/privacidad': typeof PrivacidadRoute
   '/que-es-aa': typeof QueEsAaRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tengo-un-problema': typeof TengoUnProblemaRoute
   '/testimonios': typeof TestimoniosRoute
+  '/perfil': typeof AuthenticatedPerfilRoute
   '/grupos/$slug': typeof GruposSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/contacto': typeof ContactoRoute
   '/eventos': typeof EventosRoute
@@ -166,9 +188,11 @@ export interface FileRoutesById {
   '/primera-reunion': typeof PrimeraReunionRoute
   '/privacidad': typeof PrivacidadRoute
   '/que-es-aa': typeof QueEsAaRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tengo-un-problema': typeof TengoUnProblemaRoute
   '/testimonios': typeof TestimoniosRoute
+  '/_authenticated/perfil': typeof AuthenticatedPerfilRoute
   '/grupos/$slug': typeof GruposSlugRoute
 }
 export interface FileRouteTypes {
@@ -187,9 +211,11 @@ export interface FileRouteTypes {
     | '/primera-reunion'
     | '/privacidad'
     | '/que-es-aa'
+    | '/reset-password'
     | '/sitemap.xml'
     | '/tengo-un-problema'
     | '/testimonios'
+    | '/perfil'
     | '/grupos/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -206,13 +232,16 @@ export interface FileRouteTypes {
     | '/primera-reunion'
     | '/privacidad'
     | '/que-es-aa'
+    | '/reset-password'
     | '/sitemap.xml'
     | '/tengo-un-problema'
     | '/testimonios'
+    | '/perfil'
     | '/grupos/$slug'
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
     | '/auth'
     | '/contacto'
     | '/eventos'
@@ -225,14 +254,17 @@ export interface FileRouteTypes {
     | '/primera-reunion'
     | '/privacidad'
     | '/que-es-aa'
+    | '/reset-password'
     | '/sitemap.xml'
     | '/tengo-un-problema'
     | '/testimonios'
+    | '/_authenticated/perfil'
     | '/grupos/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
   ContactoRoute: typeof ContactoRoute
   EventosRoute: typeof EventosRoute
@@ -245,6 +277,7 @@ export interface RootRouteChildren {
   PrimeraReunionRoute: typeof PrimeraReunionRoute
   PrivacidadRoute: typeof PrivacidadRoute
   QueEsAaRoute: typeof QueEsAaRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TengoUnProblemaRoute: typeof TengoUnProblemaRoute
   TestimoniosRoute: typeof TestimoniosRoute
@@ -271,6 +304,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/que-es-aa': {
@@ -357,6 +397,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -371,8 +418,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GruposSlugRouteImport
       parentRoute: typeof GruposRoute
     }
+    '/_authenticated/perfil': {
+      id: '/_authenticated/perfil'
+      path: '/perfil'
+      fullPath: '/perfil'
+      preLoaderRoute: typeof AuthenticatedPerfilRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedPerfilRoute: typeof AuthenticatedPerfilRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedPerfilRoute: AuthenticatedPerfilRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
 interface GruposRouteChildren {
   GruposSlugRoute: typeof GruposSlugRoute
@@ -387,6 +452,7 @@ const GruposRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
   ContactoRoute: ContactoRoute,
   EventosRoute: EventosRoute,
@@ -399,6 +465,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrimeraReunionRoute: PrimeraReunionRoute,
   PrivacidadRoute: PrivacidadRoute,
   QueEsAaRoute: QueEsAaRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TengoUnProblemaRoute: TengoUnProblemaRoute,
   TestimoniosRoute: TestimoniosRoute,

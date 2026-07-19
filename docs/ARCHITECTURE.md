@@ -4,15 +4,19 @@ Documento vivo de arquitectura técnica. Se actualiza al cierre de cada fase.
 
 ---
 
-## Estado actual: Fase 1 cerrada ✅
+## Estado actual: Fase 2 en curso 🔧
 
-**Alcance entregado**
-- Lovable Cloud activado (PostgreSQL gestionado).
-- Esquema normalizado y RLS habilitado en todas las tablas.
-- Migración de los 5 municipios y 9 grupos del Área 2 Metropolitana.
-- Portal Público leyendo desde la base de datos vía `createServerFn` + TanStack Query.
+**Fase 1 — cerrada ✅**
+- Lovable Cloud, esquema, RLS, migración de datos y Portal Público leyendo desde la base de datos.
 
-**Fuera de alcance en Fase 1** (llegarán en fases posteriores)
+**Fase 2 — Autenticación (entregado)**
+- Supabase Auth con correo + contraseña, HIBP (comprobación de contraseñas filtradas) activa, auto-confirmación de correo activa para agilizar el bootstrap.
+- Recuperación de contraseña vía `resetPasswordForEmail` + página pública `/reset-password`.
+- Gate `_authenticated/` (`ssr: false`, redirect a `/auth`).
+- Página `/perfil` con datos del usuario, roles, cierre de sesión, cambio de contraseña y **bootstrap del primer administrador**.
+- Header consciente de sesión: alterna entre "Acceso para miembros" y "Mi cuenta".
+- Función SQL `bootstrap_first_admin()`: solo promueve al primer usuario si aún no existe ningún admin; después siempre devuelve `false`.
+- Función SQL `admin_exists()`: consulta ligera para ocultar el CTA de bootstrap una vez asignado el primer admin.
 - Autenticación, login, Google Auth → Fase 2.
 - Panel administrativo, CRUD de grupos y reuniones → Fase 3.
 - Eventos activos, documentos, storage, auditoría, permisos avanzados → Fase 4.
