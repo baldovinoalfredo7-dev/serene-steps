@@ -15,7 +15,9 @@ export const Route = createFileRoute("/preguntas-frecuentes")({
         property: "og:description",
         content: "Aclaramos las dudas más frecuentes sobre AA.",
       },
+      { property: "og:url", content: "/preguntas-frecuentes" },
     ],
+    links: [{ rel: "canonical", href: "/preguntas-frecuentes" }],
   }),
   component: FaqPage,
 });

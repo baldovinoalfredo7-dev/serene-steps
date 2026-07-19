@@ -16,7 +16,9 @@ export const Route = createFileRoute("/literatura")({
         property: "og:description",
         content: "Materiales autorizados por la estructura de servicio de AA.",
       },
+      { property: "og:url", content: "/literatura" },
     ],
+    links: [{ rel: "canonical", href: "/literatura" }],
   }),
   component: Literatura,
 });

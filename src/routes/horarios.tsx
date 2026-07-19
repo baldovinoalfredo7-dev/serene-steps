@@ -19,7 +19,9 @@ export const Route = createFileRoute("/horarios")({
         property: "og:description",
         content: "Días y horas de reunión de los grupos del Área 2 Metropolitana.",
       },
+      { property: "og:url", content: "/horarios" },
     ],
+    links: [{ rel: "canonical", href: "/horarios" }],
   }),
   errorComponent: ({ error }) => (
     <div className="mx-auto max-w-2xl p-10 text-center text-ink/80">

@@ -11,7 +11,9 @@ export const Route = createFileRoute("/testimonios")({
       },
       { property: "og:title", content: "Testimonios de esperanza" },
       { property: "og:description", content: "Historias anónimas de recuperación en AA." },
+      { property: "og:url", content: "/testimonios" },
     ],
+    links: [{ rel: "canonical", href: "/testimonios" }],
   }),
   component: Testimonios,
 });

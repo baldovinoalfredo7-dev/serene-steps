@@ -29,7 +29,9 @@ export const Route = createFileRoute("/grupos")({
         property: "og:description",
         content: "Nueve grupos de AA con horarios y direcciones en el Área 2 Metropolitana.",
       },
+      { property: "og:url", content: "/grupos" },
     ],
+    links: [{ rel: "canonical", href: "/grupos" }],
   }),
   errorComponent: ({ error }) => (
     <div className="mx-auto max-w-2xl p-10 text-center text-ink/80">

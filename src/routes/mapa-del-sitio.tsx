@@ -17,7 +17,9 @@ export const Route = createFileRoute("/mapa-del-sitio")({
         property: "og:description",
         content: "Encuentra rápidamente cualquier sección del portal.",
       },
+      { property: "og:url", content: "/mapa-del-sitio" },
     ],
+    links: [{ rel: "canonical", href: "/mapa-del-sitio" }],
   }),
   errorComponent: ({ error }) => (
     <div className="mx-auto max-w-2xl p-10 text-center text-ink/80">

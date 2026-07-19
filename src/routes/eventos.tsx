@@ -21,7 +21,9 @@ export const Route = createFileRoute("/eventos")({
         content:
           "Calendario de foros, convenciones, aniversarios y talleres del Área 2.",
       },
+      { property: "og:url", content: "/eventos" },
     ],
+    links: [{ rel: "canonical", href: "/eventos" }],
   }),
   loader: ({ context }) =>
     context.queryClient.ensureQueryData({
