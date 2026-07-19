@@ -13,7 +13,8 @@ export const Route = createFileRoute("/auth")({
       { title: "Acceso para miembros — AA Área 2 Metropolitana" },
       {
         name: "description",
-        content: "Acceso privado para servidores autorizados del Área 2 Metropolitana.",
+        content:
+          "Espacio privado para los miembros de Alcohólicos Anónimos con credenciales de acceso.",
       },
       { name: "robots", content: "noindex" },
     ],
