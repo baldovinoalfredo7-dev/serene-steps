@@ -74,10 +74,10 @@ export function Header() {
             </Link>
           ))}
           <Link
-            to="/auth"
+            to={memberHref}
             className="inline-flex items-center gap-1.5 rounded-full border border-brand/25 px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-brand transition-colors hover:bg-brand hover:text-paper"
           >
-            <LogIn className="size-3.5" /> Acceso para miembros
+            <MemberIcon className="size-3.5" /> {memberLabel}
           </Link>
         </nav>
 
