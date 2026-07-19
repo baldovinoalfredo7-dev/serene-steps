@@ -15,6 +15,7 @@ import { groupsQueryOptions } from "@/lib/groups-queries";
 import { PageShell } from "@/components/site/PageShell";
 
 export const Route = createFileRoute("/grupos")({
+  loader: ({ context }) => context.queryClient.ensureQueryData(groupsQueryOptions()),
   head: () => ({
     meta: [
       { title: "Encuentra un Grupo — AA Área 2 Metropolitana" },
@@ -30,6 +31,11 @@ export const Route = createFileRoute("/grupos")({
       },
     ],
   }),
+  errorComponent: ({ error }) => (
+    <div className="mx-auto max-w-2xl p-10 text-center text-ink/80">
+      No pudimos cargar los grupos: {error.message}
+    </div>
+  ),
   component: GruposLayout,
 });
 
