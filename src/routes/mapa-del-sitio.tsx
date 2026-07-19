@@ -1,8 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { PageShell } from "@/components/site/PageShell";
-import { groups } from "@/lib/groups-data";
+import { groupsQueryOptions } from "@/lib/groups-queries";
 
 export const Route = createFileRoute("/mapa-del-sitio")({
+  loader: ({ context }) => context.queryClient.ensureQueryData(groupsQueryOptions()),
   head: () => ({
     meta: [
       { title: "Mapa del sitio — AA Área 2 Metropolitana" },
@@ -17,10 +19,16 @@ export const Route = createFileRoute("/mapa-del-sitio")({
       },
     ],
   }),
+  errorComponent: ({ error }) => (
+    <div className="mx-auto max-w-2xl p-10 text-center text-ink/80">
+      No pudimos cargar el mapa del sitio: {error.message}
+    </div>
+  ),
   component: Mapa,
 });
 
 function Mapa() {
+  const { data: groups } = useSuspenseQuery(groupsQueryOptions());
   return (
     <PageShell
       eyebrow="Índice"
