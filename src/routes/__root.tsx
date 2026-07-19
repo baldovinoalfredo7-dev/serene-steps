@@ -126,6 +126,8 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const router = useRouter();
+  const pathname = router.state.location.pathname;
+  const isServiceCenter = pathname === "/servicio" || pathname.startsWith("/servicio/");
 
   useEffect(() => {
     let mounted = true;
@@ -147,6 +149,15 @@ function RootComponent() {
     };
   }, [queryClient, router]);
 
+  if (isServiceCenter) {
+    return (
+      <QueryClientProvider client={queryClient}>
+        <Outlet />
+        <Toaster richColors position="top-center" />
+      </QueryClientProvider>
+    );
+  }
+
   return (
     <QueryClientProvider client={queryClient}>
       <div className="flex min-h-dvh flex-col bg-paper">
@@ -162,3 +173,4 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
+
