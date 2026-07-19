@@ -1,8 +1,8 @@
 import { createFileRoute, Link, Outlet, useMatches } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { ArrowRight, MapPin, Clock, Search } from "lucide-react";
 import {
-  groups,
   municipalities,
   weekdayLabels,
   meetingTypeLabel,
@@ -11,6 +11,7 @@ import {
   type TimeOfDay,
   type Group,
 } from "@/lib/groups-data";
+import { groupsQueryOptions } from "@/lib/groups-queries";
 import { PageShell } from "@/components/site/PageShell";
 
 export const Route = createFileRoute("/grupos")({
