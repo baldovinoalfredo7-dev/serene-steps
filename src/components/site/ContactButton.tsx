@@ -38,11 +38,10 @@ export function ContactButton() {
         <button
           type="button"
           aria-label="Hablar con un servidor de AA"
-          className="fixed bottom-20 right-4 z-50 inline-flex min-h-12 items-center gap-2 rounded-full bg-paper px-5 py-3 text-sm font-semibold text-brand shadow-lift ring-1 ring-brand/20 transition-all hover:-translate-y-0.5 hover:bg-brand-tint focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand/30 sm:bottom-24 sm:right-6 sm:px-6 sm:py-3.5 sm:text-base"
+          className="fixed bottom-20 right-4 z-50 inline-flex min-h-12 min-w-12 items-center justify-center gap-2 rounded-full bg-paper px-3 py-3 text-sm font-semibold text-brand shadow-lift ring-1 ring-brand/20 transition-all hover:-translate-y-0.5 hover:bg-brand-tint focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand/30 sm:bottom-24 sm:right-6 sm:px-6 sm:py-3.5 sm:text-base"
         >
-          <MessageCircle className="size-4 sm:size-5" strokeWidth={2} aria-hidden />
+          <MessageCircle className="size-5" strokeWidth={2} aria-hidden />
           <span className="hidden sm:inline">Hablar con un servidor de AA</span>
-          <span className="sm:hidden">Hablar con un servidor</span>
         </button>
       </DialogTrigger>
 
