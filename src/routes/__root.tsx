@@ -127,7 +127,11 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const router = useRouter();
   const pathname = router.state.location.pathname;
-  const isServiceCenter = pathname === "/servicio" || pathname.startsWith("/servicio/");
+  const isServiceCenter =
+    pathname === "/servicio" ||
+    pathname.startsWith("/servicio/") ||
+    pathname === "/miembros" ||
+    pathname.startsWith("/miembros/");
 
   useEffect(() => {
     let mounted = true;
