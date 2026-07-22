@@ -31,7 +31,9 @@ import { Route as GruposSlugRouteImport } from './routes/grupos.$slug'
 import { Route as EventosSlugRouteImport } from './routes/eventos.$slug'
 import { Route as AuthenticatedServicioRouteImport } from './routes/_authenticated/servicio'
 import { Route as AuthenticatedPerfilRouteImport } from './routes/_authenticated/perfil'
+import { Route as AuthenticatedMiembrosRouteImport } from './routes/_authenticated/miembros'
 import { Route as AuthenticatedServicioIndexRouteImport } from './routes/_authenticated/servicio.index'
+import { Route as AuthenticatedMiembrosIndexRouteImport } from './routes/_authenticated/miembros.index'
 import { Route as AuthenticatedServicioUsuariosRouteImport } from './routes/_authenticated/servicio.usuarios'
 import { Route as AuthenticatedServicioPerfilRouteImport } from './routes/_authenticated/servicio.perfil'
 import { Route as AuthenticatedServicioReunionesIndexRouteImport } from './routes/_authenticated/servicio.reuniones.index'
@@ -151,11 +153,22 @@ const AuthenticatedPerfilRoute = AuthenticatedPerfilRouteImport.update({
   path: '/perfil',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedMiembrosRoute = AuthenticatedMiembrosRouteImport.update({
+  id: '/miembros',
+  path: '/miembros',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedServicioIndexRoute =
   AuthenticatedServicioIndexRouteImport.update({
     id: '/',
     path: '/',
     getParentRoute: () => AuthenticatedServicioRoute,
+  } as any)
+const AuthenticatedMiembrosIndexRoute =
+  AuthenticatedMiembrosIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedMiembrosRoute,
   } as any)
 const AuthenticatedServicioUsuariosRoute =
   AuthenticatedServicioUsuariosRouteImport.update({
@@ -230,12 +243,14 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tengo-un-problema': typeof TengoUnProblemaRoute
   '/testimonios': typeof TestimoniosRoute
+  '/miembros': typeof AuthenticatedMiembrosRouteWithChildren
   '/perfil': typeof AuthenticatedPerfilRoute
   '/servicio': typeof AuthenticatedServicioRouteWithChildren
   '/eventos/$slug': typeof EventosSlugRoute
   '/grupos/$slug': typeof GruposSlugRoute
   '/servicio/perfil': typeof AuthenticatedServicioPerfilRoute
   '/servicio/usuarios': typeof AuthenticatedServicioUsuariosRoute
+  '/miembros/': typeof AuthenticatedMiembrosIndexRoute
   '/servicio/': typeof AuthenticatedServicioIndexRoute
   '/servicio/eventos/$id': typeof AuthenticatedServicioEventosIdRoute
   '/servicio/eventos/nuevo': typeof AuthenticatedServicioEventosNuevoRoute
@@ -268,6 +283,7 @@ export interface FileRoutesByTo {
   '/grupos/$slug': typeof GruposSlugRoute
   '/servicio/perfil': typeof AuthenticatedServicioPerfilRoute
   '/servicio/usuarios': typeof AuthenticatedServicioUsuariosRoute
+  '/miembros': typeof AuthenticatedMiembrosIndexRoute
   '/servicio': typeof AuthenticatedServicioIndexRoute
   '/servicio/eventos/$id': typeof AuthenticatedServicioEventosIdRoute
   '/servicio/eventos/nuevo': typeof AuthenticatedServicioEventosNuevoRoute
@@ -297,12 +313,14 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tengo-un-problema': typeof TengoUnProblemaRoute
   '/testimonios': typeof TestimoniosRoute
+  '/_authenticated/miembros': typeof AuthenticatedMiembrosRouteWithChildren
   '/_authenticated/perfil': typeof AuthenticatedPerfilRoute
   '/_authenticated/servicio': typeof AuthenticatedServicioRouteWithChildren
   '/eventos/$slug': typeof EventosSlugRoute
   '/grupos/$slug': typeof GruposSlugRoute
   '/_authenticated/servicio/perfil': typeof AuthenticatedServicioPerfilRoute
   '/_authenticated/servicio/usuarios': typeof AuthenticatedServicioUsuariosRoute
+  '/_authenticated/miembros/': typeof AuthenticatedMiembrosIndexRoute
   '/_authenticated/servicio/': typeof AuthenticatedServicioIndexRoute
   '/_authenticated/servicio/eventos/$id': typeof AuthenticatedServicioEventosIdRoute
   '/_authenticated/servicio/eventos/nuevo': typeof AuthenticatedServicioEventosNuevoRoute
@@ -332,12 +350,14 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/tengo-un-problema'
     | '/testimonios'
+    | '/miembros'
     | '/perfil'
     | '/servicio'
     | '/eventos/$slug'
     | '/grupos/$slug'
     | '/servicio/perfil'
     | '/servicio/usuarios'
+    | '/miembros/'
     | '/servicio/'
     | '/servicio/eventos/$id'
     | '/servicio/eventos/nuevo'
@@ -370,6 +390,7 @@ export interface FileRouteTypes {
     | '/grupos/$slug'
     | '/servicio/perfil'
     | '/servicio/usuarios'
+    | '/miembros'
     | '/servicio'
     | '/servicio/eventos/$id'
     | '/servicio/eventos/nuevo'
@@ -398,12 +419,14 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/tengo-un-problema'
     | '/testimonios'
+    | '/_authenticated/miembros'
     | '/_authenticated/perfil'
     | '/_authenticated/servicio'
     | '/eventos/$slug'
     | '/grupos/$slug'
     | '/_authenticated/servicio/perfil'
     | '/_authenticated/servicio/usuarios'
+    | '/_authenticated/miembros/'
     | '/_authenticated/servicio/'
     | '/_authenticated/servicio/eventos/$id'
     | '/_authenticated/servicio/eventos/nuevo'
@@ -591,12 +614,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedPerfilRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/miembros': {
+      id: '/_authenticated/miembros'
+      path: '/miembros'
+      fullPath: '/miembros'
+      preLoaderRoute: typeof AuthenticatedMiembrosRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/servicio/': {
       id: '/_authenticated/servicio/'
       path: '/'
       fullPath: '/servicio/'
       preLoaderRoute: typeof AuthenticatedServicioIndexRouteImport
       parentRoute: typeof AuthenticatedServicioRoute
+    }
+    '/_authenticated/miembros/': {
+      id: '/_authenticated/miembros/'
+      path: '/'
+      fullPath: '/miembros/'
+      preLoaderRoute: typeof AuthenticatedMiembrosIndexRouteImport
+      parentRoute: typeof AuthenticatedMiembrosRoute
     }
     '/_authenticated/servicio/usuarios': {
       id: '/_authenticated/servicio/usuarios'
@@ -664,6 +701,19 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AuthenticatedMiembrosRouteChildren {
+  AuthenticatedMiembrosIndexRoute: typeof AuthenticatedMiembrosIndexRoute
+}
+
+const AuthenticatedMiembrosRouteChildren: AuthenticatedMiembrosRouteChildren = {
+  AuthenticatedMiembrosIndexRoute: AuthenticatedMiembrosIndexRoute,
+}
+
+const AuthenticatedMiembrosRouteWithChildren =
+  AuthenticatedMiembrosRoute._addFileChildren(
+    AuthenticatedMiembrosRouteChildren,
+  )
+
 interface AuthenticatedServicioRouteChildren {
   AuthenticatedServicioPerfilRoute: typeof AuthenticatedServicioPerfilRoute
   AuthenticatedServicioUsuariosRoute: typeof AuthenticatedServicioUsuariosRoute
@@ -699,11 +749,13 @@ const AuthenticatedServicioRouteWithChildren =
   )
 
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedMiembrosRoute: typeof AuthenticatedMiembrosRouteWithChildren
   AuthenticatedPerfilRoute: typeof AuthenticatedPerfilRoute
   AuthenticatedServicioRoute: typeof AuthenticatedServicioRouteWithChildren
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedMiembrosRoute: AuthenticatedMiembrosRouteWithChildren,
   AuthenticatedPerfilRoute: AuthenticatedPerfilRoute,
   AuthenticatedServicioRoute: AuthenticatedServicioRouteWithChildren,
 }
