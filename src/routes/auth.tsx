@@ -33,7 +33,7 @@ function AuthPage() {
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
-      if (data.user) navigate({ to: "/servicio", replace: true });
+      if (data.user) navigate({ to: "/miembros", replace: true });
     });
   }, [navigate]);
 
