@@ -58,7 +58,7 @@ function AuthPage() {
       setBusy(false);
     }
     toast.success("Sesión iniciada.");
-    navigate({ to: "/servicio", replace: true });
+    navigate({ to: "/miembros", replace: true });
   }
 
   async function onForgot(e: React.FormEvent) {
