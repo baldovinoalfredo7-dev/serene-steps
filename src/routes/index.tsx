@@ -41,28 +41,29 @@ function HomeContent({ groups }: { groups: import("@/lib/groups-data").Group[] }
         />
         <div className="absolute inset-0 bg-gradient-to-b from-paper/85 via-paper/70 to-paper/95" />
 
-        <div className="relative mx-auto flex min-h-[78svh] max-w-4xl flex-col items-center justify-center px-6 py-24 text-center md:py-32">
-          <p className="mb-6 text-[0.7rem] font-semibold uppercase tracking-[0.3em] text-brand/80 sm:text-xs">
+        <div className="relative mx-auto flex min-h-[58svh] max-w-4xl flex-col items-center justify-center px-6 py-16 text-center md:min-h-[60svh] md:py-20">
+          <p className="mb-5 text-[0.7rem] font-semibold uppercase tracking-[0.3em] text-brand/80 sm:text-xs">
             Área 2 Metropolitana · Barranquilla
           </p>
-          <h1 className="mb-8 max-w-3xl text-balance font-serif text-4xl leading-[1.05] text-brand sm:text-6xl lg:text-7xl">
+          <h1 className="mb-6 max-w-3xl text-balance font-serif text-4xl leading-[1.05] text-brand sm:text-5xl lg:text-6xl">
             Alcohólicos Anónimos
           </h1>
-          <p className="mb-12 max-w-2xl text-pretty font-serif text-xl italic leading-snug text-brand/90 sm:text-2xl md:text-3xl">
+          <p className="mb-9 max-w-2xl text-pretty font-serif text-xl italic leading-snug text-brand/90 sm:text-2xl md:text-3xl">
             La ayuda está más cerca de lo que imaginas.
           </p>
-          <Link
-            to="/grupos"
+          <a
+            href="#busco-ayuda"
             className="inline-flex min-h-14 items-center gap-3 rounded-full bg-brand px-10 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-paper transition-colors hover:bg-brand-soft"
           >
-            Encuentra un grupo
+            Busco ayuda
             <ArrowRight className="size-4" />
-          </Link>
+          </a>
         </div>
       </section>
 
       {/* 2. BUSCO AYUDA */}
       <HomeBlock
+        id="busco-ayuda"
         eyebrow="Busco ayuda"
         title="Estás en el lugar correcto."
         body="Para ti o para alguien que quieres. Aquí encontrarás una comunidad que ha vivido lo mismo y que te recibe con calma, respeto y anonimato. No hay inscripciones, no hay cuotas, no hay requisitos."
@@ -169,12 +170,14 @@ function HomeContent({ groups }: { groups: import("@/lib/groups-data").Group[] }
 }
 
 function HomeBlock({
+  id,
   eyebrow,
   title,
   body,
   cta,
   tone = "paper",
 }: {
+  id?: string;
   eyebrow: string;
   title: string;
   body: string;
@@ -183,7 +186,8 @@ function HomeBlock({
 }) {
   return (
     <section
-      className={`${tone === "soft" ? "bg-soft/40" : "bg-paper"} border-t border-brand/5 py-24 md:py-32`}
+      id={id}
+      className={`${tone === "soft" ? "bg-soft/40" : "bg-paper"} border-t border-brand/5 py-24 md:py-32 scroll-mt-24`}
     >
       <div className="mx-auto grid max-w-6xl gap-10 px-6 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-16">
         <div>
