@@ -170,12 +170,14 @@ function HomeContent({ groups }: { groups: import("@/lib/groups-data").Group[] }
 }
 
 function HomeBlock({
+  id,
   eyebrow,
   title,
   body,
   cta,
   tone = "paper",
 }: {
+  id?: string;
   eyebrow: string;
   title: string;
   body: string;
@@ -184,7 +186,8 @@ function HomeBlock({
 }) {
   return (
     <section
-      className={`${tone === "soft" ? "bg-soft/40" : "bg-paper"} border-t border-brand/5 py-24 md:py-32`}
+      id={id}
+      className={`${tone === "soft" ? "bg-soft/40" : "bg-paper"} border-t border-brand/5 py-24 md:py-32 scroll-mt-24`}
     >
       <div className="mx-auto grid max-w-6xl gap-10 px-6 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-16">
         <div>
