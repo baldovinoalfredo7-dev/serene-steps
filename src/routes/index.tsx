@@ -1,26 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import heroImage from "@/assets/hero-room.jpg";
-import queEsAAImage from "@/assets/que-es-aa.jpg";
 import { groupsQueryOptions } from "@/lib/groups-queries";
-import { MeetingFinder } from "@/components/site/MeetingFinder";
-import {
-  ArrowRight,
-  Briefcase,
-  CalendarDays,
-  Clock,
-  Ear,
-  HandHeart,
-  MapPin,
-  Sparkles,
-  Trophy,
-  UsersRound,
-  ShieldCheck,
-  Wallet,
-  ClipboardX,
-  CalendarCheck,
-  LifeBuoy,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   loader: ({ context }) => context.queryClient.ensureQueryData(groupsQueryOptions()),
@@ -41,552 +23,189 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   const { data: groups } = useSuspenseQuery(groupsQueryOptions());
-  return HomeContent({ groups });
+  return <HomeContent groups={groups} />;
 }
 
 function HomeContent({ groups }: { groups: import("@/lib/groups-data").Group[] }) {
   return (
     <>
-      {/* HERO */}
-      <section className="relative min-h-[calc(100svh-5rem)] overflow-hidden bg-soft md:min-h-[calc(100svh-6rem)]">
+      {/* 1. HERO DE BIENVENIDA */}
+      <section className="relative overflow-hidden bg-soft">
         <img
           src={heroImage}
-          alt="Sala luminosa preparada para una reunión de AA con sillas en círculo"
+          alt=""
           width={1600}
           height={1200}
           className="absolute inset-0 h-full w-full object-cover"
+          aria-hidden
         />
-        {/* Superposición sutil para mejorar el contraste sin oscurecer la imagen */}
-        <div className="absolute inset-0 bg-gradient-to-b from-paper/85 via-paper/60 to-paper/90" />
-        <div className="absolute inset-0 bg-brand/20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-paper/85 via-paper/70 to-paper/95" />
 
-        <div className="relative mx-auto flex min-h-[calc(100svh-5rem)] max-w-6xl flex-col items-center justify-center px-6 py-10 pb-24 text-center md:min-h-[calc(100svh-6rem)] md:py-20 md:pb-20">
-          <h1 className="mb-3 max-w-5xl text-balance font-serif text-[2rem] leading-[1.05] text-brand sm:mb-5 sm:text-6xl lg:text-[4.75rem]">
+        <div className="relative mx-auto flex min-h-[78svh] max-w-4xl flex-col items-center justify-center px-6 py-24 text-center md:py-32">
+          <p className="mb-6 text-[0.7rem] font-semibold uppercase tracking-[0.3em] text-brand/80 sm:text-xs">
+            Área 2 Metropolitana · Barranquilla
+          </p>
+          <h1 className="mb-8 max-w-3xl text-balance font-serif text-4xl leading-[1.05] text-brand sm:text-6xl lg:text-7xl">
             Alcohólicos Anónimos
           </h1>
-          <p className="mb-6 text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-brand/90 sm:mb-10 sm:text-base sm:tracking-[0.3em]">
-            Área 2 Metropolitana – Barranquilla
-          </p>
-          <p className="mb-4 max-w-3xl text-pretty font-serif text-lg italic leading-snug text-brand sm:mb-6 sm:text-3xl lg:text-4xl">
+          <p className="mb-12 max-w-2xl text-pretty font-serif text-xl italic leading-snug text-brand/90 sm:text-2xl md:text-3xl">
             La ayuda está más cerca de lo que imaginas.
           </p>
-          <p className="mb-7 max-w-2xl text-pretty text-sm leading-relaxed text-ink/85 sm:mb-14 sm:text-lg">
-            Aquí encontrarás una puerta abierta. Elige por dónde quieres
-            entrar y te recibimos con calma, respeto y esperanza.
-          </p>
-
-
-          <ul
-            role="list"
-            aria-label="Tres puertas de entrada: elige la que corresponde a ti"
-            className="grid w-full max-w-5xl gap-4 sm:gap-6 md:grid-cols-3"
+          <Link
+            to="/grupos"
+            className="inline-flex min-h-14 items-center gap-3 rounded-full bg-brand px-10 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-paper transition-colors hover:bg-brand-soft"
           >
-            {heroEntries.map((entry) => (
-              <li key={entry.title} className="flex">
+            Encuentra un grupo
+            <ArrowRight className="size-4" />
+          </Link>
+        </div>
+      </section>
+
+      {/* 2. BUSCO AYUDA */}
+      <HomeBlock
+        eyebrow="Busco ayuda"
+        title="Estás en el lugar correcto."
+        body="Para ti o para alguien que quieres. Aquí encontrarás una comunidad que ha vivido lo mismo y que te recibe con calma, respeto y anonimato. No hay inscripciones, no hay cuotas, no hay requisitos."
+        cta={{ to: "/necesito-ayuda", label: "Cómo empezar" }}
+      />
+
+      {/* 3. COOPERACIÓN CON LA COMUNIDAD */}
+      <HomeBlock
+        eyebrow="Cooperación con la comunidad"
+        title="Trabajamos junto a quienes acompañan a otros."
+        body="Profesionales de la salud, educadores, líderes comunitarios e instituciones encuentran en Alcohólicos Anónimos un aliado silencioso para orientar a quienes puedan encontrar aquí un lugar seguro."
+        cta={{ to: "/contacto", label: "Hablemos" }}
+        tone="soft"
+      />
+
+      {/* 4. YA SOY MIEMBRO */}
+      <HomeBlock
+        eyebrow="Ya soy miembro"
+        title="Bienvenido de vuelta."
+        body="Ingresa con las credenciales que recibiste en tu grupo o en el Área para acompañar a tu comunidad y seguir compartiendo experiencia, fortaleza y esperanza."
+        cta={{ to: "/auth", label: "Acceso para miembros" }}
+      />
+
+      {/* 5. ENCUENTRA UN GRUPO */}
+      <section className="bg-soft/50 py-24 md:py-32">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="mb-16 max-w-2xl">
+            <span className="mb-4 block text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand">
+              Directorio del Área 2
+            </span>
+            <h2 className="mb-6 font-serif text-3xl leading-tight text-brand sm:text-4xl md:text-5xl">
+              Encuentra un grupo cerca de ti.
+            </h2>
+            <p className="text-lg leading-relaxed text-ink/85">
+              Nueve grupos abiertos en los municipios del Área 2 Metropolitana.
+            </p>
+          </div>
+
+          <ul role="list" className="grid gap-px overflow-hidden rounded-2xl border border-brand/10 bg-brand/10 md:grid-cols-2 lg:grid-cols-3">
+            {groups.map((g) => (
+              <li key={g.slug} className="bg-paper">
                 <Link
-                  to={entry.to}
-                  className="group flex min-h-[13rem] w-full flex-col rounded-3xl bg-paper/95 p-6 text-left shadow-lift ring-1 ring-brand/15 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-brand hover:text-paper hover:ring-brand focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand/40 sm:min-h-[15rem] sm:p-8"
+                  to="/grupos/$slug"
+                  params={{ slug: g.slug }}
+                  className="flex h-full flex-col justify-between gap-6 p-8 transition-colors hover:bg-soft/60"
                 >
-                  <span className="mb-5 grid size-12 place-items-center rounded-2xl bg-brand/10 transition-colors group-hover:bg-paper/15 sm:size-14">
-                    <entry.icon
-                      className="size-6 text-brand transition-colors group-hover:text-paper sm:size-7"
-                      strokeWidth={1.7}
-                    />
-                  </span>
-                  <span className="mb-2 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-brand/70 transition-colors group-hover:text-paper/80 sm:text-xs">
-                    {entry.eyebrow}
-                  </span>
-                  <h2 className="mb-3 font-serif text-xl italic leading-tight text-brand transition-colors group-hover:text-paper sm:text-2xl">
-                    {entry.title}
-                  </h2>
-                  <p className="mb-6 text-sm leading-relaxed text-ink/80 transition-colors group-hover:text-paper/90 sm:text-base">
-                    {entry.body}
-                  </p>
-                  <span className="mt-auto inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand transition-colors group-hover:text-paper sm:text-sm">
-                    {entry.cta}
-                    <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                  <div>
+                    <span className="mb-3 block text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-brand/70">
+                      {g.municipality}
+                    </span>
+                    <h3 className="font-serif text-xl leading-tight text-brand md:text-2xl">
+                      {g.name}
+                    </h3>
+                  </div>
+                  <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand">
+                    Ver información <ArrowRight className="size-4" />
                   </span>
                 </Link>
               </li>
             ))}
           </ul>
 
-        </div>
-      </section>
-
-
-      {/* ¿QUÉ ES ALCOHÓLICOS ANÓNIMOS? */}
-      {/* ¿CÓMO PODEMOS AYUDARTE? — 3 rutas prioritarias, acción antes que información */}
-      <section
-        aria-labelledby="ayuda-heading"
-        className="bg-paper py-20 md:py-28"
-      >
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-14 text-center">
-            <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand">
-              Empieza aquí
-            </span>
-            <h2
-              id="ayuda-heading"
-              className="font-serif text-4xl italic text-brand md:text-5xl lg:text-6xl"
-            >
-              ¿Cómo podemos ayudarte?
-            </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-ink/85 md:text-lg">
-              Elige el camino que mejor te describe. Cada uno te lleva a la
-              información y contacto que necesitas.
-            </p>
-          </div>
-
-          <div className="mx-auto grid max-w-6xl gap-6 sm:gap-8 md:grid-cols-3">
-            {helpCards.map((c) => (
-              <Link
-                key={c.title}
-                to={c.to}
-                className="group flex flex-col rounded-3xl bg-soft/70 p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:bg-brand hover:text-paper hover:shadow-lift md:p-10"
-              >
-                <div className="mb-6 grid size-14 place-items-center rounded-2xl bg-brand/10 transition-colors group-hover:bg-paper/15">
-                  <c.icon
-                    className="size-7 text-brand transition-colors group-hover:text-paper"
-                    strokeWidth={1.6}
-                  />
-                </div>
-                <h3 className="mb-3 font-serif text-2xl italic text-brand transition-colors group-hover:text-paper md:text-3xl">
-                  {c.title}
-                </h3>
-                <p className="mb-8 text-pretty leading-relaxed text-ink/85 transition-colors group-hover:text-paper/90">
-                  {c.body}
-                </p>
-                <span className="mt-auto inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.15em] text-brand transition-colors group-hover:text-paper">
-                  {c.cta}
-                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* NECESITO UNA REUNIÓN HOY — acción principal para quien busca ayuda */}
-      <MeetingFinder groups={groups} />
-
-      {/* ¿QUÉ ES ALCOHÓLICOS ANÓNIMOS? — contexto institucional, después de la acción */}
-      <section
-        aria-labelledby="que-es-aa-heading"
-        className="bg-soft/40 py-20 md:py-28"
-      >
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
-            <div className="order-2 md:order-1">
-              <div className="overflow-hidden rounded-3xl shadow-soft">
-                <img
-                  src={queEsAAImage}
-                  alt="Sala de reunión de Alcohólicos Anónimos con personas de espaldas sentadas en círculo"
-                  width={1024}
-                  height={1024}
-                  loading="lazy"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            </div>
-            <div className="order-1 md:order-2">
-              <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand">
-                Sobre nosotros
-              </span>
-              <h2
-                id="que-es-aa-heading"
-                className="mb-6 font-serif text-4xl italic leading-tight text-brand md:text-5xl lg:text-6xl"
-              >
-                ¿Qué es Alcohólicos Anónimos?
-              </h2>
-              <p className="mb-10 text-pretty text-lg leading-relaxed text-ink/85 md:text-xl">
-                Alcohólicos Anónimos es una comunidad de hombres y mujeres que
-                comparten su experiencia, fortaleza y esperanza para resolver su
-                problema común y ayudar a otros a recuperarse del alcoholismo.
-              </p>
-              <Link
-                to="/que-es-aa"
-                className="inline-flex min-h-14 items-center gap-3 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-paper shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-soft hover:shadow-lift focus-visible:ring-4 focus-visible:ring-brand/30"
-              >
-                Conoce más
-                <ArrowRight className="size-4" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-
-      {/* ENCUENTRA UN GRUPO */}
-      <section className="bg-soft/60 py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-14 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
-            <div>
-              <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand">
-                Directorio del Área 2
-              </span>
-              <h2 className="mb-4 font-serif text-4xl italic text-brand md:text-5xl lg:text-6xl">
-                Encuentra un grupo
-              </h2>
-              <p className="max-w-xl text-lg leading-relaxed text-ink/85">
-                Nueve grupos abiertos, en distintos municipios del Área 2 Metropolitana.
-              </p>
-            </div>
+          <div className="mt-12">
             <Link
               to="/grupos"
-              className="inline-flex min-h-12 items-center gap-2 rounded-full border border-brand/25 px-6 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-brand transition-colors hover:bg-brand hover:text-paper"
+              className="inline-flex items-center gap-2 border-b border-brand/30 pb-1 text-sm font-semibold uppercase tracking-[0.18em] text-brand transition-colors hover:border-brand"
             >
               Ver directorio completo <ArrowRight className="size-4" />
             </Link>
           </div>
-
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {groups.map((g) => (
-              <GroupCard
-                key={g.slug}
-                slug={g.slug}
-                name={g.name}
-                municipality={g.municipality}
-                schedule={mainSchedule(g.meetings)}
-              />
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* PRIMERA REUNIÓN — información acogedora para quien nunca ha ido */}
-      <section
-        aria-labelledby="primera-reunion-heading"
-        className="bg-paper py-20 md:py-28"
-      >
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-14 text-center">
-            <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand">
-              Para tu primera vez
-            </span>
-            <h2
-              id="primera-reunion-heading"
-              className="text-balance font-serif text-4xl italic text-brand md:text-5xl lg:text-6xl"
-            >
-              ¿Qué puedes esperar de tu primera reunión?
-            </h2>
-          </div>
-
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {firstMeetingItems.map((item) => (
-              <div
-                key={item.title}
-                className="flex flex-col rounded-3xl bg-soft/60 p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lift md:p-10"
-              >
-                <div className="mb-6 grid size-14 place-items-center rounded-2xl bg-brand/10">
-                  <item.icon className="size-7 text-brand" strokeWidth={1.6} />
-                </div>
-                <h4 className="mb-3 font-serif text-xl italic text-brand md:text-2xl">
-                  {item.title}
-                </h4>
-                <p className="text-pretty leading-relaxed text-ink/85">
-                  {item.body}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-14 text-center">
-            <Link
-              to="/primera-reunion"
-              className="inline-flex min-h-12 items-center gap-2 rounded-full border border-brand/25 px-7 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-brand transition-colors hover:bg-brand hover:text-paper"
-            >
-              Leer más sobre tu primera reunión
-              <ArrowRight className="size-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* PRÓXIMOS EVENTOS */}
-      <section
-        aria-labelledby="eventos-heading"
-        className="bg-soft/60 py-20 md:py-28"
-      >
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-14 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
-            <div>
-              <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand">
-                Calendario del Área
-              </span>
-              <h2
-                id="eventos-heading"
-                className="mb-4 font-serif text-4xl italic text-brand md:text-5xl lg:text-6xl"
-              >
-                Próximos eventos
-              </h2>
-              <p className="max-w-xl text-lg leading-relaxed text-ink/85">
-                Espacios abiertos para reforzar la unidad, la experiencia y el servicio.
-              </p>
-            </div>
-            <Link
-              to="/eventos"
-              className="inline-flex min-h-12 items-center gap-2 rounded-full border border-brand/25 px-6 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-brand transition-colors hover:bg-brand hover:text-paper"
-            >
-              Ver todos los eventos <ArrowRight className="size-4" />
-            </Link>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-3">
-            {eventCards.map((e) => (
-              <article
-                key={e.title}
-                className="flex flex-col rounded-3xl bg-paper p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lift md:p-10"
-              >
-                <div className="mb-6 grid size-14 place-items-center rounded-2xl bg-brand/10">
-                  <e.icon className="size-7 text-brand" strokeWidth={1.6} />
-                </div>
-                <span className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand">
-                  {e.tag}
-                </span>
-                <h3 className="mb-3 font-serif text-2xl italic text-brand md:text-3xl">
-                  {e.title}
-                </h3>
-                <p className="mb-8 text-pretty leading-relaxed text-ink/85">
-                  {e.body}
-                </p>
-                <Link
-                  to="/eventos"
-                  className="mt-auto inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.15em] text-brand"
-                >
-                  Ver calendario <ArrowRight className="size-4" />
-                </Link>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-
-      {/* TESTIMONIOS */}
-      <section className="bg-brand py-20 text-paper md:py-24">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-12">
-            <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-paper/50">
-              Testimonios anónimos
-            </span>
-            <h2 className="font-serif text-3xl italic text-paper md:text-4xl">
-              Voces de esperanza
-            </h2>
-          </div>
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-            <blockquote className="border-l border-paper/15 pl-8">
-              <p className="mb-6 text-pretty font-serif text-2xl italic leading-tight">
-                "Llegué con miedo y mucha vergüenza, pensando que sería juzgado. Encontré un lugar
-                donde por primera vez en años me sentí comprendido sin mediar palabras."
-              </p>
-              <cite className="text-sm font-medium not-italic opacity-60">
-                — Miembro de AA, 4 años de sobriedad
-              </cite>
-            </blockquote>
-            <blockquote className="border-l border-paper/15 pl-8">
-              <p className="mb-6 text-pretty font-serif text-2xl italic leading-tight">
-                "No sabía que existía una solución tan sencilla. No se trata de religión, se trata
-                de comunidad y de entender que solo por hoy podemos estar bien."
-              </p>
-              <cite className="text-sm font-medium not-italic opacity-60">
-                — Miembro de AA, Área 2 Metropolitana
-              </cite>
-            </blockquote>
-          </div>
-          <div className="mt-12">
-            <Link
-              to="/testimonios"
-              className="inline-flex items-center gap-2 border-b border-paper/30 pb-1 text-sm font-medium text-paper hover:border-paper"
-            >
-              Leer más testimonios
-              <ArrowRight className="size-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ACCESO PARA MIEMBROS */}
-      <section className="border-t border-brand/10 bg-soft/60 py-16 md:py-20">
-        <div className="mx-auto max-w-4xl px-6">
-          <div className="flex flex-col items-center gap-6 rounded-3xl bg-paper p-10 text-center shadow-soft md:flex-row md:items-center md:justify-between md:gap-10 md:p-12 md:text-left">
-            <div className="flex-1">
-              <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand">
-                Puerta para miembros
-              </span>
-              <h2 className="mb-3 font-serif text-2xl italic text-brand md:text-3xl">
-                ¿Ya haces parte de Alcohólicos Anónimos?
-              </h2>
-              <p className="text-pretty leading-relaxed text-ink/85">
-                Ingresa con las credenciales que recibiste en tu grupo o en el
-                Área para acompañar a tu comunidad y seguir sirviendo con
-                sencillez.
-              </p>
-            </div>
-            <Link
-              to="/auth"
-              className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full border border-brand/25 px-7 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-brand transition-colors hover:bg-brand hover:text-paper"
-            >
-              Acceso para miembros
-              <ArrowRight className="size-4" />
-            </Link>
-          </div>
+      {/* 6. INFORMACIÓN INSTITUCIONAL */}
+      <section className="bg-paper py-24 md:py-32">
+        <div className="mx-auto max-w-3xl px-6">
+          <span className="mb-4 block text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand">
+            Información institucional
+          </span>
+          <h2 className="mb-8 font-serif text-3xl leading-tight text-brand sm:text-4xl md:text-5xl">
+            ¿Qué es Alcohólicos Anónimos?
+          </h2>
+          <p className="mb-6 text-pretty text-lg leading-relaxed text-ink/85 md:text-xl">
+            Alcohólicos Anónimos es una comunidad de hombres y mujeres que
+            comparten su experiencia, fortaleza y esperanza para resolver su
+            problema común y ayudar a otros a recuperarse del alcoholismo.
+          </p>
+          <p className="mb-12 text-pretty text-lg leading-relaxed text-ink/85 md:text-xl">
+            El único requisito para ser miembro es el deseo de dejar la bebida.
+            No hay honorarios ni cuotas: se sostiene con sus propias
+            contribuciones. No está afiliada a ninguna secta, religión, partido
+            político, organización o institución alguna.
+          </p>
+          <Link
+            to="/que-es-aa"
+            className="inline-flex items-center gap-2 border-b border-brand/30 pb-1 text-sm font-semibold uppercase tracking-[0.18em] text-brand transition-colors hover:border-brand"
+          >
+            Conocer más sobre AA <ArrowRight className="size-4" />
+          </Link>
         </div>
       </section>
     </>
   );
 }
 
-function GroupCard({
-  slug,
-  name,
-  municipality,
-  schedule,
+function HomeBlock({
+  eyebrow,
+  title,
+  body,
+  cta,
+  tone = "paper",
 }: {
-  slug: string;
-  name: string;
-  municipality: string;
-  schedule: string;
+  eyebrow: string;
+  title: string;
+  body: string;
+  cta: { to: string; label: string };
+  tone?: "paper" | "soft";
 }) {
   return (
-    <div className="group flex flex-col rounded-3xl bg-paper p-8 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
-      <span className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-brand">
-        {municipality}
-      </span>
-      <h3 className="mb-4 font-serif text-2xl italic text-brand">{name}</h3>
-      <div className="mb-8 flex items-center gap-2 text-sm text-ink/85">
-        <Clock className="size-4 text-brand/80" strokeWidth={1.8} />
-        <span>{schedule}</span>
+    <section
+      className={`${tone === "soft" ? "bg-soft/40" : "bg-paper"} border-t border-brand/5 py-24 md:py-32`}
+    >
+      <div className="mx-auto grid max-w-6xl gap-10 px-6 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-16">
+        <div>
+          <span className="text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand">
+            {eyebrow}
+          </span>
+        </div>
+        <div>
+          <h2 className="mb-6 font-serif text-3xl leading-tight text-brand sm:text-4xl md:text-5xl">
+            {title}
+          </h2>
+          <p className="mb-10 text-pretty text-lg leading-relaxed text-ink/85 md:text-xl">
+            {body}
+          </p>
+          <Link
+            to={cta.to}
+            className="inline-flex items-center gap-2 border-b border-brand/30 pb-1 text-sm font-semibold uppercase tracking-[0.18em] text-brand transition-colors hover:border-brand"
+          >
+            {cta.label} <ArrowRight className="size-4" />
+          </Link>
+        </div>
       </div>
-      <Link
-        to="/grupos/$slug"
-        params={{ slug }}
-        className="mt-auto inline-flex min-h-12 items-center justify-between gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-paper transition-all hover:bg-brand/90"
-      >
-        Ver información
-        <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-      </Link>
-    </div>
+    </section>
   );
 }
-
-function mainSchedule(meetings: { weekday: number; start: string; end: string }[]) {
-  if (!meetings.length) return "Consultar horario";
-  const sample = meetings[0];
-  const days = new Set(meetings.map((m) => m.weekday)).size;
-  return `${days} día${days > 1 ? "s" : ""} · ${sample.start}–${sample.end} h`;
-}
-
-const heroEntries = [
-  {
-    eyebrow: "Si buscas ayuda",
-    title: "Necesito ayuda",
-    body: "Para ti o para alguien que quieres. Aquí hay una reunión cerca y personas dispuestas a escucharte, sin juicios ni requisitos.",
-    cta: "Entrar por aquí",
-    to: "/necesito-ayuda",
-    icon: LifeBuoy,
-  },
-  {
-    eyebrow: "Si ya caminas con nosotros",
-    title: "Ya soy miembro",
-    body: "Bienvenido de vuelta. Ingresa con tus credenciales para acompañar a tu grupo y seguir compartiendo experiencia, fortaleza y esperanza.",
-    cta: "Acceso para miembros",
-    to: "/auth",
-    icon: ShieldCheck,
-  },
-  {
-    eyebrow: "Si acompañas a otros",
-    title: "Soy profesional o institución",
-    body: "Trabajas en salud, justicia, educación o comunidad. Cuenta con nosotros para orientar a quien pueda encontrar en AA un lugar seguro.",
-    cta: "Hablemos",
-    to: "/contacto",
-    icon: Briefcase,
-  },
-] as const;
-
-const heroBadges = [
-  { label: "Sin inscripción", icon: ClipboardX },
-  { label: "Sin cuotas para asistir", icon: Wallet },
-  { label: "Anonimato", icon: ShieldCheck },
-  { label: "Reuniones todos los días", icon: CalendarCheck },
-] as const;
-
-const helpCards = [
-  {
-    title: "Busco ayuda",
-    body: "Para ti o para alguien que quieres. Encuentra una reunión cerca, conoce qué es AA y da tu primer paso acompañado.",
-    cta: "Empezar",
-    to: "/grupos",
-    icon: LifeBuoy,
-  },
-  {
-    title: "Ya soy miembro de AA",
-    body: "Ingresa con las credenciales que recibiste en tu grupo o en el Área para acompañar a tu comunidad.",
-    cta: "Acceso para miembros",
-    to: "/auth",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Soy profesional o institución",
-    body: "Salud, justicia, educación o comunidad: podemos orientar juntos a quien pueda encontrar en AA un lugar seguro.",
-    cta: "Escríbenos",
-    to: "/contacto",
-    icon: Briefcase,
-  },
-] as const;
-
-
-const eventCards = [
-  {
-    tag: "Foros",
-    title: "Foros de compartimiento",
-    body: "Espacios abiertos donde miembros comparten su experiencia, fortaleza y esperanza.",
-    icon: UsersRound,
-  },
-  {
-    tag: "Congresos",
-    title: "Congresos y convenciones",
-    body: "Encuentros regionales para fortalecer la unidad y el mensaje de recuperación.",
-    icon: CalendarDays,
-  },
-  {
-    tag: "Aniversarios",
-    title: "Aniversarios de grupo",
-    body: "Celebraciones donde miembros comparten sus años de sobriedad con la comunidad.",
-    icon: Trophy,
-  },
-];
-
-const firstMeetingItems = [
-  {
-    title: "No necesitas inscribirte",
-    body: "Simplemente llega a la dirección indicada. No hay papeleo ni requisitos previos.",
-    icon: ClipboardX,
-  },
-  {
-    title: "Puedes solamente escuchar",
-    body: "No estás obligado a hablar ni a presentarte. Puedes asistir solo a escuchar.",
-    icon: Ear,
-  },
-  {
-    title: "No hay cuotas para asistir",
-    body: "AA se sostiene con contribuciones voluntarias de sus miembros. Asistir es gratuito.",
-    icon: Wallet,
-  },
-  {
-    title: "Se respeta el anonimato",
-    body: "Lo que se dice en la reunión se queda en la reunión. Tu privacidad es prioridad.",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Encontrarás personas con experiencias similares",
-    body: "Hombres y mujeres que han vivido lo mismo y hoy comparten su camino con serenidad.",
-    icon: HandHeart,
-  },
-  {
-    title: "Siempre serás bienvenido",
-    body: "No importa tu historia, tu edad o de dónde vengas: aquí hay un lugar para ti.",
-    icon: Sparkles,
-  },
-];
