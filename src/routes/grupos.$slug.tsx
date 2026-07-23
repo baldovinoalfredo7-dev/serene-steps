@@ -1,19 +1,18 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { ArrowLeft, ArrowRight, Clock, ImageIcon, MapPin, Navigation, Phone } from "lucide-react";
-import {
-  findPlaceholderGroup,
-  weekdayLabels,
-  weekdayShort,
-} from "@/lib/grupos-placeholder";
+import { groupsQueryOptions, findGroupBySlug } from "@/lib/groups-queries";
+import { weekdayLabels, weekdayShort } from "@/lib/groups-data";
 
 export const Route = createFileRoute("/grupos/$slug")({
-  loader: ({ params }) => {
-    const group = findPlaceholderGroup(params.slug);
+  loader: async ({ context, params }) => {
+    const groups = await context.queryClient.ensureQueryData(groupsQueryOptions());
+    const group = findGroupBySlug(groups, params.slug);
     if (!group) throw notFound();
     return {
       slug: params.slug,
       name: group.name,
-      city: group.city,
+      municipality: group.municipality,
       addressLine: group.addressLine,
     };
   },
@@ -26,7 +25,7 @@ export const Route = createFileRoute("/grupos/$slug")({
         ],
       };
     }
-    const title = `${loaderData.name} — ${loaderData.city}`;
+    const title = `${loaderData.name} — ${loaderData.municipality}`;
     const desc = `Horarios, dirección y cómo llegar al ${loaderData.name} en ${loaderData.addressLine}.`;
     const url = `/grupos/${params.slug}`;
     return {
@@ -48,12 +47,18 @@ export const Route = createFileRoute("/grupos/$slug")({
       </Link>
     </div>
   ),
+  errorComponent: ({ error }) => (
+    <div className="mx-auto max-w-2xl p-10 text-center text-ink/80">
+      No pudimos cargar el grupo: {error.message}
+    </div>
+  ),
   component: GroupDetail,
 });
 
 function GroupDetail() {
   const { slug } = Route.useLoaderData();
-  const group = findPlaceholderGroup(slug)!;
+  const { data: groups } = useSuspenseQuery(groupsQueryOptions());
+  const group = findGroupBySlug(groups, slug)!;
 
   const mapsQuery = encodeURIComponent(group.addressFull);
   const mapEmbedSrc = `https://www.google.com/maps?q=${mapsQuery}&z=15&output=embed`;
@@ -82,7 +87,7 @@ function GroupDetail() {
             Todos los grupos
           </Link>
           <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-brand/80">
-            {group.city}
+            {group.municipality}
           </span>
           <h1 className="max-w-3xl text-balance font-serif text-4xl italic leading-tight text-brand md:text-6xl">
             {group.name}
@@ -97,9 +102,7 @@ function GroupDetail() {
       {/* Contenido */}
       <section className="py-16 md:py-20">
         <div className="mx-auto grid max-w-6xl gap-14 px-6 lg:grid-cols-3">
-          {/* Izquierda: horarios + fotografía + indicaciones */}
           <div className="space-y-10 lg:col-span-2">
-            {/* Fotografía placeholder */}
             <div>
               <h2 className="mb-6 font-serif text-2xl italic text-brand">El lugar</h2>
               <div className="flex aspect-[16/9] w-full items-center justify-center rounded-2xl bg-soft/70 ring-1 ring-black/5">
@@ -112,7 +115,6 @@ function GroupDetail() {
               </div>
             </div>
 
-            {/* Calendario semanal */}
             <div>
               <h2 className="mb-6 font-serif text-2xl italic text-brand">Calendario semanal</h2>
               <div className="overflow-hidden rounded-2xl ring-1 ring-black/5">
@@ -155,7 +157,6 @@ function GroupDetail() {
               </div>
             </div>
 
-            {/* Horarios detallados */}
             <div>
               <h2 className="mb-6 font-serif text-2xl italic text-brand">Horarios de reunión</h2>
               <ul className="divide-y divide-brand/5 rounded-2xl bg-paper ring-1 ring-black/5">
@@ -175,7 +176,6 @@ function GroupDetail() {
               </ul>
             </div>
 
-            {/* Indicaciones para llegar */}
             <div>
               <h2 className="mb-6 font-serif text-2xl italic text-brand">Cómo llegar</h2>
               <p className="max-w-[65ch] text-pretty text-base leading-relaxed text-ink/85">
@@ -186,7 +186,6 @@ function GroupDetail() {
             </div>
           </div>
 
-          {/* Derecha: mapa + contacto */}
           <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
             <div className="overflow-hidden rounded-2xl ring-1 ring-black/5">
               <iframe
@@ -227,9 +226,6 @@ function GroupDetail() {
                   Teléfono de contacto por confirmar con el Área.
                 </p>
               )}
-              {group.holidayNote ? (
-                <p className="mt-4 text-xs text-ink/70">{group.holidayNote}</p>
-              ) : null}
             </div>
           </aside>
         </div>
