@@ -70,7 +70,9 @@ function Home() {
   return <HomeContent groups={groups} />;
 }
 
-function HomeContent({ groups }: { groups: Group[] }) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function HomeContent({ groups: _groups }: { groups: Group[] }) {
+
 
   return (
     <>
