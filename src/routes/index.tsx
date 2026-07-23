@@ -140,63 +140,9 @@ function HomeContent({ groups }: { groups: Group[] }) {
             </p>
           </div>
 
-          <div className="mb-10 flex flex-col gap-3 sm:flex-row">
-            <div className="relative flex-1">
-              <Search className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-ink/50" />
-              <input
-                type="search"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Nombre del grupo, barrio o dirección"
-                aria-label="Buscar grupo"
-                className="h-12 w-full rounded-full border border-brand/15 bg-paper pl-11 pr-4 text-base text-ink placeholder:text-ink/50 focus:border-brand focus:outline-none"
-              />
-            </div>
-            <select
-              value={municipality}
-              onChange={(e) => setMunicipality(e.target.value)}
-              aria-label="Filtrar por ciudad o municipio"
-              className="h-12 rounded-full border border-brand/15 bg-paper px-5 text-base text-ink focus:border-brand focus:outline-none sm:w-64"
-            >
-              <option value="">Todas las ciudades</option>
-              {municipalities.map((m) => (
-                <option key={m} value={m}>
-                  {m}
-                </option>
-              ))}
-            </select>
-          </div>
+          {/* Módulo único de "Encuentra un grupo" — mismo componente que /grupos */}
+          <GroupFinder groups={groups} variant="compact" maxResults={6} />
 
-          {filtered.length === 0 ? (
-            <p className="rounded-2xl border border-brand/10 bg-paper p-8 text-center text-ink/70">
-              No encontramos grupos con esos criterios.
-            </p>
-          ) : (
-            <ul role="list" className="grid gap-px overflow-hidden rounded-2xl border border-brand/10 bg-brand/10 md:grid-cols-2 lg:grid-cols-3">
-              {filtered.slice(0, 6).map((g) => (
-                <li key={g.slug} className="bg-paper">
-                  <Link
-                    to="/grupos/$slug"
-                    params={{ slug: g.slug }}
-                    className="flex h-full flex-col justify-between gap-6 p-8 transition-colors hover:bg-soft/60"
-                  >
-                    <div>
-                      <span className="mb-3 block text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-brand/70">
-                        {g.municipality}
-                      </span>
-                      <h3 className="font-serif text-xl leading-tight text-brand md:text-2xl">
-                        {g.name}
-                      </h3>
-                      <p className="mt-2 text-sm text-ink/75">{g.addressLine}</p>
-                    </div>
-                    <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-                      Ver información <ArrowRight className="size-4" />
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          )}
 
           <div className="mt-10">
             <Link
