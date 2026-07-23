@@ -24,6 +24,7 @@ import { Route as HorariosRouteImport } from './routes/horarios'
 import { Route as GruposRouteImport } from './routes/grupos'
 import { Route as EventosRouteImport } from './routes/eventos'
 import { Route as ContactoRouteImport } from './routes/contacto'
+import { Route as CaribeRouteImport } from './routes/caribe'
 import { Route as AyudaFamiliarRouteImport } from './routes/ayuda-familiar'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
@@ -125,6 +126,11 @@ const EventosRoute = EventosRouteImport.update({
 const ContactoRoute = ContactoRouteImport.update({
   id: '/contacto',
   path: '/contacto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CaribeRoute = CaribeRouteImport.update({
+  id: '/caribe',
+  path: '/caribe',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AyudaFamiliarRoute = AyudaFamiliarRouteImport.update({
@@ -284,6 +290,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/ayuda-familiar': typeof AyudaFamiliarRoute
+  '/caribe': typeof CaribeRoute
   '/contacto': typeof ContactoRoute
   '/eventos': typeof EventosRouteWithChildren
   '/grupos': typeof GruposRouteWithChildren
@@ -327,6 +334,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/ayuda-familiar': typeof AyudaFamiliarRoute
+  '/caribe': typeof CaribeRoute
   '/contacto': typeof ContactoRoute
   '/eventos': typeof EventosRouteWithChildren
   '/grupos': typeof GruposRouteWithChildren
@@ -370,6 +378,7 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/ayuda-familiar': typeof AyudaFamiliarRoute
+  '/caribe': typeof CaribeRoute
   '/contacto': typeof ContactoRoute
   '/eventos': typeof EventosRouteWithChildren
   '/grupos': typeof GruposRouteWithChildren
@@ -415,6 +424,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/ayuda-familiar'
+    | '/caribe'
     | '/contacto'
     | '/eventos'
     | '/grupos'
@@ -458,6 +468,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/ayuda-familiar'
+    | '/caribe'
     | '/contacto'
     | '/eventos'
     | '/grupos'
@@ -500,6 +511,7 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/auth'
     | '/ayuda-familiar'
+    | '/caribe'
     | '/contacto'
     | '/eventos'
     | '/grupos'
@@ -545,6 +557,7 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
   AyudaFamiliarRoute: typeof AyudaFamiliarRoute
+  CaribeRoute: typeof CaribeRoute
   ContactoRoute: typeof ContactoRoute
   EventosRoute: typeof EventosRouteWithChildren
   GruposRoute: typeof GruposRouteWithChildren
@@ -667,6 +680,13 @@ declare module '@tanstack/react-router' {
       path: '/contacto'
       fullPath: '/contacto'
       preLoaderRoute: typeof ContactoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/caribe': {
+      id: '/caribe'
+      path: '/caribe'
+      fullPath: '/caribe'
+      preLoaderRoute: typeof CaribeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ayuda-familiar': {
@@ -965,6 +985,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
   AyudaFamiliarRoute: AyudaFamiliarRoute,
+  CaribeRoute: CaribeRoute,
   ContactoRoute: ContactoRoute,
   EventosRoute: EventosRouteWithChildren,
   GruposRoute: GruposRouteWithChildren,

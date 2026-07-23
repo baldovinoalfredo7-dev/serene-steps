@@ -45,7 +45,7 @@ export function Footer() {
               title="Comunidad"
               links={[
                 { to: "/que-es-aa", label: "Bienvenido a tu casa en el Área 2" },
-                { to: "/", label: "AA en el Caribe colombiano" },
+                { to: "/caribe", label: "AA en el Caribe colombiano" },
                 { to: "/literatura", label: "Nuestra literatura" },
               ]}
             />

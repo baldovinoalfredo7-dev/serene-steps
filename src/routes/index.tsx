@@ -165,24 +165,10 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
       </section>
 
 
-      {/* 4. AA EN LA REGIÓN A – TERRITORIO NORTE */}
+      {/* 4. AA EN EL CARIBE */}
       <section id="caribe" className="bg-paper py-20 md:py-24">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="mx-auto max-w-3xl text-center">
-            <span className="mb-4 block text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand">
-              Región A – Territorio Norte
-            </span>
-            <h2 className="mb-6 font-serif text-3xl leading-tight text-brand sm:text-4xl">
-              Alcohólicos Anónimos en la Región A – Territorio Norte
-            </h2>
-            <p className="text-pretty text-lg leading-relaxed text-ink/85">
-              El Área 2 Metropolitana de Barranquilla hace parte de la Región A – Territorio
-              Norte de Alcohólicos Anónimos en Colombia. Si buscas información sobre otras
-              áreas de esta región, aquí encontrarás una orientación general.
-            </p>
-          </div>
-
-          <div className="mt-12 grid items-start gap-12 md:grid-cols-2 md:gap-16">
+          <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
             <div className="overflow-hidden rounded-2xl bg-soft/60 ring-1 ring-brand/10">
               <img
                 src={caribeMap}
@@ -193,55 +179,31 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
                 className="h-full w-full object-cover"
               />
             </div>
-            <div className="rounded-2xl bg-paper p-8 ring-1 ring-black/5 sm:p-10">
-              <h3 className="font-serif text-xl leading-tight text-brand sm:text-2xl">
-                Áreas de la Región A – Territorio Norte
-              </h3>
-              <ul role="list" className="mt-6 divide-y divide-brand/10">
-                {[
-                  "A.1 Maicao",
-                  "A.2 Barranquilla Área Metropolitana",
-                  "A.3 Barranquilla",
-                  "A.4 Cartagena",
-                  "A.5 Magangué",
-                  "A.6 Montería",
-                  "A.7 Aguachica",
-                  "A.8 Santa Marta",
-                  "A.9 Sincelejo",
-                  "A.10 Valledupar",
-                ].map((item) => (
-                  <li key={item} className="py-3 text-base text-ink/85">
-                    {item}
-                  </li>
-                ))}
-              </ul>
+            <div>
+              <span className="mb-4 block text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand">
+                Presencia en el Caribe
+              </span>
+              <h2 className="mb-6 font-serif text-3xl leading-tight text-brand sm:text-4xl">
+                AA en el Caribe colombiano
+              </h2>
+              <p className="text-pretty text-lg leading-relaxed text-ink/85">
+                El Área 2 Metropolitana de Barranquilla forma parte de una comunidad
+                más amplia de Alcohólicos Anónimos presente en toda la costa Caribe.
+                Dondequiera que estés, es posible que haya un grupo cerca de ti.
+              </p>
+              <div className="mt-8">
+                <Link
+                  to="/caribe"
+                  className="inline-flex items-center gap-2 border-b border-brand/30 pb-1 text-sm font-semibold uppercase tracking-[0.18em] text-brand transition-colors hover:border-brand"
+                >
+                  Conocer más <ArrowRight className="size-4" />
+                </Link>
+              </div>
             </div>
           </div>
-
-          <aside className="mx-auto mt-16 max-w-3xl rounded-3xl bg-soft/60 p-8 text-center ring-1 ring-brand/10 sm:p-10">
-            <h3 className="font-serif text-2xl italic leading-tight text-brand sm:text-3xl">
-              ¿No encuentras la información que buscas?
-            </h3>
-            <p className="mx-auto mt-4 max-w-xl text-pretty text-base leading-relaxed text-ink/80">
-              Si necesitas orientación para localizar un grupo de Alcohólicos Anónimos dentro
-              de la Región A – Territorio Norte, estaremos disponibles para ayudarte.
-            </p>
-            <div className="mt-6">
-              <Link
-                to="/contacto"
-                className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-paper transition-colors hover:bg-brand/90"
-              >
-                Solicitar información <ArrowRight className="size-4" />
-              </Link>
-            </div>
-          </aside>
-
-          <p className="mx-auto mt-12 max-w-2xl text-pretty text-center text-base leading-relaxed text-ink/80">
-            Dondequiera que estés, puede haber un grupo de Alcohólicos Anónimos cerca de ti.
-            Si necesitas ayuda para encontrarlo, con gusto te orientaremos.
-          </p>
         </div>
       </section>
+
 
 
       {/* 5. NUESTRA LITERATURA */}
