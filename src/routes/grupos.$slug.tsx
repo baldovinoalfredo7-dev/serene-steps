@@ -214,13 +214,22 @@ function GroupDetail() {
                 Abrir en Google Maps
               </a>
 
-              <a
-                href={`tel:${group.phone.replace(/\s/g, "")}`}
-                className="flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-brand/20 px-5 py-3 text-sm font-medium text-brand transition-colors hover:bg-soft"
-              >
-                <Phone className="size-4" />
-                {group.phone}
-              </a>
+              {group.phone ? (
+                <a
+                  href={`tel:${group.phone.replace(/\s/g, "")}`}
+                  className="flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-brand/20 px-5 py-3 text-sm font-medium text-brand transition-colors hover:bg-soft"
+                >
+                  <Phone className="size-4" />
+                  {group.phone}
+                </a>
+              ) : (
+                <p className="rounded-2xl bg-soft/60 px-4 py-3 text-center text-xs text-ink/60">
+                  Teléfono de contacto por confirmar con el Área.
+                </p>
+              )}
+              {group.holidayNote ? (
+                <p className="mt-4 text-xs text-ink/70">{group.holidayNote}</p>
+              ) : null}
             </div>
           </aside>
         </div>
