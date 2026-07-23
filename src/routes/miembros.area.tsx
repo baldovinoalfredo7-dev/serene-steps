@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { MapPin, Phone, Clock, Navigation, PhoneCall, CalendarDays } from "lucide-react";
 import type { ReactNode } from "react";
 
-export const Route = createFileRoute("/_authenticated/miembros/area")({
+export const Route = createFileRoute("/miembros/area")({
   head: () => ({
     meta: [
       { title: "Bienvenido a tu casa en el Área 2 · AA Área 2 Metropolitana" },

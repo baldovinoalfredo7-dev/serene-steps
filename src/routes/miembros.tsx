@@ -1,7 +1,7 @@
 import { createFileRoute, Outlet } from "@tanstack/react-router";
 import { MemberShell } from "@/components/miembros/MemberShell";
 
-export const Route = createFileRoute("/_authenticated/miembros")({
+export const Route = createFileRoute("/miembros")({
   head: () => ({
     meta: [
       { title: "Área de miembros · AA Área 2 Metropolitana" },

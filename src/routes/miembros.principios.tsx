@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PlaceholderPage } from "@/components/miembros/PlaceholderPage";
 
-export const Route = createFileRoute("/_authenticated/miembros/documentos")({
+export const Route = createFileRoute("/miembros/principios")({
   component: () => (
     <PlaceholderPage
       eyebrow="Área de miembros"
-      title="Documentos para descargar"
-      description="Repositorio de documentos del Área disponibles para los miembros."
+      title="Nuestros 36 Principios"
+      description="Los Doce Pasos, las Doce Tradiciones y los Doce Conceptos de Alcohólicos Anónimos."
     />
   ),
 });
