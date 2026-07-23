@@ -1,15 +1,20 @@
 /**
- * Directorio oficial de grupos del Área 2 Metropolitana de Barranquilla.
+ * Directorio oficial de grupos de Alcohólicos Anónimos.
  *
- * La estructura está preparada para incorporar más adelante, sin cambios de UI:
- * - Fotografía del lugar (`photoUrl`).
- * - Teléfono de contacto (`phone`).
- * - Indicaciones para llegar (`directions`).
- * - Coordenadas para Google Maps (`coordinates`).
+ * Fase actual: grupos oficiales del Área 2 Metropolitana de Barranquilla.
+ * La estructura está preparada para incorporar más adelante grupos de otras
+ * áreas (por ejemplo Área 3) sin cambios de UI: el visitante nunca necesita
+ * saber a qué Área pertenece un grupo, sólo encontrarlo por ciudad, barrio,
+ * nombre o —más adelante— día, horario o cercanía.
  *
- * Mientras esos datos no estén confirmados oficialmente por el Área, se dejan
- * como `undefined` y la interfaz los oculta con elegancia.
+ * Cada grupo reserva campos opcionales pendientes de confirmar por el Área:
+ * - Fotografía del lugar (`photoUrl`)
+ * - Teléfono de contacto (`phone`)
+ * - Indicaciones para llegar (`directions`)
+ * - Coordenadas para Google Maps (`coordinates`)
  */
+
+export type AreaId = "area-2-metropolitana" | "area-3";
 
 export interface PlaceholderMeeting {
   weekday: number; // 0 = Domingo ... 6 = Sábado
@@ -29,6 +34,8 @@ export interface PlaceholderGroup {
   neighborhood: string;
   addressLine: string;
   addressFull: string;
+  /** Área a la que pertenece el grupo. Uso interno; no se muestra al visitante. */
+  area: AreaId;
   /** Nota adicional sobre días especiales (por ejemplo festivos). */
   holidayNote?: string;
   meetings: PlaceholderMeeting[];
@@ -56,6 +63,7 @@ export const placeholderGroups: PlaceholderGroup[] = [
     slug: "accion-de-sabanalarga",
     name: "Acción de Sabanalarga",
     city: "Sabanalarga",
+    area: "area-2-metropolitana",
     neighborhood: "Centro",
     addressLine: "Plaza Principal — Casa Cural Vieja, frente a la Normal Santa Teresita",
     addressFull:
@@ -76,6 +84,7 @@ export const placeholderGroups: PlaceholderGroup[] = [
     slug: "cambio-de-vida-de-baranoa",
     name: "Cambio de Vida de Baranoa",
     city: "Baranoa",
+    area: "area-2-metropolitana",
     neighborhood: "Centro",
     addressLine: "Carrera 18 No. 22-05, al lado de la Estación de Policía",
     addressFull: "Carrera 18 No. 22-05, al lado de la Estación de Policía, Baranoa, Atlántico",
@@ -94,6 +103,7 @@ export const placeholderGroups: PlaceholderGroup[] = [
     slug: "el-concord",
     name: "El Concord",
     city: "Barranquilla",
+    area: "area-2-metropolitana",
     neighborhood: "",
     addressLine: "Calle 17 No. 27-13, frente al Colegio Jesús de la Buena Esperanza",
     addressFull:
@@ -110,6 +120,7 @@ export const placeholderGroups: PlaceholderGroup[] = [
     slug: "el-triangulo",
     name: "El Triángulo",
     city: "Soledad",
+    area: "area-2-metropolitana",
     neighborhood: "",
     addressLine: "Carrera 12 No. 57-58",
     addressFull: "Carrera 12 No. 57-58, Soledad, Atlántico",
@@ -125,6 +136,7 @@ export const placeholderGroups: PlaceholderGroup[] = [
     slug: "la-decision",
     name: "La Decisión",
     city: "Barranquilla",
+    area: "area-2-metropolitana",
     neighborhood: "Las Gaviotas",
     addressLine: "Carrera 34B No. 55A-01, apartamento 2, primer piso, barrio Las Gaviotas",
     addressFull:
@@ -139,6 +151,7 @@ export const placeholderGroups: PlaceholderGroup[] = [
     slug: "la-nueva-vida",
     name: "La Nueva Vida",
     city: "Barranquilla",
+    area: "area-2-metropolitana",
     neighborhood: "El Parque",
     addressLine: "Carrera 41C No. 43-04, urbanización El Parque",
     addressFull: "Carrera 41C No. 43-04, urbanización El Parque, Barranquilla, Atlántico",
@@ -160,6 +173,7 @@ export const placeholderGroups: PlaceholderGroup[] = [
     slug: "las-nieves",
     name: "Las Nieves",
     city: "Barranquilla",
+    area: "area-2-metropolitana",
     neighborhood: "Las Nieves",
     addressLine: "Calle 23 No. 12-20, barrio Las Nieves",
     addressFull: "Calle 23 No. 12-20, barrio Las Nieves, Barranquilla, Atlántico",
@@ -176,6 +190,7 @@ export const placeholderGroups: PlaceholderGroup[] = [
     slug: "renacer",
     name: "Renacer",
     city: "Barranquilla",
+    area: "area-2-metropolitana",
     neighborhood: "San José",
     addressLine: "Calle 40 No. 18-147, barrio San José",
     addressFull: "Calle 40 No. 18-147, barrio San José, Barranquilla, Atlántico",
@@ -192,6 +207,7 @@ export const placeholderGroups: PlaceholderGroup[] = [
     slug: "santo-tomas",
     name: "Santo Tomás",
     city: "Santo Tomás",
+    area: "area-2-metropolitana",
     neighborhood: "Centro",
     addressLine: "Calle 3 No. 8-04, segundo piso",
     addressFull: "Calle 3 No. 8-04, segundo piso, Santo Tomás, Atlántico",
@@ -204,6 +220,7 @@ export const placeholderGroups: PlaceholderGroup[] = [
     slug: "simon-bolivar",
     name: "Simón Bolívar",
     city: "Barranquilla",
+    area: "area-2-metropolitana",
     neighborhood: "",
     addressLine: "Calle 23B No. 6-45",
     addressFull: "Calle 23B No. 6-45, Barranquilla, Atlántico",
@@ -222,6 +239,7 @@ export const placeholderGroups: PlaceholderGroup[] = [
     slug: "vivir-mejor-de-soledad",
     name: "Vivir Mejor de Soledad",
     city: "Soledad",
+    area: "area-2-metropolitana",
     neighborhood: "",
     addressLine: "Calle 19 No. 21-02",
     addressFull: "Calle 19 No. 21-02, Soledad, Atlántico",

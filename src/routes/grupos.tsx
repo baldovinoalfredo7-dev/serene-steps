@@ -76,8 +76,35 @@ function GruposIndex() {
         </div>
       </section>
 
+      {/* Introducción */}
+      <section className="py-14 md:py-20">
+        <div className="mx-auto max-w-3xl px-6 text-center">
+          <h2 className="font-serif text-3xl italic text-brand md:text-4xl">
+            ¿Qué es un grupo de Alcohólicos Anónimos?
+          </h2>
+          <div className="mx-auto mt-6 space-y-4 text-pretty text-base leading-relaxed text-ink/85 md:text-lg">
+            <p>
+              Un grupo de Alcohólicos Anónimos es una reunión donde personas que comparten
+              su experiencia, fortaleza y esperanza se ayudan mutuamente para recuperarse
+              del alcoholismo.
+            </p>
+            <p>
+              Todos los grupos están abiertos a recibir a quien tenga el deseo de dejar
+              de beber. En Barranquilla, sus municipios vecinos y en el resto del
+              Atlántico existen grupos en distintas ciudades y barrios, dispuestos a
+              recibir con respeto y cordialidad a cualquier persona que busque ayuda.
+            </p>
+            <p>
+              A continuación puedes usar el buscador para encontrar el grupo que mejor
+              se adapte a tu ubicación y horario.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Buscador */}
-      <section className="py-12 md:py-16">
+      <section className="pb-12 md:pb-16">
+
         <div className="mx-auto max-w-4xl px-6">
           <label className="block">
             <span className="mb-3 block text-[11px] font-bold uppercase tracking-[0.2em] text-brand/80">
