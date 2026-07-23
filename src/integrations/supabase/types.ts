@@ -224,6 +224,7 @@ export type Database = {
         Row: {
           address_full: string
           address_line: string
+          area: number | null
           created_at: string
           history: string | null
           id: string
@@ -232,7 +233,9 @@ export type Database = {
           lng: number | null
           municipality_id: string
           name: string
+          neighborhood: string | null
           phone: string | null
+          photo_url: string | null
           public_info_email: string | null
           public_info_name: string | null
           public_info_phone: string | null
@@ -242,6 +245,7 @@ export type Database = {
         Insert: {
           address_full: string
           address_line: string
+          area?: number | null
           created_at?: string
           history?: string | null
           id?: string
@@ -250,7 +254,9 @@ export type Database = {
           lng?: number | null
           municipality_id: string
           name: string
+          neighborhood?: string | null
           phone?: string | null
+          photo_url?: string | null
           public_info_email?: string | null
           public_info_name?: string | null
           public_info_phone?: string | null
@@ -260,6 +266,7 @@ export type Database = {
         Update: {
           address_full?: string
           address_line?: string
+          area?: number | null
           created_at?: string
           history?: string | null
           id?: string
@@ -268,7 +275,9 @@ export type Database = {
           lng?: number | null
           municipality_id?: string
           name?: string
+          neighborhood?: string | null
           phone?: string | null
+          photo_url?: string | null
           public_info_email?: string | null
           public_info_name?: string | null
           public_info_phone?: string | null
