@@ -84,21 +84,26 @@ function GruposIndex() {
           </h2>
           <div className="mx-auto mt-6 space-y-4 text-pretty text-base leading-relaxed text-ink/85 md:text-lg">
             <p>
-              Un grupo de Alcohólicos Anónimos es una reunión donde personas que comparten
-              su experiencia, fortaleza y esperanza se ayudan mutuamente para recuperarse
-              del alcoholismo.
+              Un grupo de Alcohólicos Anónimos es una reunión donde personas que
+              comparten su experiencia, fortaleza y esperanza se ayudan mutuamente
+              para recuperarse del alcoholismo.
             </p>
             <p>
-              Todos los grupos están abiertos a recibir a quien tenga el deseo de dejar
-              de beber. En Barranquilla, sus municipios vecinos y en el resto del
-              Atlántico existen grupos en distintas ciudades y barrios, dispuestos a
-              recibir con respeto y cordialidad a cualquier persona que busque ayuda.
+              Todos los grupos están abiertos a recibir a quien tenga el deseo de
+              dejar de beber.
             </p>
             <p>
-              A continuación puedes usar el buscador para encontrar el grupo que mejor
-              se adapte a tu ubicación y horario.
+              En el Área 2 Metropolitana de Barranquilla y en las áreas vecinas
+              existen diversos grupos ubicados en diferentes municipios,
+              dispuestos a recibir con respeto y cordialidad a cualquier persona
+              que busque ayuda.
+            </p>
+            <p>
+              A continuación puedes utilizar el buscador para encontrar el grupo
+              que mejor se adapte a tu ubicación y horario.
             </p>
           </div>
+
         </div>
       </section>
 
@@ -126,42 +131,59 @@ function GruposIndex() {
             </div>
           </label>
 
-          <p className="mt-4 text-sm text-ink/70">
-            Sugerencias: {cities.join(" · ")}
-          </p>
-          {/*
-            Arquitectura preparada para incorporar filtros adicionales:
-            día de la semana, horario y ubicación cercana. Se sumarán
-            junto al directorio oficial en una fase posterior.
-          */}
-        </div>
-      </section>
-
-      {/* Resultados */}
-      <section className="pb-20 md:pb-28">
-        <div className="mx-auto max-w-6xl px-6">
-          <p className="mb-8 text-sm font-semibold uppercase tracking-[0.15em] text-brand/70">
-            {results.length} {results.length === 1 ? "grupo" : "grupos"}
-          </p>
-
-          {results.length === 0 ? (
-            <div className="rounded-3xl border border-dashed border-brand/20 bg-paper/60 p-10 text-center">
-              <p className="font-serif text-xl italic text-brand">
-                No encontramos grupos con esa búsqueda.
-              </p>
-              <p className="mt-3 text-ink/85">
-                Prueba con el nombre de tu ciudad, barrio o del grupo.
-              </p>
-            </div>
-          ) : (
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {results.map((g) => (
-                <GroupCard key={g.slug} g={g} />
-              ))}
-            </div>
+          {cities.length > 0 && (
+            <p className="mt-4 text-sm text-ink/70">
+              Sugerencias: {cities.join(" · ")}
+            </p>
           )}
         </div>
       </section>
+
+      {/* Resultados / directorio pendiente */}
+      <section className="pb-20 md:pb-28">
+        <div className="mx-auto max-w-4xl px-6">
+          {placeholderGroups.length === 0 ? (
+            <div className="rounded-3xl border border-dashed border-brand/25 bg-paper/70 p-10 text-center md:p-14">
+              <span className="mb-4 block text-[11px] font-bold uppercase tracking-[0.25em] text-brand/70">
+                Directorio en preparación
+              </span>
+              <p className="font-serif text-2xl italic leading-snug text-brand md:text-3xl">
+                El directorio oficial de grupos será incorporado en la próxima
+                actualización.
+              </p>
+              <p className="mx-auto mt-5 max-w-xl text-pretty text-base leading-relaxed text-ink/85">
+                Estamos consolidando la información verificada de cada grupo
+                (ubicación, horarios y contacto) para presentarla aquí de forma
+                clara y confiable. Mientras tanto, si necesitas ayuda inmediata
+                puedes escribirnos o llamarnos usando el botón de contacto.
+              </p>
+            </div>
+          ) : (
+            <>
+              <p className="mb-8 text-sm font-semibold uppercase tracking-[0.15em] text-brand/70">
+                {results.length} {results.length === 1 ? "grupo" : "grupos"}
+              </p>
+              {results.length === 0 ? (
+                <div className="rounded-3xl border border-dashed border-brand/20 bg-paper/60 p-10 text-center">
+                  <p className="font-serif text-xl italic text-brand">
+                    No encontramos grupos con esa búsqueda.
+                  </p>
+                  <p className="mt-3 text-ink/85">
+                    Prueba con el nombre de tu ciudad, barrio o del grupo.
+                  </p>
+                </div>
+              ) : (
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                  {results.map((g) => (
+                    <GroupCard key={g.slug} g={g} />
+                  ))}
+                </div>
+              )}
+            </>
+          )}
+        </div>
+      </section>
+
 
       {/* CTA primera reunión */}
       <section className="bg-brand py-20 text-paper">
