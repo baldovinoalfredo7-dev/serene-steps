@@ -1,13 +1,11 @@
 import { createFileRoute, Link, Outlet, useMatches } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
-import { ArrowRight, Clock, MapPin, Navigation, Search } from "lucide-react";
-import {
-  placeholderGroups,
-  formatMeetings,
-  type PlaceholderGroup,
-} from "@/lib/grupos-placeholder";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { ArrowRight } from "lucide-react";
+import { GroupFinder } from "@/components/site/GroupFinder";
+import { groupsQueryOptions } from "@/lib/groups-queries";
 
 export const Route = createFileRoute("/grupos")({
+  loader: ({ context }) => context.queryClient.ensureQueryData(groupsQueryOptions()),
   head: () => ({
     meta: [
       { title: "Encuentra un grupo de Alcohólicos Anónimos" },
@@ -26,6 +24,11 @@ export const Route = createFileRoute("/grupos")({
     ],
     links: [{ rel: "canonical", href: "/grupos" }],
   }),
+  errorComponent: ({ error }) => (
+    <div className="mx-auto max-w-2xl p-10 text-center text-ink/80">
+      No pudimos cargar el directorio: {error.message}
+    </div>
+  ),
   component: GruposLayout,
 });
 
@@ -36,30 +39,8 @@ function GruposLayout() {
   return <GruposIndex />;
 }
 
-function normalize(v: string) {
-  return v
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .trim();
-}
-
 function GruposIndex() {
-  const [query, setQuery] = useState("");
-
-  const cities = useMemo(
-    () => Array.from(new Set(placeholderGroups.map((g) => g.city))).sort(),
-    [],
-  );
-
-  const results = useMemo(() => {
-    const q = normalize(query);
-    if (!q) return placeholderGroups;
-    return placeholderGroups.filter((g) => {
-      const haystack = normalize(`${g.name} ${g.city} ${g.neighborhood} ${g.addressLine}`);
-      return haystack.includes(q);
-    });
-  }, [query]);
+  const { data: groups } = useSuspenseQuery(groupsQueryOptions());
 
   return (
     <>
@@ -103,87 +84,35 @@ function GruposIndex() {
               que mejor se adapte a tu ubicación y horario.
             </p>
           </div>
-
         </div>
       </section>
 
-      {/* Buscador */}
-      <section className="pb-12 md:pb-16">
-
-        <div className="mx-auto max-w-4xl px-6">
-          <label className="block">
-            <span className="mb-3 block text-[11px] font-bold uppercase tracking-[0.2em] text-brand/80">
-              Buscar
-            </span>
-            <div className="relative">
-              <Search
-                className="pointer-events-none absolute left-5 top-1/2 size-5 -translate-y-1/2 text-brand/50"
-                strokeWidth={1.8}
-              />
-              <input
-                type="search"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Ciudad o municipio, barrio o nombre del grupo"
-                className="min-h-14 w-full rounded-full border border-brand/15 bg-paper pl-14 pr-6 text-base text-ink shadow-sm outline-none transition-colors placeholder:text-ink/50 focus:border-brand focus:ring-4 focus:ring-brand/15"
-                aria-label="Buscar por ciudad, barrio o nombre del grupo"
-              />
-            </div>
-          </label>
-
-          {cities.length > 0 && (
-            <p className="mt-4 text-sm text-ink/70">
-              Sugerencias: {cities.join(" · ")}
-            </p>
-          )}
-        </div>
-      </section>
-
-      {/* Resultados / directorio pendiente */}
+      {/* Buscador + resultados (módulo único compartido con la Home) */}
       <section className="pb-20 md:pb-28">
-        <div className="mx-auto max-w-4xl px-6">
-          {placeholderGroups.length === 0 ? (
-            <div className="rounded-3xl border border-dashed border-brand/25 bg-paper/70 p-10 text-center md:p-14">
-              <span className="mb-4 block text-[11px] font-bold uppercase tracking-[0.25em] text-brand/70">
-                Directorio en preparación
-              </span>
-              <p className="font-serif text-2xl italic leading-snug text-brand md:text-3xl">
-                El directorio oficial de grupos será incorporado en la próxima
-                actualización.
-              </p>
-              <p className="mx-auto mt-5 max-w-xl text-pretty text-base leading-relaxed text-ink/85">
-                Estamos consolidando la información verificada de cada grupo
-                (ubicación, horarios y contacto) para presentarla aquí de forma
-                clara y confiable. Mientras tanto, si necesitas ayuda inmediata
-                puedes escribirnos o llamarnos usando el botón de contacto.
-              </p>
-            </div>
-          ) : (
-            <>
-              <p className="mb-8 text-sm font-semibold uppercase tracking-[0.15em] text-brand/70">
-                {results.length} {results.length === 1 ? "grupo" : "grupos"}
-              </p>
-              {results.length === 0 ? (
-                <div className="rounded-3xl border border-dashed border-brand/20 bg-paper/60 p-10 text-center">
-                  <p className="font-serif text-xl italic text-brand">
-                    No encontramos grupos con esa búsqueda.
-                  </p>
-                  <p className="mt-3 text-ink/85">
-                    Prueba con el nombre de tu ciudad, barrio o del grupo.
-                  </p>
-                </div>
-              ) : (
-                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                  {results.map((g) => (
-                    <GroupCard key={g.slug} g={g} />
-                  ))}
-                </div>
-              )}
-            </>
-          )}
+        <div className="mx-auto max-w-6xl px-6">
+          <GroupFinder
+            groups={groups}
+            variant="full"
+            emptyDirectory={
+              <div className="rounded-3xl border border-dashed border-brand/25 bg-paper/70 p-10 text-center md:p-14">
+                <span className="mb-4 block text-[11px] font-bold uppercase tracking-[0.25em] text-brand/70">
+                  Directorio en preparación
+                </span>
+                <p className="font-serif text-2xl italic leading-snug text-brand md:text-3xl">
+                  El directorio oficial de grupos será incorporado en la próxima
+                  actualización.
+                </p>
+                <p className="mx-auto mt-5 max-w-xl text-pretty text-base leading-relaxed text-ink/85">
+                  Estamos consolidando la información verificada de cada grupo
+                  (ubicación, horarios y contacto) para presentarla aquí de forma
+                  clara y confiable. Mientras tanto, si necesitas ayuda inmediata
+                  puedes escribirnos o llamarnos usando el botón de contacto.
+                </p>
+              </div>
+            }
+          />
         </div>
       </section>
-
 
       {/* CTA primera reunión */}
       <section className="bg-brand py-20 text-paper">
@@ -208,55 +137,5 @@ function GruposIndex() {
         </div>
       </section>
     </>
-  );
-}
-
-function GroupCard({ g }: { g: PlaceholderGroup }) {
-  const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
-    g.addressFull,
-  )}`;
-  const schedule = formatMeetings(g.meetings);
-
-  return (
-    <article className="flex flex-col rounded-3xl bg-paper p-7 shadow-soft ring-1 ring-black/5 transition-all hover:-translate-y-0.5 hover:shadow-lift md:p-8">
-      <span className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand/80">
-        {g.city}
-      </span>
-      <h3 className="mb-4 font-serif text-2xl italic text-brand">{g.name}</h3>
-
-      <p className="mb-5 flex items-start gap-2 text-sm text-ink/80">
-        <MapPin className="mt-0.5 size-4 shrink-0 text-brand/70" strokeWidth={1.8} />
-        <span>{g.addressLine}</span>
-      </p>
-
-      <ul className="mb-6 space-y-1.5 text-sm text-ink/85">
-        {schedule.map((line) => (
-          <li key={line} className="flex items-start gap-2">
-            <Clock className="mt-0.5 size-4 shrink-0 text-brand/70" strokeWidth={1.8} />
-            <span>{line}</span>
-          </li>
-        ))}
-      </ul>
-
-      <div className="mt-auto flex flex-col gap-3">
-        <a
-          href={mapsUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-brand/25 px-5 py-3 text-xs font-semibold uppercase tracking-[0.15em] text-brand transition-colors hover:bg-brand hover:text-paper"
-        >
-          <Navigation className="size-4" />
-          Cómo llegar
-        </a>
-        <Link
-          to="/grupos/$slug"
-          params={{ slug: g.slug }}
-          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand px-5 py-3 text-xs font-semibold uppercase tracking-[0.15em] text-paper transition-colors hover:bg-brand/90"
-        >
-          Más información
-          <ArrowRight className="size-4" />
-        </Link>
-      </div>
-    </article>
   );
 }
