@@ -48,21 +48,13 @@ function GruposIndex() {
       <section className="border-b border-brand/5 bg-soft/40 py-16 md:py-24">
         <div className="mx-auto max-w-3xl px-6 text-center">
           <h1 className="text-balance font-serif text-4xl italic leading-tight text-brand md:text-6xl">
-            Encuentra un grupo de Alcohólicos Anónimos
+            Nuestros grupos
           </h1>
-          <div className="mx-auto mt-8 space-y-5 text-pretty text-lg leading-relaxed text-ink/85">
-            <p>
-              Cada grupo de Alcohólicos Anónimos es un lugar donde personas que
-              comparten su experiencia, fortaleza y esperanza se ayudan mutuamente
-              a recuperarse del alcoholismo.
-            </p>
-            <p>
-              Si es tu primera visita, puedes asistir con tranquilidad. No
-              necesitas inscribirte ni hablar si no lo deseas. Puedes simplemente
-              escuchar.
-            </p>
-            <p>Utiliza el buscador para encontrar el grupo más cercano a ti.</p>
-          </div>
+          <p className="mx-auto mt-8 text-pretty text-lg leading-relaxed text-ink/85">
+            En cada grupo encontrarás personas que un día también llegaron
+            buscando ayuda y hoy desean compartir contigo un mensaje de
+            esperanza.
+          </p>
         </div>
       </section>
 
