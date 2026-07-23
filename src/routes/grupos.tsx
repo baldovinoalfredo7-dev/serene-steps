@@ -84,21 +84,26 @@ function GruposIndex() {
           </h2>
           <div className="mx-auto mt-6 space-y-4 text-pretty text-base leading-relaxed text-ink/85 md:text-lg">
             <p>
-              Un grupo de Alcohólicos Anónimos es una reunión donde personas que comparten
-              su experiencia, fortaleza y esperanza se ayudan mutuamente para recuperarse
-              del alcoholismo.
+              Un grupo de Alcohólicos Anónimos es una reunión donde personas que
+              comparten su experiencia, fortaleza y esperanza se ayudan mutuamente
+              para recuperarse del alcoholismo.
             </p>
             <p>
-              Todos los grupos están abiertos a recibir a quien tenga el deseo de dejar
-              de beber. En Barranquilla, sus municipios vecinos y en el resto del
-              Atlántico existen grupos en distintas ciudades y barrios, dispuestos a
-              recibir con respeto y cordialidad a cualquier persona que busque ayuda.
+              Todos los grupos están abiertos a recibir a quien tenga el deseo de
+              dejar de beber.
             </p>
             <p>
-              A continuación puedes usar el buscador para encontrar el grupo que mejor
-              se adapte a tu ubicación y horario.
+              En el Área 2 Metropolitana de Barranquilla y en las áreas vecinas
+              existen diversos grupos ubicados en diferentes municipios,
+              dispuestos a recibir con respeto y cordialidad a cualquier persona
+              que busque ayuda.
+            </p>
+            <p>
+              A continuación puedes utilizar el buscador para encontrar el grupo
+              que mejor se adapte a tu ubicación y horario.
             </p>
           </div>
+
         </div>
       </section>
 
