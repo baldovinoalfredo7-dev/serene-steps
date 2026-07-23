@@ -32,85 +32,34 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="grid gap-10 sm:grid-cols-3 sm:gap-14">
-            <div className="space-y-4">
-              <h5 className="text-xs font-bold uppercase tracking-widest text-brand">
-                Contacto
-              </h5>
-              <ul className="space-y-2.5 text-sm text-ink/80">
-                <li>
-                  <a href="tel:+573000000000" className="hover:text-brand">
-                    Línea de ayuda: +57 300 000 0000
-                  </a>
-                </li>
-                <li>
-                  <a href="mailto:contacto@aa-area2.org" className="hover:text-brand">
-                    contacto@aa-area2.org
-                  </a>
-                </li>
-                <li>
-                  <Link to="/contacto" className="hover:text-brand">
-                    Formulario de contacto
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div className="space-y-4">
-              <h5 className="text-xs font-bold uppercase tracking-widest text-brand">
-                Comunidad
-              </h5>
-              <ul className="space-y-2.5 text-sm text-ink/80">
-                <li>
-                  <Link to="/grupos" className="hover:text-brand">
-                    Encuentra un grupo
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/que-es-aa" className="hover:text-brand">
-                    ¿Qué es AA?
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/testimonios" className="hover:text-brand">
-                    Historias de esperanza
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/eventos" className="hover:text-brand">
-                    Noticias y eventos
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div className="space-y-4">
-              <h5 className="text-xs font-bold uppercase tracking-widest text-brand">
-                Área 2
-              </h5>
-              <ul className="space-y-2.5 text-sm text-ink/80">
-                <li>
-                  <Link to="/auth" className="hover:text-brand">
-                    Acceso para miembros
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/necesito-ayuda" className="hover:text-brand">
-                    Necesito ayuda ahora
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/mapa-del-sitio" className="hover:text-brand">
-                    Mapa del sitio
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/privacidad" className="hover:text-brand">
-                    Política de privacidad
-                  </Link>
-                </li>
-              </ul>
-            </div>
+          <div className="grid gap-10 sm:grid-cols-4 sm:gap-14">
+            <FooterColumn
+              title="Ayuda"
+              links={[
+                { to: "/necesito-ayuda", label: "Busco ayuda" },
+                { to: "/grupos", label: "Encuentra un grupo" },
+                { to: "/primera-reunion", label: "Primera reunión" },
+              ]}
+            />
+            <FooterColumn
+              title="Comunidad"
+              links={[
+                { to: "/que-es-aa", label: "Bienvenido a tu casa en el Área 2" },
+                { to: "/", label: "AA en el Caribe colombiano" },
+                { to: "/literatura", label: "Nuestra literatura" },
+              ]}
+            />
+            <FooterColumn
+              title="Cooperación"
+              links={[
+                { to: "/contacto", label: "Trabajemos juntos" },
+                { to: "/contacto", label: "Contacto" },
+              ]}
+            />
+            <FooterColumn
+              title="Miembros"
+              links={[{ to: "/auth", label: "Acceso para miembros" }]}
+            />
           </div>
         </div>
 
@@ -122,5 +71,28 @@ export function Footer() {
         </div>
       </div>
     </footer>
+  );
+}
+
+function FooterColumn({
+  title,
+  links,
+}: {
+  title: string;
+  links: { to: string; label: string }[];
+}) {
+  return (
+    <div className="space-y-4">
+      <h5 className="text-xs font-bold uppercase tracking-widest text-brand">{title}</h5>
+      <ul className="space-y-2.5 text-sm text-ink/80">
+        {links.map((l) => (
+          <li key={`${l.to}-${l.label}`}>
+            <Link to={l.to} className="hover:text-brand">
+              {l.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
