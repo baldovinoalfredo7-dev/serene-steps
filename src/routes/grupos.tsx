@@ -1,43 +1,31 @@
 import { createFileRoute, Link, Outlet, useMatches } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { useSuspenseQuery } from "@tanstack/react-query";
-import { ArrowRight, MapPin, Clock, Search } from "lucide-react";
+import { ArrowRight, Clock, MapPin, Navigation, Search } from "lucide-react";
 import {
-  municipalities,
-  weekdayLabels,
-  meetingTypeLabel,
-  getTimeOfDay,
-  getPrimaryMeeting,
-  type TimeOfDay,
-  type Group,
-} from "@/lib/groups-data";
-import { groupsQueryOptions } from "@/lib/groups-queries";
-import { PageShell } from "@/components/site/PageShell";
+  placeholderGroups,
+  formatMeetings,
+  type PlaceholderGroup,
+} from "@/lib/grupos-placeholder";
 
 export const Route = createFileRoute("/grupos")({
-  loader: ({ context }) => context.queryClient.ensureQueryData(groupsQueryOptions()),
   head: () => ({
     meta: [
-      { title: "Encuentra un Grupo — AA Área 2 Metropolitana" },
+      { title: "Encuentra un grupo de Alcohólicos Anónimos" },
       {
         name: "description",
         content:
-          "Busca reuniones de Alcohólicos Anónimos en el Área 2 Metropolitana por municipio, día y horario.",
+          "Busca un grupo de Alcohólicos Anónimos por ciudad, barrio o nombre. Consulta horarios, dirección y cómo llegar.",
       },
-      { property: "og:title", content: "Encuentra un Grupo — AA Área 2 Metropolitana" },
+      { property: "og:title", content: "Encuentra un grupo de Alcohólicos Anónimos" },
       {
         property: "og:description",
-        content: "Nueve grupos de AA con horarios y direcciones en el Área 2 Metropolitana.",
+        content:
+          "Consulta los horarios de reunión, la dirección y la forma de llegar al grupo que mejor se adapte a tu ubicación.",
       },
       { property: "og:url", content: "/grupos" },
     ],
     links: [{ rel: "canonical", href: "/grupos" }],
   }),
-  errorComponent: ({ error }) => (
-    <div className="mx-auto max-w-2xl p-10 text-center text-ink/80">
-      No pudimos cargar los grupos: {error.message}
-    </div>
-  ),
   component: GruposLayout,
 });
 
@@ -48,240 +36,178 @@ function GruposLayout() {
   return <GruposIndex />;
 }
 
-type DayFilter = "hoy" | "manana-dia" | "todos";
-type MunicipalityFilter = "todos" | (typeof municipalities)[number];
-type TimeFilter = "todos" | TimeOfDay;
+function normalize(v: string) {
+  return v
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
+}
 
 function GruposIndex() {
-  const { data: groups } = useSuspenseQuery(groupsQueryOptions());
-  const [municipality, setMunicipality] = useState<MunicipalityFilter>("todos");
-  const [day, setDay] = useState<DayFilter>("todos");
-  const [time, setTime] = useState<TimeFilter>("todos");
-  const [applied, setApplied] = useState({
-    municipality: "todos" as MunicipalityFilter,
-    day: "todos" as DayFilter,
-    time: "todos" as TimeFilter,
-  });
+  const [query, setQuery] = useState("");
 
-  const today = new Date().getDay();
+  const cities = useMemo(
+    () => Array.from(new Set(placeholderGroups.map((g) => g.city))).sort(),
+    [],
+  );
 
-  const filtered = useMemo(() => {
-    return groups.filter((g) => {
-      if (applied.municipality !== "todos" && g.municipality !== applied.municipality)
-        return false;
-
-      const targetDay =
-        applied.day === "hoy" ? today : applied.day === "manana-dia" ? (today + 1) % 7 : null;
-
-      const meetings = g.meetings.filter((m) => {
-        if (targetDay !== null && m.weekday !== targetDay) return false;
-        if (applied.time !== "todos" && getTimeOfDay(m.start) !== applied.time) return false;
-        return true;
-      });
-
-      return meetings.length > 0;
+  const results = useMemo(() => {
+    const q = normalize(query);
+    if (!q) return placeholderGroups;
+    return placeholderGroups.filter((g) => {
+      const haystack = normalize(`${g.name} ${g.city} ${g.neighborhood} ${g.addressLine}`);
+      return haystack.includes(q);
     });
-  }, [applied, today]);
-
-  const onSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setApplied({ municipality, day, time });
-    // scroll to results
-    document.getElementById("resultados")?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
+  }, [query]);
 
   return (
-    <PageShell
-      eyebrow="Directorio"
-      title="Encuentra un grupo"
-      intro="Nueve grupos del Área 2 Metropolitana. Filtra por municipio, día y horario para encontrar la reunión que mejor se ajuste a ti."
-    >
-      {/* Buscador */}
-      <form
-        onSubmit={onSubmit}
-        className="mb-14 rounded-3xl bg-paper p-6 shadow-sm ring-1 ring-black/5 md:p-10"
-      >
-        <div className="grid gap-6 md:grid-cols-3">
-          <FilterField label="Municipio">
-            <select
-              value={municipality}
-              onChange={(e) => setMunicipality(e.target.value as MunicipalityFilter)}
-              className="w-full rounded-lg border border-brand/15 bg-paper px-4 py-3 text-sm text-brand outline-none transition focus:border-brand/40 focus:ring-2 focus:ring-brand/20"
-            >
-              <option value="todos">Todos los municipios</option>
-              {municipalities.map((m) => (
-                <option key={m} value={m}>
-                  {m}
-                </option>
-              ))}
-            </select>
-          </FilterField>
-
-          <FilterField label="Día">
-            <div className="grid grid-cols-3 gap-2">
-              {(
-                [
-                  { v: "hoy", l: "Hoy" },
-                  { v: "manana-dia", l: "Mañana" },
-                  { v: "todos", l: "Todos" },
-                ] as { v: DayFilter; l: string }[]
-              ).map((opt) => (
-                <SegBtn
-                  key={opt.v}
-                  active={day === opt.v}
-                  onClick={() => setDay(opt.v)}
-                  label={opt.l}
-                />
-              ))}
-            </div>
-          </FilterField>
-
-          <FilterField label="Horario">
-            <div className="grid grid-cols-3 gap-2">
-              {(
-                [
-                  { v: "manana", l: "Mañana" },
-                  { v: "tarde", l: "Tarde" },
-                  { v: "noche", l: "Noche" },
-                ] as { v: TimeOfDay; l: string }[]
-              ).map((opt) => (
-                <SegBtn
-                  key={opt.v}
-                  active={time === opt.v}
-                  onClick={() => setTime(time === opt.v ? "todos" : opt.v)}
-                  label={opt.l}
-                />
-              ))}
-            </div>
-          </FilterField>
-        </div>
-
-        <div className="mt-8 flex flex-col items-center gap-3">
-          <button
-            type="submit"
-            className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-brand px-10 py-4 text-sm font-semibold uppercase tracking-widest text-paper shadow-lg shadow-brand/20 transition hover:bg-brand/90 md:w-auto"
-          >
-            <Search className="size-4" />
-            Buscar reuniones
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              setMunicipality("todos");
-              setDay("todos");
-              setTime("todos");
-              setApplied({ municipality: "todos", day: "todos", time: "todos" });
-            }}
-            className="text-xs font-medium uppercase tracking-widest text-ink/40 transition hover:text-brand"
-          >
-            Limpiar filtros
-          </button>
-        </div>
-      </form>
-
-      {/* Resultados */}
-      <div id="resultados" className="mb-6 flex items-baseline justify-between">
-        <h2 className="font-serif text-2xl italic text-brand">
-          {filtered.length} {filtered.length === 1 ? "grupo encontrado" : "grupos encontrados"}
-        </h2>
-      </div>
-
-      {filtered.length === 0 ? (
-        <div className="rounded-2xl bg-soft/60 p-12 text-center">
-          <p className="text-ink/80">
-            No encontramos reuniones con esos criterios. Prueba ampliar el municipio, el día o el
-            horario.
+    <>
+      {/* Hero */}
+      <section className="border-b border-brand/5 bg-soft/40 py-16 md:py-24">
+        <div className="mx-auto max-w-3xl px-6 text-center">
+          <h1 className="text-balance font-serif text-4xl italic leading-tight text-brand md:text-6xl">
+            Encuentra un grupo de Alcohólicos Anónimos
+          </h1>
+          <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg text-ink/85">
+            Aquí puedes encontrar el grupo que mejor se adapte a tu ubicación. Consulta los
+            horarios de reunión, la dirección y la forma de llegar.
           </p>
         </div>
-      ) : (
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((g) => (
-            <GroupCard key={g.slug} g={g} />
-          ))}
+      </section>
+
+      {/* Buscador */}
+      <section className="py-12 md:py-16">
+        <div className="mx-auto max-w-4xl px-6">
+          <label className="block">
+            <span className="mb-3 block text-[11px] font-bold uppercase tracking-[0.2em] text-brand/80">
+              Buscar
+            </span>
+            <div className="relative">
+              <Search
+                className="pointer-events-none absolute left-5 top-1/2 size-5 -translate-y-1/2 text-brand/50"
+                strokeWidth={1.8}
+              />
+              <input
+                type="search"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Ciudad o municipio, barrio o nombre del grupo"
+                className="min-h-14 w-full rounded-full border border-brand/15 bg-paper pl-14 pr-6 text-base text-ink shadow-sm outline-none transition-colors placeholder:text-ink/50 focus:border-brand focus:ring-4 focus:ring-brand/15"
+                aria-label="Buscar por ciudad, barrio o nombre del grupo"
+              />
+            </div>
+          </label>
+
+          <p className="mt-4 text-sm text-ink/70">
+            Sugerencias: {cities.join(" · ")}
+          </p>
+          {/*
+            Arquitectura preparada para incorporar filtros adicionales:
+            día de la semana, horario y ubicación cercana. Se sumarán
+            junto al directorio oficial en una fase posterior.
+          */}
         </div>
-      )}
-    </PageShell>
+      </section>
+
+      {/* Resultados */}
+      <section className="pb-20 md:pb-28">
+        <div className="mx-auto max-w-6xl px-6">
+          <p className="mb-8 text-sm font-semibold uppercase tracking-[0.15em] text-brand/70">
+            {results.length} {results.length === 1 ? "grupo" : "grupos"}
+          </p>
+
+          {results.length === 0 ? (
+            <div className="rounded-3xl border border-dashed border-brand/20 bg-paper/60 p-10 text-center">
+              <p className="font-serif text-xl italic text-brand">
+                No encontramos grupos con esa búsqueda.
+              </p>
+              <p className="mt-3 text-ink/85">
+                Prueba con el nombre de tu ciudad, barrio o del grupo.
+              </p>
+            </div>
+          ) : (
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {results.map((g) => (
+                <GroupCard key={g.slug} g={g} />
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* CTA primera reunión */}
+      <section className="bg-brand py-20 text-paper">
+        <div className="mx-auto max-w-3xl px-6 text-center">
+          <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.3em] text-paper/60">
+            Para ti que llegas por primera vez
+          </span>
+          <h2 className="text-balance font-serif text-4xl italic leading-tight md:text-5xl">
+            ¿Es tu primera reunión?
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-paper/85">
+            Conoce con calma qué sucede en una reunión de AA antes de asistir. Sin
+            inscripciones, sin costo y con total respeto por tu anonimato.
+          </p>
+          <Link
+            to="/necesito-ayuda"
+            className="mt-10 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-paper px-8 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-brand transition-colors hover:bg-paper/90"
+          >
+            Conocer mi primera reunión
+            <ArrowRight className="size-4" />
+          </Link>
+        </div>
+      </section>
+    </>
   );
 }
 
-function FilterField({ label, children }: { label: string; children: React.ReactNode }) {
+function GroupCard({ g }: { g: PlaceholderGroup }) {
+  const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+    g.addressFull,
+  )}`;
+  const schedule = formatMeetings(g.meetings);
+
   return (
-    <div>
-      <span className="mb-3 block text-[11px] font-bold uppercase tracking-[0.2em] text-brand/80">
-        {label}
+    <article className="flex flex-col rounded-3xl bg-paper p-7 shadow-soft ring-1 ring-black/5 transition-all hover:-translate-y-0.5 hover:shadow-lift md:p-8">
+      <span className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand/80">
+        {g.city}
       </span>
-      {children}
-    </div>
-  );
-}
+      <h3 className="mb-4 font-serif text-2xl italic text-brand">{g.name}</h3>
 
-function SegBtn({
-  active,
-  onClick,
-  label,
-}: {
-  active: boolean;
-  onClick: () => void;
-  label: string;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={
-        "rounded-lg px-3 py-3 text-xs font-semibold transition " +
-        (active
-          ? "bg-brand text-paper shadow-sm"
-          : "bg-soft text-ink/80 hover:bg-brand/5 hover:text-brand")
-      }
-    >
-      {label}
-    </button>
-  );
-}
-
-function GroupCard({ g }: { g: Group }) {
-  const primary = getPrimaryMeeting(g);
-  return (
-    <Link
-      to="/grupos/$slug"
-      params={{ slug: g.slug }}
-      className="group flex flex-col rounded-2xl bg-paper p-8 ring-1 ring-black/5 transition-all hover:-translate-y-0.5 hover:ring-brand/20"
-    >
-      <span className="mb-4 text-xs font-semibold uppercase tracking-widest text-brand/40">
-        {g.municipality}
-      </span>
-      <h3 className="mb-3 font-serif text-xl text-brand">{g.name}</h3>
       <p className="mb-5 flex items-start gap-2 text-sm text-ink/80">
-        <MapPin className="mt-0.5 size-4 shrink-0 text-brand/40" />
+        <MapPin className="mt-0.5 size-4 shrink-0 text-brand/70" strokeWidth={1.8} />
         <span>{g.addressLine}</span>
       </p>
 
-      {primary && (
-        <div className="mb-3 flex items-center gap-2 text-sm text-ink/85">
-          <Clock className="size-4 text-brand/80" />
-          <span>
-            {weekdayLabels[primary.weekday]}{" "}
-            <span className="font-mono tabular-nums">{primary.start}</span>
-          </span>
-        </div>
-      )}
-
-      <div className="mb-6 flex flex-wrap gap-1.5">
-        {Array.from(new Set(g.meetings.map((m) => m.type))).map((t) => (
-          <span
-            key={t}
-            className="rounded-full bg-brand/5 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-brand/70"
-          >
-            {meetingTypeLabel[t]}
-          </span>
+      <ul className="mb-6 space-y-1.5 text-sm text-ink/85">
+        {schedule.map((line) => (
+          <li key={line} className="flex items-start gap-2">
+            <Clock className="mt-0.5 size-4 shrink-0 text-brand/70" strokeWidth={1.8} />
+            <span>{line}</span>
+          </li>
         ))}
-      </div>
+      </ul>
 
-      <div className="mt-auto flex items-center gap-2 border-t border-brand/5 pt-5 text-sm font-semibold text-brand">
-        Ver información
-        <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+      <div className="mt-auto flex flex-col gap-3">
+        <a
+          href={mapsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-brand/25 px-5 py-3 text-xs font-semibold uppercase tracking-[0.15em] text-brand transition-colors hover:bg-brand hover:text-paper"
+        >
+          <Navigation className="size-4" />
+          Cómo llegar
+        </a>
+        <Link
+          to="/grupos/$slug"
+          params={{ slug: g.slug }}
+          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand px-5 py-3 text-xs font-semibold uppercase tracking-[0.15em] text-paper transition-colors hover:bg-brand/90"
+        >
+          Más información
+          <ArrowRight className="size-4" />
+        </Link>
       </div>
-    </Link>
+    </article>
   );
 }
