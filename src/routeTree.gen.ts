@@ -38,6 +38,7 @@ import { Route as MiembrosGruposRouteImport } from './routes/miembros.grupos'
 import { Route as MiembrosEventosRouteImport } from './routes/miembros.eventos'
 import { Route as MiembrosDocumentosRouteImport } from './routes/miembros.documentos'
 import { Route as MiembrosAreaRouteImport } from './routes/miembros.area'
+import { Route as MiembrosAprendizajeRouteImport } from './routes/miembros.aprendizaje'
 import { Route as GruposSlugRouteImport } from './routes/grupos.$slug'
 import { Route as EventosSlugRouteImport } from './routes/eventos.$slug'
 import { Route as AuthenticatedServicioRouteImport } from './routes/_authenticated/servicio'
@@ -197,6 +198,11 @@ const MiembrosAreaRoute = MiembrosAreaRouteImport.update({
   path: '/area',
   getParentRoute: () => MiembrosRoute,
 } as any)
+const MiembrosAprendizajeRoute = MiembrosAprendizajeRouteImport.update({
+  id: '/aprendizaje',
+  path: '/aprendizaje',
+  getParentRoute: () => MiembrosRoute,
+} as any)
 const GruposSlugRoute = GruposSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -303,6 +309,7 @@ export interface FileRoutesByFullPath {
   '/servicio': typeof AuthenticatedServicioRouteWithChildren
   '/eventos/$slug': typeof EventosSlugRoute
   '/grupos/$slug': typeof GruposSlugRoute
+  '/miembros/aprendizaje': typeof MiembrosAprendizajeRoute
   '/miembros/area': typeof MiembrosAreaRoute
   '/miembros/documentos': typeof MiembrosDocumentosRoute
   '/miembros/eventos': typeof MiembrosEventosRoute
@@ -345,6 +352,7 @@ export interface FileRoutesByTo {
   '/perfil': typeof AuthenticatedPerfilRoute
   '/eventos/$slug': typeof EventosSlugRoute
   '/grupos/$slug': typeof GruposSlugRoute
+  '/miembros/aprendizaje': typeof MiembrosAprendizajeRoute
   '/miembros/area': typeof MiembrosAreaRoute
   '/miembros/documentos': typeof MiembrosDocumentosRoute
   '/miembros/eventos': typeof MiembrosEventosRoute
@@ -391,6 +399,7 @@ export interface FileRoutesById {
   '/_authenticated/servicio': typeof AuthenticatedServicioRouteWithChildren
   '/eventos/$slug': typeof EventosSlugRoute
   '/grupos/$slug': typeof GruposSlugRoute
+  '/miembros/aprendizaje': typeof MiembrosAprendizajeRoute
   '/miembros/area': typeof MiembrosAreaRoute
   '/miembros/documentos': typeof MiembrosDocumentosRoute
   '/miembros/eventos': typeof MiembrosEventosRoute
@@ -437,6 +446,7 @@ export interface FileRouteTypes {
     | '/servicio'
     | '/eventos/$slug'
     | '/grupos/$slug'
+    | '/miembros/aprendizaje'
     | '/miembros/area'
     | '/miembros/documentos'
     | '/miembros/eventos'
@@ -479,6 +489,7 @@ export interface FileRouteTypes {
     | '/perfil'
     | '/eventos/$slug'
     | '/grupos/$slug'
+    | '/miembros/aprendizaje'
     | '/miembros/area'
     | '/miembros/documentos'
     | '/miembros/eventos'
@@ -524,6 +535,7 @@ export interface FileRouteTypes {
     | '/_authenticated/servicio'
     | '/eventos/$slug'
     | '/grupos/$slug'
+    | '/miembros/aprendizaje'
     | '/miembros/area'
     | '/miembros/documentos'
     | '/miembros/eventos'
@@ -773,6 +785,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MiembrosAreaRouteImport
       parentRoute: typeof MiembrosRoute
     }
+    '/miembros/aprendizaje': {
+      id: '/miembros/aprendizaje'
+      path: '/aprendizaje'
+      fullPath: '/miembros/aprendizaje'
+      preLoaderRoute: typeof MiembrosAprendizajeRouteImport
+      parentRoute: typeof MiembrosRoute
+    }
     '/grupos/$slug': {
       id: '/grupos/$slug'
       path: '/$slug'
@@ -944,6 +963,7 @@ const GruposRouteWithChildren =
   GruposRoute._addFileChildren(GruposRouteChildren)
 
 interface MiembrosRouteChildren {
+  MiembrosAprendizajeRoute: typeof MiembrosAprendizajeRoute
   MiembrosAreaRoute: typeof MiembrosAreaRoute
   MiembrosDocumentosRoute: typeof MiembrosDocumentosRoute
   MiembrosEventosRoute: typeof MiembrosEventosRoute
@@ -955,6 +975,7 @@ interface MiembrosRouteChildren {
 }
 
 const MiembrosRouteChildren: MiembrosRouteChildren = {
+  MiembrosAprendizajeRoute: MiembrosAprendizajeRoute,
   MiembrosAreaRoute: MiembrosAreaRoute,
   MiembrosDocumentosRoute: MiembrosDocumentosRoute,
   MiembrosEventosRoute: MiembrosEventosRoute,
