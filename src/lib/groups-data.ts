@@ -16,16 +16,20 @@ export interface PublicInfoContact {
 export interface Group {
   slug: string;
   name: string;
+  area?: 2 | 3;
   municipality: string;
+  neighborhood?: string;
   addressLine: string;
   addressFull: string;
   lat: number;
   lng: number;
   phone?: string;
+  photoUrl?: string;
   history: string;
   meetings: Meeting[];
   publicInfo?: PublicInfoContact;
 }
+
 
 /**
  * Municipios del Área 2 Metropolitana (Atlántico, Colombia).

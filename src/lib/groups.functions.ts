@@ -31,7 +31,7 @@ export const listGroupsFn = createServerFn({ method: "GET" }).handler(async () =
   const { data, error } = await supabase
     .from("groups")
     .select(
-      `slug, name, address_line, address_full, lat, lng, phone, history,
+      `slug, name, area, neighborhood, address_line, address_full, lat, lng, phone, photo_url, history,
        public_info_name, public_info_phone, public_info_email,
        municipality:municipalities ( name ),
        meetings ( weekday, start_time, end_time, type )`,
@@ -44,12 +44,15 @@ export const listGroupsFn = createServerFn({ method: "GET" }).handler(async () =
   const groups: Group[] = (data ?? []).map((row) => ({
     slug: row.slug,
     name: row.name,
+    area: (row.area as 2 | 3 | null) ?? undefined,
     municipality: row.municipality?.name ?? "",
+    neighborhood: row.neighborhood ?? undefined,
     addressLine: row.address_line,
     addressFull: row.address_full,
     lat: row.lat ?? 0,
     lng: row.lng ?? 0,
     phone: row.phone ?? undefined,
+    photoUrl: row.photo_url ?? undefined,
     history: row.history ?? "",
     meetings: (row.meetings ?? [])
       .map((m) => ({
@@ -71,3 +74,4 @@ export const listGroupsFn = createServerFn({ method: "GET" }).handler(async () =
 
   return groups;
 });
+
