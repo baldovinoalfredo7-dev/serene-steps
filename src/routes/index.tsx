@@ -2,9 +2,10 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import heroAsset from "@/assets/hero-circle.jpg.asset.json";
+import caribeMap from "@/assets/caribe-map.jpg";
 import { groupsQueryOptions } from "@/lib/groups-queries";
 import type { Group } from "@/lib/groups-data";
-import { ArrowRight, Search } from "lucide-react";
+import { ArrowRight, Search, BookOpen, BookMarked, Sparkles, FileText } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   loader: ({ context }) => context.queryClient.ensureQueryData(groupsQueryOptions()),
@@ -39,8 +40,8 @@ const doors: readonly Door[] = [
   },
   {
     eyebrow: "Bienvenido a tu casa en el Área 2",
-    intro: "Grupos de Alcohólicos Anónimos en Barranquilla y municipios cercanos, con sus horarios y direcciones.",
-    to: "/grupos",
+    intro: "Conoce quiénes somos, nuestra historia y cómo nos organizamos para llevar el mensaje.",
+    to: "/que-es-aa",
     cta: "Ingresar",
   },
   {
@@ -55,6 +56,13 @@ const doors: readonly Door[] = [
     to: "/auth",
     cta: "Ingresar",
   },
+] as const;
+
+const literatura = [
+  { title: "Libro Grande", icon: BookOpen },
+  { title: "Doce Pasos y Doce Tradiciones", icon: BookMarked },
+  { title: "Viviendo Sobrio", icon: Sparkles },
+  { title: "Folletos", icon: FileText },
 ] as const;
 
 function Home() {
@@ -91,23 +99,23 @@ function HomeContent({ groups }: { groups: Group[] }) {
       <section className="relative overflow-hidden bg-soft">
         <img
           src={heroAsset.url}
-          alt="Sala de reunión de Alcohólicos Anónimos con una silla vacía"
+          alt="Reunión serena con una silla vacía"
           width={1600}
           height={1104}
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-paper/70 via-paper/55 to-paper/95" />
+        <div className="absolute inset-0 bg-gradient-to-b from-paper/75 via-paper/60 to-paper/95" />
 
         <div className="relative mx-auto flex min-h-[52svh] max-w-4xl flex-col items-center justify-center px-6 py-16 text-center md:min-h-[54svh] md:py-20">
           <p className="mb-5 text-[0.7rem] font-semibold uppercase tracking-[0.3em] text-brand/80 sm:text-xs">
             Área 2 Metropolitana · Barranquilla
           </p>
           <h1 className="mb-6 max-w-3xl text-balance font-serif text-4xl leading-[1.05] text-brand sm:text-5xl lg:text-6xl">
-            Alcohólicos Anónimos
+            ¿Tienes problemas con el alcohol?
           </h1>
           <p className="max-w-2xl text-pretty text-lg leading-relaxed text-ink/85 sm:text-xl">
-            Una comunidad de hombres y mujeres que comparten su experiencia,
-            fortaleza y esperanza para resolver su problema común.
+            En Alcohólicos Anónimos encontrarás personas que han pasado por lo
+            mismo, dispuestas a escucharte y a compartir su experiencia.
           </p>
         </div>
       </section>
@@ -168,7 +176,7 @@ function HomeContent({ groups }: { groups: Group[] }) {
             <select
               value={municipality}
               onChange={(e) => setMunicipality(e.target.value)}
-              aria-label="Filtrar por municipio"
+              aria-label="Filtrar por ciudad o municipio"
               className="h-12 rounded-full border border-brand/15 bg-paper px-5 text-base text-ink focus:border-brand focus:outline-none sm:w-64"
             >
               <option value="">Todas las ciudades</option>
@@ -224,47 +232,73 @@ function HomeContent({ groups }: { groups: Group[] }) {
 
       {/* 4. AA EN EL CARIBE COLOMBIANO */}
       <section className="bg-paper py-20 md:py-24">
-        <div className="mx-auto max-w-3xl px-6">
-          <span className="mb-4 block text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand">
-            Alcohólicos Anónimos en el Caribe colombiano
-          </span>
-          <h2 className="mb-8 font-serif text-3xl leading-tight text-brand sm:text-4xl">
-            Presencia en la región.
-          </h2>
-          <p className="mb-6 text-pretty text-lg leading-relaxed text-ink/85">
-            Existen grupos de Alcohólicos Anónimos en distintas ciudades y
-            municipios del Caribe colombiano: Barranquilla, Soledad, Malambo,
-            Galapa, Puerto Colombia, Cartagena, Santa Marta, Valledupar,
-            Sincelejo, Montería y Riohacha, entre otras.
-          </p>
-          <p className="text-pretty text-lg leading-relaxed text-ink/85">
-            Cualquier persona interesada puede acercarse al grupo más cercano o
-            comunicarse para recibir orientación sobre reuniones en su ciudad.
-          </p>
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
+            <div>
+              <span className="mb-4 block text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand">
+                Alcohólicos Anónimos en el Caribe colombiano
+              </span>
+              <h2 className="mb-6 font-serif text-3xl leading-tight text-brand sm:text-4xl">
+                Presencia en la región.
+              </h2>
+              <p className="text-pretty text-lg leading-relaxed text-ink/85">
+                Contamos con grupos en distintas ciudades y municipios del Caribe
+                colombiano. Acércate al más cercano o escríbenos para orientarte.
+              </p>
+            </div>
+            <div className="overflow-hidden rounded-2xl bg-soft/60 ring-1 ring-brand/10">
+              <img
+                src={caribeMap}
+                alt="Mapa ilustrado del Caribe colombiano"
+                width={1600}
+                height={1000}
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
       {/* 5. NUESTRA LITERATURA */}
       <section className="border-t border-brand/5 bg-soft/40 py-20 md:py-24">
-        <div className="mx-auto max-w-3xl px-6">
-          <span className="mb-4 block text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand">
-            Nuestra literatura
-          </span>
-          <h2 className="mb-8 font-serif text-3xl leading-tight text-brand sm:text-4xl">
-            Libros y folletos de A.A.
-          </h2>
-          <p className="mb-10 text-pretty text-lg leading-relaxed text-ink/85">
-            La literatura de Alcohólicos Anónimos recoge la experiencia
-            compartida de sus miembros. Incluye el Libro Grande, Doce Pasos y
-            Doce Tradiciones, y folletos dirigidos a recién llegados, familias
-            y profesionales.
-          </p>
-          <Link
-            to="/literatura"
-            className="inline-flex items-center gap-2 border-b border-brand/30 pb-1 text-sm font-semibold uppercase tracking-[0.18em] text-brand transition-colors hover:border-brand"
-          >
-            Ver la literatura <ArrowRight className="size-4" />
-          </Link>
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="mb-10 max-w-2xl">
+            <span className="mb-4 block text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand">
+              Nuestra literatura
+            </span>
+            <h2 className="font-serif text-3xl leading-tight text-brand sm:text-4xl">
+              Libros y folletos de A.A.
+            </h2>
+          </div>
+
+          <ul role="list" className="grid gap-px overflow-hidden rounded-2xl border border-brand/10 bg-brand/10 sm:grid-cols-2 lg:grid-cols-4">
+            {literatura.map((item) => {
+              const Icon = item.icon;
+              return (
+                <li key={item.title} className="bg-paper">
+                  <Link
+                    to="/literatura"
+                    className="flex h-full flex-col gap-5 p-8 transition-colors hover:bg-soft/60"
+                  >
+                    <Icon className="size-6 text-brand/80" strokeWidth={1.5} />
+                    <h3 className="font-serif text-xl leading-tight text-brand">
+                      {item.title}
+                    </h3>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+
+          <div className="mt-10">
+            <Link
+              to="/literatura"
+              className="inline-flex items-center gap-2 border-b border-brand/30 pb-1 text-sm font-semibold uppercase tracking-[0.18em] text-brand transition-colors hover:border-brand"
+            >
+              Explorar la literatura <ArrowRight className="size-4" />
+            </Link>
+          </div>
         </div>
       </section>
     </>
