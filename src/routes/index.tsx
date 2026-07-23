@@ -71,27 +71,6 @@ function Home() {
 }
 
 function HomeContent({ groups }: { groups: Group[] }) {
-  const [query, setQuery] = useState("");
-  const [municipality, setMunicipality] = useState("");
-
-  const municipalities = useMemo(
-    () => Array.from(new Set(groups.map((g) => g.municipality).filter(Boolean))).sort(),
-    [groups],
-  );
-
-  const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    return groups.filter((g) => {
-      if (municipality && g.municipality !== municipality) return false;
-      if (!q) return true;
-      return (
-        g.name.toLowerCase().includes(q) ||
-        g.municipality.toLowerCase().includes(q) ||
-        g.addressLine.toLowerCase().includes(q) ||
-        g.addressFull.toLowerCase().includes(q)
-      );
-    });
-  }, [groups, query, municipality]);
 
   return (
     <>
