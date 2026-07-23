@@ -4,8 +4,8 @@ import heroAsset from "@/assets/hero-circle.jpg.asset.json";
 import caribeMap from "@/assets/caribe-map.jpg";
 import { groupsQueryOptions } from "@/lib/groups-queries";
 import type { Group } from "@/lib/groups-data";
-import { GroupFinder } from "@/components/site/GroupFinder";
 import { ArrowRight, BookOpen, BookMarked, Sparkles, FileText } from "lucide-react";
+
 
 export const Route = createFileRoute("/")({
   loader: ({ context }) => context.queryClient.ensureQueryData(groupsQueryOptions()),
@@ -70,7 +70,9 @@ function Home() {
   return <HomeContent groups={groups} />;
 }
 
-function HomeContent({ groups }: { groups: Group[] }) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function HomeContent({ groups: _groups }: { groups: Group[] }) {
+
 
   return (
     <>
@@ -127,33 +129,41 @@ function HomeContent({ groups }: { groups: Group[] }) {
 
       {/* 3. ENCUENTRA UN GRUPO */}
       <section className="bg-soft/50 py-20 md:py-24">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="mb-10 max-w-2xl">
-            <span className="mb-4 block text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand">
-              Encuentra un grupo
-            </span>
-            <h2 className="mb-6 font-serif text-3xl leading-tight text-brand sm:text-4xl md:text-5xl">
-              Busca por ciudad, municipio, barrio o nombre.
-            </h2>
-            <p className="text-lg leading-relaxed text-ink/85">
-              Consulta los grupos disponibles y sus horarios de reunión.
+        <div className="mx-auto max-w-3xl px-6 text-center">
+          <span className="mb-4 block text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand">
+            Encuentra un grupo
+          </span>
+          <h2 className="mb-6 font-serif text-3xl leading-tight text-brand sm:text-4xl md:text-5xl">
+            Siempre habrá un lugar para ti.
+          </h2>
+          <div className="mx-auto space-y-5 text-pretty text-lg leading-relaxed text-ink/85">
+            <p>
+              Un grupo de Alcohólicos Anónimos es un lugar donde personas que
+              comparten su experiencia, fortaleza y esperanza se ayudan mutuamente
+              a mantenerse sobrias y ayudan a otros a recuperarse del alcoholismo.
+            </p>
+            <p>
+              Si es tu primera vez, no necesitas saber cómo funciona AA ni venir
+              con respuestas. Tampoco es necesario inscribirte ni hablar si no lo
+              deseas. Basta con el deseo de encontrar una nueva manera de vivir.
+            </p>
+            <p>
+              En cada grupo encontrarás personas que un día también llegaron
+              buscando ayuda y hoy desean compartir contigo un mensaje de
+              esperanza.
             </p>
           </div>
-
-          {/* Módulo único de "Encuentra un grupo" — mismo componente que /grupos */}
-          <GroupFinder groups={groups} variant="compact" maxResults={6} />
-
-
           <div className="mt-10">
             <Link
               to="/grupos"
-              className="inline-flex items-center gap-2 border-b border-brand/30 pb-1 text-sm font-semibold uppercase tracking-[0.18em] text-brand transition-colors hover:border-brand"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-paper transition-colors hover:bg-brand/90"
             >
-              Ver todos los grupos <ArrowRight className="size-4" />
+              Encontrar un grupo <ArrowRight className="size-4" />
             </Link>
           </div>
         </div>
       </section>
+
 
       {/* 4. AA EN EL CARIBE COLOMBIANO */}
       <section className="bg-paper py-20 md:py-24">
