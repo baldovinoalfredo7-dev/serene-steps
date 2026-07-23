@@ -18,6 +18,7 @@ import { Route as PrivacidadRouteImport } from './routes/privacidad'
 import { Route as PrimeraReunionRouteImport } from './routes/primera-reunion'
 import { Route as PreguntasFrecuentesRouteImport } from './routes/preguntas-frecuentes'
 import { Route as NecesitoAyudaRouteImport } from './routes/necesito-ayuda'
+import { Route as MiembrosRouteImport } from './routes/miembros'
 import { Route as MapaDelSitioRouteImport } from './routes/mapa-del-sitio'
 import { Route as LiteraturaRouteImport } from './routes/literatura'
 import { Route as HorariosRouteImport } from './routes/horarios'
@@ -29,22 +30,21 @@ import { Route as AyudaFamiliarRouteImport } from './routes/ayuda-familiar'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as MiembrosIndexRouteImport } from './routes/miembros.index'
+import { Route as MiembrosResponsabilidadRouteImport } from './routes/miembros.responsabilidad'
+import { Route as MiembrosPrincipiosRouteImport } from './routes/miembros.principios'
+import { Route as MiembrosOracionesRouteImport } from './routes/miembros.oraciones'
+import { Route as MiembrosGruposRouteImport } from './routes/miembros.grupos'
+import { Route as MiembrosEventosRouteImport } from './routes/miembros.eventos'
+import { Route as MiembrosDocumentosRouteImport } from './routes/miembros.documentos'
+import { Route as MiembrosAreaRouteImport } from './routes/miembros.area'
 import { Route as GruposSlugRouteImport } from './routes/grupos.$slug'
 import { Route as EventosSlugRouteImport } from './routes/eventos.$slug'
 import { Route as AuthenticatedServicioRouteImport } from './routes/_authenticated/servicio'
 import { Route as AuthenticatedPerfilRouteImport } from './routes/_authenticated/perfil'
-import { Route as AuthenticatedMiembrosRouteImport } from './routes/_authenticated/miembros'
 import { Route as AuthenticatedServicioIndexRouteImport } from './routes/_authenticated/servicio.index'
-import { Route as AuthenticatedMiembrosIndexRouteImport } from './routes/_authenticated/miembros.index'
 import { Route as AuthenticatedServicioUsuariosRouteImport } from './routes/_authenticated/servicio.usuarios'
 import { Route as AuthenticatedServicioPerfilRouteImport } from './routes/_authenticated/servicio.perfil'
-import { Route as AuthenticatedMiembrosResponsabilidadRouteImport } from './routes/_authenticated/miembros.responsabilidad'
-import { Route as AuthenticatedMiembrosPrincipiosRouteImport } from './routes/_authenticated/miembros.principios'
-import { Route as AuthenticatedMiembrosOracionesRouteImport } from './routes/_authenticated/miembros.oraciones'
-import { Route as AuthenticatedMiembrosGruposRouteImport } from './routes/_authenticated/miembros.grupos'
-import { Route as AuthenticatedMiembrosEventosRouteImport } from './routes/_authenticated/miembros.eventos'
-import { Route as AuthenticatedMiembrosDocumentosRouteImport } from './routes/_authenticated/miembros.documentos'
-import { Route as AuthenticatedMiembrosAreaRouteImport } from './routes/_authenticated/miembros.area'
 import { Route as AuthenticatedServicioReunionesIndexRouteImport } from './routes/_authenticated/servicio.reuniones.index'
 import { Route as AuthenticatedServicioGruposIndexRouteImport } from './routes/_authenticated/servicio.grupos.index'
 import { Route as AuthenticatedServicioEventosIndexRouteImport } from './routes/_authenticated/servicio.eventos.index'
@@ -96,6 +96,11 @@ const PreguntasFrecuentesRoute = PreguntasFrecuentesRouteImport.update({
 const NecesitoAyudaRoute = NecesitoAyudaRouteImport.update({
   id: '/necesito-ayuda',
   path: '/necesito-ayuda',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MiembrosRoute = MiembrosRouteImport.update({
+  id: '/miembros',
+  path: '/miembros',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MapaDelSitioRoute = MapaDelSitioRouteImport.update({
@@ -152,6 +157,46 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MiembrosIndexRoute = MiembrosIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => MiembrosRoute,
+} as any)
+const MiembrosResponsabilidadRoute = MiembrosResponsabilidadRouteImport.update({
+  id: '/responsabilidad',
+  path: '/responsabilidad',
+  getParentRoute: () => MiembrosRoute,
+} as any)
+const MiembrosPrincipiosRoute = MiembrosPrincipiosRouteImport.update({
+  id: '/principios',
+  path: '/principios',
+  getParentRoute: () => MiembrosRoute,
+} as any)
+const MiembrosOracionesRoute = MiembrosOracionesRouteImport.update({
+  id: '/oraciones',
+  path: '/oraciones',
+  getParentRoute: () => MiembrosRoute,
+} as any)
+const MiembrosGruposRoute = MiembrosGruposRouteImport.update({
+  id: '/grupos',
+  path: '/grupos',
+  getParentRoute: () => MiembrosRoute,
+} as any)
+const MiembrosEventosRoute = MiembrosEventosRouteImport.update({
+  id: '/eventos',
+  path: '/eventos',
+  getParentRoute: () => MiembrosRoute,
+} as any)
+const MiembrosDocumentosRoute = MiembrosDocumentosRouteImport.update({
+  id: '/documentos',
+  path: '/documentos',
+  getParentRoute: () => MiembrosRoute,
+} as any)
+const MiembrosAreaRoute = MiembrosAreaRouteImport.update({
+  id: '/area',
+  path: '/area',
+  getParentRoute: () => MiembrosRoute,
+} as any)
 const GruposSlugRoute = GruposSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -172,22 +217,11 @@ const AuthenticatedPerfilRoute = AuthenticatedPerfilRouteImport.update({
   path: '/perfil',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const AuthenticatedMiembrosRoute = AuthenticatedMiembrosRouteImport.update({
-  id: '/miembros',
-  path: '/miembros',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
 const AuthenticatedServicioIndexRoute =
   AuthenticatedServicioIndexRouteImport.update({
     id: '/',
     path: '/',
     getParentRoute: () => AuthenticatedServicioRoute,
-  } as any)
-const AuthenticatedMiembrosIndexRoute =
-  AuthenticatedMiembrosIndexRouteImport.update({
-    id: '/',
-    path: '/',
-    getParentRoute: () => AuthenticatedMiembrosRoute,
   } as any)
 const AuthenticatedServicioUsuariosRoute =
   AuthenticatedServicioUsuariosRouteImport.update({
@@ -200,48 +234,6 @@ const AuthenticatedServicioPerfilRoute =
     id: '/perfil',
     path: '/perfil',
     getParentRoute: () => AuthenticatedServicioRoute,
-  } as any)
-const AuthenticatedMiembrosResponsabilidadRoute =
-  AuthenticatedMiembrosResponsabilidadRouteImport.update({
-    id: '/responsabilidad',
-    path: '/responsabilidad',
-    getParentRoute: () => AuthenticatedMiembrosRoute,
-  } as any)
-const AuthenticatedMiembrosPrincipiosRoute =
-  AuthenticatedMiembrosPrincipiosRouteImport.update({
-    id: '/principios',
-    path: '/principios',
-    getParentRoute: () => AuthenticatedMiembrosRoute,
-  } as any)
-const AuthenticatedMiembrosOracionesRoute =
-  AuthenticatedMiembrosOracionesRouteImport.update({
-    id: '/oraciones',
-    path: '/oraciones',
-    getParentRoute: () => AuthenticatedMiembrosRoute,
-  } as any)
-const AuthenticatedMiembrosGruposRoute =
-  AuthenticatedMiembrosGruposRouteImport.update({
-    id: '/grupos',
-    path: '/grupos',
-    getParentRoute: () => AuthenticatedMiembrosRoute,
-  } as any)
-const AuthenticatedMiembrosEventosRoute =
-  AuthenticatedMiembrosEventosRouteImport.update({
-    id: '/eventos',
-    path: '/eventos',
-    getParentRoute: () => AuthenticatedMiembrosRoute,
-  } as any)
-const AuthenticatedMiembrosDocumentosRoute =
-  AuthenticatedMiembrosDocumentosRouteImport.update({
-    id: '/documentos',
-    path: '/documentos',
-    getParentRoute: () => AuthenticatedMiembrosRoute,
-  } as any)
-const AuthenticatedMiembrosAreaRoute =
-  AuthenticatedMiembrosAreaRouteImport.update({
-    id: '/area',
-    path: '/area',
-    getParentRoute: () => AuthenticatedMiembrosRoute,
   } as any)
 const AuthenticatedServicioReunionesIndexRoute =
   AuthenticatedServicioReunionesIndexRouteImport.update({
@@ -297,6 +289,7 @@ export interface FileRoutesByFullPath {
   '/horarios': typeof HorariosRoute
   '/literatura': typeof LiteraturaRoute
   '/mapa-del-sitio': typeof MapaDelSitioRoute
+  '/miembros': typeof MiembrosRouteWithChildren
   '/necesito-ayuda': typeof NecesitoAyudaRoute
   '/preguntas-frecuentes': typeof PreguntasFrecuentesRoute
   '/primera-reunion': typeof PrimeraReunionRoute
@@ -306,21 +299,20 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tengo-un-problema': typeof TengoUnProblemaRoute
   '/testimonios': typeof TestimoniosRoute
-  '/miembros': typeof AuthenticatedMiembrosRouteWithChildren
   '/perfil': typeof AuthenticatedPerfilRoute
   '/servicio': typeof AuthenticatedServicioRouteWithChildren
   '/eventos/$slug': typeof EventosSlugRoute
   '/grupos/$slug': typeof GruposSlugRoute
-  '/miembros/area': typeof AuthenticatedMiembrosAreaRoute
-  '/miembros/documentos': typeof AuthenticatedMiembrosDocumentosRoute
-  '/miembros/eventos': typeof AuthenticatedMiembrosEventosRoute
-  '/miembros/grupos': typeof AuthenticatedMiembrosGruposRoute
-  '/miembros/oraciones': typeof AuthenticatedMiembrosOracionesRoute
-  '/miembros/principios': typeof AuthenticatedMiembrosPrincipiosRoute
-  '/miembros/responsabilidad': typeof AuthenticatedMiembrosResponsabilidadRoute
+  '/miembros/area': typeof MiembrosAreaRoute
+  '/miembros/documentos': typeof MiembrosDocumentosRoute
+  '/miembros/eventos': typeof MiembrosEventosRoute
+  '/miembros/grupos': typeof MiembrosGruposRoute
+  '/miembros/oraciones': typeof MiembrosOracionesRoute
+  '/miembros/principios': typeof MiembrosPrincipiosRoute
+  '/miembros/responsabilidad': typeof MiembrosResponsabilidadRoute
+  '/miembros/': typeof MiembrosIndexRoute
   '/servicio/perfil': typeof AuthenticatedServicioPerfilRoute
   '/servicio/usuarios': typeof AuthenticatedServicioUsuariosRoute
-  '/miembros/': typeof AuthenticatedMiembrosIndexRoute
   '/servicio/': typeof AuthenticatedServicioIndexRoute
   '/servicio/eventos/$id': typeof AuthenticatedServicioEventosIdRoute
   '/servicio/eventos/nuevo': typeof AuthenticatedServicioEventosNuevoRoute
@@ -353,16 +345,16 @@ export interface FileRoutesByTo {
   '/perfil': typeof AuthenticatedPerfilRoute
   '/eventos/$slug': typeof EventosSlugRoute
   '/grupos/$slug': typeof GruposSlugRoute
-  '/miembros/area': typeof AuthenticatedMiembrosAreaRoute
-  '/miembros/documentos': typeof AuthenticatedMiembrosDocumentosRoute
-  '/miembros/eventos': typeof AuthenticatedMiembrosEventosRoute
-  '/miembros/grupos': typeof AuthenticatedMiembrosGruposRoute
-  '/miembros/oraciones': typeof AuthenticatedMiembrosOracionesRoute
-  '/miembros/principios': typeof AuthenticatedMiembrosPrincipiosRoute
-  '/miembros/responsabilidad': typeof AuthenticatedMiembrosResponsabilidadRoute
+  '/miembros/area': typeof MiembrosAreaRoute
+  '/miembros/documentos': typeof MiembrosDocumentosRoute
+  '/miembros/eventos': typeof MiembrosEventosRoute
+  '/miembros/grupos': typeof MiembrosGruposRoute
+  '/miembros/oraciones': typeof MiembrosOracionesRoute
+  '/miembros/principios': typeof MiembrosPrincipiosRoute
+  '/miembros/responsabilidad': typeof MiembrosResponsabilidadRoute
+  '/miembros': typeof MiembrosIndexRoute
   '/servicio/perfil': typeof AuthenticatedServicioPerfilRoute
   '/servicio/usuarios': typeof AuthenticatedServicioUsuariosRoute
-  '/miembros': typeof AuthenticatedMiembrosIndexRoute
   '/servicio': typeof AuthenticatedServicioIndexRoute
   '/servicio/eventos/$id': typeof AuthenticatedServicioEventosIdRoute
   '/servicio/eventos/nuevo': typeof AuthenticatedServicioEventosNuevoRoute
@@ -385,6 +377,7 @@ export interface FileRoutesById {
   '/horarios': typeof HorariosRoute
   '/literatura': typeof LiteraturaRoute
   '/mapa-del-sitio': typeof MapaDelSitioRoute
+  '/miembros': typeof MiembrosRouteWithChildren
   '/necesito-ayuda': typeof NecesitoAyudaRoute
   '/preguntas-frecuentes': typeof PreguntasFrecuentesRoute
   '/primera-reunion': typeof PrimeraReunionRoute
@@ -394,21 +387,20 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tengo-un-problema': typeof TengoUnProblemaRoute
   '/testimonios': typeof TestimoniosRoute
-  '/_authenticated/miembros': typeof AuthenticatedMiembrosRouteWithChildren
   '/_authenticated/perfil': typeof AuthenticatedPerfilRoute
   '/_authenticated/servicio': typeof AuthenticatedServicioRouteWithChildren
   '/eventos/$slug': typeof EventosSlugRoute
   '/grupos/$slug': typeof GruposSlugRoute
-  '/_authenticated/miembros/area': typeof AuthenticatedMiembrosAreaRoute
-  '/_authenticated/miembros/documentos': typeof AuthenticatedMiembrosDocumentosRoute
-  '/_authenticated/miembros/eventos': typeof AuthenticatedMiembrosEventosRoute
-  '/_authenticated/miembros/grupos': typeof AuthenticatedMiembrosGruposRoute
-  '/_authenticated/miembros/oraciones': typeof AuthenticatedMiembrosOracionesRoute
-  '/_authenticated/miembros/principios': typeof AuthenticatedMiembrosPrincipiosRoute
-  '/_authenticated/miembros/responsabilidad': typeof AuthenticatedMiembrosResponsabilidadRoute
+  '/miembros/area': typeof MiembrosAreaRoute
+  '/miembros/documentos': typeof MiembrosDocumentosRoute
+  '/miembros/eventos': typeof MiembrosEventosRoute
+  '/miembros/grupos': typeof MiembrosGruposRoute
+  '/miembros/oraciones': typeof MiembrosOracionesRoute
+  '/miembros/principios': typeof MiembrosPrincipiosRoute
+  '/miembros/responsabilidad': typeof MiembrosResponsabilidadRoute
+  '/miembros/': typeof MiembrosIndexRoute
   '/_authenticated/servicio/perfil': typeof AuthenticatedServicioPerfilRoute
   '/_authenticated/servicio/usuarios': typeof AuthenticatedServicioUsuariosRoute
-  '/_authenticated/miembros/': typeof AuthenticatedMiembrosIndexRoute
   '/_authenticated/servicio/': typeof AuthenticatedServicioIndexRoute
   '/_authenticated/servicio/eventos/$id': typeof AuthenticatedServicioEventosIdRoute
   '/_authenticated/servicio/eventos/nuevo': typeof AuthenticatedServicioEventosNuevoRoute
@@ -431,6 +423,7 @@ export interface FileRouteTypes {
     | '/horarios'
     | '/literatura'
     | '/mapa-del-sitio'
+    | '/miembros'
     | '/necesito-ayuda'
     | '/preguntas-frecuentes'
     | '/primera-reunion'
@@ -440,7 +433,6 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/tengo-un-problema'
     | '/testimonios'
-    | '/miembros'
     | '/perfil'
     | '/servicio'
     | '/eventos/$slug'
@@ -452,9 +444,9 @@ export interface FileRouteTypes {
     | '/miembros/oraciones'
     | '/miembros/principios'
     | '/miembros/responsabilidad'
+    | '/miembros/'
     | '/servicio/perfil'
     | '/servicio/usuarios'
-    | '/miembros/'
     | '/servicio/'
     | '/servicio/eventos/$id'
     | '/servicio/eventos/nuevo'
@@ -494,9 +486,9 @@ export interface FileRouteTypes {
     | '/miembros/oraciones'
     | '/miembros/principios'
     | '/miembros/responsabilidad'
+    | '/miembros'
     | '/servicio/perfil'
     | '/servicio/usuarios'
-    | '/miembros'
     | '/servicio'
     | '/servicio/eventos/$id'
     | '/servicio/eventos/nuevo'
@@ -518,6 +510,7 @@ export interface FileRouteTypes {
     | '/horarios'
     | '/literatura'
     | '/mapa-del-sitio'
+    | '/miembros'
     | '/necesito-ayuda'
     | '/preguntas-frecuentes'
     | '/primera-reunion'
@@ -527,21 +520,20 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/tengo-un-problema'
     | '/testimonios'
-    | '/_authenticated/miembros'
     | '/_authenticated/perfil'
     | '/_authenticated/servicio'
     | '/eventos/$slug'
     | '/grupos/$slug'
-    | '/_authenticated/miembros/area'
-    | '/_authenticated/miembros/documentos'
-    | '/_authenticated/miembros/eventos'
-    | '/_authenticated/miembros/grupos'
-    | '/_authenticated/miembros/oraciones'
-    | '/_authenticated/miembros/principios'
-    | '/_authenticated/miembros/responsabilidad'
+    | '/miembros/area'
+    | '/miembros/documentos'
+    | '/miembros/eventos'
+    | '/miembros/grupos'
+    | '/miembros/oraciones'
+    | '/miembros/principios'
+    | '/miembros/responsabilidad'
+    | '/miembros/'
     | '/_authenticated/servicio/perfil'
     | '/_authenticated/servicio/usuarios'
-    | '/_authenticated/miembros/'
     | '/_authenticated/servicio/'
     | '/_authenticated/servicio/eventos/$id'
     | '/_authenticated/servicio/eventos/nuevo'
@@ -564,6 +556,7 @@ export interface RootRouteChildren {
   HorariosRoute: typeof HorariosRoute
   LiteraturaRoute: typeof LiteraturaRoute
   MapaDelSitioRoute: typeof MapaDelSitioRoute
+  MiembrosRoute: typeof MiembrosRouteWithChildren
   NecesitoAyudaRoute: typeof NecesitoAyudaRoute
   PreguntasFrecuentesRoute: typeof PreguntasFrecuentesRoute
   PrimeraReunionRoute: typeof PrimeraReunionRoute
@@ -638,6 +631,13 @@ declare module '@tanstack/react-router' {
       path: '/necesito-ayuda'
       fullPath: '/necesito-ayuda'
       preLoaderRoute: typeof NecesitoAyudaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/miembros': {
+      id: '/miembros'
+      path: '/miembros'
+      fullPath: '/miembros'
+      preLoaderRoute: typeof MiembrosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mapa-del-sitio': {
@@ -717,6 +717,62 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/miembros/': {
+      id: '/miembros/'
+      path: '/'
+      fullPath: '/miembros/'
+      preLoaderRoute: typeof MiembrosIndexRouteImport
+      parentRoute: typeof MiembrosRoute
+    }
+    '/miembros/responsabilidad': {
+      id: '/miembros/responsabilidad'
+      path: '/responsabilidad'
+      fullPath: '/miembros/responsabilidad'
+      preLoaderRoute: typeof MiembrosResponsabilidadRouteImport
+      parentRoute: typeof MiembrosRoute
+    }
+    '/miembros/principios': {
+      id: '/miembros/principios'
+      path: '/principios'
+      fullPath: '/miembros/principios'
+      preLoaderRoute: typeof MiembrosPrincipiosRouteImport
+      parentRoute: typeof MiembrosRoute
+    }
+    '/miembros/oraciones': {
+      id: '/miembros/oraciones'
+      path: '/oraciones'
+      fullPath: '/miembros/oraciones'
+      preLoaderRoute: typeof MiembrosOracionesRouteImport
+      parentRoute: typeof MiembrosRoute
+    }
+    '/miembros/grupos': {
+      id: '/miembros/grupos'
+      path: '/grupos'
+      fullPath: '/miembros/grupos'
+      preLoaderRoute: typeof MiembrosGruposRouteImport
+      parentRoute: typeof MiembrosRoute
+    }
+    '/miembros/eventos': {
+      id: '/miembros/eventos'
+      path: '/eventos'
+      fullPath: '/miembros/eventos'
+      preLoaderRoute: typeof MiembrosEventosRouteImport
+      parentRoute: typeof MiembrosRoute
+    }
+    '/miembros/documentos': {
+      id: '/miembros/documentos'
+      path: '/documentos'
+      fullPath: '/miembros/documentos'
+      preLoaderRoute: typeof MiembrosDocumentosRouteImport
+      parentRoute: typeof MiembrosRoute
+    }
+    '/miembros/area': {
+      id: '/miembros/area'
+      path: '/area'
+      fullPath: '/miembros/area'
+      preLoaderRoute: typeof MiembrosAreaRouteImport
+      parentRoute: typeof MiembrosRoute
+    }
     '/grupos/$slug': {
       id: '/grupos/$slug'
       path: '/$slug'
@@ -745,26 +801,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedPerfilRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/_authenticated/miembros': {
-      id: '/_authenticated/miembros'
-      path: '/miembros'
-      fullPath: '/miembros'
-      preLoaderRoute: typeof AuthenticatedMiembrosRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
     '/_authenticated/servicio/': {
       id: '/_authenticated/servicio/'
       path: '/'
       fullPath: '/servicio/'
       preLoaderRoute: typeof AuthenticatedServicioIndexRouteImport
       parentRoute: typeof AuthenticatedServicioRoute
-    }
-    '/_authenticated/miembros/': {
-      id: '/_authenticated/miembros/'
-      path: '/'
-      fullPath: '/miembros/'
-      preLoaderRoute: typeof AuthenticatedMiembrosIndexRouteImport
-      parentRoute: typeof AuthenticatedMiembrosRoute
     }
     '/_authenticated/servicio/usuarios': {
       id: '/_authenticated/servicio/usuarios'
@@ -779,55 +821,6 @@ declare module '@tanstack/react-router' {
       fullPath: '/servicio/perfil'
       preLoaderRoute: typeof AuthenticatedServicioPerfilRouteImport
       parentRoute: typeof AuthenticatedServicioRoute
-    }
-    '/_authenticated/miembros/responsabilidad': {
-      id: '/_authenticated/miembros/responsabilidad'
-      path: '/responsabilidad'
-      fullPath: '/miembros/responsabilidad'
-      preLoaderRoute: typeof AuthenticatedMiembrosResponsabilidadRouteImport
-      parentRoute: typeof AuthenticatedMiembrosRoute
-    }
-    '/_authenticated/miembros/principios': {
-      id: '/_authenticated/miembros/principios'
-      path: '/principios'
-      fullPath: '/miembros/principios'
-      preLoaderRoute: typeof AuthenticatedMiembrosPrincipiosRouteImport
-      parentRoute: typeof AuthenticatedMiembrosRoute
-    }
-    '/_authenticated/miembros/oraciones': {
-      id: '/_authenticated/miembros/oraciones'
-      path: '/oraciones'
-      fullPath: '/miembros/oraciones'
-      preLoaderRoute: typeof AuthenticatedMiembrosOracionesRouteImport
-      parentRoute: typeof AuthenticatedMiembrosRoute
-    }
-    '/_authenticated/miembros/grupos': {
-      id: '/_authenticated/miembros/grupos'
-      path: '/grupos'
-      fullPath: '/miembros/grupos'
-      preLoaderRoute: typeof AuthenticatedMiembrosGruposRouteImport
-      parentRoute: typeof AuthenticatedMiembrosRoute
-    }
-    '/_authenticated/miembros/eventos': {
-      id: '/_authenticated/miembros/eventos'
-      path: '/eventos'
-      fullPath: '/miembros/eventos'
-      preLoaderRoute: typeof AuthenticatedMiembrosEventosRouteImport
-      parentRoute: typeof AuthenticatedMiembrosRoute
-    }
-    '/_authenticated/miembros/documentos': {
-      id: '/_authenticated/miembros/documentos'
-      path: '/documentos'
-      fullPath: '/miembros/documentos'
-      preLoaderRoute: typeof AuthenticatedMiembrosDocumentosRouteImport
-      parentRoute: typeof AuthenticatedMiembrosRoute
-    }
-    '/_authenticated/miembros/area': {
-      id: '/_authenticated/miembros/area'
-      path: '/area'
-      fullPath: '/miembros/area'
-      preLoaderRoute: typeof AuthenticatedMiembrosAreaRouteImport
-      parentRoute: typeof AuthenticatedMiembrosRoute
     }
     '/_authenticated/servicio/reuniones/': {
       id: '/_authenticated/servicio/reuniones/'
@@ -881,34 +874,6 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface AuthenticatedMiembrosRouteChildren {
-  AuthenticatedMiembrosAreaRoute: typeof AuthenticatedMiembrosAreaRoute
-  AuthenticatedMiembrosDocumentosRoute: typeof AuthenticatedMiembrosDocumentosRoute
-  AuthenticatedMiembrosEventosRoute: typeof AuthenticatedMiembrosEventosRoute
-  AuthenticatedMiembrosGruposRoute: typeof AuthenticatedMiembrosGruposRoute
-  AuthenticatedMiembrosOracionesRoute: typeof AuthenticatedMiembrosOracionesRoute
-  AuthenticatedMiembrosPrincipiosRoute: typeof AuthenticatedMiembrosPrincipiosRoute
-  AuthenticatedMiembrosResponsabilidadRoute: typeof AuthenticatedMiembrosResponsabilidadRoute
-  AuthenticatedMiembrosIndexRoute: typeof AuthenticatedMiembrosIndexRoute
-}
-
-const AuthenticatedMiembrosRouteChildren: AuthenticatedMiembrosRouteChildren = {
-  AuthenticatedMiembrosAreaRoute: AuthenticatedMiembrosAreaRoute,
-  AuthenticatedMiembrosDocumentosRoute: AuthenticatedMiembrosDocumentosRoute,
-  AuthenticatedMiembrosEventosRoute: AuthenticatedMiembrosEventosRoute,
-  AuthenticatedMiembrosGruposRoute: AuthenticatedMiembrosGruposRoute,
-  AuthenticatedMiembrosOracionesRoute: AuthenticatedMiembrosOracionesRoute,
-  AuthenticatedMiembrosPrincipiosRoute: AuthenticatedMiembrosPrincipiosRoute,
-  AuthenticatedMiembrosResponsabilidadRoute:
-    AuthenticatedMiembrosResponsabilidadRoute,
-  AuthenticatedMiembrosIndexRoute: AuthenticatedMiembrosIndexRoute,
-}
-
-const AuthenticatedMiembrosRouteWithChildren =
-  AuthenticatedMiembrosRoute._addFileChildren(
-    AuthenticatedMiembrosRouteChildren,
-  )
-
 interface AuthenticatedServicioRouteChildren {
   AuthenticatedServicioPerfilRoute: typeof AuthenticatedServicioPerfilRoute
   AuthenticatedServicioUsuariosRoute: typeof AuthenticatedServicioUsuariosRoute
@@ -944,13 +909,11 @@ const AuthenticatedServicioRouteWithChildren =
   )
 
 interface AuthenticatedRouteRouteChildren {
-  AuthenticatedMiembrosRoute: typeof AuthenticatedMiembrosRouteWithChildren
   AuthenticatedPerfilRoute: typeof AuthenticatedPerfilRoute
   AuthenticatedServicioRoute: typeof AuthenticatedServicioRouteWithChildren
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
-  AuthenticatedMiembrosRoute: AuthenticatedMiembrosRouteWithChildren,
   AuthenticatedPerfilRoute: AuthenticatedPerfilRoute,
   AuthenticatedServicioRoute: AuthenticatedServicioRouteWithChildren,
 }
@@ -980,6 +943,32 @@ const GruposRouteChildren: GruposRouteChildren = {
 const GruposRouteWithChildren =
   GruposRoute._addFileChildren(GruposRouteChildren)
 
+interface MiembrosRouteChildren {
+  MiembrosAreaRoute: typeof MiembrosAreaRoute
+  MiembrosDocumentosRoute: typeof MiembrosDocumentosRoute
+  MiembrosEventosRoute: typeof MiembrosEventosRoute
+  MiembrosGruposRoute: typeof MiembrosGruposRoute
+  MiembrosOracionesRoute: typeof MiembrosOracionesRoute
+  MiembrosPrincipiosRoute: typeof MiembrosPrincipiosRoute
+  MiembrosResponsabilidadRoute: typeof MiembrosResponsabilidadRoute
+  MiembrosIndexRoute: typeof MiembrosIndexRoute
+}
+
+const MiembrosRouteChildren: MiembrosRouteChildren = {
+  MiembrosAreaRoute: MiembrosAreaRoute,
+  MiembrosDocumentosRoute: MiembrosDocumentosRoute,
+  MiembrosEventosRoute: MiembrosEventosRoute,
+  MiembrosGruposRoute: MiembrosGruposRoute,
+  MiembrosOracionesRoute: MiembrosOracionesRoute,
+  MiembrosPrincipiosRoute: MiembrosPrincipiosRoute,
+  MiembrosResponsabilidadRoute: MiembrosResponsabilidadRoute,
+  MiembrosIndexRoute: MiembrosIndexRoute,
+}
+
+const MiembrosRouteWithChildren = MiembrosRoute._addFileChildren(
+  MiembrosRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
@@ -992,6 +981,7 @@ const rootRouteChildren: RootRouteChildren = {
   HorariosRoute: HorariosRoute,
   LiteraturaRoute: LiteraturaRoute,
   MapaDelSitioRoute: MapaDelSitioRoute,
+  MiembrosRoute: MiembrosRouteWithChildren,
   NecesitoAyudaRoute: NecesitoAyudaRoute,
   PreguntasFrecuentesRoute: PreguntasFrecuentesRoute,
   PrimeraReunionRoute: PrimeraReunionRoute,
