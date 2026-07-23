@@ -24,6 +24,7 @@ import { Route as HorariosRouteImport } from './routes/horarios'
 import { Route as GruposRouteImport } from './routes/grupos'
 import { Route as EventosRouteImport } from './routes/eventos'
 import { Route as ContactoRouteImport } from './routes/contacto'
+import { Route as AyudaFamiliarRouteImport } from './routes/ayuda-familiar'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
@@ -124,6 +125,11 @@ const EventosRoute = EventosRouteImport.update({
 const ContactoRoute = ContactoRouteImport.update({
   id: '/contacto',
   path: '/contacto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AyudaFamiliarRoute = AyudaFamiliarRouteImport.update({
+  id: '/ayuda-familiar',
+  path: '/ayuda-familiar',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -277,6 +283,7 @@ const AuthenticatedServicioEventosIdRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/ayuda-familiar': typeof AyudaFamiliarRoute
   '/contacto': typeof ContactoRoute
   '/eventos': typeof EventosRouteWithChildren
   '/grupos': typeof GruposRouteWithChildren
@@ -319,6 +326,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/ayuda-familiar': typeof AyudaFamiliarRoute
   '/contacto': typeof ContactoRoute
   '/eventos': typeof EventosRouteWithChildren
   '/grupos': typeof GruposRouteWithChildren
@@ -361,6 +369,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
+  '/ayuda-familiar': typeof AyudaFamiliarRoute
   '/contacto': typeof ContactoRoute
   '/eventos': typeof EventosRouteWithChildren
   '/grupos': typeof GruposRouteWithChildren
@@ -405,6 +414,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/auth'
+    | '/ayuda-familiar'
     | '/contacto'
     | '/eventos'
     | '/grupos'
@@ -447,6 +457,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/auth'
+    | '/ayuda-familiar'
     | '/contacto'
     | '/eventos'
     | '/grupos'
@@ -488,6 +499,7 @@ export interface FileRouteTypes {
     | '/'
     | '/_authenticated'
     | '/auth'
+    | '/ayuda-familiar'
     | '/contacto'
     | '/eventos'
     | '/grupos'
@@ -532,6 +544,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
+  AyudaFamiliarRoute: typeof AyudaFamiliarRoute
   ContactoRoute: typeof ContactoRoute
   EventosRoute: typeof EventosRouteWithChildren
   GruposRoute: typeof GruposRouteWithChildren
@@ -654,6 +667,13 @@ declare module '@tanstack/react-router' {
       path: '/contacto'
       fullPath: '/contacto'
       preLoaderRoute: typeof ContactoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ayuda-familiar': {
+      id: '/ayuda-familiar'
+      path: '/ayuda-familiar'
+      fullPath: '/ayuda-familiar'
+      preLoaderRoute: typeof AyudaFamiliarRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -944,6 +964,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
+  AyudaFamiliarRoute: AyudaFamiliarRoute,
   ContactoRoute: ContactoRoute,
   EventosRoute: EventosRouteWithChildren,
   GruposRoute: GruposRouteWithChildren,
