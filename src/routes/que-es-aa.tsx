@@ -1,98 +1,204 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/site/PageShell";
-import { ArrowRight } from "lucide-react";
+import { MapPin, Phone, Clock, Navigation, PhoneCall, CalendarDays } from "lucide-react";
+import type { ReactNode } from "react";
 
 export const Route = createFileRoute("/que-es-aa")({
   head: () => ({
     meta: [
-      { title: "¿Qué es Alcohólicos Anónimos? — AA Área 2 Metropolitana" },
+      { title: "Bienvenido a tu casa en el Área 2 — AA Área 2 Metropolitana" },
       {
         name: "description",
         content:
-          "Alcohólicos Anónimos es una comunidad de hombres y mujeres que comparten su experiencia, fortaleza y esperanza para resolver su problema común.",
+          "Conoce el Área 2 Metropolitana de Barranquilla de Alcohólicos Anónimos: quiénes somos, cómo nos organizamos y cómo visitarnos.",
       },
-      { property: "og:title", content: "¿Qué es Alcohólicos Anónimos?" },
+      { property: "og:title", content: "Bienvenido a tu casa en el Área 2" },
       {
         property: "og:description",
-        content: "Conoce qué es AA, cómo funciona y por qué el anonimato es fundamental.",
+        content:
+          "Un espacio cercano para conocer el servicio, las actividades y la vida del Área 2 Metropolitana de Barranquilla.",
       },
       { property: "og:url", content: "/que-es-aa" },
     ],
     links: [{ rel: "canonical", href: "/que-es-aa" }],
   }),
-  component: QueEsAA,
+  component: AreaHome,
 });
 
-function QueEsAA() {
+function AreaHome() {
   return (
     <PageShell
-      eyebrow="Sobre AA"
-      title="¿Qué es Alcohólicos Anónimos?"
-      intro="Una comunidad de hombres y mujeres que comparten su mutua experiencia, fortaleza y esperanza para resolver su problema común y ayudar a otros a recuperarse del alcoholismo."
+      eyebrow="El Área 2"
+      title="Bienvenido a tu casa en el Área 2"
+      intro="Nos alegra recibirte. Este espacio fue creado para acercarte a la comunidad de Alcohólicos Anónimos del Área 2 Metropolitana de Barranquilla."
     >
-      <div className="prose-lg mx-auto max-w-none space-y-8 text-ink/75">
-        <p className="text-lg leading-relaxed">
-          Alcohólicos Anónimos no es una organización religiosa ni política. No está afiliada con
-          ninguna secta, denominación o institución. No hay cuotas de ingreso. El único requisito
-          para ser miembro es el deseo de dejar de beber.
-        </p>
+      <div className="mx-auto max-w-4xl space-y-16">
+        <div className="space-y-4 text-pretty text-lg leading-relaxed text-ink/85">
+          <p>
+            Aquí encontrarás información sobre nuestro servicio, nuestras actividades y las
+            diferentes formas de participar en la vida de AA.
+          </p>
+          <p>
+            Queremos que esta página sea un lugar útil, cercano y fácil de recorrer, donde siempre
+            encuentres orientación y una mano amiga.
+          </p>
+        </div>
 
-        <div className="my-12 grid gap-6 md:grid-cols-3">
-          {pillars.map((p) => (
-            <div key={p.title} className="rounded-2xl bg-soft/60 p-6">
-              <span className="mb-3 block font-serif text-3xl italic text-brand/40">
-                {p.number}
-              </span>
-              <h3 className="mb-2 font-serif text-xl text-brand">{p.title}</h3>
-              <p className="text-sm text-ink/65">{p.body}</p>
+        <Section title="¿Qué es el Área 2?">
+          <p>
+            El Área 2 Metropolitana de Barranquilla reúne a los grupos de Alcohólicos Anónimos de
+            nuestra jurisdicción que trabajan unidos para fortalecer el servicio y llevar el mensaje
+            de recuperación a quien aún sufre.
+          </p>
+          <p>
+            Cada grupo conserva su autonomía y participa, junto con los demás, en un esfuerzo común
+            basado en los principios de Alcohólicos Anónimos.
+          </p>
+        </Section>
+
+        <Section title="Cómo nos organizamos">
+          <p>
+            Nuestro servicio se desarrolla a través de una estructura formada por grupos, distritos,
+            comités y servidores de confianza que trabajan de manera voluntaria.
+          </p>
+          <p>
+            Cada servidor cumple una función específica con un mismo propósito: apoyar a los grupos
+            y contribuir para que el mensaje de Alcohólicos Anónimos llegue a quien lo necesita.
+          </p>
+        </Section>
+
+        <Section
+          title="Nuestro servicio"
+          intro="Los comités de servicio del Área 2 acompañan el trabajo de los grupos en distintas áreas. Muy pronto encontrarás aquí la información oficial de cada uno."
+        >
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div
+                key={i}
+                className="flex min-h-40 flex-col justify-between rounded-2xl border border-dashed border-brand/20 bg-paper p-6"
+              >
+                <span className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-brand/60">
+                  Comité
+                </span>
+                <p className="mt-4 text-sm leading-relaxed text-ink/60">
+                  Próximamente publicaremos aquí el nombre y propósito de este comité.
+                </p>
+              </div>
+            ))}
+          </div>
+        </Section>
+
+        <Section title="Nuestra agenda">
+          <div className="rounded-2xl border border-brand/10 bg-paper p-8 text-center">
+            <span className="mx-auto mb-4 grid size-11 place-items-center rounded-full bg-brand/10 text-brand">
+              <CalendarDays className="size-5" />
+            </span>
+            <p className="mx-auto max-w-xl text-pretty text-base leading-relaxed text-ink/80">
+              Próximamente encontrarás aquí las actividades programadas del Área 2 Metropolitana
+              de Barranquilla: asambleas, talleres, foros y actividades de servicio.
+            </p>
+          </div>
+        </Section>
+
+        <Section title="Visítanos">
+          <div className="rounded-2xl bg-paper p-8 ring-1 ring-black/5 sm:p-10">
+            <div className="grid gap-8 sm:grid-cols-3">
+              <InfoBlock icon={<MapPin className="size-5" />} label="Dirección">
+                Calle 63 # 22D-39, Local 2
+                <br />
+                Las Moras IV Etapa
+              </InfoBlock>
+              <InfoBlock icon={<Phone className="size-5" />} label="Teléfono">
+                324 557 7038
+              </InfoBlock>
+              <InfoBlock icon={<Clock className="size-5" />} label="Horario de atención">
+                Lunes a viernes
+                <br />
+                2:00 p. m. a 6:00 p. m.
+              </InfoBlock>
             </div>
-          ))}
-        </div>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Calle+63+%2322D-39+Barranquilla"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-paper transition-colors hover:bg-brand/90"
+              >
+                <Navigation className="size-4" /> Cómo llegar
+              </a>
+              <a
+                href="tel:+573245577038"
+                className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-paper px-5 py-2.5 text-sm font-medium text-brand transition-colors hover:bg-soft"
+              >
+                <PhoneCall className="size-4" /> Llamar
+              </a>
+            </div>
+          </div>
+        </Section>
 
-        <h2 className="!mt-14 font-serif text-2xl italic text-brand">Nuestra experiencia</h2>
-        <p>
-          Cada miembro de AA ha vivido en carne propia lo que significa perder el control frente al
-          alcohol. Compartir esa experiencia — sin juicios, sin diagnóstico y sin consejos no
-          solicitados — es lo que constituye el corazón de una reunión.
-        </p>
-
-        <h2 className="!mt-14 font-serif text-2xl italic text-brand">Anonimato</h2>
-        <p>
-          El anonimato es la base espiritual de todas nuestras tradiciones. Nadie usará tu nombre
-          fuera del grupo, nadie tomará fotografías, y lo que se comparte dentro de una reunión se
-          queda ahí. Puedes venir tantas veces como quieras sin dar tu apellido.
-        </p>
-
-        <div className="!mt-16 rounded-2xl border border-brand/10 bg-paper p-8 text-center">
-          <h3 className="mb-4 font-serif text-2xl italic text-brand">
-            ¿Listo para dar el primer paso?
-          </h3>
-          <Link
-            to="/grupos"
-            className="inline-flex items-center gap-2 rounded-sm bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-paper transition-colors hover:bg-brand/90"
-          >
-            Encuentra un grupo <ArrowRight className="size-4" />
-          </Link>
-        </div>
+        <section className="rounded-3xl bg-soft/60 p-8 text-center sm:p-12">
+          <h2 className="font-serif text-2xl italic text-brand sm:text-3xl">
+            Esta también es tu casa.
+          </h2>
+          <div className="mx-auto mt-5 max-w-2xl space-y-4 text-pretty text-base leading-relaxed text-ink/80">
+            <p>
+              El Área 2 Metropolitana de Barranquilla existe gracias al servicio voluntario de
+              hombres y mujeres que comparten su experiencia, fortaleza y esperanza.
+            </p>
+            <p>
+              Si haces parte de Alcohólicos Anónimos, aquí siempre encontrarás un espacio para
+              servir, aprender y crecer junto a otros compañeros.
+            </p>
+            <p className="font-medium text-brand">
+              Gracias por visitarnos. Siempre serás bienvenido.
+            </p>
+          </div>
+        </section>
       </div>
     </PageShell>
   );
 }
 
-const pillars = [
-  {
-    number: "01",
-    title: "Experiencia compartida",
-    body: "Nos apoyamos escuchando y contando lo que vivimos, sin dar consejos ni juzgar.",
-  },
-  {
-    number: "02",
-    title: "Sin cuotas",
-    body: "AA se sostiene con las contribuciones voluntarias de sus propios miembros.",
-  },
-  {
-    number: "03",
-    title: "Anonimato",
-    body: "El anonimato es el fundamento espiritual que garantiza tu privacidad.",
-  },
-];
+function Section({
+  title,
+  intro,
+  children,
+}: {
+  title: string;
+  intro?: string;
+  children: ReactNode;
+}) {
+  return (
+    <section>
+      <h2 className="font-serif text-2xl leading-tight text-brand sm:text-3xl">{title}</h2>
+      {intro && (
+        <p className="mt-3 max-w-2xl text-pretty text-base leading-relaxed text-ink/75">{intro}</p>
+      )}
+      <div className="mt-6 space-y-4 text-pretty text-base leading-relaxed text-ink/85">
+        {children}
+      </div>
+    </section>
+  );
+}
+
+function InfoBlock({
+  icon,
+  label,
+  children,
+}: {
+  icon: ReactNode;
+  label: string;
+  children: ReactNode;
+}) {
+  return (
+    <div>
+      <span className="mb-3 grid size-10 place-items-center rounded-full bg-brand/10 text-brand">
+        {icon}
+      </span>
+      <span className="block text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-brand/80">
+        {label}
+      </span>
+      <p className="mt-2 text-sm leading-relaxed text-ink/85">{children}</p>
+    </div>
+  );
+}
