@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import heroImage from "@/assets/hero-room.jpg";
+import heroAsset from "@/assets/hero-circle.jpg.asset.json";
 import { groupsQueryOptions } from "@/lib/groups-queries";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, HandHeart, Home as HomeIcon, HeartHandshake, UserRound } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   loader: ({ context }) => context.queryClient.ensureQueryData(groupsQueryOptions()),
@@ -21,6 +22,51 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
+type Door = {
+  eyebrow: string;
+  title: string;
+  body: string;
+  to: string;
+  cta: string;
+  icon: LucideIcon;
+  hash?: string;
+};
+
+const doors: readonly Door[] = [
+  {
+    eyebrow: "Busco ayuda",
+    title: "Estás en el lugar correcto.",
+    body: "Para ti o para alguien que quieres. Aquí te recibimos con calma, respeto y anonimato. Sin inscripciones, sin cuotas, sin requisitos.",
+    to: "/necesito-ayuda",
+    cta: "Cómo empezar",
+    icon: HandHeart,
+  },
+  {
+    eyebrow: "Encuentra un grupo",
+    title: "Bienvenido a tu casa en el Área 2.",
+    body: "Nueve grupos abiertos en Barranquilla, Soledad, Malambo, Galapa y Puerto Colombia. Elige el más cercano y ven cuando quieras.",
+    to: "/grupos",
+    cta: "Ver los grupos",
+    icon: HomeIcon,
+  },
+  {
+    eyebrow: "Quiero cooperar",
+    title: "No tengo problemas con la bebida, pero quiero ayudar.",
+    body: "Profesionales de la salud, educadores, familias e instituciones encuentran en AA un aliado silencioso para acompañar a quien lo necesita.",
+    to: "/contacto",
+    cta: "Hablemos",
+    icon: HeartHandshake,
+  },
+  {
+    eyebrow: "Ya soy miembro",
+    title: "Bienvenido de vuelta.",
+    body: "Ingresa con las credenciales que recibiste en tu grupo o en el Área para seguir compartiendo experiencia, fortaleza y esperanza.",
+    to: "/auth",
+    cta: "Acceso para miembros",
+    icon: UserRound,
+  },
+] as const;
+
 function Home() {
   const { data: groups } = useSuspenseQuery(groupsQueryOptions());
   return <HomeContent groups={groups} />;
@@ -29,73 +75,102 @@ function Home() {
 function HomeContent({ groups }: { groups: import("@/lib/groups-data").Group[] }) {
   return (
     <>
-      {/* 1. HERO DE BIENVENIDA */}
+      {/* 1. HERO */}
       <section className="relative overflow-hidden bg-soft">
         <img
-          src={heroImage}
-          alt=""
+          src={heroAsset.url}
+          alt="Reunión de Alcohólicos Anónimos con una silla vacía al frente, símbolo de bienvenida"
           width={1600}
-          height={1200}
+          height={1104}
           className="absolute inset-0 h-full w-full object-cover"
-          aria-hidden
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-paper/85 via-paper/70 to-paper/95" />
+        <div className="absolute inset-0 bg-gradient-to-b from-paper/70 via-paper/55 to-paper/95" />
 
-        <div className="relative mx-auto flex min-h-[58svh] max-w-4xl flex-col items-center justify-center px-6 py-16 text-center md:min-h-[60svh] md:py-20">
+        <div className="relative mx-auto flex min-h-[62svh] max-w-4xl flex-col items-center justify-center px-6 py-20 text-center md:min-h-[64svh] md:py-24">
           <p className="mb-5 text-[0.7rem] font-semibold uppercase tracking-[0.3em] text-brand/80 sm:text-xs">
             Área 2 Metropolitana · Barranquilla
           </p>
           <h1 className="mb-6 max-w-3xl text-balance font-serif text-4xl leading-[1.05] text-brand sm:text-5xl lg:text-6xl">
-            Alcohólicos Anónimos
+            ¿Tienes problemas con el alcohol?
           </h1>
-          <p className="mb-9 max-w-2xl text-pretty font-serif text-xl italic leading-snug text-brand/90 sm:text-2xl md:text-3xl">
-            La ayuda está más cerca de lo que imaginas.
+          <p className="mb-10 max-w-2xl text-pretty text-lg leading-relaxed text-ink/90 sm:text-xl">
+            En Alcohólicos Anónimos encontrarás personas que han pasado por lo
+            mismo, dispuestas a escucharte y a compartir su experiencia.
           </p>
-          <a
-            href="#busco-ayuda"
-            className="inline-flex min-h-14 items-center gap-3 rounded-full bg-brand px-10 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-paper transition-colors hover:bg-brand-soft"
-          >
-            Busco ayuda
-            <ArrowRight className="size-4" />
-          </a>
+          <div className="flex flex-col items-center gap-3 sm:flex-row sm:gap-4">
+            <a
+              href="#puertas"
+              className="inline-flex min-h-14 items-center gap-3 rounded-full bg-brand px-10 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-paper transition-colors hover:bg-brand-soft"
+            >
+              Busco ayuda
+              <ArrowRight className="size-4" />
+            </a>
+            <Link
+              to="/grupos"
+              className="inline-flex min-h-14 items-center gap-3 rounded-full border border-brand/30 bg-paper/80 px-10 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-brand backdrop-blur-sm transition-colors hover:bg-paper"
+            >
+              Encuentra un grupo
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* 2. BUSCO AYUDA */}
-      <HomeBlock
-        id="busco-ayuda"
-        eyebrow="Busco ayuda"
-        title="Estás en el lugar correcto."
-        body="Para ti o para alguien que quieres. Aquí encontrarás una comunidad que ha vivido lo mismo y que te recibe con calma, respeto y anonimato. No hay inscripciones, no hay cuotas, no hay requisitos."
-        cta={{ to: "/necesito-ayuda", label: "Cómo empezar" }}
-      />
+      {/* 2. LAS CUATRO PUERTAS */}
+      <section id="puertas" className="scroll-mt-24 border-t border-brand/5 bg-paper py-24 md:py-32">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="mx-auto mb-16 max-w-2xl text-center md:mb-20">
+            <span className="mb-4 block text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand">
+              Pasa adelante
+            </span>
+            <h2 className="font-serif text-3xl leading-tight text-brand sm:text-4xl md:text-5xl">
+              La puerta está abierta para ti.
+            </h2>
+            <p className="mt-6 text-pretty text-lg leading-relaxed text-ink/85">
+              Elige el camino que te representa. Cualquiera que sea, aquí te
+              recibimos con la misma calma.
+            </p>
+          </div>
 
-      {/* 3. COOPERACIÓN CON LA COMUNIDAD */}
-      <HomeBlock
-        eyebrow="Cooperación con la comunidad"
-        title="Trabajamos junto a quienes acompañan a otros."
-        body="Profesionales de la salud, educadores, líderes comunitarios e instituciones encuentran en Alcohólicos Anónimos un aliado silencioso para orientar a quienes puedan encontrar aquí un lugar seguro."
-        cta={{ to: "/contacto", label: "Hablemos" }}
-        tone="soft"
-      />
+          <ul role="list" className="grid gap-px overflow-hidden rounded-2xl border border-brand/10 bg-brand/10 md:grid-cols-2">
+            {doors.map((d) => (
+              <li key={d.to} className="bg-paper">
+                <Link
+                  to={d.to}
+                  className="flex h-full flex-col gap-6 p-8 transition-colors hover:bg-soft/60 md:p-10"
+                >
+                  <div className="flex items-center gap-4">
+                    <span className="grid size-11 shrink-0 place-items-center rounded-full bg-brand/10 text-brand">
+                      <d.icon className="size-5" strokeWidth={1.7} />
+                    </span>
+                    <span className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-brand/80">
+                      {d.eyebrow}
+                    </span>
+                  </div>
+                  <h3 className="font-serif text-2xl leading-tight text-brand md:text-3xl">
+                    {d.title}
+                  </h3>
+                  <p className="text-base leading-relaxed text-ink/85">
+                    {d.body}
+                  </p>
+                  <span className="mt-auto inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand">
+                    {d.cta} <ArrowRight className="size-4" />
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
-      {/* 4. YA SOY MIEMBRO */}
-      <HomeBlock
-        eyebrow="Ya soy miembro"
-        title="Bienvenido de vuelta."
-        body="Ingresa con las credenciales que recibiste en tu grupo o en el Área para acompañar a tu comunidad y seguir compartiendo experiencia, fortaleza y esperanza."
-        cta={{ to: "/auth", label: "Acceso para miembros" }}
-      />
-
-      {/* 5. ENCUENTRA UN GRUPO */}
+      {/* 3. ENCUENTRA UN GRUPO */}
       <section className="bg-soft/50 py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mb-16 max-w-2xl">
             <span className="mb-4 block text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand">
-              Directorio del Área 2
+              Encuentra un grupo
             </span>
             <h2 className="mb-6 font-serif text-3xl leading-tight text-brand sm:text-4xl md:text-5xl">
-              Encuentra un grupo cerca de ti.
+              Un grupo cerca de ti.
             </h2>
             <p className="text-lg leading-relaxed text-ink/85">
               Nueve grupos abiertos en los municipios del Área 2 Metropolitana.
@@ -131,20 +206,20 @@ function HomeContent({ groups }: { groups: import("@/lib/groups-data").Group[] }
               to="/grupos"
               className="inline-flex items-center gap-2 border-b border-brand/30 pb-1 text-sm font-semibold uppercase tracking-[0.18em] text-brand transition-colors hover:border-brand"
             >
-              Ver directorio completo <ArrowRight className="size-4" />
+              Ver todos los grupos <ArrowRight className="size-4" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* 6. INFORMACIÓN INSTITUCIONAL */}
+      {/* 4. ¿QUÉ ES AA? */}
       <section className="bg-paper py-24 md:py-32">
         <div className="mx-auto max-w-3xl px-6">
           <span className="mb-4 block text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand">
-            Información institucional
+            ¿Qué es Alcohólicos Anónimos?
           </span>
           <h2 className="mb-8 font-serif text-3xl leading-tight text-brand sm:text-4xl md:text-5xl">
-            ¿Qué es Alcohólicos Anónimos?
+            Una comunidad que se sostiene compartiendo.
           </h2>
           <p className="mb-6 text-pretty text-lg leading-relaxed text-ink/85 md:text-xl">
             Alcohólicos Anónimos es una comunidad de hombres y mujeres que
@@ -166,50 +241,5 @@ function HomeContent({ groups }: { groups: import("@/lib/groups-data").Group[] }
         </div>
       </section>
     </>
-  );
-}
-
-function HomeBlock({
-  id,
-  eyebrow,
-  title,
-  body,
-  cta,
-  tone = "paper",
-}: {
-  id?: string;
-  eyebrow: string;
-  title: string;
-  body: string;
-  cta: { to: string; label: string };
-  tone?: "paper" | "soft";
-}) {
-  return (
-    <section
-      id={id}
-      className={`${tone === "soft" ? "bg-soft/40" : "bg-paper"} border-t border-brand/5 py-24 md:py-32 scroll-mt-24`}
-    >
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-16">
-        <div>
-          <span className="text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand">
-            {eyebrow}
-          </span>
-        </div>
-        <div>
-          <h2 className="mb-6 font-serif text-3xl leading-tight text-brand sm:text-4xl md:text-5xl">
-            {title}
-          </h2>
-          <p className="mb-10 text-pretty text-lg leading-relaxed text-ink/85 md:text-xl">
-            {body}
-          </p>
-          <Link
-            to={cta.to}
-            className="inline-flex items-center gap-2 border-b border-brand/30 pb-1 text-sm font-semibold uppercase tracking-[0.18em] text-brand transition-colors hover:border-brand"
-          >
-            {cta.label} <ArrowRight className="size-4" />
-          </Link>
-        </div>
-      </div>
-    </section>
   );
 }
