@@ -8,13 +8,13 @@ export const Route = createFileRoute("/grupos")({
   loader: ({ context }) => context.queryClient.ensureQueryData(groupsQueryOptions()),
   head: () => ({
     meta: [
-      { title: "Encuentra un grupo de Alcohólicos Anónimos" },
+      { title: "Nuestros grupos" },
       {
         name: "description",
         content:
-          "Busca un grupo de Alcohólicos Anónimos por ciudad, barrio o nombre. Consulta horarios, dirección y cómo llegar.",
+          "Explora los grupos de Alcohólicos Anónimos del Área 2 Metropolitana. Consulta horarios, dirección y cómo llegar.",
       },
-      { property: "og:title", content: "Encuentra un grupo de Alcohólicos Anónimos" },
+      { property: "og:title", content: "Nuestros grupos" },
       {
         property: "og:description",
         content:
