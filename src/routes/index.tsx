@@ -4,8 +4,8 @@ import heroAsset from "@/assets/hero-circle.jpg.asset.json";
 import caribeMap from "@/assets/caribe-map.jpg";
 import { groupsQueryOptions } from "@/lib/groups-queries";
 import type { Group } from "@/lib/groups-data";
-import { GroupFinder } from "@/components/site/GroupFinder";
 import { ArrowRight, BookOpen, BookMarked, Sparkles, FileText } from "lucide-react";
+
 
 export const Route = createFileRoute("/")({
   loader: ({ context }) => context.queryClient.ensureQueryData(groupsQueryOptions()),
