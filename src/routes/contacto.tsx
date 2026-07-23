@@ -1,70 +1,174 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/site/PageShell";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Stethoscope, Building2, Newspaper, HandHeart, MapPin, Phone, Clock, PhoneCall } from "lucide-react";
+import type { ReactNode } from "react";
 
 export const Route = createFileRoute("/contacto")({
   head: () => ({
     meta: [
-      { title: "Contacto — AA Área 2 Metropolitana" },
+      { title: "Quiero cooperar — AA Área 2 Metropolitana" },
       {
         name: "description",
-        content: "Contacto de la Oficina de Información Pública del Área 2 Metropolitana de AA.",
+        content:
+          "Información para profesionales, instituciones y medios de comunicación que desean cooperar con Alcohólicos Anónimos del Área 2 Metropolitana de Barranquilla.",
       },
-      { property: "og:title", content: "Contacto AA Área 2" },
+      { property: "og:title", content: "Quiero cooperar con Alcohólicos Anónimos" },
       {
         property: "og:description",
-        content: "Teléfonos y correo de la oficina de información pública del Área 2.",
+        content:
+          "Profesionales, instituciones y medios de comunicación que desean conocer o cooperar con AA Área 2.",
       },
-      { property: "og:url", content: "/contacto" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
     links: [{ rel: "canonical", href: "/contacto" }],
   }),
-  component: Contacto,
+  component: Cooperar,
 });
 
-function Contacto() {
+type Card = {
+  icon: typeof Stethoscope;
+  title: string;
+  body: string;
+};
+
+const cards: readonly Card[] = [
+  {
+    icon: Stethoscope,
+    title: "Soy profesional de la salud",
+    body: "Si eres médico, psicólogo, trabajador social, orientador o profesional de la salud, podemos brindarte información sobre Alcohólicos Anónimos y coordinar actividades de información pública cuando sean solicitadas.",
+  },
+  {
+    icon: Building2,
+    title: "Represento una institución",
+    body: "Si haces parte de un hospital, clínica, universidad, colegio, empresa, entidad pública o privada, podemos coordinar charlas informativas y actividades de cooperación sobre Alcohólicos Anónimos.",
+  },
+  {
+    icon: Newspaper,
+    title: "Trabajo en un medio de comunicación",
+    body: "Si representas un medio de comunicación, estaremos disponibles para brindar información institucional sobre Alcohólicos Anónimos y facilitar el contacto con nuestros servidores de Información Pública.",
+  },
+  {
+    icon: HandHeart,
+    title: "Quiero conocer más sobre Alcohólicos Anónimos",
+    body: "Si deseas conocer mejor nuestra Comunidad, resolver inquietudes o solicitar información general, con gusto te orientaremos.",
+  },
+];
+
+function Cooperar() {
   return (
     <PageShell
-      eyebrow="Información pública"
-      title="Contacto"
-      intro="Estamos aquí para responder tus preguntas sobre AA, orientarte hacia un grupo o coordinar actividades de información pública."
+      eyebrow="Cooperación"
+      title="Quiero cooperar"
+      intro="En Alcohólicos Anónimos creemos en el valor de la cooperación para que nuestro mensaje de recuperación llegue a quien aún sufre. Si representas una institución, eres profesional, haces parte de un medio de comunicación o deseas conocer más sobre nuestra labor, estaremos encantados de atenderte."
     >
-      <div className="grid gap-6 md:grid-cols-3">
-        <ContactCard icon={<Phone className="size-5" />} label="Teléfono 24h" value="+57 300 000 0000" href="tel:+573000000000" />
-        <ContactCard icon={<Mail className="size-5" />} label="Correo" value="contacto@aa-area2.org" href="mailto:contacto@aa-area2.org" />
-        <ContactCard icon={<MapPin className="size-5" />} label="Oficina" value="Barranquilla, Colombia" />
-      </div>
+      <div className="space-y-16">
+        {/* Bloque destacado */}
+        <aside className="rounded-3xl bg-soft/60 p-8 sm:p-10 ring-1 ring-brand/10">
+          <h2 className="font-serif text-2xl italic leading-tight text-brand sm:text-3xl">
+            Toda la cooperación que ofrece Alcohólicos Anónimos es completamente gratuita.
+          </h2>
+          <p className="mt-4 text-pretty text-base leading-relaxed text-ink/80">
+            Las charlas informativas, reuniones con instituciones, orientación a profesionales
+            y demás actividades de cooperación no tienen costo. Nuestro único propósito es
+            llevar el mensaje de recuperación a quien aún sufre.
+          </p>
+        </aside>
 
-      <p className="mx-auto mt-14 max-w-2xl text-center text-sm text-ink/55">
-        Si estás en una situación urgente y sientes que necesitas ayuda ahora mismo, usa el botón{" "}
-        <strong className="text-brand">Necesito ayuda ahora</strong> disponible en cada página.
-      </p>
+        {/* Tarjetas */}
+        <section>
+          <h2 className="font-serif text-2xl leading-tight text-brand sm:text-3xl">
+            ¿Cómo podemos cooperar contigo?
+          </h2>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2">
+            {cards.map((c) => (
+              <CoopCard key={c.title} {...c} />
+            ))}
+          </div>
+        </section>
+
+        {/* Contacto */}
+        <section>
+          <h2 className="font-serif text-2xl leading-tight text-brand sm:text-3xl">
+            ¿Prefieres hablar con nosotros?
+          </h2>
+          <div className="mt-6 rounded-2xl bg-paper p-8 ring-1 ring-black/5 sm:p-10">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand/80">
+              Oficina del Área 2 Metropolitana de Barranquilla
+            </p>
+            <div className="mt-6 grid gap-8 sm:grid-cols-3">
+              <InfoBlock icon={<MapPin className="size-5" />} label="Dirección">
+                Calle 63 #22D-39, Local 2
+                <br />
+                Las Moras IV Etapa
+              </InfoBlock>
+              <InfoBlock icon={<Phone className="size-5" />} label="Teléfono">
+                324 557 7038
+              </InfoBlock>
+              <InfoBlock icon={<Clock className="size-5" />} label="Horario de atención">
+                Lunes a viernes
+                <br />
+                2:00 p. m. – 6:00 p. m.
+              </InfoBlock>
+            </div>
+            <div className="mt-8">
+              <a
+                href="tel:+573245577038"
+                className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-paper transition-colors hover:bg-brand/90"
+              >
+                <PhoneCall className="size-4" /> Contáctanos
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Cierre */}
+        <section className="rounded-3xl bg-soft/60 p-8 text-center sm:p-12">
+          <p className="mx-auto max-w-2xl text-pretty text-base leading-relaxed text-ink/80">
+            Cooperamos con personas e instituciones preservando siempre nuestra autonomía
+            y nuestro propósito primordial.
+          </p>
+          <p className="mx-auto mt-4 max-w-2xl text-pretty text-base leading-relaxed text-ink/80">
+            Gracias por tu interés en Alcohólicos Anónimos. Estaremos atentos para brindarte
+            la información que necesites.
+          </p>
+        </section>
+      </div>
     </PageShell>
   );
 }
 
-function ContactCard({
-  icon,
-  label,
-  value,
-  href,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  value: string;
-  href?: string;
-}) {
-  const inner = (
-    <>
-      <span className="mb-4 grid size-10 place-items-center rounded-full bg-brand/10 text-brand">
+function CoopCard({ icon: Icon, title, body }: Card) {
+  return (
+    <article className="flex flex-col rounded-2xl bg-paper p-8 ring-1 ring-black/5 transition-all hover:-translate-y-0.5 hover:ring-brand/20">
+      <span className="mb-4 grid size-11 place-items-center rounded-full bg-brand/10 text-brand">
+        <Icon className="size-5" />
+      </span>
+      <h3 className="font-serif text-xl leading-tight text-brand">{title}</h3>
+      <p className="mt-3 flex-1 text-pretty text-sm leading-relaxed text-ink/80">{body}</p>
+      <div className="mt-6">
+        <Link
+          to="/contacto"
+          hash="contacto"
+          className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-paper px-4 py-2 text-sm font-medium text-brand transition-colors hover:bg-soft"
+        >
+          Solicitar información
+        </Link>
+      </div>
+    </article>
+  );
+}
+
+function InfoBlock({ icon, label, children }: { icon: ReactNode; label: string; children: ReactNode }) {
+  return (
+    <div>
+      <span className="mb-3 grid size-10 place-items-center rounded-full bg-brand/10 text-brand">
         {icon}
       </span>
-      <span className="text-xs font-semibold uppercase tracking-widest text-brand/80">{label}</span>
-      <span className="mt-2 font-serif text-xl text-brand">{value}</span>
-    </>
+      <span className="block text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-brand/80">
+        {label}
+      </span>
+      <p className="mt-2 text-sm leading-relaxed text-ink/85">{children}</p>
+    </div>
   );
-  const className =
-    "flex flex-col rounded-2xl bg-paper p-8 ring-1 ring-black/5 transition-all hover:-translate-y-0.5 hover:ring-brand/20";
-  if (href) return <a href={href} className={className}>{inner}</a>;
-  return <div className={className}>{inner}</div>;
 }
