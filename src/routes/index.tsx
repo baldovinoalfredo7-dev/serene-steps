@@ -1,9 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useMemo, useState } from "react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import heroAsset from "@/assets/hero-circle.jpg.asset.json";
 import { groupsQueryOptions } from "@/lib/groups-queries";
-import { ArrowRight, HandHeart, Home as HomeIcon, HeartHandshake, UserRound } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import type { Group } from "@/lib/groups-data";
+import { ArrowRight, Search } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   loader: ({ context }) => context.queryClient.ensureQueryData(groupsQueryOptions()),
@@ -24,46 +25,35 @@ export const Route = createFileRoute("/")({
 
 type Door = {
   eyebrow: string;
-  title: string;
-  body: string;
+  intro: string;
   to: string;
   cta: string;
-  icon: LucideIcon;
-  hash?: string;
 };
 
 const doors: readonly Door[] = [
   {
     eyebrow: "Busco ayuda",
-    title: "Estás en el lugar correcto.",
-    body: "Para ti o para alguien que quieres. Aquí te recibimos con calma, respeto y anonimato. Sin inscripciones, sin cuotas, sin requisitos.",
+    intro: "Información para quienes creen tener un problema con el alcohol, o para familiares y amigos.",
     to: "/necesito-ayuda",
-    cta: "Cómo empezar",
-    icon: HandHeart,
+    cta: "Ingresar",
   },
   {
-    eyebrow: "Encuentra un grupo",
-    title: "Bienvenido a tu casa en el Área 2.",
-    body: "Nueve grupos abiertos en Barranquilla, Soledad, Malambo, Galapa y Puerto Colombia. Elige el más cercano y ven cuando quieras.",
+    eyebrow: "Bienvenido a tu casa en el Área 2",
+    intro: "Grupos de Alcohólicos Anónimos en Barranquilla y municipios cercanos, con sus horarios y direcciones.",
     to: "/grupos",
-    cta: "Ver los grupos",
-    icon: HomeIcon,
+    cta: "Ingresar",
   },
   {
-    eyebrow: "Quiero cooperar",
-    title: "No tengo problemas con la bebida, pero quiero ayudar.",
-    body: "Profesionales de la salud, educadores, familias e instituciones encuentran en AA un aliado silencioso para acompañar a quien lo necesita.",
+    eyebrow: "No tengo problemas con la bebida, pero quiero cooperar",
+    intro: "Profesionales, instituciones y personas interesadas en colaborar con Alcohólicos Anónimos.",
     to: "/contacto",
-    cta: "Hablemos",
-    icon: HeartHandshake,
+    cta: "Ingresar",
   },
   {
     eyebrow: "Ya soy miembro",
-    title: "Bienvenido de vuelta.",
-    body: "Ingresa con las credenciales que recibiste en tu grupo o en el Área para seguir compartiendo experiencia, fortaleza y esperanza.",
+    intro: "Acceso al portal privado para miembros con credenciales entregadas por su grupo o por el Área.",
     to: "/auth",
-    cta: "Acceso para miembros",
-    icon: UserRound,
+    cta: "Ingresar",
   },
 ] as const;
 
@@ -72,85 +62,71 @@ function Home() {
   return <HomeContent groups={groups} />;
 }
 
-function HomeContent({ groups }: { groups: import("@/lib/groups-data").Group[] }) {
+function HomeContent({ groups }: { groups: Group[] }) {
+  const [query, setQuery] = useState("");
+  const [municipality, setMunicipality] = useState("");
+
+  const municipalities = useMemo(
+    () => Array.from(new Set(groups.map((g) => g.municipality).filter(Boolean))).sort(),
+    [groups],
+  );
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return groups.filter((g) => {
+      if (municipality && g.municipality !== municipality) return false;
+      if (!q) return true;
+      return (
+        g.name.toLowerCase().includes(q) ||
+        g.municipality.toLowerCase().includes(q) ||
+        g.addressLine.toLowerCase().includes(q) ||
+        g.addressFull.toLowerCase().includes(q)
+      );
+    });
+  }, [groups, query, municipality]);
+
   return (
     <>
       {/* 1. HERO */}
       <section className="relative overflow-hidden bg-soft">
         <img
           src={heroAsset.url}
-          alt="Reunión de Alcohólicos Anónimos con una silla vacía al frente, símbolo de bienvenida"
+          alt="Sala de reunión de Alcohólicos Anónimos con una silla vacía"
           width={1600}
           height={1104}
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-paper/70 via-paper/55 to-paper/95" />
 
-        <div className="relative mx-auto flex min-h-[62svh] max-w-4xl flex-col items-center justify-center px-6 py-20 text-center md:min-h-[64svh] md:py-24">
+        <div className="relative mx-auto flex min-h-[52svh] max-w-4xl flex-col items-center justify-center px-6 py-16 text-center md:min-h-[54svh] md:py-20">
           <p className="mb-5 text-[0.7rem] font-semibold uppercase tracking-[0.3em] text-brand/80 sm:text-xs">
             Área 2 Metropolitana · Barranquilla
           </p>
           <h1 className="mb-6 max-w-3xl text-balance font-serif text-4xl leading-[1.05] text-brand sm:text-5xl lg:text-6xl">
-            ¿Tienes problemas con el alcohol?
+            Alcohólicos Anónimos
           </h1>
-          <p className="mb-10 max-w-2xl text-pretty text-lg leading-relaxed text-ink/90 sm:text-xl">
-            En Alcohólicos Anónimos encontrarás personas que han pasado por lo
-            mismo, dispuestas a escucharte y a compartir su experiencia.
+          <p className="max-w-2xl text-pretty text-lg leading-relaxed text-ink/85 sm:text-xl">
+            Una comunidad de hombres y mujeres que comparten su experiencia,
+            fortaleza y esperanza para resolver su problema común.
           </p>
-          <div className="flex flex-col items-center gap-3 sm:flex-row sm:gap-4">
-            <a
-              href="#puertas"
-              className="inline-flex min-h-14 items-center gap-3 rounded-full bg-brand px-10 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-paper transition-colors hover:bg-brand-soft"
-            >
-              Busco ayuda
-              <ArrowRight className="size-4" />
-            </a>
-            <Link
-              to="/grupos"
-              className="inline-flex min-h-14 items-center gap-3 rounded-full border border-brand/30 bg-paper/80 px-10 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-brand backdrop-blur-sm transition-colors hover:bg-paper"
-            >
-              Encuentra un grupo
-            </Link>
-          </div>
         </div>
       </section>
 
       {/* 2. LAS CUATRO PUERTAS */}
-      <section id="puertas" className="scroll-mt-24 border-t border-brand/5 bg-paper py-24 md:py-32">
+      <section className="border-t border-brand/5 bg-paper py-20 md:py-24">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="mx-auto mb-16 max-w-2xl text-center md:mb-20">
-            <span className="mb-4 block text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand">
-              Pasa adelante
-            </span>
-            <h2 className="font-serif text-3xl leading-tight text-brand sm:text-4xl md:text-5xl">
-              La puerta está abierta para ti.
-            </h2>
-            <p className="mt-6 text-pretty text-lg leading-relaxed text-ink/85">
-              Elige el camino que te representa. Cualquiera que sea, aquí te
-              recibimos con la misma calma.
-            </p>
-          </div>
-
           <ul role="list" className="grid gap-px overflow-hidden rounded-2xl border border-brand/10 bg-brand/10 md:grid-cols-2">
             {doors.map((d) => (
               <li key={d.to} className="bg-paper">
                 <Link
                   to={d.to}
-                  className="flex h-full flex-col gap-6 p-8 transition-colors hover:bg-soft/60 md:p-10"
+                  className="flex h-full flex-col gap-5 p-8 transition-colors hover:bg-soft/60 md:p-10"
                 >
-                  <div className="flex items-center gap-4">
-                    <span className="grid size-11 shrink-0 place-items-center rounded-full bg-brand/10 text-brand">
-                      <d.icon className="size-5" strokeWidth={1.7} />
-                    </span>
-                    <span className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-brand/80">
-                      {d.eyebrow}
-                    </span>
-                  </div>
-                  <h3 className="font-serif text-2xl leading-tight text-brand md:text-3xl">
-                    {d.title}
-                  </h3>
+                  <h2 className="font-serif text-2xl leading-tight text-brand md:text-3xl">
+                    {d.eyebrow}
+                  </h2>
                   <p className="text-base leading-relaxed text-ink/85">
-                    {d.body}
+                    {d.intro}
                   </p>
                   <span className="mt-auto inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand">
                     {d.cta} <ArrowRight className="size-4" />
@@ -163,45 +139,79 @@ function HomeContent({ groups }: { groups: import("@/lib/groups-data").Group[] }
       </section>
 
       {/* 3. ENCUENTRA UN GRUPO */}
-      <section className="bg-soft/50 py-24 md:py-32">
+      <section className="bg-soft/50 py-20 md:py-24">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="mb-16 max-w-2xl">
+          <div className="mb-10 max-w-2xl">
             <span className="mb-4 block text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand">
               Encuentra un grupo
             </span>
             <h2 className="mb-6 font-serif text-3xl leading-tight text-brand sm:text-4xl md:text-5xl">
-              Un grupo cerca de ti.
+              Busca por ciudad, municipio, barrio o nombre.
             </h2>
             <p className="text-lg leading-relaxed text-ink/85">
-              Nueve grupos abiertos en los municipios del Área 2 Metropolitana.
+              Consulta los grupos disponibles y sus horarios de reunión.
             </p>
           </div>
 
-          <ul role="list" className="grid gap-px overflow-hidden rounded-2xl border border-brand/10 bg-brand/10 md:grid-cols-2 lg:grid-cols-3">
-            {groups.map((g) => (
-              <li key={g.slug} className="bg-paper">
-                <Link
-                  to="/grupos/$slug"
-                  params={{ slug: g.slug }}
-                  className="flex h-full flex-col justify-between gap-6 p-8 transition-colors hover:bg-soft/60"
-                >
-                  <div>
-                    <span className="mb-3 block text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-brand/70">
-                      {g.municipality}
-                    </span>
-                    <h3 className="font-serif text-xl leading-tight text-brand md:text-2xl">
-                      {g.name}
-                    </h3>
-                  </div>
-                  <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-                    Ver información <ArrowRight className="size-4" />
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <div className="mb-10 flex flex-col gap-3 sm:flex-row">
+            <div className="relative flex-1">
+              <Search className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-ink/50" />
+              <input
+                type="search"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Nombre del grupo, barrio o dirección"
+                aria-label="Buscar grupo"
+                className="h-12 w-full rounded-full border border-brand/15 bg-paper pl-11 pr-4 text-base text-ink placeholder:text-ink/50 focus:border-brand focus:outline-none"
+              />
+            </div>
+            <select
+              value={municipality}
+              onChange={(e) => setMunicipality(e.target.value)}
+              aria-label="Filtrar por municipio"
+              className="h-12 rounded-full border border-brand/15 bg-paper px-5 text-base text-ink focus:border-brand focus:outline-none sm:w-64"
+            >
+              <option value="">Todas las ciudades</option>
+              {municipalities.map((m) => (
+                <option key={m} value={m}>
+                  {m}
+                </option>
+              ))}
+            </select>
+          </div>
 
-          <div className="mt-12">
+          {filtered.length === 0 ? (
+            <p className="rounded-2xl border border-brand/10 bg-paper p-8 text-center text-ink/70">
+              No encontramos grupos con esos criterios.
+            </p>
+          ) : (
+            <ul role="list" className="grid gap-px overflow-hidden rounded-2xl border border-brand/10 bg-brand/10 md:grid-cols-2 lg:grid-cols-3">
+              {filtered.slice(0, 6).map((g) => (
+                <li key={g.slug} className="bg-paper">
+                  <Link
+                    to="/grupos/$slug"
+                    params={{ slug: g.slug }}
+                    className="flex h-full flex-col justify-between gap-6 p-8 transition-colors hover:bg-soft/60"
+                  >
+                    <div>
+                      <span className="mb-3 block text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-brand/70">
+                        {g.municipality}
+                      </span>
+                      <h3 className="font-serif text-xl leading-tight text-brand md:text-2xl">
+                        {g.name}
+                      </h3>
+                      <p className="mt-2 text-sm text-ink/75">{g.addressLine}</p>
+                    </div>
+                    <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand">
+                      Ver información <ArrowRight className="size-4" />
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          <div className="mt-10">
             <Link
               to="/grupos"
               className="inline-flex items-center gap-2 border-b border-brand/30 pb-1 text-sm font-semibold uppercase tracking-[0.18em] text-brand transition-colors hover:border-brand"
@@ -212,31 +222,48 @@ function HomeContent({ groups }: { groups: import("@/lib/groups-data").Group[] }
         </div>
       </section>
 
-      {/* 4. ¿QUÉ ES AA? */}
-      <section className="bg-paper py-24 md:py-32">
+      {/* 4. AA EN EL CARIBE COLOMBIANO */}
+      <section className="bg-paper py-20 md:py-24">
         <div className="mx-auto max-w-3xl px-6">
           <span className="mb-4 block text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand">
-            ¿Qué es Alcohólicos Anónimos?
+            Alcohólicos Anónimos en el Caribe colombiano
           </span>
-          <h2 className="mb-8 font-serif text-3xl leading-tight text-brand sm:text-4xl md:text-5xl">
-            Una comunidad que se sostiene compartiendo.
+          <h2 className="mb-8 font-serif text-3xl leading-tight text-brand sm:text-4xl">
+            Presencia en la región.
           </h2>
-          <p className="mb-6 text-pretty text-lg leading-relaxed text-ink/85 md:text-xl">
-            Alcohólicos Anónimos es una comunidad de hombres y mujeres que
-            comparten su experiencia, fortaleza y esperanza para resolver su
-            problema común y ayudar a otros a recuperarse del alcoholismo.
+          <p className="mb-6 text-pretty text-lg leading-relaxed text-ink/85">
+            Existen grupos de Alcohólicos Anónimos en distintas ciudades y
+            municipios del Caribe colombiano: Barranquilla, Soledad, Malambo,
+            Galapa, Puerto Colombia, Cartagena, Santa Marta, Valledupar,
+            Sincelejo, Montería y Riohacha, entre otras.
           </p>
-          <p className="mb-12 text-pretty text-lg leading-relaxed text-ink/85 md:text-xl">
-            El único requisito para ser miembro es el deseo de dejar la bebida.
-            No hay honorarios ni cuotas: se sostiene con sus propias
-            contribuciones. No está afiliada a ninguna secta, religión, partido
-            político, organización o institución alguna.
+          <p className="text-pretty text-lg leading-relaxed text-ink/85">
+            Cualquier persona interesada puede acercarse al grupo más cercano o
+            comunicarse para recibir orientación sobre reuniones en su ciudad.
+          </p>
+        </div>
+      </section>
+
+      {/* 5. NUESTRA LITERATURA */}
+      <section className="border-t border-brand/5 bg-soft/40 py-20 md:py-24">
+        <div className="mx-auto max-w-3xl px-6">
+          <span className="mb-4 block text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand">
+            Nuestra literatura
+          </span>
+          <h2 className="mb-8 font-serif text-3xl leading-tight text-brand sm:text-4xl">
+            Libros y folletos de A.A.
+          </h2>
+          <p className="mb-10 text-pretty text-lg leading-relaxed text-ink/85">
+            La literatura de Alcohólicos Anónimos recoge la experiencia
+            compartida de sus miembros. Incluye el Libro Grande, Doce Pasos y
+            Doce Tradiciones, y folletos dirigidos a recién llegados, familias
+            y profesionales.
           </p>
           <Link
-            to="/que-es-aa"
+            to="/literatura"
             className="inline-flex items-center gap-2 border-b border-brand/30 pb-1 text-sm font-semibold uppercase tracking-[0.18em] text-brand transition-colors hover:border-brand"
           >
-            Conocer más sobre AA <ArrowRight className="size-4" />
+            Ver la literatura <ArrowRight className="size-4" />
           </Link>
         </div>
       </section>
