@@ -1,11 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import heroAsset from "@/assets/hero-circle.jpg.asset.json";
 import caribeMap from "@/assets/caribe-map.jpg";
 import { groupsQueryOptions } from "@/lib/groups-queries";
 import type { Group } from "@/lib/groups-data";
-import { ArrowRight, Search, BookOpen, BookMarked, Sparkles, FileText } from "lucide-react";
+import { GroupFinder } from "@/components/site/GroupFinder";
+import { ArrowRight, BookOpen, BookMarked, Sparkles, FileText } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   loader: ({ context }) => context.queryClient.ensureQueryData(groupsQueryOptions()),
