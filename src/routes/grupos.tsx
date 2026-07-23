@@ -50,42 +50,22 @@ function GruposIndex() {
           <h1 className="text-balance font-serif text-4xl italic leading-tight text-brand md:text-6xl">
             Encuentra un grupo de Alcohólicos Anónimos
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg text-ink/85">
-            Aquí puedes encontrar el grupo que mejor se adapte a tu ubicación. Consulta los
-            horarios de reunión, la dirección y la forma de llegar.
-          </p>
-        </div>
-      </section>
-
-      {/* Introducción */}
-      <section className="py-14 md:py-20">
-        <div className="mx-auto max-w-3xl px-6 text-center">
-          <h2 className="font-serif text-3xl italic text-brand md:text-4xl">
-            ¿Qué es un grupo de Alcohólicos Anónimos?
-          </h2>
-          <div className="mx-auto mt-6 space-y-4 text-pretty text-base leading-relaxed text-ink/85 md:text-lg">
+          <div className="mx-auto mt-8 space-y-5 text-pretty text-lg leading-relaxed text-ink/85">
             <p>
-              Un grupo de Alcohólicos Anónimos es una reunión donde personas que
+              Cada grupo de Alcohólicos Anónimos es un lugar donde personas que
               comparten su experiencia, fortaleza y esperanza se ayudan mutuamente
-              para recuperarse del alcoholismo.
+              a recuperarse del alcoholismo.
             </p>
             <p>
-              Todos los grupos están abiertos a recibir a quien tenga el deseo de
-              dejar de beber.
+              Si es tu primera visita, puedes asistir con tranquilidad. No
+              necesitas inscribirte ni hablar si no lo deseas. Puedes simplemente
+              escuchar.
             </p>
-            <p>
-              En el Área 2 Metropolitana de Barranquilla y en las áreas vecinas
-              existen diversos grupos ubicados en diferentes municipios,
-              dispuestos a recibir con respeto y cordialidad a cualquier persona
-              que busque ayuda.
-            </p>
-            <p>
-              A continuación puedes utilizar el buscador para encontrar el grupo
-              que mejor se adapte a tu ubicación y horario.
-            </p>
+            <p>Utiliza el buscador para encontrar el grupo más cercano a ti.</p>
           </div>
         </div>
       </section>
+
 
       {/* Buscador + resultados (módulo único compartido con la Home) */}
       <section className="pb-20 md:pb-28">
