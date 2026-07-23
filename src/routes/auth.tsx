@@ -1,83 +1,69 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { toast } from "sonner";
-import { Lock, Mail, LogIn, KeyRound, Info, ArrowLeft } from "lucide-react";
+import { useServerFn } from "@tanstack/react-start";
+import { Lock, KeyRound, LogIn, Info } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
-import { supabase } from "@/integrations/supabase/client";
-import { getMustChangePassword } from "@/lib/members.functions";
+import { unlockMembers, checkMembersUnlocked } from "@/lib/members-gate.functions";
 
 export const Route = createFileRoute("/auth")({
   ssr: false,
   head: () => ({
     meta: [
-      { title: "Acceso para miembros — AA Área 2 Metropolitana" },
+      { title: "Ya soy miembro — AA Área 2 Metropolitana" },
       {
         name: "description",
         content:
-          "Espacio privado para los miembros de Alcohólicos Anónimos con credenciales de acceso.",
+          "Acceso al Portal para Miembros del Área 2 Metropolitana de Barranquilla.",
       },
       { name: "robots", content: "noindex" },
     ],
   }),
-  component: AuthPage,
+  component: MembersAccessPage,
 });
 
-type Tab = "login" | "forgot";
-
-function AuthPage() {
+function MembersAccessPage() {
   const navigate = useNavigate();
-  const [tab, setTab] = useState<Tab>("login");
-  const [email, setEmail] = useState("");
+  const unlock = useServerFn(unlockMembers);
+  const check = useServerFn(checkMembersUnlocked);
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    supabase.auth.getUser().then(({ data }) => {
-      if (data.user) navigate({ to: "/miembros", replace: true });
-    });
-  }, [navigate]);
+    check({})
+      .then((r) => {
+        if (r.unlocked) navigate({ to: "/miembros", replace: true });
+      })
+      .catch(() => {});
+  }, [check, navigate]);
 
-  async function onLogin(e: React.FormEvent) {
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     setBusy(true);
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    if (error) {
-      setBusy(false);
-      return toast.error(error.message);
-    }
-    // Check if user must change temporary password before entering the service center
+    setError(null);
     try {
-      const { must } = await getMustChangePassword();
-      setBusy(false);
-      if (must) {
-        toast.info("Debes cambiar tu contraseña temporal antes de continuar.");
-        navigate({ to: "/reset-password", search: { force: 1 }, replace: true });
+      const res = await unlock({ data: { password } });
+      if (!res.ok) {
+        setBusy(false);
+        setError(
+          "La contraseña ingresada no es correcta. Inténtalo nuevamente o consulta con un servidor del Área 2 Metropolitana de Barranquilla.",
+        );
         return;
       }
+      navigate({ to: "/miembros", replace: true });
     } catch {
       setBusy(false);
+      setError(
+        "La contraseña ingresada no es correcta. Inténtalo nuevamente o consulta con un servidor del Área 2 Metropolitana de Barranquilla.",
+      );
     }
-    toast.success("Sesión iniciada.");
-    navigate({ to: "/miembros", replace: true });
-  }
-
-  async function onForgot(e: React.FormEvent) {
-    e.preventDefault();
-    setBusy(true);
-    const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/reset-password`,
-    });
-    setBusy(false);
-    if (error) return toast.error(error.message);
-    toast.success("Si el correo existe, te enviamos instrucciones.");
-    setTab("login");
   }
 
   return (
     <PageShell
-      eyebrow="Área de miembros"
-      title="Acceso para miembros"
-      intro="Espacio privado para los miembros de Alcohólicos Anónimos. Si ya haces parte de nuestra comunidad y recibiste tus credenciales de acceso, ingresa para acceder a los servicios disponibles para los miembros."
+      eyebrow="Portal para Miembros"
+      title="Ya soy miembro"
+      intro="Este espacio está destinado a los miembros de Alcohólicos Anónimos que participan en las actividades y servicios del Área 2 Metropolitana de Barranquilla."
     >
       <div className="mx-auto max-w-md">
         <div className="rounded-3xl border border-brand/10 bg-paper p-8 shadow-lift">
@@ -85,76 +71,57 @@ function AuthPage() {
             <span className="grid size-10 place-items-center rounded-full bg-brand/10 text-brand">
               <Lock className="size-5" />
             </span>
-            <h2 className="font-serif text-xl text-brand">
-              {tab === "login" ? "Iniciar sesión" : "Recuperar contraseña"}
-            </h2>
+            <h2 className="font-serif text-xl text-brand">Ingresa al portal</h2>
           </div>
 
-          {tab === "login" && (
-            <form onSubmit={onLogin} className="space-y-4">
-              <Field
-                label="Correo electrónico"
-                type="email"
-                icon={<Mail className="size-4" />}
-                value={email}
-                onChange={setEmail}
-                autoComplete="email"
-              />
-              <Field
-                label="Contraseña"
-                type="password"
-                icon={<KeyRound className="size-4" />}
-                value={password}
-                onChange={setPassword}
-                autoComplete="current-password"
-              />
-              <Submit busy={busy} icon={<LogIn className="size-4" />}>
-                Entrar
-              </Submit>
-            </form>
-          )}
+          <form onSubmit={onSubmit} className="space-y-4">
+            <label className="block">
+              <span className="mb-1.5 block text-sm font-medium text-ink/80">
+                Contraseña
+              </span>
+              <div className="relative">
+                <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-brand/60">
+                  <KeyRound className="size-4" />
+                </span>
+                <input
+                  type="password"
+                  required
+                  autoComplete="current-password"
+                  placeholder="Ingresa la contraseña de acceso"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full rounded-xl border border-brand/15 bg-paper px-4 py-3 pl-10 text-sm text-ink outline-none transition-colors focus:border-brand"
+                />
+              </div>
+            </label>
 
-          {tab === "forgot" && (
-            <form onSubmit={onForgot} className="space-y-4">
-              <Field
-                label="Correo electrónico"
-                type="email"
-                icon={<Mail className="size-4" />}
-                value={email}
-                onChange={setEmail}
-                autoComplete="email"
-              />
-              <Submit busy={busy} icon={<KeyRound className="size-4" />}>
-                Enviar instrucciones
-              </Submit>
-              <button
-                type="button"
-                onClick={() => setTab("login")}
-                className="mt-1 inline-flex items-center gap-1 text-xs text-ink/70 hover:text-brand"
+            {error && (
+              <p
+                role="alert"
+                className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800"
               >
-                <ArrowLeft className="size-3.5" /> Volver a iniciar sesión
-              </button>
-            </form>
-          )}
+                {error}
+              </p>
+            )}
 
-          {tab === "login" && (
             <button
-              type="button"
-              className="mt-6 block w-full border-t border-brand/10 pt-6 text-center text-sm text-ink/70 hover:text-brand"
-              onClick={() => setTab("forgot")}
+              type="submit"
+              disabled={busy}
+              className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-paper transition-colors hover:bg-brand/90 disabled:opacity-60"
             >
-              ¿Olvidaste tu contraseña?
+              <LogIn className="size-4" />
+              {busy ? "Procesando…" : "Ingresar"}
             </button>
-          )}
+          </form>
         </div>
 
         <div className="mt-6 rounded-2xl border border-brand/10 bg-brand-soft/40 p-5 text-sm text-ink/85">
           <div className="mb-2 flex items-center gap-2 font-semibold text-brand">
-            <Info className="size-4" /> ¿Aún no tienes tus credenciales?
+            <Info className="size-4" /> ¿No conoces la contraseña?
           </div>
           <p>
-            Solicítalas en tu grupo de Alcohólicos Anónimos o comunícate con nosotros. Con gusto
-            te orientaremos.
+            Si no conoces la contraseña, consulta con un servidor del Área 2
+            Metropolitana de Barranquilla.
           </p>
         </div>
 
@@ -167,69 +134,5 @@ function AuthPage() {
         </p>
       </div>
     </PageShell>
-  );
-}
-
-function Field({
-  label,
-  type,
-  value,
-  onChange,
-  icon,
-  autoComplete,
-  minLength,
-  hint,
-}: {
-  label: string;
-  type: string;
-  value: string;
-  onChange: (v: string) => void;
-  icon?: React.ReactNode;
-  autoComplete?: string;
-  minLength?: number;
-  hint?: string;
-}) {
-  return (
-    <label className="block">
-      <span className="mb-1.5 block text-sm font-medium text-ink/80">{label}</span>
-      <div className="relative">
-        {icon && (
-          <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-brand/60">
-            {icon}
-          </span>
-        )}
-        <input
-          type={type}
-          required
-          minLength={minLength}
-          autoComplete={autoComplete}
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          className={`w-full rounded-xl border border-brand/15 bg-paper px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-brand ${icon ? "pl-10" : ""}`}
-        />
-      </div>
-      {hint && <span className="mt-1 block text-xs text-ink/50">{hint}</span>}
-    </label>
-  );
-}
-
-function Submit({
-  busy,
-  icon,
-  children,
-}: {
-  busy: boolean;
-  icon: React.ReactNode;
-  children: React.ReactNode;
-}) {
-  return (
-    <button
-      type="submit"
-      disabled={busy}
-      className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-paper transition-colors hover:bg-brand/90 disabled:opacity-60"
-    >
-      {icon}
-      {busy ? "Procesando…" : children}
-    </button>
   );
 }

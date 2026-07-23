@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PlaceholderPage } from "@/components/miembros/PlaceholderPage";
 
-export const Route = createFileRoute("/_authenticated/miembros/grupos")({
+export const Route = createFileRoute("/miembros/grupos")({
   component: () => (
     <PlaceholderPage
       eyebrow="Área de miembros"

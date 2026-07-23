@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { useState } from "react";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import {
   Users,
   FileDown,
@@ -9,6 +10,8 @@ import {
   BookOpenText,
   Building2,
   CalendarDays,
+  GraduationCap,
+  Home,
   LogOut,
   Menu,
   X,
@@ -16,22 +19,24 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import logoAsset from "@/assets/logo-aa.png.asset.json";
-import { supabase } from "@/integrations/supabase/client";
-import { useQueryClient } from "@tanstack/react-query";
+import { lockMembers } from "@/lib/members-gate.functions";
 
 type Item = { to: string; label: string; icon: LucideIcon };
 
 const items: Item[] = [
+  { to: "/miembros", label: "Inicio del portal", icon: Home },
   { to: "/miembros/grupos", label: "Nuestros grupos", icon: Users },
-  { to: "/miembros/documentos", label: "Documentos para descargar", icon: FileDown },
-  { to: "/miembros/principios", label: "Nuestros 36 Principios", icon: ScrollText },
-  { to: "/miembros/responsabilidad", label: "Declaración de la Responsabilidad", icon: HandHeart },
-  { to: "/miembros/oraciones", label: "Nuestras oraciones", icon: BookOpenText },
-  { to: "/miembros/area", label: "El Área y sus servidores", icon: Building2 },
   { to: "/miembros/eventos", label: "Calendario de eventos", icon: CalendarDays },
+  { to: "/miembros/documentos", label: "Documentos para descargar", icon: FileDown },
+  { to: "/miembros/area", label: "El Área y sus servidores", icon: Building2 },
+  { to: "/miembros/principios", label: "Los 36 Principios", icon: ScrollText },
+  { to: "/miembros/responsabilidad", label: "Declaración de Responsabilidad", icon: HandHeart },
+  { to: "/miembros/oraciones", label: "Nuestras oraciones", icon: BookOpenText },
+  { to: "/miembros/aprendizaje", label: "Centro de aprendizaje", icon: GraduationCap },
 ];
 
 function isActive(pathname: string, to: string): boolean {
+  if (to === "/miembros") return pathname === "/miembros" || pathname === "/miembros/";
   return pathname === to || pathname.startsWith(to + "/");
 }
 
@@ -39,12 +44,14 @@ export function MemberShell({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [mobileOpen, setMobileOpen] = useState(false);
   const navigate = useNavigate();
-  const queryClient = useQueryClient();
+  const lock = useServerFn(lockMembers);
 
   async function handleSignOut() {
-    await queryClient.cancelQueries();
-    queryClient.clear();
-    await supabase.auth.signOut();
+    try {
+      await lock({});
+    } catch {
+      // non-fatal
+    }
     navigate({ to: "/auth", replace: true });
   }
 
