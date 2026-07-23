@@ -1,15 +1,20 @@
 /**
- * Directorio oficial de grupos del Área 2 Metropolitana de Barranquilla.
+ * Directorio oficial de grupos de Alcohólicos Anónimos.
  *
- * La estructura está preparada para incorporar más adelante, sin cambios de UI:
- * - Fotografía del lugar (`photoUrl`).
- * - Teléfono de contacto (`phone`).
- * - Indicaciones para llegar (`directions`).
- * - Coordenadas para Google Maps (`coordinates`).
+ * Fase actual: grupos oficiales del Área 2 Metropolitana de Barranquilla.
+ * La estructura está preparada para incorporar más adelante grupos de otras
+ * áreas (por ejemplo Área 3) sin cambios de UI: el visitante nunca necesita
+ * saber a qué Área pertenece un grupo, sólo encontrarlo por ciudad, barrio,
+ * nombre o —más adelante— día, horario o cercanía.
  *
- * Mientras esos datos no estén confirmados oficialmente por el Área, se dejan
- * como `undefined` y la interfaz los oculta con elegancia.
+ * Cada grupo reserva campos opcionales pendientes de confirmar por el Área:
+ * - Fotografía del lugar (`photoUrl`)
+ * - Teléfono de contacto (`phone`)
+ * - Indicaciones para llegar (`directions`)
+ * - Coordenadas para Google Maps (`coordinates`)
  */
+
+export type AreaId = "area-2-metropolitana" | "area-3";
 
 export interface PlaceholderMeeting {
   weekday: number; // 0 = Domingo ... 6 = Sábado
@@ -29,6 +34,8 @@ export interface PlaceholderGroup {
   neighborhood: string;
   addressLine: string;
   addressFull: string;
+  /** Área a la que pertenece el grupo. Uso interno; no se muestra al visitante. */
+  area: AreaId;
   /** Nota adicional sobre días especiales (por ejemplo festivos). */
   holidayNote?: string;
   meetings: PlaceholderMeeting[];
