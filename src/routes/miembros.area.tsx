@@ -62,11 +62,33 @@ function AreaPage() {
       </Section>
 
       <Section title="Las Asambleas de Área">
-        <ReservedBlock />
+        <p>
+          Las Asambleas de Área son reuniones de servicio que, por lo general, se realizan una vez al mes. En ellas participan los Representantes de Servicios Generales (RSG) y los servidores del Área para compartir información, estudiar los asuntos de servicio y fortalecer el trabajo de la Comunidad.
+        </p>
+        <p>Durante su desarrollo, la Asamblea puede incluir:</p>
+        <div className="space-y-4 pt-2">
+          <AsambleaBloque
+            titulo="Espacios informativos"
+            texto="Los servidores presentan informes sobre el servicio que desempeñan y las actividades realizadas por los diferentes comités, permitiendo a la Asamblea conocer el trabajo desarrollado y el avance de los proyectos."
+          />
+          <AsambleaBloque
+            titulo="Espacios deliberativos"
+            texto="Los miembros analizan los asuntos de servicio, presentan sugerencias y, mediante la conciencia de grupo, toman las decisiones que orientan el trabajo del Área."
+          />
+          <AsambleaBloque
+            titulo="Espacios electivos"
+            texto="Cuando corresponde, la Asamblea elige a los compañeros que prestarán los diferentes servicios dentro de la estructura del Área, de acuerdo con los procedimientos de la Comunidad."
+          />
+        </div>
       </Section>
 
       <Section title="Reuniones de servicio del Área">
-        <ReservedBlock />
+        <p>
+          Además de las Asambleas de Área, los servidores realizan reuniones de servicio para dar cumplimiento a las decisiones aprobadas por la conciencia de grupo.
+        </p>
+        <p>
+          En estas reuniones se coordina el trabajo de los diferentes comités, se hace seguimiento a las actividades programadas, se preparan los informes que serán presentados a la Asamblea y se proponen iniciativas orientadas a fortalecer el servicio y el cumplimiento del propósito primordial de Alcohólicos Anónimos.
+        </p>
       </Section>
     </div>
   );
