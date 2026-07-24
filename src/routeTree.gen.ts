@@ -49,6 +49,9 @@ import { Route as AuthenticatedServicioPerfilRouteImport } from './routes/_authe
 import { Route as AuthenticatedServicioReunionesIndexRouteImport } from './routes/_authenticated/servicio.reuniones.index'
 import { Route as AuthenticatedServicioGruposIndexRouteImport } from './routes/_authenticated/servicio.grupos.index'
 import { Route as AuthenticatedServicioEventosIndexRouteImport } from './routes/_authenticated/servicio.eventos.index'
+import { Route as ApiPublicMembersGateUnlockRouteImport } from './routes/api/public/members-gate/unlock'
+import { Route as ApiPublicMembersGateLockRouteImport } from './routes/api/public/members-gate/lock'
+import { Route as ApiPublicMembersGateCheckRouteImport } from './routes/api/public/members-gate/check'
 import { Route as AuthenticatedServicioGruposNuevoRouteImport } from './routes/_authenticated/servicio.grupos.nuevo'
 import { Route as AuthenticatedServicioGruposIdRouteImport } from './routes/_authenticated/servicio.grupos.$id'
 import { Route as AuthenticatedServicioEventosNuevoRouteImport } from './routes/_authenticated/servicio.eventos.nuevo'
@@ -259,6 +262,24 @@ const AuthenticatedServicioEventosIndexRoute =
     path: '/eventos/',
     getParentRoute: () => AuthenticatedServicioRoute,
   } as any)
+const ApiPublicMembersGateUnlockRoute =
+  ApiPublicMembersGateUnlockRouteImport.update({
+    id: '/api/public/members-gate/unlock',
+    path: '/api/public/members-gate/unlock',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiPublicMembersGateLockRoute =
+  ApiPublicMembersGateLockRouteImport.update({
+    id: '/api/public/members-gate/lock',
+    path: '/api/public/members-gate/lock',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiPublicMembersGateCheckRoute =
+  ApiPublicMembersGateCheckRouteImport.update({
+    id: '/api/public/members-gate/check',
+    path: '/api/public/members-gate/check',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const AuthenticatedServicioGruposNuevoRoute =
   AuthenticatedServicioGruposNuevoRouteImport.update({
     id: '/grupos/nuevo',
@@ -325,6 +346,9 @@ export interface FileRoutesByFullPath {
   '/servicio/eventos/nuevo': typeof AuthenticatedServicioEventosNuevoRoute
   '/servicio/grupos/$id': typeof AuthenticatedServicioGruposIdRoute
   '/servicio/grupos/nuevo': typeof AuthenticatedServicioGruposNuevoRoute
+  '/api/public/members-gate/check': typeof ApiPublicMembersGateCheckRoute
+  '/api/public/members-gate/lock': typeof ApiPublicMembersGateLockRoute
+  '/api/public/members-gate/unlock': typeof ApiPublicMembersGateUnlockRoute
   '/servicio/eventos/': typeof AuthenticatedServicioEventosIndexRoute
   '/servicio/grupos/': typeof AuthenticatedServicioGruposIndexRoute
   '/servicio/reuniones/': typeof AuthenticatedServicioReunionesIndexRoute
@@ -368,6 +392,9 @@ export interface FileRoutesByTo {
   '/servicio/eventos/nuevo': typeof AuthenticatedServicioEventosNuevoRoute
   '/servicio/grupos/$id': typeof AuthenticatedServicioGruposIdRoute
   '/servicio/grupos/nuevo': typeof AuthenticatedServicioGruposNuevoRoute
+  '/api/public/members-gate/check': typeof ApiPublicMembersGateCheckRoute
+  '/api/public/members-gate/lock': typeof ApiPublicMembersGateLockRoute
+  '/api/public/members-gate/unlock': typeof ApiPublicMembersGateUnlockRoute
   '/servicio/eventos': typeof AuthenticatedServicioEventosIndexRoute
   '/servicio/grupos': typeof AuthenticatedServicioGruposIndexRoute
   '/servicio/reuniones': typeof AuthenticatedServicioReunionesIndexRoute
@@ -415,6 +442,9 @@ export interface FileRoutesById {
   '/_authenticated/servicio/eventos/nuevo': typeof AuthenticatedServicioEventosNuevoRoute
   '/_authenticated/servicio/grupos/$id': typeof AuthenticatedServicioGruposIdRoute
   '/_authenticated/servicio/grupos/nuevo': typeof AuthenticatedServicioGruposNuevoRoute
+  '/api/public/members-gate/check': typeof ApiPublicMembersGateCheckRoute
+  '/api/public/members-gate/lock': typeof ApiPublicMembersGateLockRoute
+  '/api/public/members-gate/unlock': typeof ApiPublicMembersGateUnlockRoute
   '/_authenticated/servicio/eventos/': typeof AuthenticatedServicioEventosIndexRoute
   '/_authenticated/servicio/grupos/': typeof AuthenticatedServicioGruposIndexRoute
   '/_authenticated/servicio/reuniones/': typeof AuthenticatedServicioReunionesIndexRoute
@@ -462,6 +492,9 @@ export interface FileRouteTypes {
     | '/servicio/eventos/nuevo'
     | '/servicio/grupos/$id'
     | '/servicio/grupos/nuevo'
+    | '/api/public/members-gate/check'
+    | '/api/public/members-gate/lock'
+    | '/api/public/members-gate/unlock'
     | '/servicio/eventos/'
     | '/servicio/grupos/'
     | '/servicio/reuniones/'
@@ -505,6 +538,9 @@ export interface FileRouteTypes {
     | '/servicio/eventos/nuevo'
     | '/servicio/grupos/$id'
     | '/servicio/grupos/nuevo'
+    | '/api/public/members-gate/check'
+    | '/api/public/members-gate/lock'
+    | '/api/public/members-gate/unlock'
     | '/servicio/eventos'
     | '/servicio/grupos'
     | '/servicio/reuniones'
@@ -551,6 +587,9 @@ export interface FileRouteTypes {
     | '/_authenticated/servicio/eventos/nuevo'
     | '/_authenticated/servicio/grupos/$id'
     | '/_authenticated/servicio/grupos/nuevo'
+    | '/api/public/members-gate/check'
+    | '/api/public/members-gate/lock'
+    | '/api/public/members-gate/unlock'
     | '/_authenticated/servicio/eventos/'
     | '/_authenticated/servicio/grupos/'
     | '/_authenticated/servicio/reuniones/'
@@ -578,6 +617,9 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TengoUnProblemaRoute: typeof TengoUnProblemaRoute
   TestimoniosRoute: typeof TestimoniosRoute
+  ApiPublicMembersGateCheckRoute: typeof ApiPublicMembersGateCheckRoute
+  ApiPublicMembersGateLockRoute: typeof ApiPublicMembersGateLockRoute
+  ApiPublicMembersGateUnlockRoute: typeof ApiPublicMembersGateUnlockRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -862,6 +904,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedServicioEventosIndexRouteImport
       parentRoute: typeof AuthenticatedServicioRoute
     }
+    '/api/public/members-gate/unlock': {
+      id: '/api/public/members-gate/unlock'
+      path: '/api/public/members-gate/unlock'
+      fullPath: '/api/public/members-gate/unlock'
+      preLoaderRoute: typeof ApiPublicMembersGateUnlockRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/members-gate/lock': {
+      id: '/api/public/members-gate/lock'
+      path: '/api/public/members-gate/lock'
+      fullPath: '/api/public/members-gate/lock'
+      preLoaderRoute: typeof ApiPublicMembersGateLockRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/members-gate/check': {
+      id: '/api/public/members-gate/check'
+      path: '/api/public/members-gate/check'
+      fullPath: '/api/public/members-gate/check'
+      preLoaderRoute: typeof ApiPublicMembersGateCheckRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_authenticated/servicio/grupos/nuevo': {
       id: '/_authenticated/servicio/grupos/nuevo'
       path: '/grupos/nuevo'
@@ -1012,6 +1075,9 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TengoUnProblemaRoute: TengoUnProblemaRoute,
   TestimoniosRoute: TestimoniosRoute,
+  ApiPublicMembersGateCheckRoute: ApiPublicMembersGateCheckRoute,
+  ApiPublicMembersGateLockRoute: ApiPublicMembersGateLockRoute,
+  ApiPublicMembersGateUnlockRoute: ApiPublicMembersGateUnlockRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

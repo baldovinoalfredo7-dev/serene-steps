@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import { useState } from "react";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
-import { useServerFn } from "@tanstack/react-start";
 import {
   Users,
   FileDown,
@@ -19,7 +18,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import logoAsset from "@/assets/logo-aa.png.asset.json";
-import { lockMembers } from "@/lib/members-gate.functions";
+import { lockMembersClient } from "@/lib/members-gate-client";
 
 type Item = { to: string; label: string; icon: LucideIcon };
 
@@ -44,16 +43,16 @@ export function MemberShell({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [mobileOpen, setMobileOpen] = useState(false);
   const navigate = useNavigate();
-  const lock = useServerFn(lockMembers);
 
   async function handleSignOut() {
     try {
-      await lock({});
+      await lockMembersClient();
     } catch {
       // non-fatal
     }
     navigate({ to: "/auth", replace: true });
   }
+
 
   return (
     <div className="flex min-h-dvh bg-soft/40">
