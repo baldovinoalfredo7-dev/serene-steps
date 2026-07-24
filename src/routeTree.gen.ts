@@ -32,6 +32,7 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as MiembrosIndexRouteImport } from './routes/miembros.index'
 import { Route as MiembrosResponsabilidadRouteImport } from './routes/miembros.responsabilidad'
+import { Route as MiembrosPrincipiosRouteImport } from './routes/miembros.principios'
 import { Route as MiembrosOracionesRouteImport } from './routes/miembros.oraciones'
 import { Route as MiembrosGruposRouteImport } from './routes/miembros.grupos'
 import { Route as MiembrosEventosRouteImport } from './routes/miembros.eventos'
@@ -174,6 +175,11 @@ const MiembrosResponsabilidadRoute = MiembrosResponsabilidadRouteImport.update({
   path: '/responsabilidad',
   getParentRoute: () => MiembrosRoute,
 } as any)
+const MiembrosPrincipiosRoute = MiembrosPrincipiosRouteImport.update({
+  id: '/principios',
+  path: '/principios',
+  getParentRoute: () => MiembrosRoute,
+} as any)
 const MiembrosOracionesRoute = MiembrosOracionesRouteImport.update({
   id: '/oraciones',
   path: '/oraciones',
@@ -225,9 +231,9 @@ const AuthenticatedPerfilRoute = AuthenticatedPerfilRouteImport.update({
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const MiembrosPrincipiosIndexRoute = MiembrosPrincipiosIndexRouteImport.update({
-  id: '/principios/',
-  path: '/principios/',
-  getParentRoute: () => MiembrosRoute,
+  id: '/',
+  path: '/',
+  getParentRoute: () => MiembrosPrincipiosRoute,
 } as any)
 const AuthenticatedServicioIndexRoute =
   AuthenticatedServicioIndexRouteImport.update({
@@ -237,21 +243,21 @@ const AuthenticatedServicioIndexRoute =
   } as any)
 const MiembrosPrincipiosDoceTradicionesRoute =
   MiembrosPrincipiosDoceTradicionesRouteImport.update({
-    id: '/principios/doce-tradiciones',
-    path: '/principios/doce-tradiciones',
-    getParentRoute: () => MiembrosRoute,
+    id: '/doce-tradiciones',
+    path: '/doce-tradiciones',
+    getParentRoute: () => MiembrosPrincipiosRoute,
   } as any)
 const MiembrosPrincipiosDocePasosRoute =
   MiembrosPrincipiosDocePasosRouteImport.update({
-    id: '/principios/doce-pasos',
-    path: '/principios/doce-pasos',
-    getParentRoute: () => MiembrosRoute,
+    id: '/doce-pasos',
+    path: '/doce-pasos',
+    getParentRoute: () => MiembrosPrincipiosRoute,
   } as any)
 const MiembrosPrincipiosDoceConceptosRoute =
   MiembrosPrincipiosDoceConceptosRouteImport.update({
-    id: '/principios/doce-conceptos',
-    path: '/principios/doce-conceptos',
-    getParentRoute: () => MiembrosRoute,
+    id: '/doce-conceptos',
+    path: '/doce-conceptos',
+    getParentRoute: () => MiembrosPrincipiosRoute,
   } as any)
 const AuthenticatedServicioUsuariosRoute =
   AuthenticatedServicioUsuariosRouteImport.update({
@@ -357,6 +363,7 @@ export interface FileRoutesByFullPath {
   '/miembros/eventos': typeof MiembrosEventosRoute
   '/miembros/grupos': typeof MiembrosGruposRoute
   '/miembros/oraciones': typeof MiembrosOracionesRoute
+  '/miembros/principios': typeof MiembrosPrincipiosRouteWithChildren
   '/miembros/responsabilidad': typeof MiembrosResponsabilidadRoute
   '/miembros/': typeof MiembrosIndexRoute
   '/servicio/perfil': typeof AuthenticatedServicioPerfilRoute
@@ -459,6 +466,7 @@ export interface FileRoutesById {
   '/miembros/eventos': typeof MiembrosEventosRoute
   '/miembros/grupos': typeof MiembrosGruposRoute
   '/miembros/oraciones': typeof MiembrosOracionesRoute
+  '/miembros/principios': typeof MiembrosPrincipiosRouteWithChildren
   '/miembros/responsabilidad': typeof MiembrosResponsabilidadRoute
   '/miembros/': typeof MiembrosIndexRoute
   '/_authenticated/servicio/perfil': typeof AuthenticatedServicioPerfilRoute
@@ -512,6 +520,7 @@ export interface FileRouteTypes {
     | '/miembros/eventos'
     | '/miembros/grupos'
     | '/miembros/oraciones'
+    | '/miembros/principios'
     | '/miembros/responsabilidad'
     | '/miembros/'
     | '/servicio/perfil'
@@ -613,6 +622,7 @@ export interface FileRouteTypes {
     | '/miembros/eventos'
     | '/miembros/grupos'
     | '/miembros/oraciones'
+    | '/miembros/principios'
     | '/miembros/responsabilidad'
     | '/miembros/'
     | '/_authenticated/servicio/perfil'
@@ -824,6 +834,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MiembrosResponsabilidadRouteImport
       parentRoute: typeof MiembrosRoute
     }
+    '/miembros/principios': {
+      id: '/miembros/principios'
+      path: '/principios'
+      fullPath: '/miembros/principios'
+      preLoaderRoute: typeof MiembrosPrincipiosRouteImport
+      parentRoute: typeof MiembrosRoute
+    }
     '/miembros/oraciones': {
       id: '/miembros/oraciones'
       path: '/oraciones'
@@ -896,10 +913,10 @@ declare module '@tanstack/react-router' {
     }
     '/miembros/principios/': {
       id: '/miembros/principios/'
-      path: '/principios'
+      path: '/'
       fullPath: '/miembros/principios/'
       preLoaderRoute: typeof MiembrosPrincipiosIndexRouteImport
-      parentRoute: typeof MiembrosRoute
+      parentRoute: typeof MiembrosPrincipiosRoute
     }
     '/_authenticated/servicio/': {
       id: '/_authenticated/servicio/'
@@ -910,24 +927,24 @@ declare module '@tanstack/react-router' {
     }
     '/miembros/principios/doce-tradiciones': {
       id: '/miembros/principios/doce-tradiciones'
-      path: '/principios/doce-tradiciones'
+      path: '/doce-tradiciones'
       fullPath: '/miembros/principios/doce-tradiciones'
       preLoaderRoute: typeof MiembrosPrincipiosDoceTradicionesRouteImport
-      parentRoute: typeof MiembrosRoute
+      parentRoute: typeof MiembrosPrincipiosRoute
     }
     '/miembros/principios/doce-pasos': {
       id: '/miembros/principios/doce-pasos'
-      path: '/principios/doce-pasos'
+      path: '/doce-pasos'
       fullPath: '/miembros/principios/doce-pasos'
       preLoaderRoute: typeof MiembrosPrincipiosDocePasosRouteImport
-      parentRoute: typeof MiembrosRoute
+      parentRoute: typeof MiembrosPrincipiosRoute
     }
     '/miembros/principios/doce-conceptos': {
       id: '/miembros/principios/doce-conceptos'
-      path: '/principios/doce-conceptos'
+      path: '/doce-conceptos'
       fullPath: '/miembros/principios/doce-conceptos'
       preLoaderRoute: typeof MiembrosPrincipiosDoceConceptosRouteImport
-      parentRoute: typeof MiembrosRoute
+      parentRoute: typeof MiembrosPrincipiosRoute
     }
     '/_authenticated/servicio/usuarios': {
       id: '/_authenticated/servicio/usuarios'
@@ -1085,6 +1102,24 @@ const GruposRouteChildren: GruposRouteChildren = {
 const GruposRouteWithChildren =
   GruposRoute._addFileChildren(GruposRouteChildren)
 
+interface MiembrosPrincipiosRouteChildren {
+  MiembrosPrincipiosDoceConceptosRoute: typeof MiembrosPrincipiosDoceConceptosRoute
+  MiembrosPrincipiosDocePasosRoute: typeof MiembrosPrincipiosDocePasosRoute
+  MiembrosPrincipiosDoceTradicionesRoute: typeof MiembrosPrincipiosDoceTradicionesRoute
+  MiembrosPrincipiosIndexRoute: typeof MiembrosPrincipiosIndexRoute
+}
+
+const MiembrosPrincipiosRouteChildren: MiembrosPrincipiosRouteChildren = {
+  MiembrosPrincipiosDoceConceptosRoute: MiembrosPrincipiosDoceConceptosRoute,
+  MiembrosPrincipiosDocePasosRoute: MiembrosPrincipiosDocePasosRoute,
+  MiembrosPrincipiosDoceTradicionesRoute:
+    MiembrosPrincipiosDoceTradicionesRoute,
+  MiembrosPrincipiosIndexRoute: MiembrosPrincipiosIndexRoute,
+}
+
+const MiembrosPrincipiosRouteWithChildren =
+  MiembrosPrincipiosRoute._addFileChildren(MiembrosPrincipiosRouteChildren)
+
 interface MiembrosRouteChildren {
   MiembrosAprendizajeRoute: typeof MiembrosAprendizajeRoute
   MiembrosAreaRoute: typeof MiembrosAreaRoute
@@ -1092,12 +1127,9 @@ interface MiembrosRouteChildren {
   MiembrosEventosRoute: typeof MiembrosEventosRoute
   MiembrosGruposRoute: typeof MiembrosGruposRoute
   MiembrosOracionesRoute: typeof MiembrosOracionesRoute
+  MiembrosPrincipiosRoute: typeof MiembrosPrincipiosRouteWithChildren
   MiembrosResponsabilidadRoute: typeof MiembrosResponsabilidadRoute
   MiembrosIndexRoute: typeof MiembrosIndexRoute
-  MiembrosPrincipiosDoceConceptosRoute: typeof MiembrosPrincipiosDoceConceptosRoute
-  MiembrosPrincipiosDocePasosRoute: typeof MiembrosPrincipiosDocePasosRoute
-  MiembrosPrincipiosDoceTradicionesRoute: typeof MiembrosPrincipiosDoceTradicionesRoute
-  MiembrosPrincipiosIndexRoute: typeof MiembrosPrincipiosIndexRoute
 }
 
 const MiembrosRouteChildren: MiembrosRouteChildren = {
@@ -1107,13 +1139,9 @@ const MiembrosRouteChildren: MiembrosRouteChildren = {
   MiembrosEventosRoute: MiembrosEventosRoute,
   MiembrosGruposRoute: MiembrosGruposRoute,
   MiembrosOracionesRoute: MiembrosOracionesRoute,
+  MiembrosPrincipiosRoute: MiembrosPrincipiosRouteWithChildren,
   MiembrosResponsabilidadRoute: MiembrosResponsabilidadRoute,
   MiembrosIndexRoute: MiembrosIndexRoute,
-  MiembrosPrincipiosDoceConceptosRoute: MiembrosPrincipiosDoceConceptosRoute,
-  MiembrosPrincipiosDocePasosRoute: MiembrosPrincipiosDocePasosRoute,
-  MiembrosPrincipiosDoceTradicionesRoute:
-    MiembrosPrincipiosDoceTradicionesRoute,
-  MiembrosPrincipiosIndexRoute: MiembrosPrincipiosIndexRoute,
 }
 
 const MiembrosRouteWithChildren = MiembrosRoute._addFileChildren(
