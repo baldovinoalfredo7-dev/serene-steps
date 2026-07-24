@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { BookOpen, Handshake, Globe2, ArrowRight, type LucideIcon } from "lucide-react";
 import { MemberPageHeader } from "@/components/miembros/SectionCard";
 
-export const Route = createFileRoute("/miembros/principios")({
+export const Route = createFileRoute("/miembros/principios/")({
   head: () => ({
     meta: [
       { title: "Los 36 principios · Portal para Miembros" },
