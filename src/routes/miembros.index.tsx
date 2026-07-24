@@ -21,20 +21,28 @@ type Card = {
 
 const cards: Card[] = [
   {
+    to: "/miembros/principios",
+    icon: ScrollText,
+    emoji: "📖",
+    title: "Los 36 principios",
+    description:
+      "Consulta los Doce Pasos, las Doce Tradiciones y los Doce Conceptos para el Servicio Mundial.",
+  },
+  {
+    to: "/miembros/oraciones",
+    icon: BookOpenText,
+    emoji: "🙏",
+    title: "Nuestras oraciones",
+    description:
+      "Consulta las oraciones utilizadas habitualmente en Alcohólicos Anónimos.",
+  },
+  {
     to: "/miembros/grupos",
     icon: Users,
     emoji: "🏠",
     title: "Nuestros grupos",
     description:
       "Consulta el directorio oficial de grupos del Área 2, horarios y lugares de reunión.",
-  },
-  {
-    to: "/miembros/eventos",
-    icon: CalendarDays,
-    emoji: "📅",
-    title: "Calendario de eventos",
-    description:
-      "Consulta foros, asambleas, reuniones de servicio, talleres y demás actividades del Área.",
   },
   {
     to: "/miembros/documentos",
@@ -53,27 +61,19 @@ const cards: Card[] = [
       "Consulta la estructura de servicio, los comités y los servidores del Área 2.",
   },
   {
-    to: "/miembros/principios",
-    icon: ScrollText,
-    emoji: "📖",
-    title: "Los 36 principios",
-    description:
-      "Consulta los Doce Pasos, las Doce Tradiciones y los Doce Conceptos para el Servicio Mundial.",
-  },
-  {
-    to: "/miembros/oraciones",
-    icon: BookOpenText,
-    emoji: "🙏",
-    title: "Nuestras oraciones",
-    description:
-      "Consulta las oraciones utilizadas habitualmente en Alcohólicos Anónimos.",
-  },
-  {
     to: "/miembros/aprendizaje",
     icon: GraduationCap,
     emoji: "🎓",
     title: "Centro de aprendizaje",
     description: "Accede a recursos de formación para miembros y servidores.",
+  },
+  {
+    to: "/miembros/eventos",
+    icon: CalendarDays,
+    emoji: "📅",
+    title: "Calendario de eventos",
+    description:
+      "Consulta foros, asambleas, reuniones de servicio, talleres y demás actividades del Área.",
   },
 ];
 
