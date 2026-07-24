@@ -43,6 +43,7 @@ import { Route as GruposSlugRouteImport } from './routes/grupos.$slug'
 import { Route as EventosSlugRouteImport } from './routes/eventos.$slug'
 import { Route as AuthenticatedServicioRouteImport } from './routes/_authenticated/servicio'
 import { Route as AuthenticatedPerfilRouteImport } from './routes/_authenticated/perfil'
+import { Route as MiembrosPrincipiosIndexRouteImport } from './routes/miembros.principios.index'
 import { Route as AuthenticatedServicioIndexRouteImport } from './routes/_authenticated/servicio.index'
 import { Route as MiembrosPrincipiosDoceTradicionesRouteImport } from './routes/miembros.principios.doce-tradiciones'
 import { Route as MiembrosPrincipiosDocePasosRouteImport } from './routes/miembros.principios.doce-pasos'
@@ -229,6 +230,11 @@ const AuthenticatedPerfilRoute = AuthenticatedPerfilRouteImport.update({
   path: '/perfil',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const MiembrosPrincipiosIndexRoute = MiembrosPrincipiosIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => MiembrosPrincipiosRoute,
+} as any)
 const AuthenticatedServicioIndexRoute =
   AuthenticatedServicioIndexRouteImport.update({
     id: '/',
@@ -366,6 +372,7 @@ export interface FileRoutesByFullPath {
   '/miembros/principios/doce-pasos': typeof MiembrosPrincipiosDocePasosRoute
   '/miembros/principios/doce-tradiciones': typeof MiembrosPrincipiosDoceTradicionesRoute
   '/servicio/': typeof AuthenticatedServicioIndexRoute
+  '/miembros/principios/': typeof MiembrosPrincipiosIndexRoute
   '/servicio/eventos/$id': typeof AuthenticatedServicioEventosIdRoute
   '/servicio/eventos/nuevo': typeof AuthenticatedServicioEventosNuevoRoute
   '/servicio/grupos/$id': typeof AuthenticatedServicioGruposIdRoute
@@ -406,7 +413,6 @@ export interface FileRoutesByTo {
   '/miembros/eventos': typeof MiembrosEventosRoute
   '/miembros/grupos': typeof MiembrosGruposRoute
   '/miembros/oraciones': typeof MiembrosOracionesRoute
-  '/miembros/principios': typeof MiembrosPrincipiosRouteWithChildren
   '/miembros/responsabilidad': typeof MiembrosResponsabilidadRoute
   '/miembros': typeof MiembrosIndexRoute
   '/servicio/perfil': typeof AuthenticatedServicioPerfilRoute
@@ -415,6 +421,7 @@ export interface FileRoutesByTo {
   '/miembros/principios/doce-pasos': typeof MiembrosPrincipiosDocePasosRoute
   '/miembros/principios/doce-tradiciones': typeof MiembrosPrincipiosDoceTradicionesRoute
   '/servicio': typeof AuthenticatedServicioIndexRoute
+  '/miembros/principios': typeof MiembrosPrincipiosIndexRoute
   '/servicio/eventos/$id': typeof AuthenticatedServicioEventosIdRoute
   '/servicio/eventos/nuevo': typeof AuthenticatedServicioEventosNuevoRoute
   '/servicio/grupos/$id': typeof AuthenticatedServicioGruposIdRoute
@@ -468,6 +475,7 @@ export interface FileRoutesById {
   '/miembros/principios/doce-pasos': typeof MiembrosPrincipiosDocePasosRoute
   '/miembros/principios/doce-tradiciones': typeof MiembrosPrincipiosDoceTradicionesRoute
   '/_authenticated/servicio/': typeof AuthenticatedServicioIndexRoute
+  '/miembros/principios/': typeof MiembrosPrincipiosIndexRoute
   '/_authenticated/servicio/eventos/$id': typeof AuthenticatedServicioEventosIdRoute
   '/_authenticated/servicio/eventos/nuevo': typeof AuthenticatedServicioEventosNuevoRoute
   '/_authenticated/servicio/grupos/$id': typeof AuthenticatedServicioGruposIdRoute
@@ -521,6 +529,7 @@ export interface FileRouteTypes {
     | '/miembros/principios/doce-pasos'
     | '/miembros/principios/doce-tradiciones'
     | '/servicio/'
+    | '/miembros/principios/'
     | '/servicio/eventos/$id'
     | '/servicio/eventos/nuevo'
     | '/servicio/grupos/$id'
@@ -561,7 +570,6 @@ export interface FileRouteTypes {
     | '/miembros/eventos'
     | '/miembros/grupos'
     | '/miembros/oraciones'
-    | '/miembros/principios'
     | '/miembros/responsabilidad'
     | '/miembros'
     | '/servicio/perfil'
@@ -570,6 +578,7 @@ export interface FileRouteTypes {
     | '/miembros/principios/doce-pasos'
     | '/miembros/principios/doce-tradiciones'
     | '/servicio'
+    | '/miembros/principios'
     | '/servicio/eventos/$id'
     | '/servicio/eventos/nuevo'
     | '/servicio/grupos/$id'
@@ -622,6 +631,7 @@ export interface FileRouteTypes {
     | '/miembros/principios/doce-pasos'
     | '/miembros/principios/doce-tradiciones'
     | '/_authenticated/servicio/'
+    | '/miembros/principios/'
     | '/_authenticated/servicio/eventos/$id'
     | '/_authenticated/servicio/eventos/nuevo'
     | '/_authenticated/servicio/grupos/$id'
@@ -901,6 +911,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedPerfilRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/miembros/principios/': {
+      id: '/miembros/principios/'
+      path: '/'
+      fullPath: '/miembros/principios/'
+      preLoaderRoute: typeof MiembrosPrincipiosIndexRouteImport
+      parentRoute: typeof MiembrosPrincipiosRoute
+    }
     '/_authenticated/servicio/': {
       id: '/_authenticated/servicio/'
       path: '/'
@@ -1089,6 +1106,7 @@ interface MiembrosPrincipiosRouteChildren {
   MiembrosPrincipiosDoceConceptosRoute: typeof MiembrosPrincipiosDoceConceptosRoute
   MiembrosPrincipiosDocePasosRoute: typeof MiembrosPrincipiosDocePasosRoute
   MiembrosPrincipiosDoceTradicionesRoute: typeof MiembrosPrincipiosDoceTradicionesRoute
+  MiembrosPrincipiosIndexRoute: typeof MiembrosPrincipiosIndexRoute
 }
 
 const MiembrosPrincipiosRouteChildren: MiembrosPrincipiosRouteChildren = {
@@ -1096,6 +1114,7 @@ const MiembrosPrincipiosRouteChildren: MiembrosPrincipiosRouteChildren = {
   MiembrosPrincipiosDocePasosRoute: MiembrosPrincipiosDocePasosRoute,
   MiembrosPrincipiosDoceTradicionesRoute:
     MiembrosPrincipiosDoceTradicionesRoute,
+  MiembrosPrincipiosIndexRoute: MiembrosPrincipiosIndexRoute,
 }
 
 const MiembrosPrincipiosRouteWithChildren =
