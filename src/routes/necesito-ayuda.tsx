@@ -33,23 +33,31 @@ function BuscoAyuda() {
             Busco ayuda
           </span>
           <h1 className="text-balance font-serif text-4xl leading-tight text-brand md:text-6xl">
-            Bienvenido. Nos alegra que estés aquí.
+            Nos alegra que estés aquí.
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg text-ink/85">
-            En esta página encontrarás respuestas sencillas a las preguntas más comunes de
-            quienes se acercan por primera vez a Alcohólicos Anónimos.
+            Queremos ayudarte a encontrar la información que necesitas. Elige la opción
+            que mejor describa tu situación.
           </p>
 
-          <div className="mt-10">
+          <div className="mx-auto mt-10 grid max-w-xl gap-4 sm:grid-cols-2">
+            <a
+              href="#contenido-para-mi"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-brand px-6 py-3.5 text-center text-sm font-semibold uppercase tracking-[0.18em] text-paper transition-colors hover:bg-brand/90"
+            >
+              Busco ayuda para mí
+            </a>
             <Link
               to="/ayuda-familiar"
-              className="inline-flex items-center gap-2 rounded-full border border-brand/25 bg-paper px-6 py-3 text-sm font-semibold text-brand transition-colors hover:bg-soft/60"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-brand px-6 py-3.5 text-center text-sm font-semibold uppercase tracking-[0.18em] text-paper transition-colors hover:bg-brand/90"
             >
-              Busco ayuda para un familiar o un amigo <ArrowRight className="size-4" />
+              Busco ayuda para un familiar o un amigo
             </Link>
           </div>
         </div>
       </section>
+
+      <div id="contenido-para-mi" />
 
       {/* 1. ¿Cómo puede ayudarte AA? */}
       <Block
