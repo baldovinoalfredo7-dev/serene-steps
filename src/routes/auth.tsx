@@ -39,25 +39,32 @@ function MembersAccessPage() {
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (busy) return;
     setBusy(true);
     setError(null);
     try {
       const res = await unlock({ data: { password } });
-      if (!res.ok) {
-        setBusy(false);
+      if (!res?.ok) {
         setError(
           "La contraseña ingresada no es correcta. Inténtalo nuevamente o consulta con un servidor del Área 2 Metropolitana de Barranquilla.",
         );
         return;
       }
-      navigate({ to: "/miembros", replace: true });
-    } catch {
-      setBusy(false);
+      try {
+        await navigate({ to: "/miembros", replace: true });
+      } catch {
+        window.location.assign("/miembros");
+      }
+    } catch (err) {
+      console.error("unlockMembers error", err);
       setError(
-        "La contraseña ingresada no es correcta. Inténtalo nuevamente o consulta con un servidor del Área 2 Metropolitana de Barranquilla.",
+        "Ocurrió un error al validar la contraseña. Inténtalo nuevamente en unos segundos.",
       );
+    } finally {
+      setBusy(false);
     }
   }
+
 
   return (
     <PageShell
