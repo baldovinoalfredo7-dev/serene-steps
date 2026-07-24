@@ -1,25 +1,34 @@
 import { createServerFn } from "@tanstack/react-start";
-import { useSession } from "@tanstack/react-start/server";
+import {
+  getCookie,
+  setCookie,
+  deleteCookie,
+  sealSession,
+  unsealSession,
+} from "@tanstack/react-start/server";
 import { createHash, timingSafeEqual } from "node:crypto";
 
 // Fallback password used ONLY when SITE_PASSWORD is not set in the environment.
-// Remove once the environment secret is configured.
 const FALLBACK_SITE_PASSWORD = "area22026";
-// Fallback session secret (must be >= 32 chars). Overridden by MEMBERS_SESSION_SECRET.
+// Fallback session secret (>= 32 chars). Overridden by MEMBERS_SESSION_SECRET.
 const FALLBACK_SESSION_SECRET =
   "aa-area2-members-gate-fallback-secret-please-rotate";
+
+const COOKIE_NAME = "aa-members-gate";
+const MAX_AGE_SECONDS = 60 * 60 * 8; // 8 hours
 
 type GateSession = { unlocked?: boolean };
 
 function getSessionConfig() {
   const password =
-    process.env.MEMBERS_SESSION_SECRET && process.env.MEMBERS_SESSION_SECRET.length >= 32
+    process.env.MEMBERS_SESSION_SECRET &&
+    process.env.MEMBERS_SESSION_SECRET.length >= 32
       ? process.env.MEMBERS_SESSION_SECRET
       : FALLBACK_SESSION_SECRET;
   return {
     password,
-    name: "aa-members-gate",
-    maxAge: 60 * 60 * 8, // 8 hours
+    name: COOKIE_NAME,
+    maxAge: MAX_AGE_SECONDS,
     cookie: {
       httpOnly: true,
       secure: true,
@@ -39,6 +48,35 @@ function passwordMatches(input: string, expected: string): boolean {
   return timingSafeEqual(a, b);
 }
 
+async function readGateSession(): Promise<GateSession> {
+  const raw = getCookie(COOKIE_NAME);
+  if (!raw) return {};
+  try {
+    const data = (await unsealSession(raw, getSessionConfig())) as
+      | { data?: GateSession }
+      | GateSession
+      | undefined;
+    if (!data) return {};
+    // unsealSession returns { data, ... } shape
+    if (typeof data === "object" && "data" in data && data.data)
+      return data.data as GateSession;
+    return data as GateSession;
+  } catch {
+    return {};
+  }
+}
+
+async function writeGateSession(next: GateSession): Promise<void> {
+  const sealed = await sealSession({ data: next } as never, getSessionConfig());
+  setCookie(COOKIE_NAME, sealed, {
+    httpOnly: true,
+    secure: true,
+    sameSite: "lax",
+    path: "/",
+    maxAge: MAX_AGE_SECONDS,
+  });
+}
+
 export const unlockMembers = createServerFn({ method: "POST" })
   .inputValidator((data: { password: string }) => data)
   .handler(async ({ data }) => {
@@ -47,8 +85,7 @@ export const unlockMembers = createServerFn({ method: "POST" })
       if (!data?.password || !passwordMatches(data.password, expected)) {
         return { ok: false as const };
       }
-      const session = await useSession<GateSession>(getSessionConfig());
-      await session.update({ unlocked: true });
+      await writeGateSession({ unlocked: true });
       return { ok: true as const };
     } catch (error) {
       console.error("unlockMembers failed", error);
@@ -58,8 +95,7 @@ export const unlockMembers = createServerFn({ method: "POST" })
 
 export const lockMembers = createServerFn({ method: "POST" }).handler(async () => {
   try {
-    const session = await useSession<GateSession>(getSessionConfig());
-    await session.clear();
+    deleteCookie(COOKIE_NAME, { path: "/" });
   } catch (error) {
     console.error("lockMembers failed", error);
   }
@@ -68,8 +104,8 @@ export const lockMembers = createServerFn({ method: "POST" }).handler(async () =
 
 export const checkMembersUnlocked = createServerFn({ method: "GET" }).handler(async () => {
   try {
-    const session = await useSession<GateSession>(getSessionConfig());
-    return { unlocked: Boolean(session.data.unlocked) };
+    const session = await readGateSession();
+    return { unlocked: Boolean(session.unlocked) };
   } catch (error) {
     console.error("checkMembersUnlocked failed", error);
     return { unlocked: false };
