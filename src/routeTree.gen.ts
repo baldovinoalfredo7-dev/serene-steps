@@ -44,6 +44,9 @@ import { Route as EventosSlugRouteImport } from './routes/eventos.$slug'
 import { Route as AuthenticatedServicioRouteImport } from './routes/_authenticated/servicio'
 import { Route as AuthenticatedPerfilRouteImport } from './routes/_authenticated/perfil'
 import { Route as AuthenticatedServicioIndexRouteImport } from './routes/_authenticated/servicio.index'
+import { Route as MiembrosPrincipiosDoceTradicionesRouteImport } from './routes/miembros.principios.doce-tradiciones'
+import { Route as MiembrosPrincipiosDocePasosRouteImport } from './routes/miembros.principios.doce-pasos'
+import { Route as MiembrosPrincipiosDoceConceptosRouteImport } from './routes/miembros.principios.doce-conceptos'
 import { Route as AuthenticatedServicioUsuariosRouteImport } from './routes/_authenticated/servicio.usuarios'
 import { Route as AuthenticatedServicioPerfilRouteImport } from './routes/_authenticated/servicio.perfil'
 import { Route as AuthenticatedServicioReunionesIndexRouteImport } from './routes/_authenticated/servicio.reuniones.index'
@@ -232,6 +235,24 @@ const AuthenticatedServicioIndexRoute =
     path: '/',
     getParentRoute: () => AuthenticatedServicioRoute,
   } as any)
+const MiembrosPrincipiosDoceTradicionesRoute =
+  MiembrosPrincipiosDoceTradicionesRouteImport.update({
+    id: '/doce-tradiciones',
+    path: '/doce-tradiciones',
+    getParentRoute: () => MiembrosPrincipiosRoute,
+  } as any)
+const MiembrosPrincipiosDocePasosRoute =
+  MiembrosPrincipiosDocePasosRouteImport.update({
+    id: '/doce-pasos',
+    path: '/doce-pasos',
+    getParentRoute: () => MiembrosPrincipiosRoute,
+  } as any)
+const MiembrosPrincipiosDoceConceptosRoute =
+  MiembrosPrincipiosDoceConceptosRouteImport.update({
+    id: '/doce-conceptos',
+    path: '/doce-conceptos',
+    getParentRoute: () => MiembrosPrincipiosRoute,
+  } as any)
 const AuthenticatedServicioUsuariosRoute =
   AuthenticatedServicioUsuariosRouteImport.update({
     id: '/usuarios',
@@ -336,11 +357,14 @@ export interface FileRoutesByFullPath {
   '/miembros/eventos': typeof MiembrosEventosRoute
   '/miembros/grupos': typeof MiembrosGruposRoute
   '/miembros/oraciones': typeof MiembrosOracionesRoute
-  '/miembros/principios': typeof MiembrosPrincipiosRoute
+  '/miembros/principios': typeof MiembrosPrincipiosRouteWithChildren
   '/miembros/responsabilidad': typeof MiembrosResponsabilidadRoute
   '/miembros/': typeof MiembrosIndexRoute
   '/servicio/perfil': typeof AuthenticatedServicioPerfilRoute
   '/servicio/usuarios': typeof AuthenticatedServicioUsuariosRoute
+  '/miembros/principios/doce-conceptos': typeof MiembrosPrincipiosDoceConceptosRoute
+  '/miembros/principios/doce-pasos': typeof MiembrosPrincipiosDocePasosRoute
+  '/miembros/principios/doce-tradiciones': typeof MiembrosPrincipiosDoceTradicionesRoute
   '/servicio/': typeof AuthenticatedServicioIndexRoute
   '/servicio/eventos/$id': typeof AuthenticatedServicioEventosIdRoute
   '/servicio/eventos/nuevo': typeof AuthenticatedServicioEventosNuevoRoute
@@ -382,11 +406,14 @@ export interface FileRoutesByTo {
   '/miembros/eventos': typeof MiembrosEventosRoute
   '/miembros/grupos': typeof MiembrosGruposRoute
   '/miembros/oraciones': typeof MiembrosOracionesRoute
-  '/miembros/principios': typeof MiembrosPrincipiosRoute
+  '/miembros/principios': typeof MiembrosPrincipiosRouteWithChildren
   '/miembros/responsabilidad': typeof MiembrosResponsabilidadRoute
   '/miembros': typeof MiembrosIndexRoute
   '/servicio/perfil': typeof AuthenticatedServicioPerfilRoute
   '/servicio/usuarios': typeof AuthenticatedServicioUsuariosRoute
+  '/miembros/principios/doce-conceptos': typeof MiembrosPrincipiosDoceConceptosRoute
+  '/miembros/principios/doce-pasos': typeof MiembrosPrincipiosDocePasosRoute
+  '/miembros/principios/doce-tradiciones': typeof MiembrosPrincipiosDoceTradicionesRoute
   '/servicio': typeof AuthenticatedServicioIndexRoute
   '/servicio/eventos/$id': typeof AuthenticatedServicioEventosIdRoute
   '/servicio/eventos/nuevo': typeof AuthenticatedServicioEventosNuevoRoute
@@ -432,11 +459,14 @@ export interface FileRoutesById {
   '/miembros/eventos': typeof MiembrosEventosRoute
   '/miembros/grupos': typeof MiembrosGruposRoute
   '/miembros/oraciones': typeof MiembrosOracionesRoute
-  '/miembros/principios': typeof MiembrosPrincipiosRoute
+  '/miembros/principios': typeof MiembrosPrincipiosRouteWithChildren
   '/miembros/responsabilidad': typeof MiembrosResponsabilidadRoute
   '/miembros/': typeof MiembrosIndexRoute
   '/_authenticated/servicio/perfil': typeof AuthenticatedServicioPerfilRoute
   '/_authenticated/servicio/usuarios': typeof AuthenticatedServicioUsuariosRoute
+  '/miembros/principios/doce-conceptos': typeof MiembrosPrincipiosDoceConceptosRoute
+  '/miembros/principios/doce-pasos': typeof MiembrosPrincipiosDocePasosRoute
+  '/miembros/principios/doce-tradiciones': typeof MiembrosPrincipiosDoceTradicionesRoute
   '/_authenticated/servicio/': typeof AuthenticatedServicioIndexRoute
   '/_authenticated/servicio/eventos/$id': typeof AuthenticatedServicioEventosIdRoute
   '/_authenticated/servicio/eventos/nuevo': typeof AuthenticatedServicioEventosNuevoRoute
@@ -487,6 +517,9 @@ export interface FileRouteTypes {
     | '/miembros/'
     | '/servicio/perfil'
     | '/servicio/usuarios'
+    | '/miembros/principios/doce-conceptos'
+    | '/miembros/principios/doce-pasos'
+    | '/miembros/principios/doce-tradiciones'
     | '/servicio/'
     | '/servicio/eventos/$id'
     | '/servicio/eventos/nuevo'
@@ -533,6 +566,9 @@ export interface FileRouteTypes {
     | '/miembros'
     | '/servicio/perfil'
     | '/servicio/usuarios'
+    | '/miembros/principios/doce-conceptos'
+    | '/miembros/principios/doce-pasos'
+    | '/miembros/principios/doce-tradiciones'
     | '/servicio'
     | '/servicio/eventos/$id'
     | '/servicio/eventos/nuevo'
@@ -582,6 +618,9 @@ export interface FileRouteTypes {
     | '/miembros/'
     | '/_authenticated/servicio/perfil'
     | '/_authenticated/servicio/usuarios'
+    | '/miembros/principios/doce-conceptos'
+    | '/miembros/principios/doce-pasos'
+    | '/miembros/principios/doce-tradiciones'
     | '/_authenticated/servicio/'
     | '/_authenticated/servicio/eventos/$id'
     | '/_authenticated/servicio/eventos/nuevo'
@@ -869,6 +908,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedServicioIndexRouteImport
       parentRoute: typeof AuthenticatedServicioRoute
     }
+    '/miembros/principios/doce-tradiciones': {
+      id: '/miembros/principios/doce-tradiciones'
+      path: '/doce-tradiciones'
+      fullPath: '/miembros/principios/doce-tradiciones'
+      preLoaderRoute: typeof MiembrosPrincipiosDoceTradicionesRouteImport
+      parentRoute: typeof MiembrosPrincipiosRoute
+    }
+    '/miembros/principios/doce-pasos': {
+      id: '/miembros/principios/doce-pasos'
+      path: '/doce-pasos'
+      fullPath: '/miembros/principios/doce-pasos'
+      preLoaderRoute: typeof MiembrosPrincipiosDocePasosRouteImport
+      parentRoute: typeof MiembrosPrincipiosRoute
+    }
+    '/miembros/principios/doce-conceptos': {
+      id: '/miembros/principios/doce-conceptos'
+      path: '/doce-conceptos'
+      fullPath: '/miembros/principios/doce-conceptos'
+      preLoaderRoute: typeof MiembrosPrincipiosDoceConceptosRouteImport
+      parentRoute: typeof MiembrosPrincipiosRoute
+    }
     '/_authenticated/servicio/usuarios': {
       id: '/_authenticated/servicio/usuarios'
       path: '/usuarios'
@@ -1025,6 +1085,22 @@ const GruposRouteChildren: GruposRouteChildren = {
 const GruposRouteWithChildren =
   GruposRoute._addFileChildren(GruposRouteChildren)
 
+interface MiembrosPrincipiosRouteChildren {
+  MiembrosPrincipiosDoceConceptosRoute: typeof MiembrosPrincipiosDoceConceptosRoute
+  MiembrosPrincipiosDocePasosRoute: typeof MiembrosPrincipiosDocePasosRoute
+  MiembrosPrincipiosDoceTradicionesRoute: typeof MiembrosPrincipiosDoceTradicionesRoute
+}
+
+const MiembrosPrincipiosRouteChildren: MiembrosPrincipiosRouteChildren = {
+  MiembrosPrincipiosDoceConceptosRoute: MiembrosPrincipiosDoceConceptosRoute,
+  MiembrosPrincipiosDocePasosRoute: MiembrosPrincipiosDocePasosRoute,
+  MiembrosPrincipiosDoceTradicionesRoute:
+    MiembrosPrincipiosDoceTradicionesRoute,
+}
+
+const MiembrosPrincipiosRouteWithChildren =
+  MiembrosPrincipiosRoute._addFileChildren(MiembrosPrincipiosRouteChildren)
+
 interface MiembrosRouteChildren {
   MiembrosAprendizajeRoute: typeof MiembrosAprendizajeRoute
   MiembrosAreaRoute: typeof MiembrosAreaRoute
@@ -1032,7 +1108,7 @@ interface MiembrosRouteChildren {
   MiembrosEventosRoute: typeof MiembrosEventosRoute
   MiembrosGruposRoute: typeof MiembrosGruposRoute
   MiembrosOracionesRoute: typeof MiembrosOracionesRoute
-  MiembrosPrincipiosRoute: typeof MiembrosPrincipiosRoute
+  MiembrosPrincipiosRoute: typeof MiembrosPrincipiosRouteWithChildren
   MiembrosResponsabilidadRoute: typeof MiembrosResponsabilidadRoute
   MiembrosIndexRoute: typeof MiembrosIndexRoute
 }
@@ -1044,7 +1120,7 @@ const MiembrosRouteChildren: MiembrosRouteChildren = {
   MiembrosEventosRoute: MiembrosEventosRoute,
   MiembrosGruposRoute: MiembrosGruposRoute,
   MiembrosOracionesRoute: MiembrosOracionesRoute,
-  MiembrosPrincipiosRoute: MiembrosPrincipiosRoute,
+  MiembrosPrincipiosRoute: MiembrosPrincipiosRouteWithChildren,
   MiembrosResponsabilidadRoute: MiembrosResponsabilidadRoute,
   MiembrosIndexRoute: MiembrosIndexRoute,
 }
