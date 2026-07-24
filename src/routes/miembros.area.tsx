@@ -173,3 +173,12 @@ function ReservedBlock() {
     </div>
   );
 }
+
+function AsambleaBloque({ titulo, texto }: { titulo: string; texto: string }) {
+  return (
+    <div className="rounded-2xl border border-brand/10 bg-paper p-6 shadow-sm">
+      <h4 className="font-serif text-lg italic text-brand">{titulo}</h4>
+      <p className="mt-2 text-base leading-relaxed text-ink/85">{texto}</p>
+    </div>
+  );
+}
