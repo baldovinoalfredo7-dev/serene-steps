@@ -1,6 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { FileText, Download } from "lucide-react";
 import { MemberPageHeader } from "@/components/miembros/SectionCard";
+import informe62 from "@/assets/docs/informe-62-csg.pdf.asset.json";
+import tallerIP from "@/assets/docs/taller-informacion-publica.pdf.asset.json";
+import tallerInventario from "@/assets/docs/taller-inventario-grupo.pptx.asset.json";
 
 export const Route = createFileRoute("/miembros/documentos")({
   head: () => ({
@@ -20,18 +23,17 @@ function DocumentosPage() {
         intro="Aquí encontrarás recursos de apoyo para el servicio del Área 2 Metropolitana de Barranquilla."
       />
 
-      <CategorySection
-        emoji="📑"
-        title="Documentos de servicio"
-      >
+      <CategorySection emoji="📑" title="Documentos de servicio">
         <DocumentCard
-          title="Informe de la 62.ª Reunión Anual de la Conferencia de Servicios Generales de Alcohólicos Anónimos"
+          title="Informe Final de la 62.ª Reunión Anual de la Conferencia de Servicios Generales de Alcohólicos Anónimos"
           motto="La recuperación y la práctica de las tradiciones garantizan un mejor servicio."
+          href={informe62.url}
         />
       </CategorySection>
 
       <CategorySection emoji="🎓" title="Talleres">
-        <DocumentCard title="Taller de Información Pública" />
+        <DocumentCard title="Taller de Información Pública" href={tallerIP.url} />
+        <DocumentCard title="Taller de Inventario de Grupo" href={tallerInventario.url} />
       </CategorySection>
 
       <CategorySection emoji="📋" title="Formatos">
@@ -65,7 +67,15 @@ function CategorySection({
   );
 }
 
-function DocumentCard({ title, motto }: { title: string; motto?: string }) {
+function DocumentCard({
+  title,
+  motto,
+  href,
+}: {
+  title: string;
+  motto?: string;
+  href?: string;
+}) {
   return (
     <article className="flex flex-col rounded-3xl border border-brand/10 bg-paper p-6 shadow-sm transition-shadow hover:shadow-lift">
       <div className="mb-4 flex items-center gap-3">
@@ -86,15 +96,26 @@ function DocumentCard({ title, motto }: { title: string; motto?: string }) {
         </p>
       )}
       <div className="mt-6 self-start">
-        <button
-          type="button"
-          disabled
-          aria-disabled="true"
-          title="Documento en preparación"
-          className="inline-flex cursor-not-allowed items-center gap-2 rounded-full bg-brand/80 px-5 py-2 text-sm font-semibold text-paper opacity-70"
-        >
-          <Download className="size-4" /> Descargar PDF
-        </button>
+        {href ? (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2 text-sm font-semibold text-paper shadow-sm transition-colors hover:bg-brand/90"
+          >
+            <Download className="size-4" /> Descargar
+          </a>
+        ) : (
+          <button
+            type="button"
+            disabled
+            aria-disabled="true"
+            title="Documento en preparación"
+            className="inline-flex cursor-not-allowed items-center gap-2 rounded-full bg-brand/80 px-5 py-2 text-sm font-semibold text-paper opacity-70"
+          >
+            <Download className="size-4" /> Descargar PDF
+          </button>
+        )}
       </div>
     </article>
   );
