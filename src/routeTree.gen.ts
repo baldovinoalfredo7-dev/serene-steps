@@ -26,6 +26,7 @@ import { Route as GruposRouteImport } from './routes/grupos'
 import { Route as EventosRouteImport } from './routes/eventos'
 import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as CaribeRouteImport } from './routes/caribe'
+import { Route as BuscoAyudaParaMiRouteImport } from './routes/busco-ayuda-para-mi'
 import { Route as AyudaFamiliarRouteImport } from './routes/ayuda-familiar'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
@@ -149,6 +150,11 @@ const ContactoRoute = ContactoRouteImport.update({
 const CaribeRoute = CaribeRouteImport.update({
   id: '/caribe',
   path: '/caribe',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BuscoAyudaParaMiRoute = BuscoAyudaParaMiRouteImport.update({
+  id: '/busco-ayuda-para-mi',
+  path: '/busco-ayuda-para-mi',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AyudaFamiliarRoute = AyudaFamiliarRouteImport.update({
@@ -370,6 +376,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/ayuda-familiar': typeof AyudaFamiliarRoute
+  '/busco-ayuda-para-mi': typeof BuscoAyudaParaMiRoute
   '/caribe': typeof CaribeRoute
   '/contacto': typeof ContactoRoute
   '/eventos': typeof EventosRouteWithChildren
@@ -427,6 +434,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/ayuda-familiar': typeof AyudaFamiliarRoute
+  '/busco-ayuda-para-mi': typeof BuscoAyudaParaMiRoute
   '/caribe': typeof CaribeRoute
   '/contacto': typeof ContactoRoute
   '/eventos': typeof EventosRouteWithChildren
@@ -482,6 +490,7 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/ayuda-familiar': typeof AyudaFamiliarRoute
+  '/busco-ayuda-para-mi': typeof BuscoAyudaParaMiRoute
   '/caribe': typeof CaribeRoute
   '/contacto': typeof ContactoRoute
   '/eventos': typeof EventosRouteWithChildren
@@ -541,6 +550,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/ayuda-familiar'
+    | '/busco-ayuda-para-mi'
     | '/caribe'
     | '/contacto'
     | '/eventos'
@@ -598,6 +608,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/ayuda-familiar'
+    | '/busco-ayuda-para-mi'
     | '/caribe'
     | '/contacto'
     | '/eventos'
@@ -652,6 +663,7 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/auth'
     | '/ayuda-familiar'
+    | '/busco-ayuda-para-mi'
     | '/caribe'
     | '/contacto'
     | '/eventos'
@@ -711,6 +723,7 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
   AyudaFamiliarRoute: typeof AyudaFamiliarRoute
+  BuscoAyudaParaMiRoute: typeof BuscoAyudaParaMiRoute
   CaribeRoute: typeof CaribeRoute
   ContactoRoute: typeof ContactoRoute
   EventosRoute: typeof EventosRouteWithChildren
@@ -852,6 +865,13 @@ declare module '@tanstack/react-router' {
       path: '/caribe'
       fullPath: '/caribe'
       preLoaderRoute: typeof CaribeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/busco-ayuda-para-mi': {
+      id: '/busco-ayuda-para-mi'
+      path: '/busco-ayuda-para-mi'
+      fullPath: '/busco-ayuda-para-mi'
+      preLoaderRoute: typeof BuscoAyudaParaMiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ayuda-familiar': {
@@ -1269,6 +1289,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
   AyudaFamiliarRoute: AyudaFamiliarRoute,
+  BuscoAyudaParaMiRoute: BuscoAyudaParaMiRoute,
   CaribeRoute: CaribeRoute,
   ContactoRoute: ContactoRoute,
   EventosRoute: EventosRouteWithChildren,
