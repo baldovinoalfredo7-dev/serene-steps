@@ -1,154 +1,73 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { MapPin, Phone, Clock, Navigation, PhoneCall, CalendarDays } from "lucide-react";
 import type { ReactNode } from "react";
 
 export const Route = createFileRoute("/miembros/area")({
   head: () => ({
     meta: [
-      { title: "Bienvenido a tu casa en el Área 2 · AA Área 2 Metropolitana" },
+      { title: "El Área y sus servidores · AA Área 2 Metropolitana" },
       { name: "robots", content: "noindex,nofollow" },
     ],
   }),
-  component: AreaHome,
+  component: AreaPage,
 });
 
-function AreaHome() {
+const comiteArea = [
+  { rol: "Coordinador", companero: "Luis Yepes" },
+  { rol: "Secretario", companero: "Juan José Acosta" },
+  { rol: "Tesorero", companero: "Alejandro Meza" },
+  { rol: "Delegado", companero: "Efraín Rueda" },
+];
+
+const comitesEspeciales = [
+  { rol: "Finanzas", companero: "John Ricardo" },
+  { rol: "Eventos", companero: "Elías Gonzalez" },
+  { rol: "Literatura y Rem", companero: "César Osorio" },
+  { rol: "Cooperación con la Comunidad Profesional", companero: "Alfredo Baldovino" },
+  { rol: "Instituciones carcelarias", companero: "Alex Carvajal" },
+];
+
+function AreaPage() {
   return (
     <div className="mx-auto max-w-4xl space-y-16">
-      {/* 1. Bienvenida */}
       <header>
         <span className="mb-3 block text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-brand/80">
-          Área de miembros
+          Portal para Miembros
         </span>
         <h1 className="font-serif text-3xl italic leading-tight text-brand sm:text-5xl">
-          Bienvenido a tu casa en el Área 2
+          El Área y sus servidores
         </h1>
-        <div className="mt-6 space-y-4 text-pretty text-lg leading-relaxed text-ink/85">
-          <p>Nos alegra recibirte.</p>
-          <p>
-            Este espacio fue creado para acercarte a la comunidad de Alcohólicos Anónimos del
-            Área 2 Metropolitana de Barranquilla. Aquí encontrarás información sobre nuestro
-            servicio, nuestras actividades y las diferentes formas de participar en la vida de AA.
-          </p>
-          <p>
-            Queremos que esta página sea un lugar útil, cercano y fácil de recorrer, donde siempre
-            encuentres orientación y una mano amiga.
-          </p>
-        </div>
       </header>
 
-      {/* 2. ¿Qué es el Área 2? */}
       <Section title="¿Qué es el Área 2?">
-        <p>
-          El Área 2 Metropolitana de Barranquilla reúne a los grupos de Alcohólicos Anónimos de
-          nuestra jurisdicción que trabajan unidos para fortalecer el servicio y llevar el mensaje
-          de recuperación a quien aún sufre.
-        </p>
-        <p>
-          Cada grupo conserva su autonomía y participa, junto con los demás, en un esfuerzo común
-          basado en los principios de Alcohólicos Anónimos.
-        </p>
+        <ReservedBlock />
       </Section>
 
-      {/* 3. Cómo nos organizamos */}
-      <Section title="Cómo nos organizamos">
-        <p>
-          Nuestro servicio se desarrolla a través de una estructura formada por grupos, distritos,
-          comités y servidores de confianza que trabajan de manera voluntaria.
-        </p>
-        <p>
-          Cada servidor cumple una función específica con un mismo propósito: apoyar a los grupos
-          y contribuir para que el mensaje de Alcohólicos Anónimos llegue a quien lo necesita.
-        </p>
-      </Section>
-
-      {/* 4. Nuestro servicio */}
       <Section
-        title="Nuestro servicio"
-        intro="Los comités de servicio del Área 2 acompañan el trabajo de los grupos en distintas áreas. Muy pronto encontrarás aquí la información oficial de cada uno."
+        title="Nuestros servidores"
+        intro="Período 2024-2026"
       >
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <div
-              key={i}
-              className="flex min-h-40 flex-col justify-between rounded-2xl border border-dashed border-brand/20 bg-paper p-6"
-            >
-              <span className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-brand/60">
-                Comité
-              </span>
-              <p className="mt-4 text-sm leading-relaxed text-ink/60">
-                Próximamente publicaremos aquí el nombre y propósito de este comité.
-              </p>
-            </div>
+        <SubTitle>Comité de área</SubTitle>
+        <CardsGrid>
+          {comiteArea.map((s) => (
+            <ServidorCard key={s.rol} rol={s.rol} companero={s.companero} />
           ))}
-        </div>
+        </CardsGrid>
+
+        <SubTitle className="mt-12">Comités especiales</SubTitle>
+        <CardsGrid>
+          {comitesEspeciales.map((s) => (
+            <ServidorCard key={s.rol} rol={s.rol} companero={s.companero} />
+          ))}
+        </CardsGrid>
       </Section>
 
-      {/* 5. Nuestra agenda */}
-      <Section title="Nuestra agenda">
-        <div className="rounded-2xl border border-brand/10 bg-paper p-8 text-center">
-          <span className="mx-auto mb-4 grid size-11 place-items-center rounded-full bg-brand/10 text-brand">
-            <CalendarDays className="size-5" />
-          </span>
-          <p className="mx-auto max-w-xl text-pretty text-base leading-relaxed text-ink/80">
-            Próximamente encontrarás aquí las actividades programadas del Área 2 Metropolitana
-            de Barranquilla: asambleas, talleres, foros y actividades de servicio.
-          </p>
-        </div>
+      <Section title="Las Asambleas de Área">
+        <ReservedBlock />
       </Section>
 
-      {/* 6. Visítanos */}
-      <Section title="Visítanos">
-        <div className="rounded-2xl bg-paper p-8 ring-1 ring-black/5 sm:p-10">
-          <div className="grid gap-8 sm:grid-cols-3">
-            <InfoBlock icon={<MapPin className="size-5" />} label="Dirección">
-              Calle 63 # 22D-39, Local 2
-              <br />
-              Las Moras IV Etapa
-            </InfoBlock>
-            <InfoBlock icon={<Phone className="size-5" />} label="Teléfono">
-              324 557 7038
-            </InfoBlock>
-            <InfoBlock icon={<Clock className="size-5" />} label="Horario de atención">
-              Lunes a viernes
-              <br />
-              2:00 p. m. a 6:00 p. m.
-            </InfoBlock>
-          </div>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <button
-              type="button"
-              className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-paper transition-colors hover:bg-brand/90"
-            >
-              <Navigation className="size-4" /> Cómo llegar
-            </button>
-            <button
-              type="button"
-              className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-paper px-5 py-2.5 text-sm font-medium text-brand transition-colors hover:bg-soft"
-            >
-              <PhoneCall className="size-4" /> Llamar
-            </button>
-          </div>
-        </div>
+      <Section title="Reuniones de servicio del Área">
+        <ReservedBlock />
       </Section>
-
-      {/* 7. Cierre */}
-      <section className="rounded-3xl bg-soft/60 p-8 text-center sm:p-12">
-        <h2 className="font-serif text-2xl italic text-brand sm:text-3xl">
-          Esta también es tu casa.
-        </h2>
-        <div className="mx-auto mt-5 max-w-2xl space-y-4 text-pretty text-base leading-relaxed text-ink/80">
-          <p>
-            El Área 2 Metropolitana de Barranquilla existe gracias al servicio voluntario de
-            hombres y mujeres que comparten su experiencia, fortaleza y esperanza.
-          </p>
-          <p>
-            Si haces parte de Alcohólicos Anónimos, aquí siempre encontrarás un espacio para
-            servir, aprender y crecer junto a otros compañeros.
-          </p>
-          <p className="font-medium text-brand">Gracias por visitarnos. Siempre serás bienvenido.</p>
-        </div>
-      </section>
     </div>
   );
 }
@@ -166,7 +85,9 @@ function Section({
     <section>
       <h2 className="font-serif text-2xl leading-tight text-brand sm:text-3xl">{title}</h2>
       {intro && (
-        <p className="mt-3 max-w-2xl text-pretty text-base leading-relaxed text-ink/75">{intro}</p>
+        <p className="mt-3 text-sm font-medium uppercase tracking-[0.18em] text-brand/70">
+          {intro}
+        </p>
       )}
       <div className="mt-6 space-y-4 text-pretty text-base leading-relaxed text-ink/85">
         {children}
@@ -175,24 +96,58 @@ function Section({
   );
 }
 
-function InfoBlock({
-  icon,
-  label,
-  children,
-}: {
-  icon: ReactNode;
-  label: string;
-  children: ReactNode;
-}) {
+function SubTitle({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <div>
-      <span className="mb-3 grid size-10 place-items-center rounded-full bg-brand/10 text-brand">
-        {icon}
+    <h3
+      className={`font-serif text-xl italic text-brand ${className}`}
+    >
+      {children}
+    </h3>
+  );
+}
+
+function CardsGrid({ children }: { children: ReactNode }) {
+  return (
+    <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{children}</div>
+  );
+}
+
+function ServidorCard({ rol, companero }: { rol: string; companero: string }) {
+  return (
+    <article className="flex flex-col rounded-2xl border border-brand/10 bg-paper p-6 shadow-sm transition-shadow hover:shadow-lift">
+      <span className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-brand/70">
+        Servicio
       </span>
-      <span className="block text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-brand/80">
-        {label}
-      </span>
-      <p className="mt-2 text-sm leading-relaxed text-ink/85">{children}</p>
+      <p className="mt-2 font-serif text-lg text-brand">{rol}</p>
+      <dl className="mt-4 space-y-2 text-sm leading-relaxed text-ink/85">
+        <div>
+          <dt className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-ink/60">
+            Compañero
+          </dt>
+          <dd className="mt-0.5 text-ink">{companero}</dd>
+        </div>
+        <div>
+          <dt className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-ink/60">
+            Función
+          </dt>
+          <dd className="mt-0.5 italic text-ink/60">
+            Pendiente de incorporar la descripción oficial del servicio.
+          </dd>
+        </div>
+      </dl>
+    </article>
+  );
+}
+
+function ReservedBlock() {
+  return (
+    <div className="rounded-2xl border border-dashed border-brand/25 bg-paper p-8 text-center">
+      <p className="text-sm font-medium uppercase tracking-[0.18em] text-brand/70">
+        Espacio reservado para el texto oficial
+      </p>
+      <p className="mt-3 text-sm leading-relaxed text-ink/70">
+        Este contenido se incorporará cuando el Área suministre la versión oficial.
+      </p>
     </div>
   );
 }
