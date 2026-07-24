@@ -191,3 +191,18 @@ function Block({
     </section>
   );
 }
+
+const twelveQuestions: string[] = [
+  "¿Has tratado alguna vez de dejar de beber por una semana o más y no lo has logrado?",
+  "¿Te molestan los consejos de otras personas que quieren que dejes de beber?",
+  "¿Has intentado controlar tu forma de beber cambiando de un tipo de bebida a otro?",
+  "¿Has tenido que tomar un trago al despertar durante el último año?",
+  "¿Envidias a las personas que pueden beber sin meterse en problemas?",
+  "¿Han empeorado tus problemas con el alcohol en el último año?",
+  "¿Te ha causado problemas la bebida en el hogar?",
+  "¿Buscas beber más en reuniones sociales donde no se sirve suficiente alcohol?",
+  "¿Sigues afirmando que puedes dejar de beber cuando quieras, aunque sigas emborrachándote sin querer?",
+  "¿Has faltado al trabajo o a clases por causa de la bebida en el último año?",
+  "¿Sufres de \"lagunas mentales\" cuando bebes?",
+  "¿Has sentido alguna vez que tu vida sería mejor si no bebieras?",
+];
