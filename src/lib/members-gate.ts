@@ -68,12 +68,15 @@ export function verifyPassword(input: string): boolean {
 export function makeGateCookie(): string {
   const exp = Math.floor(Date.now() / 1000) + MAX_AGE_SECONDS;
   const token = signToken({ exp });
-  return `${GATE_COOKIE_NAME}=${token}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${MAX_AGE_SECONDS}`;
+  // SameSite=None + Partitioned (CHIPS) so the cookie is stored both in the
+  // Lovable preview iframe (third-party context) and on the published site.
+  return `${GATE_COOKIE_NAME}=${token}; Path=/; HttpOnly; Secure; SameSite=None; Partitioned; Max-Age=${MAX_AGE_SECONDS}`;
 }
 
 export function clearGateCookie(): string {
-  return `${GATE_COOKIE_NAME}=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0`;
+  return `${GATE_COOKIE_NAME}=; Path=/; HttpOnly; Secure; SameSite=None; Partitioned; Max-Age=0`;
 }
+
 
 function readCookie(request: Request, name: string): string | null {
   const header = request.headers.get("cookie");
