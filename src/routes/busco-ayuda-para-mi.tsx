@@ -80,27 +80,37 @@ function BuscoAyudaParaMi() {
       <Block
         eyebrow="03"
         icon={HelpCircle}
-        title="Solo tú puedes responder esta pregunta"
+        title="Solo tú puedes responder estas preguntas"
       >
         <p>
           Tómate un momento para reflexionar con calma. No hay respuestas
-          correctas ni equivocadas. Solo tú sabes lo que ocurre dentro de ti.
+          correctas ni equivocadas, y estas preguntas no sirven para
+          diagnosticar ni etiquetar a nadie. Son las mismas que muchos miembros
+          de Alcohólicos Anónimos se hicieron antes de dar el primer paso.
         </p>
-        <ul className="mt-8 space-y-5">
-          {[
-            "¿El alcohol ha causado dificultades en tu vida?",
-            "¿Has intentado controlar tu manera de beber sin conseguirlo?",
-            "¿Te preocupa la forma en que bebes?",
-          ].map((q) => (
+        <ol className="mt-8 space-y-4">
+          {twelveQuestions.map((q, i) => (
             <li
               key={q}
-              className="rounded-2xl border border-brand/10 bg-paper p-6 font-serif text-xl leading-relaxed text-brand/90"
+              className="flex gap-5 rounded-2xl border border-brand/10 bg-paper p-5 md:p-6"
             >
-              {q}
+              <span className="font-serif text-2xl italic text-brand/40">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <p className="pt-1 text-pretty text-base leading-relaxed text-ink/85 md:text-lg">
+                {q}
+              </p>
             </li>
           ))}
-        </ul>
+        </ol>
+        <p className="mt-8 text-base text-ink/70">
+          No importa cuántas respondiste con un sí. Lo importante es lo que
+          sientes al leerlas. Si algo dentro de ti te dice que quieres hablar
+          con alguien, siempre habrá un grupo de Alcohólicos Anónimos dispuesto
+          a recibirte.
+        </p>
       </Block>
+
 
       {/* 4. Podemos ayudarte */}
       <section className="border-t border-brand/5 bg-soft/40 py-16 md:py-24">
