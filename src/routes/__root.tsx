@@ -15,6 +15,7 @@ import { Header } from "../components/site/Header";
 import { Footer } from "../components/site/Footer";
 import { HelpButton } from "../components/site/HelpButton";
 import { ContactButton } from "../components/site/ContactButton";
+import { SiteBreadcrumb } from "../components/site/SiteBreadcrumb";
 import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
@@ -175,6 +176,7 @@ function RootComponent() {
       <div className="flex min-h-dvh flex-col bg-paper">
         <Header />
         <main className="flex-1">
+          <SiteBreadcrumb />
           <Outlet />
         </main>
         <Footer />

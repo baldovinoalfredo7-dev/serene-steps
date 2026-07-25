@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Heart, Sparkles, Stethoscope, HelpCircle, HandHeart } from "lucide-react";
-import { BackLink } from "@/components/site/BackLink";
 
 export const Route = createFileRoute("/busco-ayuda-para-mi")({
   head: () => ({
@@ -27,7 +26,6 @@ export const Route = createFileRoute("/busco-ayuda-para-mi")({
 function BuscoAyudaParaMi() {
   return (
     <>
-      <BackLink to="/necesito-ayuda" />
 
       {/* HERO */}
       <section className="bg-soft/40 py-16 md:py-24">
