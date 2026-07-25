@@ -79,19 +79,19 @@ function DocumentosPage() {
         intro="Aquí encontrarás recursos de apoyo para el servicio del Área 2 Metropolitana de Barranquilla."
       />
 
-      <CategorySection emoji="📑" title="Documentos de servicio">
+      <CategorySection id="documentos-servicio" emoji="📑" title="Documentos de servicio">
         {documentosServicio.map((doc) => (
           <DocumentCard key={doc.title} doc={doc} onPreview={setActiveDoc} />
         ))}
       </CategorySection>
 
-      <CategorySection emoji="🎓" title="Talleres">
+      <CategorySection id="talleres" emoji="🎓" title="Talleres">
         {talleres.map((doc) => (
           <DocumentCard key={doc.title} doc={doc} onPreview={setActiveDoc} />
         ))}
       </CategorySection>
 
-      <CategorySection emoji="📋" title="Formatos">
+      <CategorySection id="formatos" emoji="📋" title="Formatos">
         <p className="text-base leading-relaxed text-ink/85">
           En esta sección estarán disponibles los formatos y formularios utilizados por el Área para apoyar las diferentes actividades de servicio. A medida que sean aprobados, se incorporarán para su consulta y descarga.
         </p>
@@ -103,14 +103,17 @@ function DocumentosPage() {
 }
 
 function CategorySection({
+  id,
   emoji,
   title,
   children,
 }: {
+  id?: string;
   emoji: string;
   title: string;
   children: React.ReactNode;
 }) {
+
   return (
     <section>
       <h2 className="mb-6 flex items-center gap-3 font-serif text-2xl leading-tight text-brand sm:text-3xl">
