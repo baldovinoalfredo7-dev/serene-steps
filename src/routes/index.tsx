@@ -84,13 +84,19 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
         <div className="absolute inset-0 bg-gradient-to-b from-paper/5 via-transparent to-paper/35" />
 
         <div className="relative mx-auto flex min-h-[62svh] max-w-4xl flex-col items-center justify-center px-6 py-20 text-center md:min-h-[72svh] md:py-28">
-          <div className="mb-12 flex flex-col items-center gap-2">
+          <div className="mb-12 flex flex-col items-center gap-3">
             <p className="text-base font-black uppercase tracking-[0.3em] text-brand drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)] sm:text-lg">
               Alcohólicos Anónimos
             </p>
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ink/90 drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)] sm:text-sm">
-              Área 2 Metropolitana de Barranquilla
-            </p>
+            <div className="relative">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-x-[-12%] inset-y-[-45%] -z-10 rounded-[50%] bg-paper/45 blur-xl"
+              />
+              <p className="text-[0.8rem] font-bold uppercase tracking-[0.28em] text-ink drop-shadow-[0_1px_2px_rgba(255,255,255,0.98)] sm:text-sm">
+                Área 2 Metropolitana de Barranquilla
+              </p>
+            </div>
           </div>
 
           <div className="relative mb-12 sm:mb-14">
@@ -106,9 +112,9 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
           <div className="relative mb-12 max-w-2xl">
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-x-[-8%] inset-y-[-30%] -z-10 rounded-[50%] bg-paper/30 blur-2xl"
+              className="pointer-events-none absolute inset-x-[-10%] inset-y-[-40%] -z-10 rounded-[50%] bg-paper/55 blur-2xl"
             />
-            <p className="text-pretty text-xl font-semibold leading-[1.5] text-ink drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)] sm:text-2xl md:text-[1.6rem]">
+            <p className="text-pretty text-xl font-semibold leading-[1.5] text-ink drop-shadow-[0_1px_2px_rgba(255,255,255,0.98)] sm:text-2xl md:text-[1.6rem]">
               No estás solo. Siempre habrá un grupo dispuesto a recibirte
             </p>
           </div>
@@ -121,29 +127,6 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
           </Link>
         </div>
 
-      </section>
-
-
-      {/* 2. BUSCO AYUDA — entrada destacada */}
-      <section className="border-t border-brand/5 bg-paper py-20 md:py-28">
-        <div className="mx-auto max-w-3xl px-6 text-center">
-          <span className="mb-5 block text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand">
-            Busco ayuda
-          </span>
-          <h2 className="mb-6 font-serif text-3xl leading-[1.15] text-brand sm:text-4xl md:text-5xl">
-            Estamos aquí para escucharte
-          </h2>
-          <p className="mx-auto mb-10 max-w-xl text-pretty text-lg leading-[1.7] text-ink/85">
-            Si crees tener un problema con el alcohol, o si buscas orientación
-            para un familiar o un amigo, aquí encontrarás una primera respuesta.
-          </p>
-          <Link
-            to="/necesito-ayuda"
-            className="inline-flex items-center gap-2 border-b border-brand/30 pb-1 text-sm font-semibold uppercase tracking-[0.18em] text-brand transition-colors hover:border-brand"
-          >
-            Ingresar <ArrowRight className="size-4" />
-          </Link>
-        </div>
       </section>
 
       {/* 3. ENCUENTRA UN GRUPO */}
