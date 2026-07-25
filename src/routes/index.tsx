@@ -75,47 +75,34 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
     <>
       {/* 1. HERO */}
       <section className="relative overflow-hidden bg-soft">
+        {/* La fotografía se muestra completa en escritorio (sin recorte);
+            en móvil se encuadra priorizando el cuadro institucional. */}
         <img
-          src={heroAsset.url}
-          alt="Sala luminosa con círculo de sillas de madera alrededor de una mesa con tazas de café, un termo y el libro azul de Alcohólicos Anónimos; en la pared, un cuadro discreto con la Oración de la Serenidad"
-          width={1600}
-          height={1104}
-          className="absolute inset-0 h-full w-full object-cover"
+          src={heroSalon}
+          alt="Salón de reunión de Alcohólicos Anónimos: mesa redonda de madera con el Libro Grande, tazas de café y un termo; en la pared izquierda un cuadro con el logotipo de AA y el texto Alcohólicos Anónimos, Área 2 Metropolitana de Barranquilla, y en la pared derecha un cuadro con la Oración de la Serenidad"
+          width={1920}
+          height={1088}
+          className="h-[62svh] w-full object-cover object-[28%_22%] sm:h-[68svh] sm:object-[35%_25%] md:h-auto md:object-contain"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-paper/5 via-transparent to-paper/35" />
+        <div className="absolute inset-0 bg-gradient-to-b from-paper/10 via-transparent to-paper/40" />
 
-        <div className="relative mx-auto flex min-h-[62svh] max-w-4xl flex-col items-center justify-center px-6 py-20 text-center md:min-h-[72svh] md:py-28">
-          <div className="mb-12 flex flex-col items-center gap-3">
-            <p className="text-base font-black uppercase tracking-[0.3em] text-brand drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)] sm:text-lg">
-              Alcohólicos Anónimos
-            </p>
-            <div className="relative">
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-x-[-12%] inset-y-[-45%] -z-10 rounded-[50%] bg-paper/45 blur-xl"
-              />
-              <p className="text-[0.8rem] font-bold uppercase tracking-[0.28em] text-ink drop-shadow-[0_1px_2px_rgba(255,255,255,0.98)] sm:text-sm">
-                Área 2 Metropolitana de Barranquilla
-              </p>
-            </div>
-          </div>
-
-          <div className="relative mb-12 sm:mb-14">
+        <div className="absolute inset-0 mx-auto flex max-w-4xl flex-col items-center justify-center px-6 text-center md:justify-start md:pt-[7%]">
+          <div className="relative mb-6 sm:mb-8">
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-x-[-15%] inset-y-[-25%] -z-10 rounded-[50%] bg-paper/35 blur-3xl"
+              className="pointer-events-none absolute inset-x-[-15%] inset-y-[-30%] -z-10 rounded-[50%] bg-paper/45 blur-3xl"
             />
-            <h1 className="max-w-3xl text-balance font-serif text-[2.5rem] leading-[1.08] text-brand drop-shadow-[0_2px_6px_rgba(255,255,255,0.7)] sm:text-5xl lg:text-[3.75rem]">
+            <h1 className="max-w-3xl text-balance font-serif text-[2.1rem] leading-[1.08] text-brand drop-shadow-[0_2px_6px_rgba(255,255,255,0.75)] sm:text-5xl lg:text-[3.5rem]">
               ¿Problemas con el alcohol?
             </h1>
           </div>
 
-          <div className="relative mb-12 max-w-2xl">
+          <div className="relative mb-7 max-w-2xl sm:mb-9">
             <div
               aria-hidden
               className="pointer-events-none absolute inset-x-[-10%] inset-y-[-40%] -z-10 rounded-[50%] bg-paper/55 blur-2xl"
             />
-            <p className="text-pretty text-xl font-semibold leading-[1.5] text-ink drop-shadow-[0_1px_2px_rgba(255,255,255,0.98)] sm:text-2xl md:text-[1.6rem]">
+            <p className="text-pretty text-lg font-semibold leading-[1.5] text-ink drop-shadow-[0_1px_2px_rgba(255,255,255,0.98)] sm:text-2xl">
               No estás solo. Siempre habrá un grupo dispuesto a recibirte
             </p>
           </div>
@@ -127,8 +114,8 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
             Busco ayuda <ArrowRight className="size-4" />
           </Link>
         </div>
-
       </section>
+
 
       {/* 3. ENCUENTRA UN GRUPO */}
       <section className="bg-soft/50 py-20 md:py-28">
