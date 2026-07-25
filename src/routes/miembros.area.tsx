@@ -26,6 +26,18 @@ const comitesEspeciales = [
   { rol: "Instituciones carcelarias", companero: "Alex Carvajal" },
 ];
 
+const rsgs = [
+  { grupo: "Grupo La Nueva Vida", rsg: "Rafael Pineda" },
+  { grupo: "Grupo Simón Bolívar", rsg: "Alonso Cuella Rodríguez" },
+  { grupo: "Grupo Renacer", rsg: "Aldo Mario" },
+  { grupo: "Grupo Santo Tomás", rsg: "Pendiente de designación" },
+  { grupo: "Grupo El Triángulo", rsg: "Pendiente de designación" },
+  { grupo: "Grupo Acción de Sabanalarga", rsg: "Pendiente de designación" },
+  { grupo: "Grupo Cambio de Vida", rsg: "Pendiente de designación" },
+  { grupo: "Grupo Las Nieves", rsg: "Pendiente de designación" },
+  { grupo: "Grupo Vivir Mejor", rsg: "Pendiente de designación" },
+];
+
 function AreaPage() {
   return (
     <div className="mx-auto max-w-4xl space-y-16">
@@ -38,14 +50,34 @@ function AreaPage() {
         </h1>
       </header>
 
-      <Section title="¿Qué es el Área 2?">
-        <ReservedBlock />
+      <Section title="¿Qué es el Área 2 Metropolitana de Barranquilla?">
+        <p>
+          El Área 2 Metropolitana de Barranquilla forma parte de la estructura de servicio de Alcohólicos Anónimos en Colombia. Está integrada por los grupos de AA de la región y tiene como propósito coordinar, apoyar y fortalecer las actividades de servicio, respetando siempre la autonomía de cada grupo y los principios de las Doce Tradiciones y los Doce Conceptos para el Servicio Mundial.
+        </p>
       </Section>
 
-      <Section
-        title="Nuestros servidores"
-        intro="Período 2024-2026"
-      >
+      <Section title="¿Cómo se eligen los servidores?">
+        <p>
+          Los servidores del Área son elegidos mediante un proceso democrático durante las asambleas de servicio. Los Representantes de Servicios Generales (RSG) de cada grupo participan con voz y voto en la elección de los distintos servidores del Área.
+        </p>
+        <p>
+          Todos los servicios tienen una duración de dos años y se desempeñan de manera voluntaria, ad honorem, como una oportunidad para servir y contribuir al bienestar de Alcohólicos Anónimos.
+        </p>
+      </Section>
+
+      <Section title="El Área dentro de la estructura de servicio">
+        <p>
+          El Área 2 Metropolitana de Barranquilla hace parte de la Región A de Alcohólicos Anónimos en Colombia.
+        </p>
+        <div className="mt-4 rounded-2xl border border-brand/10 bg-paper p-6 shadow-sm">
+          <span className="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-brand/70">
+            Custodio de la Región A
+          </span>
+          <p className="mt-2 font-serif text-xl italic text-brand">Olmedo Montero</p>
+        </div>
+      </Section>
+
+      <Section title="Servidores del Comité de Área" intro="Período 2024-2026">
         <SubTitle>Comité de área</SubTitle>
         <CardsGrid>
           {comiteArea.map((s) => (
@@ -59,6 +91,30 @@ function AreaPage() {
             <ServidorCard key={s.rol} rol={s.rol} companero={s.companero} />
           ))}
         </CardsGrid>
+      </Section>
+
+      <Section title="Representantes de Servicios Generales (RSG)">
+        <div className="mt-2 grid gap-3 sm:grid-cols-2">
+          {rsgs.map((r) => {
+            const pendiente = r.rsg.toLowerCase().startsWith("pendiente");
+            return (
+              <article
+                key={r.grupo}
+                className="rounded-2xl border border-brand/10 bg-paper p-5 shadow-sm"
+              >
+                <p className="font-serif text-base text-brand">{r.grupo}</p>
+                <dl className="mt-2 text-sm leading-relaxed">
+                  <dt className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-ink/60">
+                    RSG
+                  </dt>
+                  <dd className={`mt-0.5 ${pendiente ? "italic text-ink/60" : "text-ink"}`}>
+                    {r.rsg}
+                  </dd>
+                </dl>
+              </article>
+            );
+          })}
+        </div>
       </Section>
 
       <Section title="Las Asambleas de Área">
@@ -120,11 +176,7 @@ function Section({
 
 function SubTitle({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <h3
-      className={`font-serif text-xl italic text-brand ${className}`}
-    >
-      {children}
-    </h3>
+    <h3 className={`font-serif text-xl italic text-brand ${className}`}>{children}</h3>
   );
 }
 
@@ -148,29 +200,8 @@ function ServidorCard({ rol, companero }: { rol: string; companero: string }) {
           </dt>
           <dd className="mt-0.5 text-ink">{companero}</dd>
         </div>
-        <div>
-          <dt className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-ink/60">
-            Función
-          </dt>
-          <dd className="mt-0.5 italic text-ink/60">
-            Pendiente de incorporar la descripción oficial del servicio.
-          </dd>
-        </div>
       </dl>
     </article>
-  );
-}
-
-function ReservedBlock() {
-  return (
-    <div className="rounded-2xl border border-dashed border-brand/25 bg-paper p-8 text-center">
-      <p className="text-sm font-medium uppercase tracking-[0.18em] text-brand/70">
-        Espacio reservado para el texto oficial
-      </p>
-      <p className="mt-3 text-sm leading-relaxed text-ink/70">
-        Este contenido se incorporará cuando el Área suministre la versión oficial.
-      </p>
-    </div>
   );
 }
 
