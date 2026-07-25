@@ -2,6 +2,8 @@ import { createFileRoute, Link, Outlet, useMatches } from "@tanstack/react-route
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { ArrowRight } from "lucide-react";
 import { GroupFinder } from "@/components/site/GroupFinder";
+import { Area3Groups } from "@/components/site/Area3Groups";
+
 import { groupsQueryOptions } from "@/lib/groups-queries";
 
 export const Route = createFileRoute("/grupos")({
@@ -85,6 +87,28 @@ function GruposIndex() {
           />
         </div>
       </section>
+
+      {/* Grupos del Área 3 */}
+      <section className="pb-20 md:pb-28">
+        <div className="mx-auto max-w-6xl px-6">
+          <hr className="border-t border-brand/15" />
+          <div className="mx-auto mt-16 max-w-3xl text-center md:mt-24">
+            <h2 className="text-balance font-serif text-3xl italic leading-tight text-brand md:text-4xl">
+              Otros grupos de Alcohólicos Anónimos (Área 3)
+            </h2>
+            <p className="mx-auto mt-6 text-pretty text-lg leading-relaxed text-ink/85">
+              Si no encontraste un grupo cerca de ti, también puedes asistir a
+              cualquiera de los grupos del Área 3. Todos los grupos de
+              Alcohólicos Anónimos siguen el mismo programa de recuperación y
+              estarán dispuestos a recibirte.
+            </p>
+          </div>
+          <div className="mt-12 md:mt-16">
+            <Area3Groups />
+          </div>
+        </div>
+      </section>
+
 
       {/* CTA primera reunión */}
       <section className="bg-brand py-20 text-paper">
