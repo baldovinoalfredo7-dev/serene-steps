@@ -26,7 +26,7 @@ const navLinks: readonly NavLink[] = [
   { to: "/horarios", label: "Horarios de reuniones", icon: Clock },
   { to: "/preguntas-frecuentes", label: "Preguntas frecuentes", icon: HelpCircle },
   { to: "/eventos", label: "Noticias y eventos", icon: CalendarDays },
-  { to: "/contacto", label: "Contacto", icon: Mail },
+  { to: "/contacto", label: "Quiero cooperar", icon: Mail },
 ] as const;
 
 export function Header() {
