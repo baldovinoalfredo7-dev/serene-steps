@@ -228,13 +228,24 @@ function CardsGrid({ children }: { children: ReactNode }) {
   );
 }
 
-function ServidorCard({ rol, companero }: { rol: string; companero: string }) {
+function ServidorCard({
+  rol,
+  companero,
+  descripcion,
+}: {
+  rol: string;
+  companero: string;
+  descripcion?: string;
+}) {
   return (
     <article className="flex flex-col rounded-2xl border border-brand/10 bg-paper p-6 shadow-sm transition-shadow hover:shadow-lift">
       <span className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-brand/70">
         Servicio
       </span>
       <p className="mt-2 font-serif text-lg text-brand">{rol}</p>
+      {descripcion && (
+        <p className="mt-3 text-sm leading-relaxed text-ink/85">{descripcion}</p>
+      )}
       <dl className="mt-4 space-y-2 text-sm leading-relaxed text-ink/85">
         <div>
           <dt className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-ink/60">
@@ -243,6 +254,9 @@ function ServidorCard({ rol, companero }: { rol: string; companero: string }) {
           <dd className="mt-0.5 text-ink">{companero}</dd>
         </div>
       </dl>
+    </article>
+  );
+}
     </article>
   );
 }
