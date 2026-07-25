@@ -6,8 +6,8 @@ const EXCLUDED = ["/", "/auth", "/reset-password"];
 
 /** Padre explícito para páginas de segundo nivel. */
 const PARENTS: Record<string, { to: string; label: string }> = {
-  "/busco-ayuda-para-mi": { to: "/necesito-ayuda", label: "Busco ayuda" },
-  "/ayuda-familiar": { to: "/necesito-ayuda", label: "Busco ayuda" },
+  "/busco-ayuda-para-mi": { to: "/necesito-ayuda", label: "Volver a Busco ayuda" },
+  "/ayuda-familiar": { to: "/necesito-ayuda", label: "Volver a Busco ayuda" },
 };
 
 function resolveParent(pathname: string): { to: string; label: string } | null {
@@ -24,10 +24,10 @@ function resolveParent(pathname: string): { to: string; label: string } | null {
     const label = segments[segments.length - 2]
       .replace(/-/g, " ")
       .replace(/^./, (c) => c.toUpperCase());
-    return { to: parent, label };
+    return { to: parent, label: `Volver a ${label}` };
   }
 
-  return { to: "/", label: "Inicio" };
+  return { to: "/", label: "Volver al inicio" };
 }
 
 export function SiteBreadcrumb() {
@@ -36,11 +36,11 @@ export function SiteBreadcrumb() {
   if (!parent) return null;
 
   return (
-    <nav aria-label="Ruta de navegación" className="border-b border-brand/10 bg-paper/60">
-      <div className="mx-auto max-w-5xl px-6 py-3">
+    <nav aria-label="Ruta de navegación" className="border-b border-brand/10 bg-soft/60">
+      <div className="mx-auto max-w-6xl px-6 py-3">
         <Link
           to={parent.to}
-          className="inline-flex items-center gap-2 text-sm font-medium text-brand transition-colors hover:text-brand/70"
+          className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-paper px-4 py-2 text-sm font-semibold text-brand shadow-sm transition-colors hover:bg-brand hover:text-paper"
         >
           <ArrowLeft className="size-4" aria-hidden="true" />
           {parent.label}
