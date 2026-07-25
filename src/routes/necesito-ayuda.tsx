@@ -30,7 +30,7 @@ function BuscoAyuda() {
           Busco ayuda
         </span>
         <h1 className="text-balance font-serif text-4xl leading-tight text-brand md:text-6xl">
-          Nos alegra que estés aquí.
+          Nos alegra que estés aquí
         </h1>
         <p className="mx-auto mt-6 max-w-xl text-pretty text-lg text-ink/85">
           Queremos ayudarte a encontrar la información que necesitas. Elige la
