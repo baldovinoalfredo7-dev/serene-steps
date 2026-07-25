@@ -113,9 +113,9 @@ function CategorySection({
   title: string;
   children: React.ReactNode;
 }) {
-
   return (
-    <section>
+    <section id={id} className="scroll-mt-24">
+
       <h2 className="mb-6 flex items-center gap-3 font-serif text-2xl leading-tight text-brand sm:text-3xl">
         <span aria-hidden className="text-2xl">
           {emoji}
