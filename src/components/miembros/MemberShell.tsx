@@ -112,10 +112,10 @@ export function MemberShell({ children }: { children: ReactNode }) {
           {pathname.replace(/\/$/, "") !== "/miembros" ? (
             <Link
               to="/miembros"
-              className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-brand transition-colors hover:text-brand/70"
+              className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand/20 bg-paper px-4 py-2 text-sm font-semibold text-brand shadow-sm transition-colors hover:bg-brand hover:text-paper"
             >
               <ArrowLeft className="size-4" />
-              Volver al Portal
+              Volver al Portal para Miembros
             </Link>
           ) : null}
           {children}
