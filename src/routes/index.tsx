@@ -75,7 +75,7 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
       <section className="relative overflow-hidden bg-soft">
         <img
           src={heroAsset.url}
-          alt="Reunión serena con una silla vacía"
+          alt="Círculo de sillas de madera en una sala luminosa, bañada por luz natural cálida"
           width={1600}
           height={1104}
           className="absolute inset-0 h-full w-full object-cover"
