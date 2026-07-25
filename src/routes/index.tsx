@@ -48,12 +48,13 @@ const secondaryDoors: readonly Door[] = [
     cta: "Ingresar",
   },
   {
-    eyebrow: "Bienvenido a tu casa en el Área 2",
+    eyebrow: "Bienvenido al Área 2 Metropolitana de Barranquilla",
     intro:
-      "Conoce quiénes somos, nuestra historia y cómo nos organizamos para llevar el mensaje.",
-    to: "/que-es-aa",
+      "Una breve presentación del Área y los datos de contacto de la Oficina del Área.",
+    to: "/bienvenida",
     cta: "Ingresar",
   },
+
 ] as const;
 
 const literatura = [
