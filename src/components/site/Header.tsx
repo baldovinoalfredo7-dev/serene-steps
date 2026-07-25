@@ -9,7 +9,7 @@ import {
   Mail,
   MapPin,
   Menu,
-  Clock,
+  
   UserRound,
   X,
   type LucideIcon,
@@ -23,7 +23,7 @@ const navLinks: readonly NavLink[] = [
   { to: "/", label: "Inicio", icon: Home },
   { to: "/que-es-aa", label: "¿Qué es Alcohólicos Anónimos?", icon: Info },
   { to: "/grupos", label: "Encuentra un grupo", icon: MapPin },
-  { to: "/horarios", label: "Horarios de reuniones", icon: Clock },
+  
   { to: "/preguntas-frecuentes", label: "Preguntas frecuentes", icon: HelpCircle },
   { to: "/eventos", label: "Noticias y eventos", icon: CalendarDays },
   { to: "/contacto", label: "Quiero cooperar", icon: Mail },
