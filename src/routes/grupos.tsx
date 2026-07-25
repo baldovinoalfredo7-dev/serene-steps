@@ -53,10 +53,12 @@ function GruposIndex() {
             Nuestros grupos
           </h1>
           <p className="mx-auto mt-8 text-pretty text-lg leading-relaxed text-ink/85">
-            En cada grupo encontrarás personas que un día también llegaron
-            buscando ayuda y hoy desean compartir contigo un mensaje de
-            esperanza.
+            Aquí encontrarás los grupos del Área 2 Metropolitana de Barranquilla
+            y, al final de la página, otros grupos de Alcohólicos Anónimos (Área
+            3). Nuestro propósito es que puedas encontrar el grupo que te quede
+            más cerca para iniciar tu proceso de recuperación.
           </p>
+
         </div>
       </section>
 
