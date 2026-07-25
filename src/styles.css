@@ -39,6 +39,7 @@
   --color-soft: var(--soft);
   --color-brand: var(--brand);
   --color-brand-soft: var(--brand-soft);
+  --color-brand-strong: var(--brand-strong);
   --color-brand-tint: var(--brand-tint);
 
   --shadow-soft: 0 1px 2px -1px color-mix(in oklab, var(--brand) 10%, transparent),
@@ -57,6 +58,7 @@
   --ink: oklch(0.35 0 0);                   /* #444444 gris oscuro */
   --brand: oklch(0.56 0.13 250);            /* #2f6fb6 azul institucional */
   --brand-soft: oklch(0.68 0.11 250);       /* #5f93cf azul secundario */
+  --brand-strong: oklch(0.46 0.14 252);     /* azul institucional intenso */
   --brand-tint: oklch(0.968 0.018 240);     /* #eaf3fb */
 
   --background: var(--paper);
