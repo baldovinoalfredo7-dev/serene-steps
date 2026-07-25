@@ -80,23 +80,27 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
           height={1104}
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-paper/25 via-paper/10 to-paper/55" />
+        <div className="absolute inset-0 bg-gradient-to-b from-paper/15 via-paper/5 to-paper/45" />
 
-        <div className="relative mx-auto flex min-h-[68svh] max-w-4xl flex-col items-center justify-center px-6 py-24 text-center md:min-h-[74svh] md:py-32">
-          <p className="mb-3 text-sm font-black uppercase tracking-[0.42em] text-brand drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)] sm:text-base">
+        <div className="relative mx-auto flex min-h-[72svh] max-w-4xl flex-col items-center justify-center px-6 py-24 text-center md:min-h-[78svh] md:py-32">
+          <p className="mb-4 text-base font-black uppercase tracking-[0.44em] text-brand drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)] sm:text-lg">
             Alcohólicos Anónimos
           </p>
-          <p className="mb-10 text-xs font-medium uppercase tracking-[0.3em] text-ink/85 drop-shadow-[0_1px_2px_rgba(255,255,255,0.85)] sm:text-sm">
+          <p className="mb-14 text-xs font-semibold uppercase tracking-[0.32em] text-ink/90 drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)] sm:text-sm">
             Área 2 Metropolitana de Barranquilla
           </p>
 
-          <div className="mb-12 rounded-3xl bg-paper/25 px-8 py-6 ring-1 ring-paper/40 backdrop-blur-sm sm:px-12 sm:py-8">
-            <h1 className="max-w-3xl text-balance font-serif text-[2.5rem] leading-[1.08] text-brand drop-shadow-[0_2px_4px_rgba(255,255,255,0.55)] sm:text-5xl lg:text-[3.75rem]">
+          <div className="relative mb-14 sm:mb-16">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-x-[-10%] inset-y-[-20%] -z-10 rounded-[50%] bg-paper/45 blur-3xl"
+            />
+            <h1 className="max-w-3xl text-balance font-serif text-[2.5rem] leading-[1.08] text-brand drop-shadow-[0_2px_6px_rgba(255,255,255,0.7)] sm:text-5xl lg:text-[3.75rem]">
               ¿Problemas con el alcohol?
             </h1>
           </div>
 
-          <p className="mb-12 max-w-2xl text-pretty text-xl font-bold leading-[1.55] text-ink drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)] sm:text-2xl md:text-[1.6rem]">
+          <p className="mb-14 max-w-2xl text-pretty text-xl font-bold leading-[1.5] text-ink drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)] sm:text-2xl md:text-[1.7rem]">
             No estás solo. Siempre habrá un grupo dispuesto a recibirte
           </p>
           <Link
