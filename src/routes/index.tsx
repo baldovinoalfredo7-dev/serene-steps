@@ -82,30 +82,31 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
           alt="Salón de reunión de Alcohólicos Anónimos: mesa redonda de madera con el Libro Grande, tazas de café y un termo; en la pared izquierda un cuadro con el logotipo de AA y el texto Alcohólicos Anónimos, Área 2 Metropolitana de Barranquilla, y en la pared derecha un cuadro con la Oración de la Serenidad"
           width={1920}
           height={1088}
-          className="h-[54svh] w-full object-cover object-[28%_38%] sm:h-[60svh] sm:object-[35%_40%] md:h-auto md:object-contain md:object-[50%_60%]"
+          className="h-[48svh] w-full object-cover object-[28%_38%] sm:h-[54svh] sm:object-[35%_40%] md:h-[62svh] md:max-h-[620px] md:object-cover md:object-[45%_58%]"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-paper/10 via-transparent to-paper/40" />
 
-        <div className="absolute inset-0 mx-auto flex max-w-4xl flex-col items-center justify-center px-6 text-center md:justify-start md:pt-[13%] md:pr-16">
-          <div className="relative mb-6 sm:mb-8">
+        <div className="absolute inset-0 mx-auto flex max-w-4xl flex-col items-center justify-center px-6 text-center md:items-start md:justify-end md:pb-14 md:pl-10 md:pr-[42%] md:text-left">
+          <div className="relative mb-5 sm:mb-7">
             <div
               aria-hidden
               className="pointer-events-none absolute inset-x-[-15%] inset-y-[-30%] -z-10 rounded-[50%] bg-paper/50 blur-3xl"
             />
-            <h1 className="max-w-3xl text-balance font-serif text-[2.1rem] font-semibold leading-[1.08] text-brand-strong drop-shadow-[0_1px_5px_rgba(255,255,255,0.9)] sm:text-5xl lg:text-[3.5rem]">
+            <h1 className="max-w-[22ch] text-balance font-serif text-[1.9rem] font-semibold leading-[1.1] text-brand-strong drop-shadow-[0_1px_5px_rgba(255,255,255,0.9)] sm:text-[2.6rem] lg:text-[3rem]">
               ¿Problemas con el alcohol?
             </h1>
           </div>
 
-          <div className="relative mb-7 max-w-2xl sm:mb-9">
+          <div className="relative mb-6 max-w-[26ch] sm:mb-8">
             <div
               aria-hidden
               className="pointer-events-none absolute inset-x-[-10%] inset-y-[-40%] -z-10 rounded-[50%] bg-paper/55 blur-2xl"
             />
-            <p className="text-pretty text-lg font-bold leading-[1.5] text-ink drop-shadow-[0_1px_2px_rgba(255,255,255,0.98)] sm:text-2xl">
+            <p className="text-pretty text-base font-bold leading-[1.5] text-ink drop-shadow-[0_1px_2px_rgba(255,255,255,0.98)] sm:text-xl">
               Siempre habrá un grupo dispuesto a recibirte
             </p>
           </div>
+
 
           <Link
             to="/necesito-ayuda"
