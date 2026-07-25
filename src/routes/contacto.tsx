@@ -66,7 +66,7 @@ function Cooperar() {
         {/* Bloque destacado */}
         <aside className="rounded-3xl bg-soft/60 p-8 sm:p-10 ring-1 ring-brand/10">
           <h2 className="font-serif text-2xl italic leading-tight text-brand sm:text-3xl">
-            Toda la cooperación que ofrece Alcohólicos Anónimos es completamente gratuita.
+            Toda la cooperación que ofrece Alcohólicos Anónimos es completamente gratuita
           </h2>
           <p className="mt-4 text-pretty text-base leading-relaxed text-ink/80">
             Las charlas informativas, reuniones con instituciones, orientación a profesionales
