@@ -39,6 +39,7 @@ import { Route as MiembrosOracionesRouteImport } from './routes/miembros.oracion
 import { Route as MiembrosGruposRouteImport } from './routes/miembros.grupos'
 import { Route as MiembrosEventosRouteImport } from './routes/miembros.eventos'
 import { Route as MiembrosDocumentosRouteImport } from './routes/miembros.documentos'
+import { Route as MiembrosConferenciaRouteImport } from './routes/miembros.conferencia'
 import { Route as MiembrosAreaRouteImport } from './routes/miembros.area'
 import { Route as MiembrosAprendizajeRouteImport } from './routes/miembros.aprendizaje'
 import { Route as GruposSlugRouteImport } from './routes/grupos.$slug'
@@ -215,6 +216,11 @@ const MiembrosEventosRoute = MiembrosEventosRouteImport.update({
 const MiembrosDocumentosRoute = MiembrosDocumentosRouteImport.update({
   id: '/documentos',
   path: '/documentos',
+  getParentRoute: () => MiembrosRoute,
+} as any)
+const MiembrosConferenciaRoute = MiembrosConferenciaRouteImport.update({
+  id: '/conferencia',
+  path: '/conferencia',
   getParentRoute: () => MiembrosRoute,
 } as any)
 const MiembrosAreaRoute = MiembrosAreaRouteImport.update({
@@ -407,6 +413,7 @@ export interface FileRoutesByFullPath {
   '/grupos/$slug': typeof GruposSlugRoute
   '/miembros/aprendizaje': typeof MiembrosAprendizajeRoute
   '/miembros/area': typeof MiembrosAreaRoute
+  '/miembros/conferencia': typeof MiembrosConferenciaRoute
   '/miembros/documentos': typeof MiembrosDocumentosRoute
   '/miembros/eventos': typeof MiembrosEventosRoute
   '/miembros/grupos': typeof MiembrosGruposRoute
@@ -464,6 +471,7 @@ export interface FileRoutesByTo {
   '/grupos/$slug': typeof GruposSlugRoute
   '/miembros/aprendizaje': typeof MiembrosAprendizajeRoute
   '/miembros/area': typeof MiembrosAreaRoute
+  '/miembros/conferencia': typeof MiembrosConferenciaRoute
   '/miembros/documentos': typeof MiembrosDocumentosRoute
   '/miembros/eventos': typeof MiembrosEventosRoute
   '/miembros/grupos': typeof MiembrosGruposRoute
@@ -523,6 +531,7 @@ export interface FileRoutesById {
   '/grupos/$slug': typeof GruposSlugRoute
   '/miembros/aprendizaje': typeof MiembrosAprendizajeRoute
   '/miembros/area': typeof MiembrosAreaRoute
+  '/miembros/conferencia': typeof MiembrosConferenciaRoute
   '/miembros/documentos': typeof MiembrosDocumentosRoute
   '/miembros/eventos': typeof MiembrosEventosRoute
   '/miembros/grupos': typeof MiembrosGruposRoute
@@ -584,6 +593,7 @@ export interface FileRouteTypes {
     | '/grupos/$slug'
     | '/miembros/aprendizaje'
     | '/miembros/area'
+    | '/miembros/conferencia'
     | '/miembros/documentos'
     | '/miembros/eventos'
     | '/miembros/grupos'
@@ -641,6 +651,7 @@ export interface FileRouteTypes {
     | '/grupos/$slug'
     | '/miembros/aprendizaje'
     | '/miembros/area'
+    | '/miembros/conferencia'
     | '/miembros/documentos'
     | '/miembros/eventos'
     | '/miembros/grupos'
@@ -699,6 +710,7 @@ export interface FileRouteTypes {
     | '/grupos/$slug'
     | '/miembros/aprendizaje'
     | '/miembros/area'
+    | '/miembros/conferencia'
     | '/miembros/documentos'
     | '/miembros/eventos'
     | '/miembros/grupos'
@@ -969,6 +981,13 @@ declare module '@tanstack/react-router' {
       path: '/documentos'
       fullPath: '/miembros/documentos'
       preLoaderRoute: typeof MiembrosDocumentosRouteImport
+      parentRoute: typeof MiembrosRoute
+    }
+    '/miembros/conferencia': {
+      id: '/miembros/conferencia'
+      path: '/conferencia'
+      fullPath: '/miembros/conferencia'
+      preLoaderRoute: typeof MiembrosConferenciaRouteImport
       parentRoute: typeof MiembrosRoute
     }
     '/miembros/area': {
@@ -1279,6 +1298,7 @@ const MiembrosPrincipiosRouteWithChildren =
 interface MiembrosRouteChildren {
   MiembrosAprendizajeRoute: typeof MiembrosAprendizajeRoute
   MiembrosAreaRoute: typeof MiembrosAreaRoute
+  MiembrosConferenciaRoute: typeof MiembrosConferenciaRoute
   MiembrosDocumentosRoute: typeof MiembrosDocumentosRoute
   MiembrosEventosRoute: typeof MiembrosEventosRoute
   MiembrosGruposRoute: typeof MiembrosGruposRoute
@@ -1291,6 +1311,7 @@ interface MiembrosRouteChildren {
 const MiembrosRouteChildren: MiembrosRouteChildren = {
   MiembrosAprendizajeRoute: MiembrosAprendizajeRoute,
   MiembrosAreaRoute: MiembrosAreaRoute,
+  MiembrosConferenciaRoute: MiembrosConferenciaRoute,
   MiembrosDocumentosRoute: MiembrosDocumentosRoute,
   MiembrosEventosRoute: MiembrosEventosRoute,
   MiembrosGruposRoute: MiembrosGruposRoute,
