@@ -30,7 +30,12 @@ const comiteArea = [
     descripcion:
       "Administra los recursos económicos del Área con responsabilidad y transparencia. Elabora el presupuesto, registra los ingresos y egresos, presenta informes financieros periódicos y vela por el adecuado manejo de las contribuciones destinadas al servicio.",
   },
-  { rol: "Delegado", companero: "Efraín Rueda" },
+  {
+    rol: "Delegado",
+    companero: "Efraín Rueda",
+    descripcion:
+      "Representa al Área en la Conferencia de Servicios Generales de Alcohólicos Anónimos de Colombia y participa activamente en sus trabajos durante todo el año. Lleva a la Conferencia la experiencia y la conciencia del Área que lo eligió y, a su regreso, comparte con los grupos las decisiones, recomendaciones y acciones acordadas. Además, promueve la participación en los servicios generales, fortalece la comunicación entre los grupos y la estructura de servicio, y brinda apoyo al desarrollo y funcionamiento del Área.",
+  },
 ];
 
 const comitesEspeciales = [
@@ -112,9 +117,17 @@ function AreaPage() {
         </p>
         <div className="mt-4 rounded-2xl border border-brand/10 bg-paper p-6 shadow-sm">
           <span className="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-brand/70">
-            Custodio de la Región A
+            Custodio Territorial
           </span>
           <p className="mt-2 font-serif text-xl italic text-brand">Olmedo Montero</p>
+          <p className="mt-3 text-sm leading-relaxed text-ink/85">
+            Presta servicio como Custodio Territorial de la Junta de Servicios Generales de
+            Alcohólicos Anónimos de Colombia por un período de cuatro años. Es uno de los cinco
+            custodios regionales que integran la Junta y aporta la experiencia y el punto de vista
+            de las áreas de su territorio. Además, fortalece la comunicación entre la Conferencia,
+            la Junta de Servicios Generales y las estructuras de servicio, promoviendo el desarrollo
+            de los servicios generales con respeto por la autonomía y la conciencia de grupo.
+          </p>
         </div>
       </Section>
 
