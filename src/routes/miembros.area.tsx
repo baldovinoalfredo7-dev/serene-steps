@@ -257,9 +257,6 @@ function ServidorCard({
     </article>
   );
 }
-    </article>
-  );
-}
 
 function AsambleaBloque({ titulo, texto }: { titulo: string; texto: string }) {
   return (
