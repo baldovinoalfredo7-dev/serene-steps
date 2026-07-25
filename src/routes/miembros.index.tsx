@@ -7,6 +7,7 @@ import {
   ScrollText,
   BookOpenText,
   Landmark,
+  HandHeart,
   ArrowRight,
   type LucideIcon,
 } from "lucide-react";
@@ -84,9 +85,10 @@ const blocks: Block[] = [
     ],
   },
   {
-    id: "comunidad",
-    title: "Comunidad",
-    intro: "La vida de nuestros grupos y las oraciones que compartimos.",
+    id: "vida-en-aa",
+    title: "Vida en AA",
+    intro:
+      "La vida de nuestros grupos, nuestro compromiso y las oraciones que compartimos.",
     cards: [
       {
         to: "/miembros/grupos",
@@ -95,6 +97,14 @@ const blocks: Block[] = [
         title: "Nuestros grupos",
         description:
           "Consulta el directorio oficial de grupos del Área 2, horarios y lugares de reunión.",
+      },
+      {
+        to: "/miembros/responsabilidad",
+        icon: HandHeart,
+        emoji: "🤝",
+        title: "Declaración de Responsabilidad",
+        description:
+          "Conoce la Declaración de Responsabilidad y su significado en nuestro compromiso de estar siempre disponibles para quien pide ayuda.",
       },
       {
         to: "/miembros/oraciones",
