@@ -107,7 +107,18 @@ export function MemberShell({ children }: { children: ReactNode }) {
             </Link>
           </div>
         </header>
-        <main className="min-w-0 flex-1 px-4 py-6 lg:px-8 lg:py-10">{children}</main>
+        <main className="min-w-0 flex-1 px-4 py-6 lg:px-8 lg:py-10">
+          {!isActive(pathname, "/miembros") || pathname.replace(/\/$/, "") !== "/miembros" ? (
+            <Link
+              to="/miembros"
+              className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-brand transition-colors hover:text-brand/70"
+            >
+              <ArrowLeft className="size-4" />
+              Volver al Portal
+            </Link>
+          ) : null}
+          {children}
+        </main>
       </div>
     </div>
   );
