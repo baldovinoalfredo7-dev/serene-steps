@@ -96,13 +96,13 @@ function AreaPage() {
         </h1>
       </header>
 
-      <Section title="¿Qué es el Área 2 Metropolitana de Barranquilla?">
+      <Section id="que-es" title="¿Qué es el Área 2 Metropolitana de Barranquilla?">
         <p>
           El Área 2 Metropolitana de Barranquilla forma parte de la estructura de servicio de Alcohólicos Anónimos en Colombia. Está integrada por los grupos de AA de la región y tiene como propósito coordinar, apoyar y fortalecer las actividades de servicio, respetando siempre la autonomía de cada grupo y los principios de las Doce Tradiciones y los Doce Conceptos para el Servicio Mundial.
         </p>
       </Section>
 
-      <Section title="¿Cómo se eligen los servidores?">
+      <Section id="eleccion" title="¿Cómo se eligen los servidores?">
         <p>
           Los servidores del Área son elegidos mediante un proceso democrático durante las asambleas de servicio. Los Representantes de Servicios Generales (RSG) de cada grupo participan con voz y voto en la elección de los distintos servidores del Área.
         </p>
@@ -111,7 +111,7 @@ function AreaPage() {
         </p>
       </Section>
 
-      <Section title="El Área dentro de la estructura de servicio">
+      <Section id="estructura" title="El Área dentro de la estructura de servicio">
         <p>
           El Área 2 Metropolitana de Barranquilla hace parte de la Región A de Alcohólicos Anónimos en Colombia.
         </p>
@@ -131,7 +131,7 @@ function AreaPage() {
         </div>
       </Section>
 
-      <Section title="Servidores del Comité de Área" intro="Período 2024-2026">
+      <Section id="servidores" title="Servidores del Comité de Área" intro="Período 2024-2026">
         <SubTitle>Comité de área</SubTitle>
         <CardsGrid>
           {comiteArea.map((s) => (
@@ -148,7 +148,7 @@ function AreaPage() {
         </CardsGrid>
       </Section>
 
-      <Section title="Representantes de Servicios Generales (RSG)">
+      <Section id="rsg" title="Representantes de Servicios Generales (RSG)">
         <div className="mt-2 grid gap-3 sm:grid-cols-2">
           {rsgs.map((r) => {
             const pendiente = r.rsg.toLowerCase().startsWith("pendiente");
@@ -172,7 +172,7 @@ function AreaPage() {
         </div>
       </Section>
 
-      <Section title="Las Asambleas de Área">
+      <Section id="asambleas" title="Las Asambleas de Área">
         <p>
           Las Asambleas de Área son reuniones de servicio que, por lo general, se realizan una vez al mes. En ellas participan los Representantes de Servicios Generales (RSG) y los servidores del Área para compartir información, estudiar los asuntos de servicio y fortalecer el trabajo de la Comunidad.
         </p>
@@ -193,7 +193,7 @@ function AreaPage() {
         </div>
       </Section>
 
-      <Section title="Reuniones de servicio del Área">
+      <Section id="reuniones" title="Reuniones de servicio del Área">
         <p>
           Además de las Asambleas de Área, los servidores realizan reuniones de servicio para dar cumplimiento a las decisiones aprobadas por la conciencia de grupo.
         </p>
@@ -206,16 +206,18 @@ function AreaPage() {
 }
 
 function Section({
+  id,
   title,
   intro,
   children,
 }: {
+  id?: string;
   title: string;
   intro?: string;
   children: ReactNode;
 }) {
   return (
-    <section>
+    <section id={id} className="scroll-mt-24">
       <h2 className="font-serif text-2xl leading-tight text-brand sm:text-3xl">{title}</h2>
       {intro && (
         <p className="mt-3 text-sm font-medium uppercase tracking-[0.18em] text-brand/70">
