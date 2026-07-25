@@ -12,19 +12,60 @@ export const Route = createFileRoute("/miembros/area")({
 });
 
 const comiteArea = [
-  { rol: "Coordinador", companero: "Luis Yepes" },
-  { rol: "Secretario", companero: "Juan José Acosta" },
-  { rol: "Tesorero", companero: "Alejandro Meza" },
+  {
+    rol: "Coordinador",
+    companero: "Luis Yepes",
+    descripcion:
+      "Coordina las actividades del Área y promueve el buen funcionamiento de los distintos servicios. Elabora el cronograma anual de trabajo, preside las Asambleas de Área y las reuniones de servidores, y representa al Área junto con el Delegado en las reuniones de la Región A.",
+  },
+  {
+    rol: "Secretario",
+    companero: "Juan José Acosta",
+    descripcion:
+      "Lleva las actas de las Asambleas y de las reuniones de servidores. Se encarga de convocar e informar oportunamente a los Representantes de Servicios Generales (RSG) y demás servidores sobre las reuniones y actividades del Área, procurando que la comunicación sea clara y oportuna.",
+  },
+  {
+    rol: "Tesorero",
+    companero: "Alejandro Meza",
+    descripcion:
+      "Administra los recursos económicos del Área con responsabilidad y transparencia. Elabora el presupuesto, registra los ingresos y egresos, presenta informes financieros periódicos y vela por el adecuado manejo de las contribuciones destinadas al servicio.",
+  },
   { rol: "Delegado", companero: "Efraín Rueda" },
 ];
 
 const comitesEspeciales = [
-  { rol: "Finanzas", companero: "John Ricardo" },
-  { rol: "Eventos", companero: "Elías Gonzalez" },
-  { rol: "Literatura y Rem", companero: "César Osorio" },
-  { rol: "Cooperación con la Comunidad Profesional", companero: "Alfredo Baldovino" },
-  { rol: "Instituciones carcelarias", companero: "Alex Carvajal" },
+  {
+    rol: "Representante de Finanzas",
+    companero: "John Ricardo",
+    descripcion:
+      "Colabora con el Tesorero en la administración de los recursos económicos del Área. Apoya la elaboración de balances e informes financieros, contribuye al registro de los ingresos y egresos y favorece una administración transparente y responsable, al servicio de las actividades y el funcionamiento del Área.",
+  },
+  {
+    rol: "Representante del Comité de Eventos",
+    companero: "Elías Gonzalez",
+    descripcion:
+      "Coordina la promoción de los eventos locales, regionales y nacionales de Alcohólicos Anónimos dentro del Área. Además, organiza y apoya actividades orientadas a fortalecer la participación de los grupos y a obtener recursos que contribuyan al sostenimiento de los servicios y proyectos del Área.",
+  },
+  {
+    rol: "Representante de Literatura",
+    companero: "César Osorio",
+    descripcion:
+      "Es responsable de administrar la literatura aprobada por Alcohólicos Anónimos dentro del Área. Mantiene un inventario actualizado, procura disponer de un catálogo variado de publicaciones y facilita su distribución a los grupos y a los demás servidores del Área, promoviendo el uso de la literatura como herramienta fundamental para llevar el mensaje de recuperación.",
+  },
+  {
+    rol: "Comité de Cooperación con la Comunidad Profesional (CCP)",
+    companero: "Alfredo Baldovino",
+    descripcion:
+      "Promueve la cooperación entre Alcohólicos Anónimos y los profesionales e instituciones de la comunidad. Visita entidades públicas y privadas, establecimientos de salud, centros educativos y otras organizaciones para dar a conocer el programa de recuperación de Alcohólicos Anónimos. En ausencia de un representante de Información Pública, también puede ofrecer charlas informativas, preservando siempre el anonimato de los miembros y centrando el mensaje en el problema del alcoholismo y la solución que ofrece AA.",
+  },
+  {
+    rol: "Representante de Instituciones Carcelarias",
+    companero: "Alex Carvajal",
+    descripcion:
+      "Coordina el servicio de Alcohólicos Anónimos en los centros de reclusión dentro del Área. Mantiene la comunicación con las autoridades competentes, promueve la realización de reuniones y el acceso a la literatura aprobada, y procura que el mensaje de recuperación llegue a las personas privadas de la libertad que deseen dejar de beber.",
+  },
 ];
+
 
 const rsgs = [
   { grupo: "Grupo La Nueva Vida", rsg: "Rafael Pineda" },
@@ -81,14 +122,15 @@ function AreaPage() {
         <SubTitle>Comité de área</SubTitle>
         <CardsGrid>
           {comiteArea.map((s) => (
-            <ServidorCard key={s.rol} rol={s.rol} companero={s.companero} />
+            <ServidorCard key={s.rol} rol={s.rol} companero={s.companero} descripcion={(s as { descripcion?: string }).descripcion} />
+
           ))}
         </CardsGrid>
 
         <SubTitle className="mt-12">Comités especiales</SubTitle>
         <CardsGrid>
           {comitesEspeciales.map((s) => (
-            <ServidorCard key={s.rol} rol={s.rol} companero={s.companero} />
+            <ServidorCard key={s.rol} rol={s.rol} companero={s.companero} descripcion={s.descripcion} />
           ))}
         </CardsGrid>
       </Section>
@@ -186,13 +228,24 @@ function CardsGrid({ children }: { children: ReactNode }) {
   );
 }
 
-function ServidorCard({ rol, companero }: { rol: string; companero: string }) {
+function ServidorCard({
+  rol,
+  companero,
+  descripcion,
+}: {
+  rol: string;
+  companero: string;
+  descripcion?: string;
+}) {
   return (
     <article className="flex flex-col rounded-2xl border border-brand/10 bg-paper p-6 shadow-sm transition-shadow hover:shadow-lift">
       <span className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-brand/70">
         Servicio
       </span>
       <p className="mt-2 font-serif text-lg text-brand">{rol}</p>
+      {descripcion && (
+        <p className="mt-3 text-sm leading-relaxed text-ink/85">{descripcion}</p>
+      )}
       <dl className="mt-4 space-y-2 text-sm leading-relaxed text-ink/85">
         <div>
           <dt className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-ink/60">
