@@ -126,7 +126,7 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
             Encuentra un grupo
           </span>
           <h2 className="mb-6 font-serif text-3xl leading-[1.15] text-brand sm:text-4xl md:text-5xl">
-            Eres bienvenido.
+            Eres bienvenido
           </h2>
           <p className="mx-auto mb-10 max-w-xl text-pretty text-lg leading-[1.7] text-ink/85">
             En cada grupo encontrarás personas que un día también llegaron
