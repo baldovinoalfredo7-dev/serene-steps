@@ -10,7 +10,6 @@ import {
   Building2,
   Landmark,
   CalendarDays,
-  GraduationCap,
   Home,
   LogOut,
   Menu,
@@ -33,7 +32,6 @@ const items: Item[] = [
   { to: "/miembros/principios", label: "Los 36 Principios", icon: ScrollText },
   { to: "/miembros/responsabilidad", label: "Declaración de Responsabilidad", icon: HandHeart },
   { to: "/miembros/oraciones", label: "Nuestras oraciones", icon: BookOpenText },
-  { to: "/miembros/aprendizaje", label: "Centro de aprendizaje", icon: GraduationCap },
 ];
 
 function isActive(pathname: string, to: string): boolean {
