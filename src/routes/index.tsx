@@ -75,21 +75,21 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
       <section className="relative overflow-hidden bg-soft">
         <img
           src={heroAsset.url}
-          alt="Círculo de sillas de madera en una sala luminosa, bañada por luz natural cálida"
+          alt="Círculo de sillas de madera en una sala luminosa, con tazas de café y literatura sobre una mesa; una silla recibe algo más de luz natural"
           width={1600}
           height={1104}
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-paper/80 via-paper/65 to-paper/95" />
+        <div className="absolute inset-0 bg-gradient-to-b from-paper/75 via-paper/60 to-paper/95" />
 
         <div className="relative mx-auto flex min-h-[58svh] max-w-4xl flex-col items-center justify-center px-6 py-20 text-center md:min-h-[60svh] md:py-28">
           <p className="mb-6 text-[0.72rem] font-semibold uppercase tracking-[0.3em] text-brand/80 sm:text-xs">
             Área 2 Metropolitana · Barranquilla
           </p>
           <h1 className="mb-8 max-w-3xl text-balance font-serif text-[2.5rem] leading-[1.08] text-brand sm:text-5xl lg:text-[3.75rem]">
-            ¿Tienes problemas con el alcohol?
+            ¿Problemas con el alcohol?
           </h1>
-          <p className="mb-10 max-w-2xl text-pretty text-lg leading-[1.65] text-ink sm:text-xl">
+          <p className="mb-10 max-w-2xl text-pretty text-lg font-semibold leading-[1.6] text-ink drop-shadow-[0_1px_0_rgba(255,255,255,0.6)] sm:text-xl">
             No estás solo. Siempre habrá un grupo dispuesto a recibirte.
           </p>
           <Link
