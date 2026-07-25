@@ -5,14 +5,14 @@ export function HelpButton() {
   return (
     <Link
       to="/necesito-ayuda"
-      className="fixed bottom-4 right-4 z-50 inline-flex min-h-12 items-center gap-2 rounded-full bg-brand px-5 py-3 text-sm font-semibold text-paper shadow-lift ring-1 ring-paper/20 transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand/40 sm:bottom-6 sm:right-6 sm:px-6 sm:py-3.5 sm:text-base"
+      className="fixed bottom-3 right-3 z-40 inline-flex min-h-10 items-center gap-1.5 rounded-full bg-brand px-3.5 py-2 text-xs font-semibold text-paper shadow-lift ring-1 ring-paper/20 transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand/40 sm:bottom-6 sm:right-6 sm:min-h-12 sm:gap-2 sm:px-6 sm:py-3.5 sm:text-base"
       aria-label="Necesito ayuda ahora"
     >
-      <span className="relative flex size-2.5 shrink-0" aria-hidden>
+      <span className="relative flex size-2 shrink-0 sm:size-2.5" aria-hidden>
         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-paper/70 opacity-75" />
-        <span className="relative inline-flex size-2.5 rounded-full bg-paper" />
+        <span className="relative inline-flex size-2 rounded-full bg-paper sm:size-2.5" />
       </span>
-      <LifeBuoy className="size-4 sm:size-5" strokeWidth={2} aria-hidden />
+      <LifeBuoy className="size-3.5 sm:size-5" strokeWidth={2} aria-hidden />
       Necesito ayuda ahora
     </Link>
   );

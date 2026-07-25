@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import heroAsset from "@/assets/hero-welcome.jpg.asset.json";
-import logoAsset from "@/assets/logo-aa.png.asset.json";
+
 import caribeMap from "@/assets/caribe-map.jpg";
 import { groupsQueryOptions } from "@/lib/groups-queries";
 import type { Group } from "@/lib/groups-data";
@@ -81,36 +81,38 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
           height={1104}
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-paper/15 via-paper/5 to-paper/45" />
+        <div className="absolute inset-0 bg-gradient-to-b from-paper/5 via-transparent to-paper/35" />
 
-        <div className="relative mx-auto flex min-h-[72svh] max-w-4xl flex-col items-center justify-center px-6 py-24 text-center md:min-h-[78svh] md:py-32">
-          <img
-            src={logoAsset.url}
-            alt="Logotipo oficial de Alcohólicos Anónimos"
-            width={96}
-            height={96}
-            className="mb-5 h-20 w-20 drop-shadow-[0_2px_6px_rgba(255,255,255,0.7)] sm:h-24 sm:w-24"
-          />
-          <p className="mb-3 text-base font-black uppercase tracking-[0.44em] text-brand drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)] sm:text-lg">
-            Alcohólicos Anónimos
-          </p>
-          <p className="mb-14 text-xs font-semibold uppercase tracking-[0.32em] text-ink/90 drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)] sm:text-sm">
-            Área 2 Metropolitana de Barranquilla
-          </p>
+        <div className="relative mx-auto flex min-h-[62svh] max-w-4xl flex-col items-center justify-center px-6 py-20 text-center md:min-h-[72svh] md:py-28">
+          <div className="mb-12 flex flex-col items-center gap-2">
+            <p className="text-base font-black uppercase tracking-[0.3em] text-brand drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)] sm:text-lg">
+              Alcohólicos Anónimos
+            </p>
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-ink/90 drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)] sm:text-sm">
+              Área 2 Metropolitana de Barranquilla
+            </p>
+          </div>
 
-          <div className="relative mb-14 sm:mb-16">
+          <div className="relative mb-12 sm:mb-14">
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-x-[-10%] inset-y-[-20%] -z-10 rounded-[50%] bg-paper/45 blur-3xl"
+              className="pointer-events-none absolute inset-x-[-15%] inset-y-[-25%] -z-10 rounded-[50%] bg-paper/35 blur-3xl"
             />
             <h1 className="max-w-3xl text-balance font-serif text-[2.5rem] leading-[1.08] text-brand drop-shadow-[0_2px_6px_rgba(255,255,255,0.7)] sm:text-5xl lg:text-[3.75rem]">
               ¿Problemas con el alcohol?
             </h1>
           </div>
 
-          <p className="mb-14 max-w-2xl text-pretty text-xl font-bold leading-[1.5] text-ink drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)] sm:text-2xl md:text-[1.7rem]">
-            No estás solo. Siempre habrá un grupo dispuesto a recibirte
-          </p>
+          <div className="relative mb-12 max-w-2xl">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-x-[-8%] inset-y-[-30%] -z-10 rounded-[50%] bg-paper/30 blur-2xl"
+            />
+            <p className="text-pretty text-xl font-semibold leading-[1.5] text-ink drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)] sm:text-2xl md:text-[1.6rem]">
+              No estás solo. Siempre habrá un grupo dispuesto a recibirte
+            </p>
+          </div>
+
           <Link
             to="/necesito-ayuda"
             className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand px-9 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-paper transition-colors hover:bg-brand/90"
