@@ -19,6 +19,8 @@ import {
 } from "lucide-react";
 import logoAsset from "@/assets/logo-aa.png.asset.json";
 import { lockMembersClient } from "@/lib/members-gate-client";
+import { sectionIndex } from "@/components/miembros/section-index";
+
 
 type Item = { to: string; label: string; icon: LucideIcon };
 
