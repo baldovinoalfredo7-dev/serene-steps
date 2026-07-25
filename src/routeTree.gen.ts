@@ -27,6 +27,7 @@ import { Route as EventosRouteImport } from './routes/eventos'
 import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as CaribeRouteImport } from './routes/caribe'
 import { Route as BuscoAyudaParaMiRouteImport } from './routes/busco-ayuda-para-mi'
+import { Route as BienvenidaRouteImport } from './routes/bienvenida'
 import { Route as AyudaFamiliarRouteImport } from './routes/ayuda-familiar'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
@@ -155,6 +156,11 @@ const CaribeRoute = CaribeRouteImport.update({
 const BuscoAyudaParaMiRoute = BuscoAyudaParaMiRouteImport.update({
   id: '/busco-ayuda-para-mi',
   path: '/busco-ayuda-para-mi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BienvenidaRoute = BienvenidaRouteImport.update({
+  id: '/bienvenida',
+  path: '/bienvenida',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AyudaFamiliarRoute = AyudaFamiliarRouteImport.update({
@@ -376,6 +382,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/ayuda-familiar': typeof AyudaFamiliarRoute
+  '/bienvenida': typeof BienvenidaRoute
   '/busco-ayuda-para-mi': typeof BuscoAyudaParaMiRoute
   '/caribe': typeof CaribeRoute
   '/contacto': typeof ContactoRoute
@@ -434,6 +441,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/ayuda-familiar': typeof AyudaFamiliarRoute
+  '/bienvenida': typeof BienvenidaRoute
   '/busco-ayuda-para-mi': typeof BuscoAyudaParaMiRoute
   '/caribe': typeof CaribeRoute
   '/contacto': typeof ContactoRoute
@@ -490,6 +498,7 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/ayuda-familiar': typeof AyudaFamiliarRoute
+  '/bienvenida': typeof BienvenidaRoute
   '/busco-ayuda-para-mi': typeof BuscoAyudaParaMiRoute
   '/caribe': typeof CaribeRoute
   '/contacto': typeof ContactoRoute
@@ -550,6 +559,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/ayuda-familiar'
+    | '/bienvenida'
     | '/busco-ayuda-para-mi'
     | '/caribe'
     | '/contacto'
@@ -608,6 +618,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/ayuda-familiar'
+    | '/bienvenida'
     | '/busco-ayuda-para-mi'
     | '/caribe'
     | '/contacto'
@@ -663,6 +674,7 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/auth'
     | '/ayuda-familiar'
+    | '/bienvenida'
     | '/busco-ayuda-para-mi'
     | '/caribe'
     | '/contacto'
@@ -723,6 +735,7 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
   AyudaFamiliarRoute: typeof AyudaFamiliarRoute
+  BienvenidaRoute: typeof BienvenidaRoute
   BuscoAyudaParaMiRoute: typeof BuscoAyudaParaMiRoute
   CaribeRoute: typeof CaribeRoute
   ContactoRoute: typeof ContactoRoute
@@ -872,6 +885,13 @@ declare module '@tanstack/react-router' {
       path: '/busco-ayuda-para-mi'
       fullPath: '/busco-ayuda-para-mi'
       preLoaderRoute: typeof BuscoAyudaParaMiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bienvenida': {
+      id: '/bienvenida'
+      path: '/bienvenida'
+      fullPath: '/bienvenida'
+      preLoaderRoute: typeof BienvenidaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ayuda-familiar': {
@@ -1289,6 +1309,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
   AyudaFamiliarRoute: AyudaFamiliarRoute,
+  BienvenidaRoute: BienvenidaRoute,
   BuscoAyudaParaMiRoute: BuscoAyudaParaMiRoute,
   CaribeRoute: CaribeRoute,
   ContactoRoute: ContactoRoute,
