@@ -130,7 +130,7 @@ function AreaPage() {
         <SubTitle className="mt-12">Comités especiales</SubTitle>
         <CardsGrid>
           {comitesEspeciales.map((s) => (
-            <ServidorCard key={s.rol} rol={s.rol} companero={s.companero} />
+            <ServidorCard key={s.rol} rol={s.rol} companero={s.companero} descripcion={s.descripcion} />
           ))}
         </CardsGrid>
       </Section>
