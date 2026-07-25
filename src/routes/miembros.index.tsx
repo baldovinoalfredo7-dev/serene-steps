@@ -6,7 +6,9 @@ import {
   Building2,
   ScrollText,
   BookOpenText,
+  Landmark,
   GraduationCap,
+
   ArrowRight,
   type LucideIcon,
 } from "lucide-react";
@@ -60,6 +62,15 @@ const cards: Card[] = [
     description:
       "Consulta la estructura de servicio, los comités y los servidores del Área 2.",
   },
+  {
+    to: "/miembros/conferencia",
+    icon: Landmark,
+    emoji: "🏛️",
+    title: "Conferencia de Servicios Generales",
+    description:
+      "Conoce qué es la Conferencia de Servicios Generales, cómo está conformada y cuál es su función dentro de la estructura de servicio de Alcohólicos Anónimos en Colombia.",
+  },
+
   {
     to: "/miembros/aprendizaje",
     icon: GraduationCap,
