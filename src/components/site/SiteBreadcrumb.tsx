@@ -36,11 +36,11 @@ export function SiteBreadcrumb() {
   if (!parent) return null;
 
   return (
-    <nav aria-label="Ruta de navegación" className="relative z-10 bg-paper py-4">
-      <div className="mx-auto max-w-6xl px-6">
+    <nav aria-label="Ruta de navegación" className="relative z-30 border-b border-brand/15 bg-soft py-5">
+      <div className="mx-auto max-w-4xl px-6">
         <Link
           to={parent.to}
-          className="inline-flex min-h-11 items-center gap-2 rounded-full border border-brand/30 bg-soft px-5 py-2.5 text-sm font-semibold text-brand shadow-soft transition-colors hover:bg-brand hover:text-paper"
+          className="inline-flex min-h-12 items-center gap-2 rounded-full border border-brand bg-brand px-5 py-3 text-sm font-bold text-paper shadow-lift transition-colors hover:bg-brand-strong"
         >
           <ArrowLeft className="size-4" aria-hidden="true" />
           {parent.label}
