@@ -9,7 +9,7 @@ import {
   Mail,
   MapPin,
   Menu,
-  Clock,
+  
   UserRound,
   X,
   type LucideIcon,
