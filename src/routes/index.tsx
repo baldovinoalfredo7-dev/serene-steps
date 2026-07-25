@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import heroAsset from "@/assets/hero-circle.jpg.asset.json";
+import heroAsset from "@/assets/hero-welcome.jpg.asset.json";
 import caribeMap from "@/assets/caribe-map.jpg";
 import { groupsQueryOptions } from "@/lib/groups-queries";
 import type { Group } from "@/lib/groups-data";
