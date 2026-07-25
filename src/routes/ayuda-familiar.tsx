@@ -8,7 +8,6 @@ import {
   LifeBuoy,
   ExternalLink,
 } from "lucide-react";
-import { BackLink } from "@/components/site/BackLink";
 
 
 export const Route = createFileRoute("/ayuda-familiar")({
@@ -39,7 +38,6 @@ export const Route = createFileRoute("/ayuda-familiar")({
 function AyudaFamiliar() {
   return (
     <>
-      <BackLink to="/necesito-ayuda" />
       {/* HERO */}
       <section className="border-b border-brand/5 bg-soft/40 py-16 md:py-24">
 
