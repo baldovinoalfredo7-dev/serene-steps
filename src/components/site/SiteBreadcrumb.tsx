@@ -1,4 +1,4 @@
-import { Link, useRouter } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 
 /** Rutas que no muestran miga de pan (inicio, auth, portales con navegación propia). */
@@ -31,16 +31,16 @@ function resolveParent(pathname: string): { to: string; label: string } | null {
 }
 
 export function SiteBreadcrumb() {
-  const router = useRouter();
-  const parent = resolveParent(router.state.location.pathname);
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+  const parent = resolveParent(pathname);
   if (!parent) return null;
 
   return (
-    <nav aria-label="Ruta de navegación" className="border-b border-brand/10 bg-soft/60">
-      <div className="mx-auto max-w-6xl px-6 py-3">
+    <nav aria-label="Ruta de navegación" className="relative z-10 bg-paper py-4">
+      <div className="mx-auto max-w-6xl px-6">
         <Link
           to={parent.to}
-          className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-paper px-4 py-2 text-sm font-semibold text-brand shadow-sm transition-colors hover:bg-brand hover:text-paper"
+          className="inline-flex min-h-11 items-center gap-2 rounded-full border border-brand/30 bg-soft px-5 py-2.5 text-sm font-semibold text-brand shadow-soft transition-colors hover:bg-brand hover:text-paper"
         >
           <ArrowLeft className="size-4" aria-hidden="true" />
           {parent.label}
