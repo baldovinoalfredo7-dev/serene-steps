@@ -131,26 +131,52 @@ function SidebarInner({
           </span>
         </div>
       </div>
-      <nav className="flex-1 space-y-1 p-3">
+      <nav className="flex-1 space-y-1 overflow-y-auto p-3">
         {items.map((item) => {
           const active = isActive(pathname, item.to);
+          const subItems = active ? sectionIndex[item.to] : undefined;
           return (
-            <Link
-              key={item.to}
-              to={item.to}
-              className={
-                "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors " +
-                (active
-                  ? "bg-brand text-paper shadow-sm"
-                  : "text-ink/80 hover:bg-soft hover:text-brand")
-              }
-            >
-              <item.icon className="size-4" />
-              <span>{item.label}</span>
-            </Link>
+            <div key={item.to}>
+              <Link
+                to={item.to}
+                className={
+                  "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors " +
+                  (active
+                    ? "bg-brand text-paper shadow-sm"
+                    : "text-ink/80 hover:bg-soft hover:text-brand")
+                }
+              >
+                <item.icon className="size-4" />
+                <span>{item.label}</span>
+              </Link>
+              {subItems && (
+                <ul className="my-1 ml-6 space-y-0.5 border-l border-brand/15 pl-3">
+                  {subItems.map((sub) => {
+                    const subActive = sub.to ? pathname === sub.to : false;
+                    return (
+                      <li key={sub.label}>
+                        <Link
+                          to={sub.to ?? item.to}
+                          hash={sub.hash}
+                          className={
+                            "block rounded-md px-2 py-1.5 text-[0.8rem] leading-snug transition-colors " +
+                            (subActive
+                              ? "font-semibold text-brand"
+                              : "text-ink/70 hover:bg-soft hover:text-brand")
+                          }
+                        >
+                          {sub.label}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </div>
           );
         })}
       </nav>
+
       <div className="border-t border-brand/10 p-3">
         <button
           type="button"
