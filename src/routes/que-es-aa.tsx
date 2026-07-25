@@ -114,7 +114,7 @@ function QueEsAA() {
 
         <section className="rounded-3xl bg-soft/60 p-8 text-center sm:p-12">
           <h2 className="font-serif text-2xl italic text-brand sm:text-3xl">
-            Si crees que tienes un problema con el alcohol, no estás solo.
+            Si crees que tienes un problema con el alcohol, no estás solo
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-pretty text-base leading-relaxed text-ink/80">
             Siempre habrá un grupo de Alcohólicos Anónimos dispuesto a recibirte.
