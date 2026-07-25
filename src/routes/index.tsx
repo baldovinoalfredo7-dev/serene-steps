@@ -84,7 +84,14 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
         <div className="absolute inset-0 bg-gradient-to-b from-paper/15 via-paper/5 to-paper/45" />
 
         <div className="relative mx-auto flex min-h-[72svh] max-w-4xl flex-col items-center justify-center px-6 py-24 text-center md:min-h-[78svh] md:py-32">
-          <p className="mb-4 text-base font-black uppercase tracking-[0.44em] text-brand drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)] sm:text-lg">
+          <img
+            src={logoAsset.url}
+            alt="Logotipo oficial de Alcohólicos Anónimos"
+            width={96}
+            height={96}
+            className="mb-5 h-20 w-20 drop-shadow-[0_2px_6px_rgba(255,255,255,0.7)] sm:h-24 sm:w-24"
+          />
+          <p className="mb-3 text-base font-black uppercase tracking-[0.44em] text-brand drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)] sm:text-lg">
             Alcohólicos Anónimos
           </p>
           <p className="mb-14 text-xs font-semibold uppercase tracking-[0.32em] text-ink/90 drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)] sm:text-sm">
