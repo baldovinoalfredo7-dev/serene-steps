@@ -122,9 +122,6 @@ function MembersHome() {
   return (
     <div className="mx-auto max-w-5xl space-y-12">
       <header className="max-w-2xl">
-        <span className="mb-3 block text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-brand/80">
-          Portal para Miembros
-        </span>
         <h1 className="font-serif text-3xl italic text-brand sm:text-4xl">
           Portal para Miembros
         </h1>
