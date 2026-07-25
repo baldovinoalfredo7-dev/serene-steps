@@ -82,39 +82,27 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
           alt="Salón de reunión de Alcohólicos Anónimos: mesa redonda de madera con el Libro Grande, tazas de café y un termo; en la pared izquierda un cuadro con el logotipo de AA y el texto Alcohólicos Anónimos, Área 2 Metropolitana de Barranquilla, y en la pared derecha un cuadro con la Oración de la Serenidad"
           width={1920}
           height={1088}
-          className="h-[44svh] w-full object-cover object-[28%_38%] sm:h-[48svh] sm:object-[35%_40%] md:h-[54svh] md:max-h-[540px] md:object-cover md:object-[45%_58%]"
+          className="h-[52svh] w-full object-cover object-[46%_42%] sm:h-[58svh] md:h-[64svh] md:max-h-[640px] md:object-[50%_45%]"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-paper/10 via-transparent to-paper/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-paper/5 via-transparent to-paper/25" />
 
-        <div className="absolute inset-0 mx-auto flex max-w-3xl flex-col items-center justify-center px-6 text-center md:justify-end md:pb-10">
-          <div className="relative mb-4 sm:mb-5">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-x-[-12%] inset-y-[-28%] -z-10 rounded-[50%] bg-paper/40 blur-3xl"
-            />
-            <h1 className="max-w-[18ch] text-balance font-serif text-[1.65rem] font-semibold leading-[1.12] text-brand-strong [text-shadow:0_1px_6px_rgba(255,255,255,0.75)] sm:text-[2.2rem] lg:text-[2.5rem]">
-              ¿Problemas con el alcohol?
-            </h1>
-          </div>
+        <div className="absolute inset-0 mx-auto flex max-w-2xl flex-col items-center justify-center px-6 pb-[18%] text-center md:pb-[14%]">
+          <h1 className="mb-3 text-balance font-serif text-[1.4rem] font-semibold leading-[1.15] text-brand-strong [text-shadow:0_1px_5px_rgba(255,255,255,0.8)] sm:mb-4 sm:text-[1.85rem] md:whitespace-nowrap lg:text-[2.15rem]">
+            ¿Problemas con el alcohol?
+          </h1>
 
-          <div className="relative mb-5 max-w-[24ch] sm:mb-7">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-x-[-8%] inset-y-[-35%] -z-10 rounded-[50%] bg-paper/45 blur-2xl"
-            />
-            <p className="text-pretty text-[0.95rem] font-bold leading-[1.5] text-ink [text-shadow:0_1px_4px_rgba(255,255,255,0.85)] sm:text-lg">
-              Siempre habrá un grupo dispuesto a recibirte
-            </p>
-          </div>
-
+          <p className="mb-5 max-w-[28ch] text-pretty text-[0.9rem] font-semibold leading-[1.5] text-ink [text-shadow:0_1px_4px_rgba(255,255,255,0.85)] sm:mb-6 sm:text-base md:max-w-none md:whitespace-nowrap md:text-lg">
+            Siempre habrá un grupo dispuesto a recibirte
+          </p>
 
           <Link
             to="/necesito-ayuda"
-            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-brand px-8 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-paper transition-colors hover:bg-brand/90"
+            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-brand px-7 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-paper transition-colors hover:bg-brand/90"
           >
             Busco ayuda <ArrowRight className="size-4" />
           </Link>
         </div>
+
 
 
       </section>
