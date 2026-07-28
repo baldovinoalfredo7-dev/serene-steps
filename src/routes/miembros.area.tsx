@@ -157,15 +157,26 @@ function AreaPage() {
         <SubTitle>Comité de área</SubTitle>
         <CardsGrid>
           {comiteArea.map((s) => (
-            <ServidorCard key={s.rol} rol={s.rol} companero={s.companero} descripcion={(s as { descripcion?: string }).descripcion} />
-
+            <ServidorCard
+              key={s.rol}
+              rol={s.rol}
+              companero={s.companero}
+              telefono={(s as { telefono?: string }).telefono}
+              descripcion={(s as { descripcion?: string }).descripcion}
+            />
           ))}
         </CardsGrid>
 
         <SubTitle className="mt-12">Comités especiales</SubTitle>
         <CardsGrid>
           {comitesEspeciales.map((s) => (
-            <ServidorCard key={s.rol} rol={s.rol} companero={s.companero} descripcion={s.descripcion} />
+            <ServidorCard
+              key={s.rol}
+              rol={s.rol}
+              companero={s.companero}
+              telefono={(s as { telefono?: string }).telefono}
+              descripcion={s.descripcion}
+            />
           ))}
         </CardsGrid>
       </Section>
@@ -174,6 +185,7 @@ function AreaPage() {
         <div className="mt-2 grid gap-3 sm:grid-cols-2">
           {rsgs.map((r) => {
             const pendiente = r.rsg.toLowerCase().startsWith("pendiente");
+            const telefono = (r as { telefono?: string }).telefono;
             return (
               <article
                 key={r.grupo}
@@ -187,12 +199,21 @@ function AreaPage() {
                   <dd className={`mt-0.5 ${pendiente ? "italic text-ink/60" : "text-ink"}`}>
                     {r.rsg}
                   </dd>
+                  {telefono && (
+                    <>
+                      <dt className="mt-2 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-ink/60">
+                        Contacto
+                      </dt>
+                      <dd className="mt-0.5 text-ink">📞 {telefono}</dd>
+                    </>
+                  )}
                 </dl>
               </article>
             );
           })}
         </div>
       </Section>
+
 
       <Section id="asambleas" title="Las Asambleas de Área">
         <p>
