@@ -88,14 +88,16 @@ const comitesEspeciales = [
 
 const rsgs = [
   { grupo: "Grupo La Nueva Vida", rsg: "Rafael Pineda", telefono: "300 750 30 90" },
-  { grupo: "Grupo Simón Bolívar", rsg: "Alonso Cuella Rodríguez" },
-  { grupo: "Grupo Renacer", rsg: "Aldo Mario", telefono: "301 355 15 76" },
-  { grupo: "Grupo Santo Tomás", rsg: "Pendiente de designación" },
-  { grupo: "Grupo El Triángulo", rsg: "Pendiente de designación" },
-  { grupo: "Grupo Acción de Sabanalarga", rsg: "Pendiente de designación" },
-  { grupo: "Grupo Cambio de Vida", rsg: "Pendiente de designación" },
+  { grupo: "Grupo Simón Bolívar", rsg: "Alonso Rueda Rodríguez", telefono: "300 665 40 34" },
+  { grupo: "Grupo Renacer", rsg: "Aldo Mario Ortiz", telefono: "301 355 15 76" },
+  { grupo: "Grupo Santo Tomás", rsg: "Geovany Polo", telefono: "304 564 44 77" },
+  { grupo: "Grupo El Triángulo", rsg: "Pablo Nieto", telefono: "300 771 08 26" },
+  { grupo: "Grupo Acción de Sabanalarga", rsg: "Cesar Sabalza", telefono: "312 290 30 53" },
+  { grupo: "Grupo Cambio de Vida", rsg: "Atilio Barrios", telefono: "300 492 45 29" },
+  { grupo: "Grupo La Decisión", rsg: "Armando Niño", telefono: "300 449 40 38" },
   { grupo: "Grupo Las Nieves", rsg: "Pendiente de designación" },
   { grupo: "Grupo Vivir Mejor", rsg: "Pendiente de designación" },
+
 ];
 
 
