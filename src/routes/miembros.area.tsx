@@ -143,7 +143,14 @@ function AreaPage() {
             la Junta de Servicios Generales y las estructuras de servicio, promoviendo el desarrollo
             de los servicios generales con respeto por la autonomía y la conciencia de grupo.
           </p>
+          <dl className="mt-4 text-sm leading-relaxed text-ink/85">
+            <dt className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-ink/60">
+              Contacto
+            </dt>
+            <dd className="mt-0.5 text-ink">📞 304 361 46 65</dd>
+          </dl>
         </div>
+
       </Section>
 
       <Section id="servidores" title="Servidores del Comité de Área" intro="Período 2024-2026">
