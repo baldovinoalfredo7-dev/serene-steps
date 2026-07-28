@@ -289,10 +289,12 @@ function CardsGrid({ children }: { children: ReactNode }) {
 function ServidorCard({
   rol,
   companero,
+  telefono,
   descripcion,
 }: {
   rol: string;
   companero: string;
+  telefono?: string;
   descripcion?: string;
 }) {
   return (
@@ -311,7 +313,16 @@ function ServidorCard({
           </dt>
           <dd className="mt-0.5 text-ink">{companero}</dd>
         </div>
+        {telefono && (
+          <div>
+            <dt className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-ink/60">
+              Contacto
+            </dt>
+            <dd className="mt-0.5 text-ink">📞 {telefono}</dd>
+          </div>
+        )}
       </dl>
+
     </article>
   );
 }
