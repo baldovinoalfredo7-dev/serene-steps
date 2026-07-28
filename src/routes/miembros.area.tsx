@@ -15,24 +15,28 @@ const comiteArea = [
   {
     rol: "Coordinador",
     companero: "Luis Yepes",
+    telefono: "301 462 51 00",
     descripcion:
       "Coordina las actividades del Área y promueve el buen funcionamiento de los distintos servicios. Elabora el cronograma anual de trabajo, preside las Asambleas de Área y las reuniones de servidores, y representa al Área junto con el Delegado en las reuniones de la Región A.",
   },
   {
     rol: "Secretario",
     companero: "Juan José Acosta",
+    telefono: "313 530 32 41",
     descripcion:
       "Lleva las actas de las Asambleas y de las reuniones de servidores. Se encarga de convocar e informar oportunamente a los Representantes de Servicios Generales (RSG) y demás servidores sobre las reuniones y actividades del Área, procurando que la comunicación sea clara y oportuna.",
   },
   {
     rol: "Tesorero",
     companero: "Alejandro Meza",
+    telefono: "318 555 75 19",
     descripcion:
       "Administra los recursos económicos del Área con responsabilidad y transparencia. Elabora el presupuesto, registra los ingresos y egresos, presenta informes financieros periódicos y vela por el adecuado manejo de las contribuciones destinadas al servicio.",
   },
   {
     rol: "Delegado",
     companero: "Efraín Rueda",
+    telefono: "310 382 07 33",
     descripcion:
       "Representa al Área en la Conferencia de Servicios Generales de Alcohólicos Anónimos de Colombia y participa activamente en sus trabajos durante todo el año. Lleva a la Conferencia la experiencia y la conciencia del Área que lo eligió y, a su regreso, comparte con los grupos las decisiones, recomendaciones y acciones acordadas. Además, promueve la participación en los servicios generales, fortalece la comunicación entre los grupos y la estructura de servicio, y brinda apoyo al desarrollo y funcionamiento del Área.",
   },
@@ -42,12 +46,14 @@ const comitesEspeciales = [
   {
     rol: "Representante de Finanzas",
     companero: "John Ricardo",
+    telefono: "300 804 03 06",
     descripcion:
       "Colabora con el Tesorero en la administración de los recursos económicos del Área. Apoya la elaboración de balances e informes financieros, contribuye al registro de los ingresos y egresos y favorece una administración transparente y responsable, al servicio de las actividades y el funcionamiento del Área.",
   },
   {
     rol: "Representante del Comité de Eventos",
     companero: "Elías Gonzalez",
+    telefono: "304 367 95 91",
     descripcion:
       "Coordina la promoción de los eventos locales, regionales y nacionales de Alcohólicos Anónimos dentro del Área. Además, organiza y apoya actividades orientadas a fortalecer la participación de los grupos y a obtener recursos que contribuyan al sostenimiento de los servicios y proyectos del Área.",
   },
@@ -60,22 +66,30 @@ const comitesEspeciales = [
   {
     rol: "Comité de Cooperación con la Comunidad Profesional (CCP)",
     companero: "Alfredo Baldovino",
+    telefono: "301 525 76 65",
     descripcion:
       "Promueve la cooperación entre Alcohólicos Anónimos y los profesionales e instituciones de la comunidad. Visita entidades públicas y privadas, establecimientos de salud, centros educativos y otras organizaciones para dar a conocer el programa de recuperación de Alcohólicos Anónimos. En ausencia de un representante de Información Pública, también puede ofrecer charlas informativas, preservando siempre el anonimato de los miembros y centrando el mensaje en el problema del alcoholismo y la solución que ofrece AA.",
   },
   {
     rol: "Representante de Instituciones Carcelarias",
     companero: "Alex Carvajal",
+    telefono: "314 538 26 89",
     descripcion:
       "Coordina el servicio de Alcohólicos Anónimos en los centros de reclusión dentro del Área. Mantiene la comunicación con las autoridades competentes, promueve la realización de reuniones y el acceso a la literatura aprobada, y procura que el mensaje de recuperación llegue a las personas privadas de la libertad que deseen dejar de beber.",
+  },
+  {
+    rol: "Representante de Servicios Generales (RSG)",
+    companero: "Servidor elegido por cada grupo",
+    descripcion:
+      "Es el enlace entre su grupo y la estructura de servicio de Alcohólicos Anónimos. Lleva la conciencia de grupo a las Asambleas de Área, comparte con su grupo la información y las recomendaciones de los Servicios Generales y promueve la participación de los miembros en las actividades de servicio, fortaleciendo la comunicación y la unidad dentro de la Comunidad.",
   },
 ];
 
 
 const rsgs = [
-  { grupo: "Grupo La Nueva Vida", rsg: "Rafael Pineda" },
+  { grupo: "Grupo La Nueva Vida", rsg: "Rafael Pineda", telefono: "300 750 30 90" },
   { grupo: "Grupo Simón Bolívar", rsg: "Alonso Cuella Rodríguez" },
-  { grupo: "Grupo Renacer", rsg: "Aldo Mario" },
+  { grupo: "Grupo Renacer", rsg: "Aldo Mario", telefono: "301 355 15 76" },
   { grupo: "Grupo Santo Tomás", rsg: "Pendiente de designación" },
   { grupo: "Grupo El Triángulo", rsg: "Pendiente de designación" },
   { grupo: "Grupo Acción de Sabanalarga", rsg: "Pendiente de designación" },
@@ -83,6 +97,7 @@ const rsgs = [
   { grupo: "Grupo Las Nieves", rsg: "Pendiente de designación" },
   { grupo: "Grupo Vivir Mejor", rsg: "Pendiente de designación" },
 ];
+
 
 function AreaPage() {
   return (
@@ -128,22 +143,40 @@ function AreaPage() {
             la Junta de Servicios Generales y las estructuras de servicio, promoviendo el desarrollo
             de los servicios generales con respeto por la autonomía y la conciencia de grupo.
           </p>
+          <dl className="mt-4 text-sm leading-relaxed text-ink/85">
+            <dt className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-ink/60">
+              Contacto
+            </dt>
+            <dd className="mt-0.5 text-ink">📞 304 361 46 65</dd>
+          </dl>
         </div>
+
       </Section>
 
       <Section id="servidores" title="Servidores del Comité de Área" intro="Período 2024-2026">
         <SubTitle>Comité de área</SubTitle>
         <CardsGrid>
           {comiteArea.map((s) => (
-            <ServidorCard key={s.rol} rol={s.rol} companero={s.companero} descripcion={(s as { descripcion?: string }).descripcion} />
-
+            <ServidorCard
+              key={s.rol}
+              rol={s.rol}
+              companero={s.companero}
+              telefono={(s as { telefono?: string }).telefono}
+              descripcion={(s as { descripcion?: string }).descripcion}
+            />
           ))}
         </CardsGrid>
 
         <SubTitle className="mt-12">Comités especiales</SubTitle>
         <CardsGrid>
           {comitesEspeciales.map((s) => (
-            <ServidorCard key={s.rol} rol={s.rol} companero={s.companero} descripcion={s.descripcion} />
+            <ServidorCard
+              key={s.rol}
+              rol={s.rol}
+              companero={s.companero}
+              telefono={(s as { telefono?: string }).telefono}
+              descripcion={s.descripcion}
+            />
           ))}
         </CardsGrid>
       </Section>
@@ -152,6 +185,7 @@ function AreaPage() {
         <div className="mt-2 grid gap-3 sm:grid-cols-2">
           {rsgs.map((r) => {
             const pendiente = r.rsg.toLowerCase().startsWith("pendiente");
+            const telefono = (r as { telefono?: string }).telefono;
             return (
               <article
                 key={r.grupo}
@@ -165,12 +199,21 @@ function AreaPage() {
                   <dd className={`mt-0.5 ${pendiente ? "italic text-ink/60" : "text-ink"}`}>
                     {r.rsg}
                   </dd>
+                  {telefono && (
+                    <>
+                      <dt className="mt-2 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-ink/60">
+                        Contacto
+                      </dt>
+                      <dd className="mt-0.5 text-ink">📞 {telefono}</dd>
+                    </>
+                  )}
                 </dl>
               </article>
             );
           })}
         </div>
       </Section>
+
 
       <Section id="asambleas" title="Las Asambleas de Área">
         <p>
@@ -246,10 +289,12 @@ function CardsGrid({ children }: { children: ReactNode }) {
 function ServidorCard({
   rol,
   companero,
+  telefono,
   descripcion,
 }: {
   rol: string;
   companero: string;
+  telefono?: string;
   descripcion?: string;
 }) {
   return (
@@ -268,7 +313,16 @@ function ServidorCard({
           </dt>
           <dd className="mt-0.5 text-ink">{companero}</dd>
         </div>
+        {telefono && (
+          <div>
+            <dt className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-ink/60">
+              Contacto
+            </dt>
+            <dd className="mt-0.5 text-ink">📞 {telefono}</dd>
+          </div>
+        )}
       </dl>
+
     </article>
   );
 }
