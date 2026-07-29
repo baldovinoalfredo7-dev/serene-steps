@@ -80,7 +80,7 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
           alt="Salón de reunión de Alcohólicos Anónimos: mesa redonda de madera con el Libro Grande, tazas de café y un termo; en la pared izquierda un cuadro con el logotipo de AA y el texto Alcohólicos Anónimos, Área 2 Metropolitana de Barranquilla, y en la pared derecha un cuadro con la Oración de la Serenidad"
           width={1920}
           height={1088}
-          className="h-[34svh] w-full object-cover object-[50%_45%] sm:h-[42svh] md:h-[62svh] md:max-h-[620px]"
+          className="h-[30svh] w-full object-cover object-[50%_45%] sm:h-[36svh] md:h-[52svh] md:max-h-[520px]"
         />
         <div className="pointer-events-none absolute inset-x-0 top-0 hidden h-full bg-gradient-to-b from-paper/5 via-transparent to-paper/25 md:block" />
 
