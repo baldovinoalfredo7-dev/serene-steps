@@ -40,6 +40,11 @@ export const sectionIndex: Record<string, SubItem[]> = {
     { label: "¿Cómo se toman las decisiones?", hash: "decisiones" },
     { label: "Su importancia", hash: "importancia" },
   ],
+  "/miembros/eventos": [
+    { label: "Actividades de servicio", hash: "actividades" },
+    { label: "Próximas Asambleas de Área", hash: "asambleas" },
+  ],
+
   "/miembros/principios": [
     { label: "Los Doce Pasos", to: "/miembros/principios/doce-pasos" },
     { label: "Las Doce Tradiciones", to: "/miembros/principios/doce-tradiciones" },
