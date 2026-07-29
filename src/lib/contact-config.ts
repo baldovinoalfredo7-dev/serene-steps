@@ -10,6 +10,12 @@ export const contactConfig = {
   phoneNumber: "+573245577038",
   // Etiqueta legible para mostrar en pantalla
   phoneDisplay: "324 557 7038",
+  // Dirección oficial de la Oficina del Área
+  officeAddressLine1: "Calle 63 #22D-39, Local 2",
+  officeAddressLine2: "Las Moras IV Etapa",
+  officeCity: "Soledad, Atlántico",
+  officeMapsUrl:
+    "https://www.google.com/maps/search/?api=1&query=Calle+63+%2322D-39+Local+2,+Las+Moras+IV+Etapa,+Soledad,+Atl%C3%A1ntico",
   // Municipios disponibles en el formulario
   municipalities: [
     "Barranquilla",

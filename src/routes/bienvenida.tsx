@@ -44,12 +44,22 @@ function Bienvenida() {
         <div className="mt-6 rounded-2xl bg-paper p-8 ring-1 ring-black/5 sm:p-10">
           <div className="grid gap-8 sm:grid-cols-2">
             <InfoBlock icon={<MapPin className="size-5" />} label="Dirección">
-              Calle 63 #22D-39, Local 2
-              <br />
-              Las Moras IV Etapa
+              <a
+                href={contactConfig.officeMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-start gap-1.5 text-brand underline underline-offset-4"
+              >
+                <MapPin className="mt-0.5 size-4 shrink-0" aria-hidden />
+                <span>
+                  {contactConfig.officeAddressLine1}
+                  <br />
+                  {contactConfig.officeAddressLine2}
+                </span>
+              </a>
             </InfoBlock>
             <InfoBlock icon={<Building2 className="size-5" />} label="Ciudad">
-              Barranquilla, Atlántico
+              {contactConfig.officeCity}
             </InfoBlock>
             <InfoBlock icon={<Clock className="size-5" />} label="Horario de atención">
               Lunes a viernes
