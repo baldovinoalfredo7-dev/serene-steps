@@ -117,8 +117,6 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
         </div>
       </section>
 
-
-
       {/* 3. ENCUENTRA UN GRUPO */}
       <section className="bg-soft/50 py-12 md:py-16">
         <div className="mx-auto max-w-3xl px-6 text-center">
@@ -146,13 +144,13 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
         <div className="mx-auto max-w-6xl px-6">
           <ul
             role="list"
-            className="grid gap-px overflow-hidden rounded-2xl border border-brand/10 bg-brand/10 md:grid-cols-3"
+            className="grid gap-px overflow-hidden rounded-2xl border border-brand/10 bg-brand/10 shadow-soft md:grid-cols-3"
           >
             {secondaryDoors.map((d) => (
               <li key={d.to} className="bg-paper">
                 <Link
                   to={d.to}
-                  className="flex h-full flex-col gap-5 p-8 transition-colors hover:bg-soft/60 md:p-10"
+                  className="flex h-full flex-col gap-5 p-9 transition-all duration-300 hover:bg-soft/70 md:p-11"
                 >
                   <h2 className="font-serif text-2xl leading-[1.2] text-brand md:text-[1.75rem]">
                     {d.eyebrow}
@@ -223,7 +221,7 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
 
           <ul
             role="list"
-            className="grid gap-px overflow-hidden rounded-2xl border border-brand/10 bg-brand/10 sm:grid-cols-2 lg:grid-cols-4"
+            className="grid gap-px overflow-hidden rounded-2xl border border-brand/10 bg-brand/10 shadow-soft sm:grid-cols-2 lg:grid-cols-4"
           >
             {literatura.map((item) => {
               const Icon = item.icon;
@@ -231,7 +229,7 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
                 <li key={item.title} className="bg-paper">
                   <Link
                     to="/literatura"
-                    className="flex h-full flex-col gap-5 p-8 transition-colors hover:bg-soft/60"
+                    className="flex h-full flex-col gap-5 p-9 transition-all duration-300 hover:bg-soft/70"
                   >
                     <Icon className="size-6 text-brand/80" strokeWidth={1.5} />
                     <h3 className="font-serif text-xl leading-[1.2] text-brand">
