@@ -48,12 +48,13 @@ const secondaryDoors: readonly Door[] = [
     cta: "Ingresar",
   },
   {
-    eyebrow: "Bienvenido al Área 2 Metropolitana de Barranquilla",
+    eyebrow: "Nuestra Área de Servicio",
     intro:
-      "Una breve presentación del Área y los datos de contacto de la Oficina del Área.",
+      "Conozca el Área de Servicio, la ubicación de la Oficina del Área y los diferentes medios de contacto disponibles para los grupos y miembros de nuestra Comunidad.",
     to: "/bienvenida",
     cta: "Ingresar",
   },
+
 
 ] as const;
 
@@ -144,27 +145,28 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
         <div className="mx-auto max-w-6xl px-6">
           <ul
             role="list"
-            className="grid gap-px overflow-hidden rounded-2xl border border-brand/10 bg-brand/10 shadow-soft md:grid-cols-3"
+            className="grid items-stretch gap-6 md:grid-cols-3"
           >
             {secondaryDoors.map((d) => (
-              <li key={d.to} className="bg-paper">
+              <li key={d.to} className="h-full">
                 <Link
                   to={d.to}
-                  className="flex h-full flex-col gap-5 p-9 transition-all duration-300 hover:bg-soft/70 md:p-11"
+                  className="flex h-full flex-col rounded-2xl border border-brand/10 bg-paper p-10 shadow-soft transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand/20 hover:bg-soft/40 hover:shadow-lift md:p-12"
                 >
-                  <h2 className="font-serif text-2xl leading-[1.2] text-brand md:text-[1.75rem]">
+                  <h2 className="mb-4 font-serif text-2xl leading-[1.2] text-brand md:text-[1.75rem]">
                     {d.eyebrow}
                   </h2>
-                  <p className="text-base leading-[1.7] text-ink/85">
+                  <p className="mb-8 text-base leading-[1.7] text-ink/85">
                     {d.intro}
                   </p>
-                  <span className="mt-auto inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-                    {d.cta} <ArrowRight className="size-4" />
+                  <span className="mt-auto inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand transition-colors duration-300 group-hover:text-brand-strong">
+                    {d.cta} <ArrowRight className="size-4 transition-transform duration-300" />
                   </span>
                 </Link>
               </li>
             ))}
           </ul>
+
         </div>
       </section>
 
