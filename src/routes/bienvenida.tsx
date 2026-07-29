@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/site/PageShell";
 import { MapPin, Building2, Clock, Phone, Mail, PhoneCall } from "lucide-react";
 import type { ReactNode } from "react";
+import { contactConfig, telLink } from "@/lib/contact-config";
 
 export const Route = createFileRoute("/bienvenida")({
   head: () => ({
@@ -70,7 +71,7 @@ function Bienvenida() {
 
           <div className="mt-8">
             <a
-              href="tel:+573245577038"
+              href={telLink()}
               className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-paper transition-colors hover:bg-brand/90"
             >
               <PhoneCall className="size-4" /> Llamar a la oficina
