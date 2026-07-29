@@ -80,7 +80,7 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
           alt="Salón de reunión de Alcohólicos Anónimos: mesa redonda de madera con el Libro Grande, tazas de café y un termo; en la pared izquierda un cuadro con el logotipo de AA y el texto Alcohólicos Anónimos, Área 2 Metropolitana de Barranquilla, y en la pared derecha un cuadro con la Oración de la Serenidad"
           width={1920}
           height={1088}
-          className="h-[34svh] w-full object-cover object-[50%_45%] sm:h-[42svh] md:h-[62svh] md:max-h-[620px]"
+          className="h-[30svh] w-full object-cover object-[50%_45%] sm:h-[36svh] md:h-[52svh] md:max-h-[520px]"
         />
         <div className="pointer-events-none absolute inset-x-0 top-0 hidden h-full bg-gradient-to-b from-paper/5 via-transparent to-paper/25 md:block" />
 
@@ -101,7 +101,7 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
         </div>
 
         {/* Móvil: composición propia, texto bajo la fotografía */}
-        <div className="flex flex-col items-center px-6 pb-10 pt-7 text-center md:hidden">
+        <div className="flex flex-col items-center px-6 pb-8 pt-6 text-center md:hidden">
           <h1 className="mb-3 text-balance font-serif text-[1.55rem] font-semibold leading-[1.2] text-brand-strong">
             ¿Problemas con el alcohol?
           </h1>
@@ -117,10 +117,8 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
         </div>
       </section>
 
-
-
       {/* 3. ENCUENTRA UN GRUPO */}
-      <section className="bg-soft/50 py-20 md:py-28">
+      <section className="bg-soft/50 py-12 md:py-16">
         <div className="mx-auto max-w-3xl px-6 text-center">
           <span className="mb-5 block text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand">
             Encuentra un grupo
@@ -142,17 +140,17 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
       </section>
 
       {/* 4-5-6. OTRAS PUERTAS */}
-      <section className="border-t border-brand/5 bg-paper py-20 md:py-28">
+      <section className="border-t border-brand/5 bg-paper py-12 md:py-16">
         <div className="mx-auto max-w-6xl px-6">
           <ul
             role="list"
-            className="grid gap-px overflow-hidden rounded-2xl border border-brand/10 bg-brand/10 md:grid-cols-3"
+            className="grid gap-px overflow-hidden rounded-2xl border border-brand/10 bg-brand/10 shadow-soft md:grid-cols-3"
           >
             {secondaryDoors.map((d) => (
               <li key={d.to} className="bg-paper">
                 <Link
                   to={d.to}
-                  className="flex h-full flex-col gap-5 p-8 transition-colors hover:bg-soft/60 md:p-10"
+                  className="flex h-full flex-col gap-5 p-9 transition-all duration-300 hover:bg-soft/70 md:p-11"
                 >
                   <h2 className="font-serif text-2xl leading-[1.2] text-brand md:text-[1.75rem]">
                     {d.eyebrow}
@@ -171,7 +169,7 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
       </section>
 
       {/* 7. AA EN EL CARIBE */}
-      <section id="caribe" className="bg-soft/40 py-20 md:py-28">
+      <section id="caribe" className="bg-soft/40 py-12 md:py-16">
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
             <div className="overflow-hidden rounded-2xl bg-soft/60 ring-1 ring-brand/10">
@@ -210,7 +208,7 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
       </section>
 
       {/* 8. NUESTRA LITERATURA */}
-      <section className="border-t border-brand/5 bg-paper py-20 md:py-28">
+      <section className="border-t border-brand/5 bg-paper py-12 md:py-16">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mb-12 max-w-2xl">
             <span className="mb-5 block text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand">
@@ -223,7 +221,7 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
 
           <ul
             role="list"
-            className="grid gap-px overflow-hidden rounded-2xl border border-brand/10 bg-brand/10 sm:grid-cols-2 lg:grid-cols-4"
+            className="grid gap-px overflow-hidden rounded-2xl border border-brand/10 bg-brand/10 shadow-soft sm:grid-cols-2 lg:grid-cols-4"
           >
             {literatura.map((item) => {
               const Icon = item.icon;
@@ -231,7 +229,7 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
                 <li key={item.title} className="bg-paper">
                   <Link
                     to="/literatura"
-                    className="flex h-full flex-col gap-5 p-8 transition-colors hover:bg-soft/60"
+                    className="flex h-full flex-col gap-5 p-9 transition-all duration-300 hover:bg-soft/70"
                   >
                     <Icon className="size-6 text-brand/80" strokeWidth={1.5} />
                     <h3 className="font-serif text-xl leading-[1.2] text-brand">
