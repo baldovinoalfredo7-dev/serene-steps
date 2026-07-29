@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 export const Route = createFileRoute("/miembros/area")({
   head: () => ({
     meta: [
-      { title: "El Área y sus servidores · AA Área 2 Metropolitana" },
+      { title: "El Comité de Área y los Comités Especiales · AA Área 2 Metropolitana" },
       { name: "robots", content: "noindex,nofollow" },
     ],
   }),
@@ -77,28 +77,9 @@ const comitesEspeciales = [
     descripcion:
       "Coordina el servicio de Alcohólicos Anónimos en los centros de reclusión dentro del Área. Mantiene la comunicación con las autoridades competentes, promueve la realización de reuniones y el acceso a la literatura aprobada, y procura que el mensaje de recuperación llegue a las personas privadas de la libertad que deseen dejar de beber.",
   },
-  {
-    rol: "Representante de Servicios Generales (RSG)",
-    companero: "Servidor elegido por cada grupo",
-    descripcion:
-      "Es el enlace entre su grupo y la estructura de servicio de Alcohólicos Anónimos. Lleva la conciencia de grupo a las Asambleas de Área, comparte con su grupo la información y las recomendaciones de los Servicios Generales y promueve la participación de los miembros en las actividades de servicio, fortaleciendo la comunicación y la unidad dentro de la Comunidad.",
-  },
 ];
 
 
-const rsgs = [
-  { grupo: "Grupo La Nueva Vida", rsg: "Rafael Pineda", telefono: "300 750 30 90" },
-  { grupo: "Grupo Simón Bolívar", rsg: "Alonso Rueda Rodríguez", telefono: "300 665 40 34" },
-  { grupo: "Grupo Renacer", rsg: "Aldo Mario Ortiz", telefono: "301 355 15 76" },
-  { grupo: "Grupo Santo Tomás", rsg: "Geovany Polo", telefono: "304 564 44 77" },
-  { grupo: "Grupo El Triángulo", rsg: "Pablo Nieto", telefono: "300 771 08 26" },
-  { grupo: "Grupo Acción de Sabanalarga", rsg: "Cesar Sabalza", telefono: "312 290 30 53" },
-  { grupo: "Grupo Cambio de Vida", rsg: "Atilio Barrios", telefono: "300 492 45 29" },
-  { grupo: "Grupo La Decisión", rsg: "Armando Niño", telefono: "300 449 40 38" },
-  { grupo: "Grupo Las Nieves", rsg: "Pendiente de designación" },
-  { grupo: "Grupo Vivir Mejor", rsg: "Pendiente de designación" },
-
-];
 
 
 function AreaPage() {
@@ -109,7 +90,7 @@ function AreaPage() {
           Portal para Miembros
         </span>
         <h1 className="font-serif text-3xl italic leading-tight text-brand sm:text-5xl">
-          El Área y sus servidores
+          El Comité de Área y los Comités Especiales
         </h1>
       </header>
 
@@ -181,61 +162,6 @@ function AreaPage() {
             />
           ))}
         </CardsGrid>
-      </Section>
-
-      <Section id="rsg" title="Representantes de Servicios Generales (RSG)">
-        <div className="mt-2 grid gap-3 sm:grid-cols-2">
-          {rsgs.map((r) => {
-            const pendiente = r.rsg.toLowerCase().startsWith("pendiente");
-            const telefono = (r as { telefono?: string }).telefono;
-            return (
-              <article
-                key={r.grupo}
-                className="rounded-2xl border border-brand/10 bg-paper p-5 shadow-sm"
-              >
-                <p className="font-serif text-base text-brand">{r.grupo}</p>
-                <dl className="mt-2 text-sm leading-relaxed">
-                  <dt className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-ink/60">
-                    RSG
-                  </dt>
-                  <dd className={`mt-0.5 ${pendiente ? "italic text-ink/60" : "text-ink"}`}>
-                    {r.rsg}
-                  </dd>
-                  {telefono && (
-                    <>
-                      <dt className="mt-2 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-ink/60">
-                        Contacto
-                      </dt>
-                      <dd className="mt-0.5 text-ink">📞 {telefono}</dd>
-                    </>
-                  )}
-                </dl>
-              </article>
-            );
-          })}
-        </div>
-      </Section>
-
-
-      <Section id="asambleas" title="Las Asambleas de Área">
-        <p>
-          Las Asambleas de Área son reuniones de servicio que, por lo general, se realizan una vez al mes. En ellas participan los Representantes de Servicios Generales (RSG) y los servidores del Área para compartir información, estudiar los asuntos de servicio y fortalecer el trabajo de la Comunidad.
-        </p>
-        <p>Durante su desarrollo, la Asamblea puede incluir:</p>
-        <div className="space-y-4 pt-2">
-          <AsambleaBloque
-            titulo="Espacios informativos"
-            texto="Los servidores presentan informes sobre el servicio que desempeñan y las actividades realizadas por los diferentes comités, permitiendo a la Asamblea conocer el trabajo desarrollado y el avance de los proyectos."
-          />
-          <AsambleaBloque
-            titulo="Espacios deliberativos"
-            texto="Los miembros analizan los asuntos de servicio, presentan sugerencias y, mediante la conciencia de grupo, toman las decisiones que orientan el trabajo del Área."
-          />
-          <AsambleaBloque
-            titulo="Espacios electivos"
-            texto="Cuando corresponde, la Asamblea elige a los compañeros que prestarán los diferentes servicios dentro de la estructura del Área, de acuerdo con los procedimientos de la Comunidad."
-          />
-        </div>
       </Section>
 
       <Section id="reuniones" title="Reuniones de servicio del Área">
@@ -326,14 +252,5 @@ function ServidorCard({
       </dl>
 
     </article>
-  );
-}
-
-function AsambleaBloque({ titulo, texto }: { titulo: string; texto: string }) {
-  return (
-    <div className="rounded-2xl border border-brand/10 bg-paper p-6 shadow-sm">
-      <h4 className="font-serif text-lg italic text-brand">{titulo}</h4>
-      <p className="mt-2 text-base leading-relaxed text-ink/85">{texto}</p>
-    </div>
   );
 }

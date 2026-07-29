@@ -38,8 +38,10 @@ import { Route as MiembrosPrincipiosRouteImport } from './routes/miembros.princi
 import { Route as MiembrosOracionesRouteImport } from './routes/miembros.oraciones'
 import { Route as MiembrosGruposRouteImport } from './routes/miembros.grupos'
 import { Route as MiembrosEventosRouteImport } from './routes/miembros.eventos'
+import { Route as MiembrosElGrupoRouteImport } from './routes/miembros.el-grupo'
 import { Route as MiembrosDocumentosRouteImport } from './routes/miembros.documentos'
 import { Route as MiembrosConferenciaRouteImport } from './routes/miembros.conferencia'
+import { Route as MiembrosAsambleaRouteImport } from './routes/miembros.asamblea'
 import { Route as MiembrosAreaRouteImport } from './routes/miembros.area'
 import { Route as MiembrosAprendizajeRouteImport } from './routes/miembros.aprendizaje'
 import { Route as GruposSlugRouteImport } from './routes/grupos.$slug'
@@ -213,6 +215,11 @@ const MiembrosEventosRoute = MiembrosEventosRouteImport.update({
   path: '/eventos',
   getParentRoute: () => MiembrosRoute,
 } as any)
+const MiembrosElGrupoRoute = MiembrosElGrupoRouteImport.update({
+  id: '/el-grupo',
+  path: '/el-grupo',
+  getParentRoute: () => MiembrosRoute,
+} as any)
 const MiembrosDocumentosRoute = MiembrosDocumentosRouteImport.update({
   id: '/documentos',
   path: '/documentos',
@@ -221,6 +228,11 @@ const MiembrosDocumentosRoute = MiembrosDocumentosRouteImport.update({
 const MiembrosConferenciaRoute = MiembrosConferenciaRouteImport.update({
   id: '/conferencia',
   path: '/conferencia',
+  getParentRoute: () => MiembrosRoute,
+} as any)
+const MiembrosAsambleaRoute = MiembrosAsambleaRouteImport.update({
+  id: '/asamblea',
+  path: '/asamblea',
   getParentRoute: () => MiembrosRoute,
 } as any)
 const MiembrosAreaRoute = MiembrosAreaRouteImport.update({
@@ -413,8 +425,10 @@ export interface FileRoutesByFullPath {
   '/grupos/$slug': typeof GruposSlugRoute
   '/miembros/aprendizaje': typeof MiembrosAprendizajeRoute
   '/miembros/area': typeof MiembrosAreaRoute
+  '/miembros/asamblea': typeof MiembrosAsambleaRoute
   '/miembros/conferencia': typeof MiembrosConferenciaRoute
   '/miembros/documentos': typeof MiembrosDocumentosRoute
+  '/miembros/el-grupo': typeof MiembrosElGrupoRoute
   '/miembros/eventos': typeof MiembrosEventosRoute
   '/miembros/grupos': typeof MiembrosGruposRoute
   '/miembros/oraciones': typeof MiembrosOracionesRouteWithChildren
@@ -471,8 +485,10 @@ export interface FileRoutesByTo {
   '/grupos/$slug': typeof GruposSlugRoute
   '/miembros/aprendizaje': typeof MiembrosAprendizajeRoute
   '/miembros/area': typeof MiembrosAreaRoute
+  '/miembros/asamblea': typeof MiembrosAsambleaRoute
   '/miembros/conferencia': typeof MiembrosConferenciaRoute
   '/miembros/documentos': typeof MiembrosDocumentosRoute
+  '/miembros/el-grupo': typeof MiembrosElGrupoRoute
   '/miembros/eventos': typeof MiembrosEventosRoute
   '/miembros/grupos': typeof MiembrosGruposRoute
   '/miembros/responsabilidad': typeof MiembrosResponsabilidadRoute
@@ -531,8 +547,10 @@ export interface FileRoutesById {
   '/grupos/$slug': typeof GruposSlugRoute
   '/miembros/aprendizaje': typeof MiembrosAprendizajeRoute
   '/miembros/area': typeof MiembrosAreaRoute
+  '/miembros/asamblea': typeof MiembrosAsambleaRoute
   '/miembros/conferencia': typeof MiembrosConferenciaRoute
   '/miembros/documentos': typeof MiembrosDocumentosRoute
+  '/miembros/el-grupo': typeof MiembrosElGrupoRoute
   '/miembros/eventos': typeof MiembrosEventosRoute
   '/miembros/grupos': typeof MiembrosGruposRoute
   '/miembros/oraciones': typeof MiembrosOracionesRouteWithChildren
@@ -593,8 +611,10 @@ export interface FileRouteTypes {
     | '/grupos/$slug'
     | '/miembros/aprendizaje'
     | '/miembros/area'
+    | '/miembros/asamblea'
     | '/miembros/conferencia'
     | '/miembros/documentos'
+    | '/miembros/el-grupo'
     | '/miembros/eventos'
     | '/miembros/grupos'
     | '/miembros/oraciones'
@@ -651,8 +671,10 @@ export interface FileRouteTypes {
     | '/grupos/$slug'
     | '/miembros/aprendizaje'
     | '/miembros/area'
+    | '/miembros/asamblea'
     | '/miembros/conferencia'
     | '/miembros/documentos'
+    | '/miembros/el-grupo'
     | '/miembros/eventos'
     | '/miembros/grupos'
     | '/miembros/responsabilidad'
@@ -710,8 +732,10 @@ export interface FileRouteTypes {
     | '/grupos/$slug'
     | '/miembros/aprendizaje'
     | '/miembros/area'
+    | '/miembros/asamblea'
     | '/miembros/conferencia'
     | '/miembros/documentos'
+    | '/miembros/el-grupo'
     | '/miembros/eventos'
     | '/miembros/grupos'
     | '/miembros/oraciones'
@@ -976,6 +1000,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MiembrosEventosRouteImport
       parentRoute: typeof MiembrosRoute
     }
+    '/miembros/el-grupo': {
+      id: '/miembros/el-grupo'
+      path: '/el-grupo'
+      fullPath: '/miembros/el-grupo'
+      preLoaderRoute: typeof MiembrosElGrupoRouteImport
+      parentRoute: typeof MiembrosRoute
+    }
     '/miembros/documentos': {
       id: '/miembros/documentos'
       path: '/documentos'
@@ -988,6 +1019,13 @@ declare module '@tanstack/react-router' {
       path: '/conferencia'
       fullPath: '/miembros/conferencia'
       preLoaderRoute: typeof MiembrosConferenciaRouteImport
+      parentRoute: typeof MiembrosRoute
+    }
+    '/miembros/asamblea': {
+      id: '/miembros/asamblea'
+      path: '/asamblea'
+      fullPath: '/miembros/asamblea'
+      preLoaderRoute: typeof MiembrosAsambleaRouteImport
       parentRoute: typeof MiembrosRoute
     }
     '/miembros/area': {
@@ -1298,8 +1336,10 @@ const MiembrosPrincipiosRouteWithChildren =
 interface MiembrosRouteChildren {
   MiembrosAprendizajeRoute: typeof MiembrosAprendizajeRoute
   MiembrosAreaRoute: typeof MiembrosAreaRoute
+  MiembrosAsambleaRoute: typeof MiembrosAsambleaRoute
   MiembrosConferenciaRoute: typeof MiembrosConferenciaRoute
   MiembrosDocumentosRoute: typeof MiembrosDocumentosRoute
+  MiembrosElGrupoRoute: typeof MiembrosElGrupoRoute
   MiembrosEventosRoute: typeof MiembrosEventosRoute
   MiembrosGruposRoute: typeof MiembrosGruposRoute
   MiembrosOracionesRoute: typeof MiembrosOracionesRouteWithChildren
@@ -1311,8 +1351,10 @@ interface MiembrosRouteChildren {
 const MiembrosRouteChildren: MiembrosRouteChildren = {
   MiembrosAprendizajeRoute: MiembrosAprendizajeRoute,
   MiembrosAreaRoute: MiembrosAreaRoute,
+  MiembrosAsambleaRoute: MiembrosAsambleaRoute,
   MiembrosConferenciaRoute: MiembrosConferenciaRoute,
   MiembrosDocumentosRoute: MiembrosDocumentosRoute,
+  MiembrosElGrupoRoute: MiembrosElGrupoRoute,
   MiembrosEventosRoute: MiembrosEventosRoute,
   MiembrosGruposRoute: MiembrosGruposRoute,
   MiembrosOracionesRoute: MiembrosOracionesRouteWithChildren,

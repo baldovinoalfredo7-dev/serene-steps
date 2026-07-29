@@ -19,14 +19,26 @@ export const sectionIndex: Record<string, SubItem[]> = {
     { label: "Los comités", hash: "comites" },
     { label: "El lenguaje de la Conferencia", hash: "lenguaje" },
   ],
+  "/miembros/el-grupo": [
+    { label: "¿Qué es un grupo de AA?", hash: "que-es" },
+    { label: "Servidores del grupo", hash: "servidores" },
+    { label: "El RSG", hash: "rsg" },
+    { label: "Funciones del RSG", hash: "funciones-rsg" },
+    { label: "Directorio de los RSG", hash: "directorio-rsg" },
+  ],
   "/miembros/area": [
     { label: "¿Qué es el Área 2?", hash: "que-es" },
     { label: "¿Cómo se eligen los servidores?", hash: "eleccion" },
     { label: "Dentro de la estructura", hash: "estructura" },
     { label: "Servidores del Comité de Área", hash: "servidores" },
-    { label: "Representantes de Servicios Generales", hash: "rsg" },
-    { label: "Las Asambleas de Área", hash: "asambleas" },
     { label: "Reuniones de servicio", hash: "reuniones" },
+  ],
+  "/miembros/asamblea": [
+    { label: "¿Qué es la Asamblea de Área?", hash: "que-es" },
+    { label: "¿Quiénes participan?", hash: "participantes" },
+    { label: "¿Cómo se desarrolla?", hash: "desarrollo" },
+    { label: "¿Cómo se toman las decisiones?", hash: "decisiones" },
+    { label: "Su importancia", hash: "importancia" },
   ],
   "/miembros/principios": [
     { label: "Los Doce Pasos", to: "/miembros/principios/doce-pasos" },

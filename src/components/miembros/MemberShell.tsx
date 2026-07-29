@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import {
   Users,
+  Users2,
   FileDown,
   ScrollText,
   HandHeart,
@@ -27,11 +28,13 @@ type Item = { to: string; label: string; icon: LucideIcon };
 
 const items: Item[] = [
   { to: "/miembros", label: "Inicio del portal", icon: Home },
-  { to: "/miembros/grupos", label: "Nuestros grupos", icon: Users },
-  { to: "/miembros/eventos", label: "Calendario de eventos", icon: CalendarDays },
-  { to: "/miembros/documentos", label: "Documentos para descargar", icon: FileDown },
-  { to: "/miembros/area", label: "El Área y sus servidores", icon: Building2 },
+  { to: "/miembros/el-grupo", label: "El Grupo", icon: Users },
+  { to: "/miembros/area", label: "El Comité de Área y los Comités Especiales", icon: Building2 },
+  { to: "/miembros/asamblea", label: "La Asamblea de Área", icon: Users2 },
+  { to: "/miembros/eventos", label: "Calendario de Asambleas y Eventos", icon: CalendarDays },
   { to: "/miembros/conferencia", label: "Conferencia de Servicios Generales", icon: Landmark },
+  { to: "/miembros/documentos", label: "Biblioteca de documentos", icon: FileDown },
+  { to: "/miembros/grupos", label: "Nuestros grupos", icon: Users },
   { to: "/miembros/principios", label: "Los 36 Principios", icon: ScrollText },
   { to: "/miembros/responsabilidad", label: "Declaración de Responsabilidad", icon: HandHeart },
   { to: "/miembros/oraciones", label: "Nuestras oraciones", icon: BookOpenText },
