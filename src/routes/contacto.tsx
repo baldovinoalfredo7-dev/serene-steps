@@ -104,7 +104,7 @@ function Cooperar() {
                 Las Moras IV Etapa
               </InfoBlock>
               <InfoBlock icon={<Phone className="size-5" />} label="Teléfono">
-                324 557 7038
+
               </InfoBlock>
               <InfoBlock icon={<Clock className="size-5" />} label="Horario de atención">
                 Lunes a viernes
