@@ -30,17 +30,41 @@ type Block = {
 const blocks: Block[] = [
   {
     id: "estructura",
-    title: "Estructura de servicio",
+    title: "Nuestra estructura de servicio",
     intro:
-      "Comprende cómo se organiza el servicio en el Área y en los Servicios Generales.",
+      "Un recorrido paso a paso: del grupo al Área, de la Asamblea a la Conferencia.",
     cards: [
+      {
+        to: "/miembros/el-grupo",
+        icon: Users,
+        emoji: "🏠",
+        title: "El Grupo",
+        description:
+          "Conozca qué es un grupo de Alcohólicos Anónimos, cómo funciona, cuál es el papel del Representante de Servicios Generales (RSG) y consulte el directorio de los RSG de nuestra Área.",
+      },
       {
         to: "/miembros/area",
         icon: Building2,
         emoji: "👥",
-        title: "El Área y sus servidores",
+        title: "El Comité de Área y los Comités Especiales",
         description:
-          "Consulta la estructura de servicio, los comités y los servidores del Área 2.",
+          "Conozca cómo está conformado el Comité de Área, las responsabilidades de sus servidores y el trabajo que realizan los diferentes comités especiales al servicio de los grupos.",
+      },
+      {
+        to: "/miembros/asamblea",
+        icon: Users2,
+        emoji: "🗣️",
+        title: "La Asamblea de Área",
+        description:
+          "Descubra qué es la Asamblea de Área, quiénes participan, cómo se desarrolla y cuál es su importancia dentro de la estructura de servicio.",
+      },
+      {
+        to: "/miembros/eventos",
+        icon: CalendarDays,
+        emoji: "📅",
+        title: "Calendario de Asambleas y Eventos",
+        description:
+          "Consulta las asambleas, foros, reuniones de servicio, talleres y demás actividades del Área.",
       },
       {
         to: "/miembros/conferencia",
@@ -62,9 +86,9 @@ const blocks: Block[] = [
   },
   {
     id: "recursos",
-    title: "Recursos",
+    title: "Biblioteca de documentos",
     intro:
-      "Material y actividades autorizadas para apoyar tu trabajo de servicio.",
+      "Documentos de servicio, talleres y material de consulta autorizado por el Área.",
     cards: [
       {
         to: "/miembros/documentos",
@@ -72,15 +96,7 @@ const blocks: Block[] = [
         emoji: "📄",
         title: "Documentos para descargar",
         description:
-          "Accede a actas, circulares, formatos y demás documentos autorizados por el Área.",
-      },
-      {
-        to: "/miembros/eventos",
-        icon: CalendarDays,
-        emoji: "📅",
-        title: "Calendario de eventos",
-        description:
-          "Consulta foros, asambleas, reuniones de servicio, talleres y demás actividades del Área.",
+          "Accede a actas, circulares, talleres, formatos y demás documentos autorizados por el Área.",
       },
     ],
   },
