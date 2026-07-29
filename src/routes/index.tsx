@@ -95,7 +95,7 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
           </p>
           <Link
             to="/necesito-ayuda"
-            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-brand px-7 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-paper shadow-soft transition-colors hover:bg-brand/90"
+            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-brand px-7 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-paper shadow-soft transition-all duration-300 ease-out hover:bg-brand/90 hover:shadow-lift"
           >
             Busco ayuda <ArrowRight className="size-4" />
           </Link>
@@ -111,7 +111,7 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
           </p>
           <Link
             to="/necesito-ayuda"
-            className="inline-flex min-h-12 w-full max-w-xs items-center justify-center gap-2 rounded-full bg-brand px-7 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-paper transition-colors hover:bg-brand/90"
+            className="inline-flex min-h-12 w-full max-w-xs items-center justify-center gap-2 rounded-full bg-brand px-7 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-paper transition-all duration-300 ease-out hover:bg-brand/90 hover:shadow-lift"
           >
             Busco ayuda <ArrowRight className="size-4" />
           </Link>
@@ -133,7 +133,7 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
           </p>
           <Link
             to="/grupos"
-            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-paper transition-colors hover:bg-brand/90"
+            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-paper transition-all duration-300 ease-out hover:bg-brand/90 hover:shadow-lift"
           >
             Encontrar un grupo <ArrowRight className="size-4" />
           </Link>

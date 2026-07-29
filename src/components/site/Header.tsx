@@ -49,7 +49,7 @@ export function Header() {
             alt="Alcohólicos Anónimos — Área 2 Metropolitana, Barranquilla"
             width={72}
             height={72}
-            className="h-12 w-auto shrink-0 sm:h-16 xl:h-[4.5rem]"
+            className="h-[3.4rem] w-auto shrink-0 sm:h-[4.5rem] xl:h-20"
           />
           <div className="min-w-0 leading-tight">
             <span className="block truncate font-sans text-[0.72rem] font-bold uppercase tracking-[0.14em] text-brand sm:text-sm sm:tracking-[0.18em] xl:text-base">
