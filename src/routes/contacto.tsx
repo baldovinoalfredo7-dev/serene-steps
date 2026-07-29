@@ -104,7 +104,7 @@ function Cooperar() {
                 Las Moras IV Etapa
               </InfoBlock>
               <InfoBlock icon={<Phone className="size-5" />} label="Teléfono">
-
+                {contactConfig.phoneDisplay}
               </InfoBlock>
               <InfoBlock icon={<Clock className="size-5" />} label="Horario de atención">
                 Lunes a viernes
