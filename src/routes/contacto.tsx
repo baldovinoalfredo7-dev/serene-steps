@@ -99,9 +99,21 @@ function Cooperar() {
             </p>
             <div className="mt-6 grid gap-8 sm:grid-cols-3">
               <InfoBlock icon={<MapPin className="size-5" />} label="Dirección">
-                Calle 63 #22D-39, Local 2
-                <br />
-                Las Moras IV Etapa
+                <a
+                  href={contactConfig.officeMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-start gap-1.5 text-brand underline underline-offset-4"
+                >
+                  <MapPin className="mt-0.5 size-4 shrink-0" aria-hidden />
+                  <span>
+                    {contactConfig.officeAddressLine1}
+                    <br />
+                    {contactConfig.officeAddressLine2}
+                    <br />
+                    {contactConfig.officeCity}
+                  </span>
+                </a>
               </InfoBlock>
               <InfoBlock icon={<Phone className="size-5" />} label="Teléfono">
                 {contactConfig.phoneDisplay}
