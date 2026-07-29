@@ -101,7 +101,7 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
         </div>
 
         {/* Móvil: composición propia, texto bajo la fotografía */}
-        <div className="flex flex-col items-center px-6 pb-10 pt-7 text-center md:hidden">
+        <div className="flex flex-col items-center px-6 pb-8 pt-6 text-center md:hidden">
           <h1 className="mb-3 text-balance font-serif text-[1.55rem] font-semibold leading-[1.2] text-brand-strong">
             ¿Problemas con el alcohol?
           </h1>
