@@ -120,7 +120,7 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
 
 
       {/* 3. ENCUENTRA UN GRUPO */}
-      <section className="bg-soft/50 py-20 md:py-28">
+      <section className="bg-soft/50 py-12 md:py-16">
         <div className="mx-auto max-w-3xl px-6 text-center">
           <span className="mb-5 block text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand">
             Encuentra un grupo
@@ -142,7 +142,7 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
       </section>
 
       {/* 4-5-6. OTRAS PUERTAS */}
-      <section className="border-t border-brand/5 bg-paper py-20 md:py-28">
+      <section className="border-t border-brand/5 bg-paper py-12 md:py-16">
         <div className="mx-auto max-w-6xl px-6">
           <ul
             role="list"
@@ -171,7 +171,7 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
       </section>
 
       {/* 7. AA EN EL CARIBE */}
-      <section id="caribe" className="bg-soft/40 py-20 md:py-28">
+      <section id="caribe" className="bg-soft/40 py-12 md:py-16">
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
             <div className="overflow-hidden rounded-2xl bg-soft/60 ring-1 ring-brand/10">
@@ -210,7 +210,7 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
       </section>
 
       {/* 8. NUESTRA LITERATURA */}
-      <section className="border-t border-brand/5 bg-paper py-20 md:py-28">
+      <section className="border-t border-brand/5 bg-paper py-12 md:py-16">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mb-12 max-w-2xl">
             <span className="mb-5 block text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand">
