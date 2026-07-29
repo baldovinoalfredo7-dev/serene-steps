@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/site/PageShell";
 import { Stethoscope, Building2, Newspaper, HandHeart, MapPin, Phone, Clock, PhoneCall } from "lucide-react";
 import type { ReactNode } from "react";
+import { contactConfig, telLink } from "@/lib/contact-config";
 
 export const Route = createFileRoute("/contacto")({
   head: () => ({
@@ -103,7 +104,7 @@ function Cooperar() {
                 Las Moras IV Etapa
               </InfoBlock>
               <InfoBlock icon={<Phone className="size-5" />} label="Teléfono">
-                324 557 7038
+                {contactConfig.phoneDisplay}
               </InfoBlock>
               <InfoBlock icon={<Clock className="size-5" />} label="Horario de atención">
                 Lunes a viernes
@@ -113,7 +114,7 @@ function Cooperar() {
             </div>
             <div className="mt-8">
               <a
-                href="tel:+573245577038"
+                href={telLink()}
                 className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-paper transition-colors hover:bg-brand/90"
               >
                 <PhoneCall className="size-4" /> Contáctanos
