@@ -2,7 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 
 /** Rutas que no muestran miga de pan (inicio, auth, portales con navegación propia). */
-const EXCLUDED = ["/", "/auth", "/reset-password"];
+const EXCLUDED = ["/", "/reset-password"];
 
 /** Padre explícito para páginas de segundo nivel. */
 const PARENTS: Record<string, { to: string; label: string }> = {
