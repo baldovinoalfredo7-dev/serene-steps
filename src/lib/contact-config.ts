@@ -5,11 +5,11 @@
 
 export const contactConfig = {
   // Número en formato internacional, sin '+' ni espacios, para wa.me
-  whatsappNumber: "573001234567",
+  whatsappNumber: "573245577038",
   // Número para tel: (con '+' y prefijo de país)
-  phoneNumber: "+573001234567",
+  phoneNumber: "+573245577038",
   // Etiqueta legible para mostrar en pantalla
-  phoneDisplay: "+57 300 123 4567",
+  phoneDisplay: "324 557 7038",
   // Municipios disponibles en el formulario
   municipalities: [
     "Barranquilla",
