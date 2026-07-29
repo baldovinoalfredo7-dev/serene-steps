@@ -57,7 +57,7 @@ function Bienvenida() {
               2:00 p. m. – 6:00 p. m.
             </InfoBlock>
             <InfoBlock icon={<Phone className="size-5" />} label="Teléfono">
-
+              {contactConfig.phoneDisplay}
             </InfoBlock>
             <InfoBlock icon={<Mail className="size-5" />} label="Correo electrónico">
               <a
