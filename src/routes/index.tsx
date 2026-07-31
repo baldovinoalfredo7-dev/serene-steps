@@ -83,19 +83,20 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
           height={1088}
           className="h-[30svh] w-full object-cover object-[50%_45%] sm:h-[36svh] md:h-[52svh] md:max-h-[520px]"
         />
-        <div className="pointer-events-none absolute inset-x-0 top-0 hidden h-full bg-gradient-to-b from-paper/5 via-transparent to-paper/25 md:block" />
+        <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-paper/85 via-paper/45 to-transparent md:block" />
 
-        {/* Escritorio: bloque superpuesto, centrado entre ambos cuadros */}
-        <div className="absolute inset-0 mx-auto hidden max-w-xl flex-col items-center justify-center px-6 pb-[10%] text-center md:flex">
-          <h1 className="mb-4 whitespace-nowrap font-serif text-[1.85rem] font-semibold leading-[1.15] text-brand-strong [text-shadow:0_1px_6px_rgba(255,255,255,0.85),0_0_22px_rgba(255,255,255,0.7)] lg:text-[2.1rem]">
-            ¿Problemas con el alcohol?
+        {/* Escritorio: bloque de texto sobre la zona de menor carga visual */}
+        <div className="absolute inset-y-0 left-0 hidden w-full max-w-xl flex-col justify-center px-10 text-left md:flex lg:px-16">
+          <h1 className="mb-4 text-balance font-serif text-[2rem] font-semibold leading-[1.15] text-brand-strong [text-shadow:0_1px_8px_rgba(255,255,255,0.8)] lg:text-[2.4rem]">
+            No tienes que enfrentar esto solo
           </h1>
-          <p className="mb-7 whitespace-nowrap text-lg font-semibold leading-[1.5] text-ink [text-shadow:0_1px_5px_rgba(255,255,255,0.9),0_0_18px_rgba(255,255,255,0.7)]">
-            Siempre habrá un grupo dispuesto a recibirte
+          <p className="mb-8 max-w-[38ch] text-pretty text-base leading-[1.6] text-ink/90 [text-shadow:0_1px_6px_rgba(255,255,255,0.85)] lg:text-lg">
+            En Alcohólicos Anónimos encontrarás personas que un día también
+            buscaron ayuda. Siempre habrá un grupo dispuesto a recibirte.
           </p>
           <Link
             to="/necesito-ayuda"
-            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-brand px-7 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-paper shadow-soft transition-all duration-300 ease-out hover:bg-brand/90 hover:shadow-lift"
+            className="inline-flex min-h-12 w-fit items-center justify-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-paper shadow-soft transition-all duration-300 ease-out hover:bg-brand/90 hover:shadow-lift"
           >
             Busco ayuda <ArrowRight className="size-4" />
           </Link>
@@ -103,11 +104,12 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
 
         {/* Móvil: composición propia, texto bajo la fotografía */}
         <div className="flex flex-col items-center px-6 pb-8 pt-6 text-center md:hidden">
-          <h1 className="mb-3 text-balance font-serif text-[1.55rem] font-semibold leading-[1.2] text-brand-strong">
-            ¿Problemas con el alcohol?
+          <h1 className="mb-3 text-balance font-serif text-[1.6rem] font-semibold leading-[1.2] text-brand-strong">
+            No tienes que enfrentar esto solo
           </h1>
-          <p className="mb-6 max-w-[26ch] text-pretty text-base font-medium leading-[1.55] text-ink/90">
-            Siempre habrá un grupo dispuesto a recibirte
+          <p className="mb-6 max-w-[34ch] text-pretty text-base leading-[1.6] text-ink/90">
+            En A.A. encontrarás personas que un día también buscaron ayuda.
+            Siempre habrá un grupo dispuesto a recibirte.
           </p>
           <Link
             to="/necesito-ayuda"
@@ -116,6 +118,7 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
             Busco ayuda <ArrowRight className="size-4" />
           </Link>
         </div>
+
       </section>
 
       {/* 3. ENCUENTRA UN GRUPO */}
