@@ -154,6 +154,25 @@ function Cooperar() {
           </ul>
         </aside>
 
+        {/* CTA única */}
+        <section className="rounded-3xl bg-paper p-8 text-center ring-1 ring-brand/10 sm:p-12">
+          <h2 className="font-serif text-2xl leading-tight text-brand sm:text-3xl">
+            ¿Deseas cooperar con Alcohólicos Anónimos?
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-pretty text-base leading-relaxed text-ink/80">
+            Si deseas solicitar una charla informativa, establecer un vínculo de cooperación
+            con nuestra Comunidad o recibir más información, estaremos encantados de atenderte.
+          </p>
+          <div className="mt-8">
+            <a
+              href={telLink()}
+              className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-paper transition-colors hover:bg-brand/90"
+            >
+              <PhoneCall className="size-4" /> Contactar al Comité de Cooperación
+            </a>
+          </div>
+        </section>
+
         {/* 5. Preguntas frecuentes */}
         <section>
           <h2 className="font-serif text-2xl leading-tight text-brand sm:text-3xl">
@@ -244,14 +263,6 @@ function CoopCard({ icon: Icon, title, body }: Card) {
       </span>
       <h3 className="font-serif text-xl leading-tight text-brand">{title}</h3>
       <p className="mt-3 flex-1 text-pretty text-sm leading-relaxed text-ink/80">{body}</p>
-      <div className="mt-6">
-        <a
-          href="#contacto"
-          className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-paper px-4 py-2 text-sm font-medium text-brand transition-colors hover:bg-soft"
-        >
-          Solicitar información
-        </a>
-      </div>
     </article>
   );
 }
