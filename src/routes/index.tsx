@@ -38,25 +38,26 @@ const secondaryDoors: readonly Door[] = [
     intro:
       "Si deseas conocer cómo Alcohólicos Anónimos coopera con profesionales, instituciones y la comunidad, este espacio es para ti.",
     to: "/contacto",
-    cta: "Ingresar",
+    cta: "Quiero cooperar",
   },
   {
     eyebrow: "Ya soy miembro",
     intro:
       "Acceso al portal privado con las credenciales entregadas por tu grupo o por el Área.",
     to: "/auth",
-    cta: "Ingresar",
+    cta: "Acceder al portal",
   },
   {
-    eyebrow: "Nuestra Área de Servicio",
+    eyebrow: "Conoce nuestra oficina",
     intro:
-      "Conozca el Área de Servicio, la ubicación de la Oficina del Área y los diferentes medios de contacto disponibles para los grupos y miembros de nuestra Comunidad.",
+      "Conoce la ubicación de nuestra oficina, los horarios de atención y los diferentes medios de contacto del Área 2 Metropolitana de Barranquilla.",
     to: "/bienvenida",
-    cta: "Ingresar",
+    cta: "Conocer la oficina",
   },
 
 
 ] as const;
+
 
 const literatura = [
   { title: "Libro Grande", icon: BookOpen },
@@ -162,7 +163,7 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
                   <p className="mb-8 text-base leading-[1.7] text-ink/85">
                     {d.intro}
                   </p>
-                  <span className="mt-auto inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand transition-colors duration-300 group-hover:text-brand-strong">
+                  <span className="mt-auto inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-paper shadow-soft transition-all duration-300 ease-out group-hover:bg-brand/90 hover:bg-brand/90 hover:shadow-lift">
                     {d.cta} <ArrowRight className="size-4 transition-transform duration-300" />
                   </span>
                 </Link>
