@@ -83,14 +83,14 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
           height={1088}
           className="h-[30svh] w-full object-cover object-[50%_45%] sm:h-[36svh] md:h-[52svh] md:max-h-[520px]"
         />
-        <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-paper/85 via-paper/45 to-transparent md:block" />
+        <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-l from-paper/90 via-paper/50 to-transparent md:block" />
 
-        {/* Escritorio: bloque de texto sobre la zona de menor carga visual */}
-        <div className="absolute inset-y-0 left-0 hidden w-full max-w-xl flex-col justify-center px-10 text-left md:flex lg:px-16">
-          <h1 className="mb-4 text-balance font-serif text-[2rem] font-semibold leading-[1.15] text-brand-strong [text-shadow:0_1px_8px_rgba(255,255,255,0.8)] lg:text-[2.4rem]">
+        {/* Escritorio: bloque de texto sobre el tercio derecho, zona más limpia */}
+        <div className="absolute inset-y-0 right-0 hidden w-full max-w-[34rem] flex-col justify-center px-10 text-left md:flex lg:px-14">
+          <h1 className="mb-6 text-balance font-serif text-[2rem] font-semibold leading-[1.15] text-brand-strong [text-shadow:0_1px_8px_rgba(255,255,255,0.8)] lg:text-[2.4rem]">
             No tienes que enfrentar esto solo
           </h1>
-          <p className="mb-8 max-w-[38ch] text-pretty text-base leading-[1.6] text-ink/90 [text-shadow:0_1px_6px_rgba(255,255,255,0.85)] lg:text-lg">
+          <p className="mb-10 max-w-[46ch] text-pretty text-base leading-[1.65] text-ink/90 [text-shadow:0_1px_6px_rgba(255,255,255,0.85)] lg:text-lg">
             En Alcohólicos Anónimos encontrarás personas que un día también
             buscaron ayuda. Siempre habrá un grupo dispuesto a recibirte.
           </p>
