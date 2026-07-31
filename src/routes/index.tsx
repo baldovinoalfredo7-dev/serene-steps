@@ -34,9 +34,9 @@ type Door = {
 
 const secondaryDoors: readonly Door[] = [
   {
-    eyebrow: "Cooperación con profesionales",
+    eyebrow: "Quiero cooperar",
     intro:
-      "Espacio para profesionales e instituciones que desean colaborar con Alcohólicos Anónimos.",
+      "Si deseas conocer cómo Alcohólicos Anónimos coopera con profesionales, instituciones y la comunidad, este espacio es para ti.",
     to: "/contacto",
     cta: "Ingresar",
   },
