@@ -84,16 +84,18 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
           height={1088}
           className="h-[30svh] w-full object-cover object-[50%_45%] sm:h-[36svh] md:h-[52svh] md:max-h-[520px]"
         />
-        <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-l from-paper/90 via-paper/50 to-transparent md:block" />
+        <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-l from-paper/95 via-paper/70 to-transparent md:block" />
 
         {/* Escritorio: bloque de texto sobre el tercio derecho, zona más limpia */}
-        <div className="absolute inset-y-0 right-0 hidden w-full max-w-[34rem] flex-col justify-center px-10 text-left md:flex lg:px-14">
-          <h1 className="mb-6 text-balance font-serif text-[2rem] font-semibold leading-[1.15] text-brand-strong [text-shadow:0_1px_8px_rgba(255,255,255,0.8)] lg:text-[2.4rem]">
-            Si crees que tienes un problema con el alcohol, no estás solo
+        <div className="absolute inset-y-0 right-0 hidden w-full max-w-[36rem] flex-col justify-center px-10 text-left md:flex lg:px-14">
+          <h1 className="mb-7 text-balance font-serif text-[2.3rem] font-bold leading-[1.12] text-brand-strong [text-shadow:0_1px_10px_rgba(255,255,255,0.9)] lg:text-[2.75rem]">
+            ¿Crees que el alcohol está afectando tu vida?
           </h1>
-          <p className="mb-10 max-w-[46ch] text-pretty text-base leading-[1.65] text-ink/90 [text-shadow:0_1px_6px_rgba(255,255,255,0.85)] lg:text-lg">
-            En Alcohólicos Anónimos encontrarás personas que un día también
-            buscaron ayuda. Siempre habrá un grupo dispuesto a recibirte.
+          <p className="mb-11 max-w-[48ch] text-pretty text-base leading-[1.7] text-ink/90 [text-shadow:0_1px_6px_rgba(255,255,255,0.9)] lg:text-lg">
+            En Alcohólicos Anónimos encontrarás una comunidad de personas que
+            comparten su experiencia, fortaleza y esperanza para ayudarse
+            mutuamente a recuperarse del alcoholismo. Encuentra un grupo cerca
+            de ti y da el primer paso.
           </p>
           <Link
             to="/necesito-ayuda"
@@ -104,13 +106,15 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
         </div>
 
         {/* Móvil: composición propia, texto bajo la fotografía */}
-        <div className="flex flex-col items-center px-6 pb-8 pt-6 text-center md:hidden">
-          <h1 className="mb-3 text-balance font-serif text-[1.6rem] font-semibold leading-[1.2] text-brand-strong">
-            Si crees que tienes un problema con el alcohol, no estás solo
+        <div className="flex flex-col items-center px-6 pb-9 pt-7 text-center md:hidden">
+          <h1 className="mb-4 text-balance font-serif text-[1.75rem] font-bold leading-[1.18] text-brand-strong">
+            ¿Crees que el alcohol está afectando tu vida?
           </h1>
-          <p className="mb-6 max-w-[34ch] text-pretty text-base leading-[1.6] text-ink/90">
-            En Alcohólicos Anónimos encontrarás personas que un día también
-            buscaron ayuda. Siempre habrá un grupo dispuesto a recibirte.
+          <p className="mb-7 max-w-[38ch] text-pretty text-base leading-[1.65] text-ink/90">
+            En Alcohólicos Anónimos encontrarás una comunidad de personas que
+            comparten su experiencia, fortaleza y esperanza para ayudarse
+            mutuamente a recuperarse del alcoholismo. Encuentra un grupo cerca
+            de ti y da el primer paso.
           </p>
           <Link
             to="/necesito-ayuda"
@@ -119,6 +123,7 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
             Busco ayuda <ArrowRight className="size-4" />
           </Link>
         </div>
+
 
       </section>
 
