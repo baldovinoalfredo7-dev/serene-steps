@@ -10,6 +10,9 @@ export const contactConfig = {
   phoneNumber: "+573245577038",
   // Etiqueta legible para mostrar en pantalla
   phoneDisplay: "324 557 7038",
+  // Comité de Cooperación (CCP/IP)
+  cooperationPhoneNumber: "+573015257665",
+  cooperationPhoneDisplay: "301 525 7665",
   // Dirección oficial de la Oficina del Área
   officeAddressLine1: "Calle 63 #22D-39, Local 2",
   officeAddressLine2: "Las Moras IV Etapa",
@@ -34,4 +37,8 @@ export function whatsappLink(prefilled?: string) {
 
 export function telLink() {
   return `tel:${contactConfig.phoneNumber}`;
+}
+
+export function cooperationTelLink() {
+  return `tel:${contactConfig.cooperationPhoneNumber}`;
 }
