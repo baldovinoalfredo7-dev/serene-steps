@@ -93,9 +93,8 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
           </h1>
           <p className="mb-11 max-w-[48ch] text-pretty text-base leading-[1.7] text-ink/90 [text-shadow:0_1px_6px_rgba(255,255,255,0.9)] lg:text-lg">
             En Alcohólicos Anónimos encontrarás una comunidad de personas que
-            comparten su experiencia, fortaleza y esperanza para ayudarse
-            mutuamente a recuperarse del alcoholismo. Encuentra un grupo cerca
-            de ti y da el primer paso.
+            comparten su experiencia, fortaleza y esperanza. Si deseas dejar de
+            beber, aquí encontrarás comprensión y un camino de recuperación.
           </p>
           <Link
             to="/necesito-ayuda"
@@ -112,9 +111,8 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
           </h1>
           <p className="mb-7 max-w-[38ch] text-pretty text-base leading-[1.65] text-ink/90">
             En Alcohólicos Anónimos encontrarás una comunidad de personas que
-            comparten su experiencia, fortaleza y esperanza para ayudarse
-            mutuamente a recuperarse del alcoholismo. Encuentra un grupo cerca
-            de ti y da el primer paso.
+            comparten su experiencia, fortaleza y esperanza. Si deseas dejar de
+            beber, aquí encontrarás comprensión y un camino de recuperación.
           </p>
           <Link
             to="/necesito-ayuda"
@@ -134,11 +132,12 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
             Encuentra un grupo
           </span>
           <h2 className="mb-6 font-serif text-3xl leading-[1.15] text-brand sm:text-4xl md:text-5xl">
-            Eres bienvenido
+            Da el primer paso
           </h2>
           <p className="mx-auto mb-10 max-w-xl text-pretty text-lg leading-[1.7] text-ink/85">
-            En cada grupo encontrarás personas que un día también llegaron
-            buscando ayuda. No necesitas inscribirte ni hablar si no lo deseas.
+            Encontrar un grupo es sencillo. No necesitas inscribirte, pedir
+            autorización ni hablar si aún no lo deseas. Solo acércate a la
+            reunión que mejor se adapte a ti.
           </p>
           <Link
             to="/grupos"
