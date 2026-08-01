@@ -104,15 +104,8 @@ function Cooperar() {
       intro="Si eres profesional de la salud, representas una institución, trabajas en un medio de comunicación o simplemente deseas conocer más sobre Alcohólicos Anónimos, este espacio es para ti. Nos alegrará compartir información y explorar formas de cooperación."
     >
       <div className="space-y-16">
-        {/* Hero CTA */}
-        <div>
-          <a
-            href={cooperationTelLink()}
-            className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-paper transition-colors hover:bg-brand/90"
-          >
-            <PhoneCall className="size-4" /> Llamar al Comité de Cooperación
-          </a>
-        </div>
+
+
 
         {/* 2. Qué significa cooperar */}
         <section>
