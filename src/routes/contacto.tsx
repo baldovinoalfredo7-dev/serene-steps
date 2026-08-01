@@ -11,7 +11,7 @@ import {
   PhoneCall,
 } from "lucide-react";
 import type { ReactNode } from "react";
-import { contactConfig, telLink } from "@/lib/contact-config";
+import { contactConfig, cooperationTelLink } from "@/lib/contact-config";
 
 export const Route = createFileRoute("/contacto")({
   head: () => ({
@@ -107,10 +107,10 @@ function Cooperar() {
         {/* Hero CTA */}
         <div>
           <a
-            href={telLink()}
+            href={cooperationTelLink()}
             className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-paper transition-colors hover:bg-brand/90"
           >
-            <PhoneCall className="size-4" /> Contactar al Comité de Cooperación
+            <PhoneCall className="size-4" /> Llamar al Comité de Cooperación
           </a>
         </div>
 
@@ -165,10 +165,10 @@ function Cooperar() {
           </p>
           <div className="mt-8">
             <a
-              href={telLink()}
+              href={cooperationTelLink()}
               className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-paper transition-colors hover:bg-brand/90"
             >
-              <PhoneCall className="size-4" /> Contactar al Comité de Cooperación
+              <PhoneCall className="size-4" /> Llamar al Comité de Cooperación
             </a>
           </div>
         </section>
@@ -225,6 +225,8 @@ function Cooperar() {
               </InfoBlock>
               <InfoBlock icon={<Phone className="size-5" />} label="Teléfono">
                 {contactConfig.phoneDisplay}
+                <br />
+                Comité de Cooperación: {contactConfig.cooperationPhoneDisplay}
               </InfoBlock>
               <InfoBlock icon={<Clock className="size-5" />} label="Horario de atención">
                 Lunes a viernes
@@ -234,10 +236,10 @@ function Cooperar() {
             </div>
             <div className="mt-8">
               <a
-                href={telLink()}
+                href={cooperationTelLink()}
                 className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-paper transition-colors hover:bg-brand/90"
               >
-                <PhoneCall className="size-4" /> Contáctanos
+                <PhoneCall className="size-4" /> Llamar al Comité de Cooperación
               </a>
             </div>
           </div>
