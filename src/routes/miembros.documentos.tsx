@@ -410,7 +410,9 @@ function PreviewDialog({
   doc: Doc | null;
   onClose: () => void;
 }) {
+  const isMobile = useIsMobile();
   const previewSrc = doc ? (doc.previewUrl ?? (doc.fileType === "PDF" ? doc.href : null)) : null;
+  const canEmbed = !!previewSrc && !isMobile;
 
   return (
     <Dialog open={!!doc} onOpenChange={(open) => !open && onClose()}>
@@ -429,36 +431,43 @@ function PreviewDialog({
               <CategoryBadge category={doc.category} />
             </div>
             <Metadata doc={doc} />
-            <div className="mt-2 overflow-hidden rounded-2xl border border-brand/10 bg-brand-soft/30">
-              {previewSrc ? (
+            {canEmbed ? (
+              <div className="mt-2 overflow-hidden rounded-2xl border border-brand/10 bg-brand-soft/30">
                 <object
                   data={`${previewSrc}#page=1&toolbar=0&navpanes=0`}
                   type="application/pdf"
                   className="h-[55vh] w-full"
                   aria-label={`Vista previa de ${doc.title}`}
                 >
-                  <p className="p-6 text-sm leading-relaxed text-ink/75">
-                    Tu navegador no permite mostrar la vista previa. Puedes
-                    descargar el documento para consultarlo.
-                  </p>
+                  <FallbackCard doc={doc} previewSrc={previewSrc} />
                 </object>
-              ) : (
-                <p className="p-6 text-sm leading-relaxed text-ink/75">
-                  Este archivo no puede visualizarse dentro del portal.
-                  Descárgalo para consultarlo completo.
-                </p>
+              </div>
+            ) : (
+              <div className="mt-2">
+                <FallbackCard doc={doc} previewSrc={previewSrc} />
+              </div>
+            )}
+            <div className="mt-2 flex flex-wrap gap-3">
+              {previewSrc && (
+                <a
+                  href={previewSrc}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2 text-sm font-semibold text-paper shadow-sm transition-colors duration-300 hover:bg-brand/90"
+                >
+                  <ExternalLink className="size-4" /> Ver documento
+                </a>
               )}
-            </div>
-            <div className="mt-2">
               <a
                 href={doc.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2 text-sm font-semibold text-paper shadow-sm transition-colors duration-300 hover:bg-brand/90"
+                className="inline-flex items-center gap-2 rounded-full border border-brand/30 px-5 py-2 text-sm font-semibold text-brand transition-colors duration-300 hover:bg-brand/10"
               >
-                <Download className="size-4" /> Descargar
+                <Download className="size-4" /> Descargar {doc.fileType === "PDF" ? "PDF" : "archivo"}
               </a>
             </div>
+
           </>
         )}
       </DialogContent>
