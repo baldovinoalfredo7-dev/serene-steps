@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { FileText, Download, Eye, CalendarDays } from "lucide-react";
+import { FileText, Download, Eye, CalendarDays, Search, ExternalLink } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
+
 import { MemberPageHeader } from "@/components/miembros/SectionCard";
 import {
   Dialog,
