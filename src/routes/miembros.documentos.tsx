@@ -474,3 +474,52 @@ function PreviewDialog({
     </Dialog>
   );
 }
+
+function FallbackCard({ doc, previewSrc }: { doc: Doc; previewSrc: string | null }) {
+  return (
+    <div className="flex flex-col items-center gap-4 rounded-2xl border border-brand/10 bg-brand-soft/30 p-6 text-center sm:flex-row sm:text-left">
+      <div className="w-28 shrink-0 overflow-hidden rounded-xl border border-brand/10 bg-paper">
+        {doc.thumb ? (
+          <img
+            src={doc.thumb}
+            alt={`Primera página de ${doc.title}`}
+            loading="lazy"
+            className="h-36 w-full object-cover object-top"
+          />
+        ) : (
+          <div className="grid h-36 w-full place-items-center text-brand/40">
+            <FileText className="size-10" aria-hidden />
+          </div>
+        )}
+      </div>
+      <div className="flex-1">
+        <p className="font-serif text-base leading-snug text-brand">{doc.title}</p>
+        <p className="mt-2 text-sm leading-relaxed text-ink/70">
+          Tu navegador no puede mostrar la vista previa aquí. Ábrelo en una pestaña
+          nueva o descárgalo para consultarlo completo.
+        </p>
+        <div className="mt-4 flex flex-wrap justify-center gap-3 sm:justify-start">
+          {previewSrc && (
+            <a
+              href={previewSrc}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-2 text-sm font-semibold text-paper shadow-sm transition-colors duration-300 hover:bg-brand/90"
+            >
+              <ExternalLink className="size-4" /> Ver documento
+            </a>
+          )}
+          <a
+            href={doc.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-brand/30 px-4 py-2 text-sm font-semibold text-brand transition-colors duration-300 hover:bg-brand/10"
+          >
+            <Download className="size-4" /> Descargar {doc.fileType === "PDF" ? "PDF" : "archivo"}
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
