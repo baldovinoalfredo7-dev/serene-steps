@@ -171,43 +171,120 @@ const documents: Doc[] = [
   },
 ];
 
+const filters: { key: "todos" | CategoryKey; label: string }[] = [
+  { key: "todos", label: "Todos" },
+  { key: "informes", label: "📄 Informes" },
+  { key: "talleres", label: "🎓 Talleres" },
+  { key: "formatos", label: "📝 Formatos" },
+];
+
+function normalize(value: string) {
+  return value
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
+
 function DocumentosPage() {
   const [activeDoc, setActiveDoc] = useState<Doc | null>(null);
+  const [filter, setFilter] = useState<"todos" | CategoryKey>("todos");
+  const [query, setQuery] = useState("");
 
   const order: CategoryKey[] = ["informes", "talleres", "formatos"];
+  const visibleCategories = filter === "todos" ? order : [filter];
+
+  const matches = (doc: Doc) => {
+    const q = normalize(query.trim());
+    if (!q) return true;
+    return (
+      normalize(doc.title).includes(q) || normalize(doc.description).includes(q)
+    );
+  };
+
+  const totalResults = documents.filter(
+    (d) => (filter === "todos" || d.category === filter) && matches(d),
+  ).length;
 
   return (
-    <div className="mx-auto max-w-5xl space-y-14">
+    <div className="mx-auto max-w-5xl space-y-10">
       <MemberPageHeader
         title="Biblioteca Digital"
         intro="Informes, talleres y formatos de servicio del Área 2 Metropolitana de Barranquilla, organizados por categoría para su consulta y descarga."
       />
 
-      {order.map((key) => {
-        const cat = categories[key];
-        const docs = documents.filter((d) => d.category === key);
-        return (
-          <CategorySection key={key} id={key} emoji={cat.emoji} title={cat.title} intro={cat.intro}>
-            {docs.length > 0 ? (
-              <div className="grid gap-4 sm:grid-cols-2">
-                {docs.map((doc) => (
-                  <DocumentCard key={doc.title} doc={doc} onPreview={setActiveDoc} />
-                ))}
-              </div>
-            ) : (
-              <p className="rounded-3xl border border-dashed border-brand/20 bg-paper/60 p-6 text-sm leading-relaxed text-ink/70">
-                Aún no hay documentos publicados en esta categoría. A medida que sean
-                aprobados, se incorporarán aquí para su consulta y descarga.
-              </p>
-            )}
-          </CategorySection>
-        );
-      })}
+      <div className="space-y-4">
+        <div className="relative">
+          <Search
+            className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-brand/50"
+            aria-hidden
+          />
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Buscar por nombre del documento…"
+            aria-label="Buscar documentos por nombre"
+            className="w-full rounded-full border border-brand/15 bg-paper py-3 pl-11 pr-4 text-sm text-ink shadow-sm outline-none transition-colors placeholder:text-ink/45 focus:border-brand/40"
+          />
+        </div>
+        <div className="flex flex-wrap gap-2" role="group" aria-label="Filtrar por categoría">
+          {filters.map((f) => {
+            const active = filter === f.key;
+            return (
+              <button
+                key={f.key}
+                type="button"
+                onClick={() => setFilter(f.key)}
+                aria-pressed={active}
+                className={`rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] transition-colors duration-300 ${
+                  active
+                    ? "border-brand bg-brand text-paper"
+                    : "border-brand/20 bg-paper text-brand hover:bg-brand/10"
+                }`}
+              >
+                {f.label}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {totalResults === 0 && (
+        <p className="rounded-3xl border border-dashed border-brand/20 bg-paper/60 p-6 text-sm leading-relaxed text-ink/70">
+          No encontramos documentos que coincidan con tu búsqueda. Intenta con otra
+          palabra o selecciona otra categoría.
+        </p>
+      )}
+
+      <div className="space-y-14">
+        {visibleCategories.map((key) => {
+          const cat = categories[key];
+          const docs = documents.filter((d) => d.category === key).filter(matches);
+          if (query.trim() && docs.length === 0) return null;
+          return (
+            <CategorySection key={key} id={key} emoji={cat.emoji} title={cat.title} intro={cat.intro}>
+              {docs.length > 0 ? (
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {docs.map((doc) => (
+                    <DocumentCard key={doc.title} doc={doc} onPreview={setActiveDoc} />
+                  ))}
+                </div>
+              ) : (
+                <p className="rounded-3xl border border-dashed border-brand/20 bg-paper/60 p-6 text-sm leading-relaxed text-ink/70">
+                  Aún no hay documentos publicados en esta categoría. A medida que sean
+                  aprobados, se incorporarán aquí para su consulta y descarga.
+                </p>
+              )}
+            </CategorySection>
+          );
+        })}
+      </div>
 
       <PreviewDialog doc={activeDoc} onClose={() => setActiveDoc(null)} />
     </div>
   );
 }
+
 
 function CategorySection({
   id,
