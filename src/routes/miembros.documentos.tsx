@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { FileText, Download, Eye } from "lucide-react";
+import { FileText, Download, Eye, CalendarDays } from "lucide-react";
 import { MemberPageHeader } from "@/components/miembros/SectionCard";
 import {
   Dialog,
@@ -9,93 +9,200 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+
+// Documentos
 import informe62 from "@/assets/docs/informe-62-csg.pdf.asset.json";
 import tallerIP from "@/assets/docs/taller-informacion-publica.pdf.asset.json";
 import tallerInventario from "@/assets/docs/taller-inventario-grupo.pptx.asset.json";
+import tallerInventarioPdf from "@/assets/docs/taller-inventario-grupo-pdf.pdf.asset.json";
+import tallerActoEscribir from "@/assets/docs/taller-acto-escribir.pdf.asset.json";
+import tallerAutomantenimiento from "@/assets/docs/taller-automantenimiento.pptx.asset.json";
+import tallerAutomantenimientoPdf from "@/assets/docs/taller-automantenimiento-pdf.pdf.asset.json";
+import tallerHistoriaRevista from "@/assets/docs/taller-historia-revista.pptx.asset.json";
+import tallerHistoriaRevistaPdf from "@/assets/docs/taller-historia-revista-pdf.pdf.asset.json";
+import tallerNuestraRevista from "@/assets/docs/taller-nuestra-revista.pptx.asset.json";
+import tallerNuestraRevistaPdf from "@/assets/docs/taller-nuestra-revista-pdf.pdf.asset.json";
+
+// Miniaturas (primera página de cada documento)
+import thumbInforme62 from "@/assets/docs/thumbs/informe-62-csg.jpg.asset.json";
+import thumbIP from "@/assets/docs/thumbs/informacion-publica.jpg.asset.json";
+import thumbInventario from "@/assets/docs/thumbs/inventario-grupo.jpg.asset.json";
+import thumbActoEscribir from "@/assets/docs/thumbs/acto-escribir.jpg.asset.json";
+import thumbAutomantenimiento from "@/assets/docs/thumbs/automantenimiento.jpg.asset.json";
+import thumbHistoriaRevista from "@/assets/docs/thumbs/historia-revista.jpg.asset.json";
+import thumbNuestraRevista from "@/assets/docs/thumbs/nuestra-revista.jpg.asset.json";
 
 export const Route = createFileRoute("/miembros/documentos")({
   head: () => ({
     meta: [
-      { title: "Documentos para descargar · Portal para Miembros" },
+      { title: "Biblioteca Digital · Portal para Miembros" },
       { name: "robots", content: "noindex,nofollow" },
     ],
   }),
   component: DocumentosPage,
 });
 
+type CategoryKey = "informes" | "talleres" | "formatos";
+
+const categories: Record<
+  CategoryKey,
+  { emoji: string; label: string; title: string; intro: string }
+> = {
+  informes: {
+    emoji: "📄",
+    label: "Informe",
+    title: "Informes",
+    intro:
+      "Informes de servidores, comités, asambleas y demás documentos oficiales relacionados con la administración y el servicio del Área.",
+  },
+  talleres: {
+    emoji: "🎓",
+    label: "Taller",
+    title: "Talleres",
+    intro:
+      "Material de formación y capacitación para grupos, servidores y comités. Esta sección se actualiza de forma continua con nuevos talleres.",
+  },
+  formatos: {
+    emoji: "📝",
+    label: "Formato",
+    title: "Formatos",
+    intro:
+      "Formularios, actas, solicitudes y formatos oficiales utilizados por los grupos, comités y servidores del Área.",
+  },
+};
+
 type Doc = {
   title: string;
   description: string;
+  /** Archivo original para descargar */
   href: string;
+  /** Versión PDF para la vista previa (si el original no es PDF) */
+  previewUrl?: string;
+  /** Miniatura de la primera página */
+  thumb?: string;
+  category: CategoryKey;
   fileType: "PDF" | "PowerPoint";
   pages?: string;
-  date?: string;
-  previewable: boolean;
+  publishedAt: string;
 };
 
-const documentosServicio: Doc[] = [
+const documents: Doc[] = [
   {
     title:
-      "Informe Final de la 62.ª Reunión Anual de la Conferencia de Servicios Generales de Alcohólicos Anónimos",
+      "Informe Final de la 62.ª Reunión Anual de la Conferencia de Servicios Generales",
     description:
       "Resumen de las recomendaciones, acciones y conclusiones aprobadas durante la 62.ª Reunión Anual de la Conferencia de Servicios Generales. Útil para conocer las decisiones que orientan el servicio en Colombia.",
     href: informe62.url,
+    thumb: thumbInforme62.url,
+    category: "informes",
     fileType: "PDF",
     pages: "216 páginas",
-    date: "2026",
-    previewable: true,
+    publishedAt: "2026",
   },
-];
-
-const talleres: Doc[] = [
   {
     title: "Taller de Información Pública",
     description:
       "Guía de trabajo para preparar y desarrollar actividades de Información Pública. Explica el propósito del comité, las pautas de anonimato y ejemplos prácticos para llevar el mensaje a la comunidad.",
     href: tallerIP.url,
+    thumb: thumbIP.url,
+    category: "talleres",
     fileType: "PDF",
     pages: "36 páginas",
-    date: "2022",
-    previewable: true,
+    publishedAt: "2022",
   },
   {
     title: "Taller de Inventario de Grupo",
     description:
       "Presentación de apoyo para realizar el inventario del grupo. Reúne las preguntas guía y los criterios de evaluación que ayudan al grupo a revisar su funcionamiento y su fidelidad a las Tradiciones.",
     href: tallerInventario.url,
+    previewUrl: tallerInventarioPdf.url,
+    thumb: thumbInventario.url,
+    category: "talleres",
     fileType: "PowerPoint",
     pages: "27 diapositivas",
-    previewable: false,
+    publishedAt: "2019",
+  },
+  {
+    title: "Taller de Automantenimiento",
+    description:
+      "Taller sobre la Séptima Tradición y la responsabilidad económica de los grupos: el sentido espiritual del automantenimiento, la distribución de las contribuciones y el sostenimiento de la estructura de servicio.",
+    href: tallerAutomantenimiento.url,
+    previewUrl: tallerAutomantenimientoPdf.url,
+    thumb: thumbAutomantenimiento.url,
+    category: "talleres",
+    fileType: "PowerPoint",
+    pages: "33 diapositivas",
+    publishedAt: "3 de agosto de 2026",
+  },
+  {
+    title: "El acto de escribir — AA El Mensaje",
+    description:
+      "Documento de apoyo para animar a los miembros a compartir su experiencia por escrito en la revista AA El Mensaje: recomendaciones de estilo, anonimato y pasos para enviar una colaboración.",
+    href: tallerActoEscribir.url,
+    thumb: thumbActoEscribir.url,
+    category: "talleres",
+    fileType: "PDF",
+    pages: "6 páginas",
+    publishedAt: "3 de agosto de 2026",
+  },
+  {
+    title: "Nuestra revista AA El Mensaje",
+    description:
+      "Presentación sobre la revista AA El Mensaje: su propósito dentro de la Comunidad, su contenido y la manera en que los grupos pueden apoyarla y utilizarla como herramienta para llevar el mensaje.",
+    href: tallerNuestraRevista.url,
+    previewUrl: tallerNuestraRevistaPdf.url,
+    thumb: thumbNuestraRevista.url,
+    category: "talleres",
+    fileType: "PowerPoint",
+    pages: "11 diapositivas",
+    publishedAt: "3 de agosto de 2026",
+  },
+  {
+    title: "Historia de la revista AA El Mensaje",
+    description:
+      "Recorrido histórico por la revista AA El Mensaje: sus orígenes, su evolución y su papel como medio de comunicación entre los grupos de Alcohólicos Anónimos en Colombia.",
+    href: tallerHistoriaRevista.url,
+    previewUrl: tallerHistoriaRevistaPdf.url,
+    thumb: thumbHistoriaRevista.url,
+    category: "talleres",
+    fileType: "PowerPoint",
+    pages: "11 diapositivas",
+    publishedAt: "3 de agosto de 2026",
   },
 ];
 
 function DocumentosPage() {
   const [activeDoc, setActiveDoc] = useState<Doc | null>(null);
 
+  const order: CategoryKey[] = ["informes", "talleres", "formatos"];
+
   return (
     <div className="mx-auto max-w-5xl space-y-14">
       <MemberPageHeader
-        title="Documentos para descargar"
-        intro="Aquí encontrarás recursos de apoyo para el servicio del Área 2 Metropolitana de Barranquilla."
+        title="Biblioteca Digital"
+        intro="Informes, talleres y formatos de servicio del Área 2 Metropolitana de Barranquilla, organizados por categoría para su consulta y descarga."
       />
 
-      <CategorySection id="documentos-servicio" emoji="📑" title="Documentos de servicio">
-        {documentosServicio.map((doc) => (
-          <DocumentCard key={doc.title} doc={doc} onPreview={setActiveDoc} />
-        ))}
-      </CategorySection>
-
-      <CategorySection id="talleres" emoji="🎓" title="Talleres">
-        {talleres.map((doc) => (
-          <DocumentCard key={doc.title} doc={doc} onPreview={setActiveDoc} />
-        ))}
-      </CategorySection>
-
-      <CategorySection id="formatos" emoji="📋" title="Formatos">
-        <p className="text-base leading-relaxed text-ink/85">
-          En esta sección estarán disponibles los formatos y formularios utilizados por el Área para apoyar las diferentes actividades de servicio. A medida que sean aprobados, se incorporarán para su consulta y descarga.
-        </p>
-      </CategorySection>
+      {order.map((key) => {
+        const cat = categories[key];
+        const docs = documents.filter((d) => d.category === key);
+        return (
+          <CategorySection key={key} id={key} emoji={cat.emoji} title={cat.title} intro={cat.intro}>
+            {docs.length > 0 ? (
+              <div className="grid gap-4 sm:grid-cols-2">
+                {docs.map((doc) => (
+                  <DocumentCard key={doc.title} doc={doc} onPreview={setActiveDoc} />
+                ))}
+              </div>
+            ) : (
+              <p className="rounded-3xl border border-dashed border-brand/20 bg-paper/60 p-6 text-sm leading-relaxed text-ink/70">
+                Aún no hay documentos publicados en esta categoría. A medida que sean
+                aprobados, se incorporarán aquí para su consulta y descarga.
+              </p>
+            )}
+          </CategorySection>
+        );
+      })}
 
       <PreviewDialog doc={activeDoc} onClose={() => setActiveDoc(null)} />
     </div>
@@ -106,42 +213,77 @@ function CategorySection({
   id,
   emoji,
   title,
+  intro,
   children,
 }: {
   id?: string;
   emoji: string;
   title: string;
+  intro?: string;
   children: React.ReactNode;
 }) {
   return (
     <section id={id} className="scroll-mt-24">
-
-      <h2 className="mb-6 flex items-center gap-3 font-serif text-2xl leading-tight text-brand sm:text-3xl">
+      <h2 className="mb-3 flex items-center gap-3 font-serif text-2xl leading-tight text-brand sm:text-3xl">
         <span aria-hidden className="text-2xl">
           {emoji}
         </span>
         {title}
       </h2>
-      <div className="grid gap-4 sm:grid-cols-2">{children}</div>
+      {intro && (
+        <p className="mb-6 max-w-3xl text-sm leading-relaxed text-ink/75">{intro}</p>
+      )}
+      {children}
     </section>
   );
 }
 
-function Metadata({ doc }: { doc: Doc }) {
-  const items = [doc.fileType, doc.pages, doc.date].filter(Boolean) as string[];
+function CategoryBadge({ category }: { category: CategoryKey }) {
+  const cat = categories[category];
   return (
-    <ul className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.7rem] font-medium uppercase tracking-[0.14em] text-ink/55">
-      {items.map((item, i) => (
-        <li key={item} className="flex items-center gap-2">
-          {i > 0 && (
-            <span aria-hidden className="text-brand/30">
-              ·
-            </span>
-          )}
+    <span className="inline-flex items-center gap-1.5 rounded-full bg-brand/10 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-brand">
+      <span aria-hidden>{cat.emoji}</span>
+      {cat.label}
+    </span>
+  );
+}
+
+function Metadata({ doc }: { doc: Doc }) {
+  const items = [doc.fileType, doc.pages].filter(Boolean) as string[];
+  return (
+    <ul className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.7rem] font-medium uppercase tracking-[0.14em] text-ink/55">
+      <li className="flex items-center gap-1.5">
+        <CalendarDays className="size-3.5 text-brand/50" aria-hidden />
+        {doc.publishedAt}
+      </li>
+      {items.map((item) => (
+        <li key={item} className="flex items-center gap-3">
+          <span aria-hidden className="text-brand/30">
+            ·
+          </span>
           {item}
         </li>
       ))}
     </ul>
+  );
+}
+
+function Thumbnail({ doc }: { doc: Doc }) {
+  return (
+    <div className="mb-5 overflow-hidden rounded-2xl border border-brand/10 bg-brand-soft/30">
+      {doc.thumb ? (
+        <img
+          src={doc.thumb}
+          alt={`Primera página de ${doc.title}`}
+          loading="lazy"
+          className="h-44 w-full object-cover object-top"
+        />
+      ) : (
+        <div className="grid h-44 w-full place-items-center text-brand/40">
+          <FileText className="size-10" aria-hidden />
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -153,39 +295,30 @@ function DocumentCard({
   onPreview: (doc: Doc) => void;
 }) {
   return (
-    <article className="flex flex-col rounded-3xl border border-brand/10 bg-paper p-6 shadow-sm transition-shadow hover:shadow-lift">
-      <div className="mb-4 flex items-center gap-3">
-        <span
-          aria-hidden
-          className="grid size-11 place-items-center rounded-2xl bg-brand/10 text-brand"
-        >
-          <FileText className="size-5" />
-        </span>
-        <span className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-brand/70">
-          Documento
-        </span>
-      </div>
-      <h3 className="font-serif text-lg leading-snug text-brand">{doc.title}</h3>
+    <article className="flex flex-col rounded-3xl border border-brand/10 bg-paper p-6 shadow-sm transition-shadow duration-300 hover:shadow-lift">
+      <Thumbnail doc={doc} />
+      <CategoryBadge category={doc.category} />
+      <h3 className="mt-3 font-serif text-lg leading-snug text-brand">{doc.title}</h3>
       <p className="mt-3 flex-1 text-sm leading-relaxed text-ink/75">
         {doc.description}
       </p>
       <Metadata doc={doc} />
       <div className="mt-6 flex flex-wrap items-center gap-3">
+        <button
+          type="button"
+          onClick={() => onPreview(doc)}
+          className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2 text-sm font-semibold text-paper shadow-sm transition-colors duration-300 hover:bg-brand/90"
+        >
+          <Eye className="size-4" /> Ver
+        </button>
         <a
           href={doc.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2 text-sm font-semibold text-paper shadow-sm transition-colors hover:bg-brand/90"
+          className="inline-flex items-center gap-2 rounded-full border border-brand/30 px-5 py-2 text-sm font-semibold text-brand transition-colors duration-300 hover:bg-brand/10"
         >
           <Download className="size-4" /> Descargar
         </a>
-        <button
-          type="button"
-          onClick={() => onPreview(doc)}
-          className="inline-flex items-center gap-2 rounded-full border border-brand/30 px-5 py-2 text-sm font-semibold text-brand transition-colors hover:bg-brand/10"
-        >
-          <Eye className="size-4" /> Vista previa
-        </button>
       </div>
     </article>
   );
@@ -198,6 +331,8 @@ function PreviewDialog({
   doc: Doc | null;
   onClose: () => void;
 }) {
+  const previewSrc = doc ? (doc.previewUrl ?? (doc.fileType === "PDF" ? doc.href : null)) : null;
+
   return (
     <Dialog open={!!doc} onOpenChange={(open) => !open && onClose()}>
       <DialogContent className="max-h-[90vh] max-w-3xl overflow-y-auto rounded-3xl bg-paper">
@@ -211,11 +346,14 @@ function PreviewDialog({
                 {doc.description}
               </DialogDescription>
             </DialogHeader>
+            <div className="flex flex-wrap items-center gap-3">
+              <CategoryBadge category={doc.category} />
+            </div>
             <Metadata doc={doc} />
             <div className="mt-2 overflow-hidden rounded-2xl border border-brand/10 bg-brand-soft/30">
-              {doc.previewable ? (
+              {previewSrc ? (
                 <object
-                  data={`${doc.href}#page=1&toolbar=0&navpanes=0`}
+                  data={`${previewSrc}#page=1&toolbar=0&navpanes=0`}
                   type="application/pdf"
                   className="h-[55vh] w-full"
                   aria-label={`Vista previa de ${doc.title}`}
@@ -227,9 +365,8 @@ function PreviewDialog({
                 </object>
               ) : (
                 <p className="p-6 text-sm leading-relaxed text-ink/75">
-                  Este archivo es una presentación de PowerPoint y no puede
-                  visualizarse dentro del portal. Descárgalo para consultarlo
-                  completo.
+                  Este archivo no puede visualizarse dentro del portal.
+                  Descárgalo para consultarlo completo.
                 </p>
               )}
             </div>
@@ -238,7 +375,7 @@ function PreviewDialog({
                 href={doc.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2 text-sm font-semibold text-paper shadow-sm transition-colors hover:bg-brand/90"
+                className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2 text-sm font-semibold text-paper shadow-sm transition-colors duration-300 hover:bg-brand/90"
               >
                 <Download className="size-4" /> Descargar
               </a>
