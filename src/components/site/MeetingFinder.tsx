@@ -146,7 +146,7 @@ export function MeetingFinder({ groups }: { groups: Group[] }) {
 
             <button
               type="submit"
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-paper shadow-lift transition-all hover:-translate-y-0.5 hover:bg-brand-soft focus-visible:ring-4 focus-visible:ring-brand/30"
+              className="btn-aa uppercase tracking-[0.15em] focus-visible:ring-4 focus-visible:ring-brand/30"
             >
               <Search className="size-4" strokeWidth={2} />
               Buscar reuniones
@@ -241,7 +241,7 @@ function ResultCard({ r }: { r: Result }) {
         <Link
           to="/grupos/$slug"
           params={{ slug: r.slug }}
-          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand px-5 py-3 text-xs font-semibold uppercase tracking-[0.15em] text-paper transition-colors hover:bg-brand-soft"
+          className="btn-aa text-xs uppercase tracking-[0.15em]"
         >
           Más información
           <ArrowRight className="size-4" />

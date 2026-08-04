@@ -129,7 +129,7 @@ function ProfilePage() {
               type="button"
               onClick={() => bootstrap.mutate()}
               disabled={bootstrap.isPending}
-              className="mt-5 inline-flex items-center gap-2 rounded-full bg-brand px-5 py-3 text-sm font-semibold text-paper transition-colors hover:bg-brand/90 disabled:opacity-60"
+              className="btn-aa mt-5 disabled:opacity-60"
             >
               <ShieldCheck className="size-4" />
               {bootstrap.isPending ? "Promoviendo…" : "Promoverme a administrador"}

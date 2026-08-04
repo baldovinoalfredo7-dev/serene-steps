@@ -234,7 +234,7 @@ export function EventForm({
         <button
           type="submit"
           disabled={submitting}
-          className="rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-paper shadow-sm hover:bg-brand/90 disabled:opacity-60"
+          className="btn-aa disabled:opacity-60"
         >
           {submitting ? "Guardando…" : submitLabel}
         </button>

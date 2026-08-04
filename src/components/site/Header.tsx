@@ -113,7 +113,7 @@ export function Header() {
             <Link
               to={memberHref}
               onClick={() => setOpen(false)}
-              className="mt-3 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-paper transition-colors hover:bg-brand-soft"
+              className="btn-aa mt-3 uppercase tracking-[0.15em]"
             >
               <MemberIcon className="size-4" /> {memberLabel}
             </Link>

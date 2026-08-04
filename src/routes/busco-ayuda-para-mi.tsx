@@ -132,7 +132,7 @@ function BuscoAyudaParaMi() {
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <Link
               to="/grupos"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-brand px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-paper transition-colors hover:bg-brand/90"
+              className="btn-aa uppercase tracking-[0.18em]"
             >
               Encuentra un grupo <ArrowRight className="size-4" />
             </Link>

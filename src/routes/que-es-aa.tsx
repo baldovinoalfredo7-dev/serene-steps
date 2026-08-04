@@ -105,7 +105,7 @@ function QueEsAA() {
           <div className="pt-2">
             <Link
               to="/preguntas-frecuentes"
-              className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-paper transition-colors hover:bg-brand/90"
+              className="btn-aa"
             >
               Ver preguntas frecuentes
             </Link>
@@ -122,7 +122,7 @@ function QueEsAA() {
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Link
               to="/grupos"
-              className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-paper transition-colors hover:bg-brand/90"
+              className="btn-aa"
             >
               Encuentra un grupo
             </Link>

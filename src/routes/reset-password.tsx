@@ -115,7 +115,7 @@ function ResetPasswordPage() {
               <button
                 type="submit"
                 disabled={busy}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-paper transition-colors hover:bg-brand/90 disabled:opacity-60"
+                className="btn-aa w-full disabled:opacity-60"
               >
                 <KeyRound className="size-4" />
                 {busy ? "Guardando…" : "Actualizar contraseña"}

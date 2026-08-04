@@ -5,7 +5,7 @@ export function HelpButton() {
   return (
     <Link
       to="/necesito-ayuda"
-      className="fixed bottom-3 right-3 z-40 inline-flex min-h-10 items-center gap-1.5 rounded-full bg-brand px-3.5 py-2 text-xs font-semibold text-paper shadow-lift ring-1 ring-paper/20 transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand/40 sm:bottom-6 sm:right-6 sm:min-h-12 sm:gap-2 sm:px-6 sm:py-3.5 sm:text-base"
+      className="btn-aa fixed bottom-3 right-3 z-40 min-h-10 text-xs ring-1 ring-paper/20 transition-transform focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand/40 sm:bottom-6 sm:right-6 sm:min-h-12 sm:gap-2 sm:px-6 sm:py-3.5 sm:text-base"
       aria-label="Necesito ayuda ahora"
     >
       <span className="relative flex size-2 shrink-0 sm:size-2.5" aria-hidden>

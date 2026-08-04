@@ -101,7 +101,7 @@ function NewGroupPage() {
           <button
             type="submit"
             disabled={create.isPending}
-            className="inline-flex items-center rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-paper shadow-sm hover:bg-brand/90 disabled:opacity-60"
+            className="btn-aa disabled:opacity-60"
           >
             {create.isPending ? "Creando…" : "Crear grupo"}
           </button>

@@ -126,7 +126,7 @@ function MeetingsPage() {
             if (!createGroupId) setCreateGroupId(groups[0]?.id ?? "");
           }}
           disabled={groups.length === 0}
-          className="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-2.5 text-sm font-semibold text-paper shadow-sm hover:bg-brand/90 disabled:opacity-50"
+          className="btn-aa disabled:opacity-50"
         >
           <Plus className="size-4" /> Nueva reunión
         </button>

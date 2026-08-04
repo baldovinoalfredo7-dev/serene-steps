@@ -386,7 +386,7 @@ function DocumentCard({
         <button
           type="button"
           onClick={() => onPreview(doc)}
-          className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2 text-sm font-semibold text-paper shadow-sm transition-colors duration-300 hover:bg-brand/90"
+          className="btn-aa"
         >
           <Eye className="size-4" /> Ver
         </button>
@@ -453,7 +453,7 @@ function PreviewDialog({
                   href={previewSrc}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2 text-sm font-semibold text-paper shadow-sm transition-colors duration-300 hover:bg-brand/90"
+                  className="btn-aa"
                 >
                   <ExternalLink className="size-4" /> Ver documento
                 </a>
@@ -504,7 +504,7 @@ function FallbackCard({ doc, previewSrc }: { doc: Doc; previewSrc: string | null
               href={previewSrc}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-2 text-sm font-semibold text-paper shadow-sm transition-colors duration-300 hover:bg-brand/90"
+              className="btn-aa"
             >
               <ExternalLink className="size-4" /> Ver documento
             </a>

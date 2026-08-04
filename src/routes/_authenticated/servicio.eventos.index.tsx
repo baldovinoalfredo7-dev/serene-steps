@@ -128,7 +128,7 @@ function EventsAdminList() {
         </div>
         <Link
           to="/servicio/eventos/nuevo"
-          className="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-2.5 text-sm font-semibold text-paper shadow-sm hover:bg-brand/90"
+          className="btn-aa"
         >
           <Plus className="size-4" /> Nuevo evento
         </Link>
@@ -251,7 +251,7 @@ function EventsAdminList() {
                     <Link
                       to="/servicio/eventos/$id"
                       params={{ id: e.id }}
-                      className="inline-flex items-center gap-1 rounded-full bg-brand px-3 py-1.5 text-xs font-semibold text-paper hover:bg-brand/90"
+                      className="btn-aa gap-1 text-xs"
                     >
                       <Pencil className="size-3.5" /> Editar
                     </Link>

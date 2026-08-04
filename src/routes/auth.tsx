@@ -113,7 +113,7 @@ function MembersAccessPage() {
             <button
               type="submit"
               disabled={busy}
-              className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-paper transition-colors hover:bg-brand/90 disabled:opacity-60"
+              className="btn-aa mt-2 w-full disabled:opacity-60"
             >
               <LogIn className="size-4" />
               {busy ? "Procesando…" : "Ingresar"}
