@@ -100,7 +100,7 @@
   }
   h1, h2, h3, h4, h5 {
     font-family: var(--font-serif);
-    color: var(--color-brand);
+    color: var(--color-brand-strong);
   }
   ::selection {
     background: color-mix(in oklab, var(--color-brand) 15%, transparent);
@@ -118,3 +118,58 @@
 @utility shadow-lift {
   box-shadow: var(--shadow-lift);
 }
+
+/* Componentes institucionales reutilizables */
+@utility btn-aa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  background-color: var(--color-brand);
+  color: var(--color-paper);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  box-shadow: var(--shadow-soft);
+  transition: background-color 300ms ease, box-shadow 300ms ease, transform 300ms ease;
+  &:hover {
+    background-color: var(--color-brand-strong);
+    box-shadow: var(--shadow-lift);
+  }
+}
+
+@utility btn-aa-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in oklab, var(--color-brand) 35%, transparent);
+  background-color: var(--color-paper);
+  color: var(--color-brand-strong);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background-color 300ms ease, color 300ms ease, box-shadow 300ms ease;
+  &:hover {
+    background-color: var(--color-soft);
+    box-shadow: var(--shadow-soft);
+  }
+}
+
+@utility card-aa {
+  border-radius: 1rem;
+  border: 1px solid color-mix(in oklab, var(--color-brand) 12%, transparent);
+  background-color: var(--color-paper);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-soft);
+  transition: box-shadow 300ms ease, transform 300ms ease;
+  &:hover {
+    box-shadow: var(--shadow-lift);
+  }
+}
+
