@@ -16,9 +16,9 @@ export const Route = createFileRoute("/literatura")({
         property: "og:description",
         content: "Materiales autorizados por la estructura de servicio de AA.",
       },
-      { property: "og:url", content: "/literatura" },
+      { property: "og:url", content: "https://hope-finds-you-here.lovable.app/literatura" },
     ],
-    links: [{ rel: "canonical", href: "/literatura" }],
+    links: [{ rel: "canonical", href: "https://hope-finds-you-here.lovable.app/literatura" }],
   }),
   component: Literatura,
 });

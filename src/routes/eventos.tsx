@@ -21,9 +21,9 @@ export const Route = createFileRoute("/eventos")({
         content:
           "Calendario de foros, convenciones, aniversarios y talleres del Área 2.",
       },
-      { property: "og:url", content: "/eventos" },
+      { property: "og:url", content: "https://hope-finds-you-here.lovable.app/eventos" },
     ],
-    links: [{ rel: "canonical", href: "/eventos" }],
+    links: [{ rel: "canonical", href: "https://hope-finds-you-here.lovable.app/eventos" }],
   }),
   loader: ({ context }) =>
     context.queryClient.ensureQueryData({

@@ -31,7 +31,8 @@ function NotFoundComponent() {
         <div className="mt-6">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-sm bg-brand px-5 py-3 text-sm font-medium text-paper transition-colors hover:bg-brand/90"
+            className="btn-aa"
+
           >
             Volver al inicio
           </Link>
@@ -61,13 +62,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
               router.invalidate();
               reset();
             }}
-            className="inline-flex items-center justify-center rounded-sm bg-brand px-5 py-3 text-sm font-medium text-paper transition-colors hover:bg-brand/90"
+            className="btn-aa"
           >
             Intentar de nuevo
           </button>
           <a
             href="/"
-            className="inline-flex items-center justify-center rounded-sm border border-brand/20 bg-paper px-5 py-3 text-sm font-medium text-brand transition-colors hover:bg-soft"
+            className="btn-aa-outline"
           >
             Ir al inicio
           </a>
@@ -93,14 +94,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:description", content: SITE_DESCRIPTION },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { title: "Lovable App" },
-      { property: "og:title", content: "Lovable App" },
-      { name: "twitter:title", content: "Lovable App" },
-      { name: "description", content: "Serene Steps is a web portal for Alcoholics Anonymous, offering meeting information and resources for those seeking help." },
-      { property: "og:description", content: "Serene Steps is a web portal for Alcoholics Anonymous, offering meeting information and resources for those seeking help." },
-      { name: "twitter:description", content: "Serene Steps is a web portal for Alcoholics Anonymous, offering meeting information and resources for those seeking help." },
-      { property: "og:image", content: "https://project--b2ac4377-59f2-46ea-a581-d53e687bd969.lovable.app/og.jpg" },
-      { name: "twitter:image", content: "https://project--b2ac4377-59f2-46ea-a581-d53e687bd969.lovable.app/og.jpg" },
+      { name: "twitter:title", content: SITE_TITLE },
+      { name: "twitter:description", content: SITE_DESCRIPTION },
+
     ],
     links: [
       { rel: "stylesheet", href: appCss },

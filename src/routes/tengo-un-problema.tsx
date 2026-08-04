@@ -16,9 +16,9 @@ export const Route = createFileRoute("/tengo-un-problema")({
         property: "og:description",
         content: "Doce preguntas para ayudarte a reflexionar. Solo tú puedes responderlas.",
       },
-      { property: "og:url", content: "/tengo-un-problema" },
+      { property: "og:url", content: "https://hope-finds-you-here.lovable.app/tengo-un-problema" },
     ],
-    links: [{ rel: "canonical", href: "/tengo-un-problema" }],
+    links: [{ rel: "canonical", href: "https://hope-finds-you-here.lovable.app/tengo-un-problema" }],
   }),
   component: TengoProblema,
 });

@@ -12,11 +12,25 @@ export const Route = createFileRoute("/")({
   loader: ({ context }) => context.queryClient.ensureQueryData(groupsQueryOptions()),
   head: () => ({
     meta: [
-      { property: "og:url", content: "/" },
-      { property: "og:image", content: "https://project--b2ac4377-59f2-46ea-a581-d53e687bd969.lovable.app/og.jpg" },
+      { title: "Alcohólicos Anónimos · Área 2 Metropolitana de Barranquilla" },
+      {
+        name: "description",
+        content:
+          "Si el alcohol está afectando tu vida, no estás solo. Encuentra reuniones de Alcohólicos Anónimos en Barranquilla, Soledad, Malambo, Galapa y Puerto Colombia.",
+      },
+      { property: "og:title", content: "Alcohólicos Anónimos · Área 2 Metropolitana de Barranquilla" },
+      {
+        property: "og:description",
+        content:
+          "Si el alcohol está afectando tu vida, no estás solo. Encuentra una reunión cerca de ti: sin inscripción, sin cuotas y con anonimato garantizado.",
+      },
+      { property: "og:url", content: "https://hope-finds-you-here.lovable.app/" },
+      { property: "og:image", content: "https://hope-finds-you-here.lovable.app/og.jpg" },
+      { name: "twitter:image", content: "https://hope-finds-you-here.lovable.app/og.jpg" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "https://hope-finds-you-here.lovable.app/" }],
   }),
+
   errorComponent: ({ error }) => (
     <div className="mx-auto max-w-2xl p-10 text-center text-ink/80">
       No pudimos cargar el contenido: {error.message}

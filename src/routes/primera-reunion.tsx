@@ -16,9 +16,9 @@ export const Route = createFileRoute("/primera-reunion")({
         property: "og:description",
         content: "Guía sencilla para asistir por primera vez a una reunión de AA.",
       },
-      { property: "og:url", content: "/primera-reunion" },
+      { property: "og:url", content: "https://hope-finds-you-here.lovable.app/primera-reunion" },
     ],
-    links: [{ rel: "canonical", href: "/primera-reunion" }],
+    links: [{ rel: "canonical", href: "https://hope-finds-you-here.lovable.app/primera-reunion" }],
   }),
   component: PrimeraReunion,
 });

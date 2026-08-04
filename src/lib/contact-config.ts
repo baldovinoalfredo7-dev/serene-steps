@@ -4,8 +4,14 @@
 // como constantes para permitir cambios rápidos sin modificar UI.
 
 export const contactConfig = {
+  // --- Identidad del Área (reemplazable para otras Áreas de Servicio) ---
+  areaName: "Área 2 Metropolitana de Barranquilla",
+  areaShortName: "Área 2 Metropolitana",
+  siteUrl: "https://hope-finds-you-here.lovable.app",
+  email: "area2metropolitana@gmail.com",
   // Número en formato internacional, sin '+' ni espacios, para wa.me
   whatsappNumber: "573245577038",
+
   // Número para tel: (con '+' y prefijo de país)
   phoneNumber: "+573245577038",
   // Etiqueta legible para mostrar en pantalla

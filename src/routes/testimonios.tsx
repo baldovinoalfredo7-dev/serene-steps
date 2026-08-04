@@ -11,9 +11,9 @@ export const Route = createFileRoute("/testimonios")({
       },
       { property: "og:title", content: "Testimonios de esperanza" },
       { property: "og:description", content: "Historias anónimas de recuperación en AA." },
-      { property: "og:url", content: "/testimonios" },
+      { property: "og:url", content: "https://hope-finds-you-here.lovable.app/testimonios" },
     ],
-    links: [{ rel: "canonical", href: "/testimonios" }],
+    links: [{ rel: "canonical", href: "https://hope-finds-you-here.lovable.app/testimonios" }],
   }),
   component: Testimonios,
 });

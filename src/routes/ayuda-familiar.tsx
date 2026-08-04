@@ -28,9 +28,9 @@ export const Route = createFileRoute("/ayuda-familiar")({
         content:
           "Acompañamiento e información para quienes se preocupan por la forma de beber de un ser querido.",
       },
-      { property: "og:url", content: "/ayuda-familiar" },
+      { property: "og:url", content: "https://hope-finds-you-here.lovable.app/ayuda-familiar" },
     ],
-    links: [{ rel: "canonical", href: "/ayuda-familiar" }],
+    links: [{ rel: "canonical", href: "https://hope-finds-you-here.lovable.app/ayuda-familiar" }],
   }),
   component: AyudaFamiliar,
 });

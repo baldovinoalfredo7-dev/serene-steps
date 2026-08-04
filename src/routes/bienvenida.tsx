@@ -25,7 +25,7 @@ export const Route = createFileRoute("/bienvenida")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
-    links: [{ rel: "canonical", href: "/bienvenida" }],
+    links: [{ rel: "canonical", href: "https://hope-finds-you-here.lovable.app/bienvenida" }],
   }),
   component: Bienvenida,
 });
@@ -71,12 +71,13 @@ function Bienvenida() {
             </InfoBlock>
             <InfoBlock icon={<Mail className="size-5" />} label="Correo electrónico">
               <a
-                href="mailto:area2metropolitana@gmail.com"
+                href={`mailto:${contactConfig.email}`}
                 className="text-brand underline underline-offset-4"
               >
-                area2metropolitana@gmail.com
+                {contactConfig.email}
               </a>
             </InfoBlock>
+
           </div>
 
           <div className="mt-8">

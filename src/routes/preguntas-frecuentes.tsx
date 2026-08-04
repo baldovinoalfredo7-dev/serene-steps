@@ -15,9 +15,9 @@ export const Route = createFileRoute("/preguntas-frecuentes")({
         property: "og:description",
         content: "Aclaramos las dudas más frecuentes sobre AA.",
       },
-      { property: "og:url", content: "/preguntas-frecuentes" },
+      { property: "og:url", content: "https://hope-finds-you-here.lovable.app/preguntas-frecuentes" },
     ],
-    links: [{ rel: "canonical", href: "/preguntas-frecuentes" }],
+    links: [{ rel: "canonical", href: "https://hope-finds-you-here.lovable.app/preguntas-frecuentes" }],
   }),
   component: FaqPage,
 });

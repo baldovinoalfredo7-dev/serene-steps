@@ -18,11 +18,11 @@ export const Route = createFileRoute("/caribe")({
         content:
           "Áreas que conforman la Región A – Territorio Norte de Alcohólicos Anónimos en Colombia.",
       },
-      { property: "og:url", content: "/caribe" },
+      { property: "og:url", content: "https://hope-finds-you-here.lovable.app/caribe" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/caribe" }],
+    links: [{ rel: "canonical", href: "https://hope-finds-you-here.lovable.app/caribe" }],
   }),
   component: CaribePage,
 });

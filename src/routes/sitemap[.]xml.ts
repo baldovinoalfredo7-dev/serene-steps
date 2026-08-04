@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { listGroupsFn } from "@/lib/groups.functions";
 
-const BASE_URL = "";
+const BASE_URL = "https://hope-finds-you-here.lovable.app";
 
 interface SitemapEntry {
   path: string;
@@ -26,6 +26,15 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/eventos", changefreq: "weekly", priority: "0.6" },
           { path: "/contacto", changefreq: "monthly", priority: "0.5" },
           { path: "/necesito-ayuda", changefreq: "yearly", priority: "0.7" },
+          { path: "/busco-ayuda-para-mi", changefreq: "yearly", priority: "0.7" },
+          { path: "/ayuda-familiar", changefreq: "yearly", priority: "0.7" },
+          { path: "/bienvenida", changefreq: "monthly", priority: "0.6" },
+          { path: "/caribe", changefreq: "monthly", priority: "0.5" },
+          { path: "/horarios", changefreq: "weekly", priority: "0.6" },
+          { path: "/preguntas-frecuentes", changefreq: "monthly", priority: "0.6" },
+          { path: "/mapa-del-sitio", changefreq: "monthly", priority: "0.3" },
+          { path: "/privacidad", changefreq: "yearly", priority: "0.3" },
+
           ...groups.map((g) => ({
             path: `/grupos/${g.slug}`,
             changefreq: "monthly" as const,
