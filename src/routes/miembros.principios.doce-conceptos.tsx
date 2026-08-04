@@ -91,7 +91,7 @@ function DoceConceptosPage() {
       />
       <section
         aria-label="Texto oficial de los Doce Conceptos"
-        className="rounded-3xl border border-brand/10 bg-paper p-6 sm:p-8 shadow-sm"
+        className="card-aa sm:p-8"
       >
         <ol className="space-y-6">
           {conceptos.map((c) => (

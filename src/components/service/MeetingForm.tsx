@@ -104,7 +104,7 @@ export function MeetingForm({
         <button
           type="submit"
           disabled={busy}
-          className="rounded-full bg-brand px-4 py-2 text-xs font-semibold text-paper shadow-sm hover:bg-brand/90 disabled:opacity-60"
+          className="btn-aa text-xs disabled:opacity-60"
         >
           {submitLabel}
         </button>

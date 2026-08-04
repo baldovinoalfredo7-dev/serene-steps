@@ -207,7 +207,7 @@ function GroupDetail() {
                 href={directionsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mb-3 flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-brand px-5 py-3 text-sm font-semibold text-paper shadow-md shadow-brand/20 transition-colors hover:bg-brand/90"
+                className="btn-aa mb-3 w-full"
               >
                 <Navigation className="size-4" />
                 Abrir en Google Maps

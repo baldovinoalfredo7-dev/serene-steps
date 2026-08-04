@@ -109,7 +109,7 @@ function DashboardPage() {
         </div>
         <Link
           to="/servicio/grupos/nuevo"
-          className="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-2.5 text-sm font-semibold text-paper shadow-sm hover:bg-brand/90"
+          className="btn-aa"
         >
           <Plus className="size-4" /> Nuevo grupo
         </Link>

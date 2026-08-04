@@ -137,7 +137,7 @@ function AyudaFamiliar() {
         <div className="mt-10">
           <Link
             to="/grupos"
-            className="inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-paper transition-colors hover:bg-brand/90"
+            className="btn-aa uppercase tracking-[0.18em]"
           >
             Encontrar un grupo <ArrowRight className="size-4" />
           </Link>

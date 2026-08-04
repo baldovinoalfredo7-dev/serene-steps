@@ -40,7 +40,7 @@ export function SiteBreadcrumb() {
       <div className="mx-auto max-w-4xl px-6">
         <Link
           to={parent.to}
-          className="inline-flex min-h-12 items-center gap-2 rounded-full border border-brand bg-brand px-5 py-3 text-sm font-bold text-paper shadow-lift transition-colors hover:bg-brand-strong"
+          className="btn-aa border border-brand"
         >
           <ArrowLeft className="size-4" aria-hidden="true" />
           {parent.label}

@@ -82,7 +82,7 @@ function Bienvenida() {
           <div className="mt-8">
             <a
               href={telLink()}
-              className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-paper transition-colors hover:bg-brand/90"
+              className="btn-aa"
             >
               <PhoneCall className="size-4" /> Llamar a la oficina
             </a>

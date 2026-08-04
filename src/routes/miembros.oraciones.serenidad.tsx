@@ -32,7 +32,7 @@ function SerenidadPage() {
       />
       <section
         aria-label="Texto oficial de la Oración de la Serenidad"
-        className="rounded-3xl border border-brand/10 bg-paper p-6 sm:p-8 shadow-sm"
+        className="card-aa sm:p-8"
       >
         <div className="space-y-6 font-serif text-lg leading-relaxed text-ink/85 sm:text-xl">
           {parrafos.map((p, i) => (

@@ -212,14 +212,14 @@ function EditGroupPage() {
           <button
             type="submit"
             disabled={save.isPending}
-            className="inline-flex items-center rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-paper shadow-sm hover:bg-brand/90 disabled:opacity-60"
+            className="btn-aa disabled:opacity-60"
           >
             {save.isPending ? "Guardando…" : "Guardar cambios"}
           </button>
         </div>
       </form>
 
-      <section className="rounded-2xl border border-brand/10 bg-paper p-6">
+      <section className="card-aa">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <h2 className="font-serif text-xl text-brand">Reuniones</h2>
@@ -234,7 +234,7 @@ function EditGroupPage() {
                 setAdding(true);
                 setEditingId(null);
               }}
-              className="inline-flex items-center gap-1.5 rounded-full bg-brand px-4 py-2 text-xs font-semibold text-paper shadow-sm hover:bg-brand/90"
+              className="btn-aa text-xs"
             >
               <Plus className="size-3.5" /> Añadir reunión
             </button>

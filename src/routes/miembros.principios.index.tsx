@@ -58,7 +58,7 @@ function PrincipiosPage() {
         {cards.map((c) => (
           <article
             key={c.to}
-            className="flex flex-col rounded-3xl border border-brand/10 bg-paper p-6 shadow-sm transition-shadow hover:shadow-lift"
+            className="card-aa flex flex-col"
           >
             <div className="mb-4 flex items-center gap-3">
               <span
@@ -79,7 +79,7 @@ function PrincipiosPage() {
             </p>
             <Link
               to={c.to}
-              className="mt-6 inline-flex items-center justify-center gap-2 self-start rounded-full bg-brand px-5 py-2 text-sm font-semibold text-paper transition-colors hover:bg-brand/90"
+              className="btn-aa mt-6 self-start"
             >
               Ingresar <ArrowRight className="size-4" />
             </Link>

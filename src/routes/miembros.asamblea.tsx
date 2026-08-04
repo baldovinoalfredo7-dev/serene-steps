@@ -82,7 +82,7 @@ function AsambleaPage() {
           {participantes.map((p) => (
             <article
               key={p.titulo}
-              className="rounded-2xl border border-brand/10 bg-paper p-6 shadow-sm transition-shadow hover:shadow-lift"
+              className="card-aa"
             >
               <h3 className="font-serif text-lg italic text-brand">{p.titulo}</h3>
               <p className="mt-2 text-sm leading-relaxed text-ink/85">{p.texto}</p>
@@ -97,7 +97,7 @@ function AsambleaPage() {
           {desarrollo.map((d) => (
             <div
               key={d.titulo}
-              className="rounded-2xl border border-brand/10 bg-paper p-6 shadow-sm"
+              className="card-aa"
             >
               <h4 className="font-serif text-lg italic text-brand">{d.titulo}</h4>
               <p className="mt-2 text-base leading-relaxed text-ink/85">{d.texto}</p>

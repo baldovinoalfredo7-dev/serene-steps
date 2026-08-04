@@ -251,7 +251,7 @@ function FormView({
 
       <button
         type="submit"
-        className="mt-6 inline-flex w-full min-h-12 items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-paper shadow-soft transition-all hover:-translate-y-0.5 hover:bg-brand-soft"
+        className="btn-aa mt-6 w-full uppercase tracking-[0.15em]"
       >
         <Send className="size-4" />
         Enviar mensaje

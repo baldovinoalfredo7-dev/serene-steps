@@ -97,7 +97,7 @@ function UsersPage() {
       )}
 
       {/* Formulario de creación */}
-      <section className="rounded-3xl border border-brand/10 bg-paper p-6 shadow-sm">
+      <section className="card-aa">
         <h2 className="mb-4 flex items-center gap-2 font-serif text-lg text-brand">
           <UserPlus className="size-5" /> Crear nueva cuenta
         </h2>
@@ -146,7 +146,7 @@ function UsersPage() {
             <button
               type="submit"
               disabled={createMut.isPending}
-              className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-paper transition-colors hover:bg-brand/90 disabled:opacity-60"
+              className="btn-aa disabled:opacity-60"
             >
               {createMut.isPending ? (
                 <Loader2 className="size-4 animate-spin" />
@@ -162,7 +162,7 @@ function UsersPage() {
       </section>
 
       {/* Lista */}
-      <section className="rounded-3xl border border-brand/10 bg-paper p-6 shadow-sm">
+      <section className="card-aa">
         <h2 className="mb-4 flex items-center gap-2 font-serif text-lg text-brand">
           <UserRound className="size-5" /> Cuentas existentes
         </h2>
@@ -290,7 +290,7 @@ function TempPasswordCard({
             navigator.clipboard.writeText(issued.tempPassword);
             toast.success("Copiada al portapapeles.");
           }}
-          className="inline-flex items-center gap-1 rounded-full bg-brand px-3 py-2 text-xs font-semibold text-paper hover:bg-brand/90"
+          className="btn-aa gap-1 text-xs"
         >
           <Copy className="size-3.5" /> Copiar
         </button>

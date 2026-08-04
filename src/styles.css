@@ -52,14 +52,15 @@
 :root {
   --radius: 0.75rem;
 
-  /* AA Colombia – paleta institucional luminosa */
+  /* AA Colombia – identidad institucional
+     60% blanco · 25% azul muy claro · 10% azul institucional · 5% azul oscuro */
   --paper: oklch(1 0 0);                    /* #ffffff */
-  --soft: oklch(0.968 0.018 240);           /* #eaf3fb azul muy claro */
-  --ink: oklch(0.35 0 0);                   /* #444444 gris oscuro */
-  --brand: oklch(0.56 0.13 250);            /* #2f6fb6 azul institucional */
-  --brand-soft: oklch(0.68 0.11 250);       /* #5f93cf azul secundario */
-  --brand-strong: oklch(0.46 0.14 252);     /* azul institucional intenso */
-  --brand-tint: oklch(0.968 0.018 240);     /* #eaf3fb */
+  --soft: oklch(0.965 0.020 242);           /* #eaf3fb azul muy claro */
+  --ink: oklch(0.35 0 0);                   /* gris oscuro para lectura */
+  --brand: oklch(0.545 0.128 251);          /* #2f6fb6 azul institucional */
+  --brand-soft: oklch(0.685 0.105 250);     /* #5f93cf azul secundario */
+  --brand-strong: oklch(0.375 0.098 254);   /* #1b3a5c azul oscuro (títulos) */
+  --brand-tint: oklch(0.965 0.020 242);     /* #eaf3fb */
 
   --background: var(--paper);
   --foreground: var(--ink);
@@ -70,17 +71,18 @@
   --primary: var(--brand);
   --primary-foreground: var(--paper);
   --secondary: var(--soft);
-  --secondary-foreground: var(--brand);
+  --secondary-foreground: var(--brand-strong);
   --muted: var(--soft);
   --muted-foreground: oklch(0.5 0.01 250);
   --accent: var(--soft);
-  --accent-foreground: var(--brand);
+  --accent-foreground: var(--brand-strong);
   --destructive: oklch(0.55 0.19 25);
   --destructive-foreground: var(--paper);
-  --border: oklch(0.92 0.012 240);
-  --input: oklch(0.92 0.012 240);
+  --border: oklch(0.925 0.016 242);
+  --input: oklch(0.925 0.016 242);
   --ring: var(--brand);
 }
+
 
 
 @layer base {
@@ -98,7 +100,7 @@
   }
   h1, h2, h3, h4, h5 {
     font-family: var(--font-serif);
-    color: var(--color-brand);
+    color: var(--color-brand-strong);
   }
   ::selection {
     background: color-mix(in oklab, var(--color-brand) 15%, transparent);
@@ -116,3 +118,58 @@
 @utility shadow-lift {
   box-shadow: var(--shadow-lift);
 }
+
+/* Componentes institucionales reutilizables */
+@utility btn-aa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  background-color: var(--color-brand);
+  color: var(--color-paper);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  box-shadow: var(--shadow-soft);
+  transition: background-color 300ms ease, box-shadow 300ms ease, transform 300ms ease;
+  &:hover {
+    background-color: var(--color-brand-strong);
+    box-shadow: var(--shadow-lift);
+  }
+}
+
+@utility btn-aa-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in oklab, var(--color-brand) 35%, transparent);
+  background-color: var(--color-paper);
+  color: var(--color-brand-strong);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background-color 300ms ease, color 300ms ease, box-shadow 300ms ease;
+  &:hover {
+    background-color: var(--color-soft);
+    box-shadow: var(--shadow-soft);
+  }
+}
+
+@utility card-aa {
+  border-radius: 1rem;
+  border: 1px solid color-mix(in oklab, var(--color-brand) 12%, transparent);
+  background-color: var(--color-paper);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-soft);
+  transition: box-shadow 300ms ease, transform 300ms ease;
+  &:hover {
+    box-shadow: var(--shadow-lift);
+  }
+}
+

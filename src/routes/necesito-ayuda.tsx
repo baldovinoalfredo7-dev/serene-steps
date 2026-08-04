@@ -40,13 +40,13 @@ function BuscoAyuda() {
         <div className="mx-auto mt-12 grid max-w-xl gap-4 sm:grid-cols-2">
           <Link
             to="/busco-ayuda-para-mi"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-brand px-6 py-4 text-center text-sm font-semibold uppercase tracking-[0.18em] text-paper transition-colors hover:bg-brand/90"
+            className="btn-aa text-center uppercase tracking-[0.18em]"
           >
             Busco ayuda para mí
           </Link>
           <Link
             to="/ayuda-familiar"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-brand px-6 py-4 text-center text-sm font-semibold uppercase tracking-[0.18em] text-paper transition-colors hover:bg-brand/90"
+            className="btn-aa text-center uppercase tracking-[0.18em]"
           >
             Busco ayuda para un familiar o un amigo
           </Link>

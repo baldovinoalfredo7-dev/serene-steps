@@ -113,7 +113,7 @@ function AreaPage() {
         <p>
           El Área 2 Metropolitana de Barranquilla hace parte de la Región A de Alcohólicos Anónimos en Colombia.
         </p>
-        <div className="mt-4 rounded-2xl border border-brand/10 bg-paper p-6 shadow-sm">
+        <div className="card-aa mt-4">
           <span className="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-brand/70">
             Custodio Territorial
           </span>
@@ -226,7 +226,7 @@ function ServidorCard({
   descripcion?: string;
 }) {
   return (
-    <article className="flex flex-col rounded-2xl border border-brand/10 bg-paper p-6 shadow-sm transition-shadow hover:shadow-lift">
+    <article className="card-aa flex flex-col">
       <span className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-brand/70">
         Servicio
       </span>

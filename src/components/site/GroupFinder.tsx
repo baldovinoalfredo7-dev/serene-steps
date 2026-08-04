@@ -195,7 +195,7 @@ function GroupCard({ g, variant }: { g: Group; variant: GroupFinderVariant }) {
         <Link
           to="/grupos/$slug"
           params={{ slug: g.slug }}
-          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand px-5 py-3 text-xs font-semibold uppercase tracking-[0.15em] text-paper transition-colors hover:bg-brand/90"
+          className="btn-aa text-xs uppercase tracking-[0.15em]"
         >
           Más información
           <ArrowRight className="size-4" />

@@ -98,7 +98,7 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
           </p>
           <Link
             to="/necesito-ayuda"
-            className="inline-flex min-h-12 w-fit items-center justify-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-paper shadow-soft transition-all duration-300 ease-out hover:bg-brand/90 hover:shadow-lift"
+            className="btn-aa w-fit uppercase tracking-[0.15em]"
           >
             Busco ayuda <ArrowRight className="size-4" />
           </Link>
@@ -116,7 +116,7 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
           </p>
           <Link
             to="/necesito-ayuda"
-            className="inline-flex min-h-12 w-full max-w-xs items-center justify-center gap-2 rounded-full bg-brand px-7 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-paper transition-all duration-300 ease-out hover:bg-brand/90 hover:shadow-lift"
+            className="btn-aa w-full max-w-xs uppercase tracking-[0.15em]"
           >
             Busco ayuda <ArrowRight className="size-4" />
           </Link>
@@ -141,7 +141,7 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
           </p>
           <Link
             to="/grupos"
-            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-paper transition-all duration-300 ease-out hover:bg-brand/90 hover:shadow-lift"
+            className="btn-aa uppercase tracking-[0.15em]"
           >
             Encontrar un grupo <ArrowRight className="size-4" />
           </Link>
@@ -167,7 +167,7 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
                   <p className="mb-8 text-base leading-[1.7] text-ink/85">
                     {d.intro}
                   </p>
-                  <span className="mt-auto inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-paper shadow-soft transition-all duration-300 ease-out group-hover:bg-brand/90 hover:bg-brand/90 hover:shadow-lift">
+                  <span className="btn-aa mt-auto w-full uppercase tracking-[0.08em]">
                     {d.cta} <ArrowRight className="size-4 transition-transform duration-300" />
                   </span>
                 </Link>

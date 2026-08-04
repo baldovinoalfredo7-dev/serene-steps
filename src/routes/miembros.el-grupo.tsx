@@ -96,7 +96,7 @@ function ElGrupoPage() {
           {servidoresGrupo.map((s) => (
             <article
               key={s.rol}
-              className="flex flex-col rounded-2xl border border-brand/10 bg-paper p-6 shadow-sm transition-shadow hover:shadow-lift"
+              className="card-aa flex flex-col"
             >
               <span className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-brand/70">
                 Servicio
