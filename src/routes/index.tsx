@@ -167,7 +167,7 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
                   <p className="mb-8 text-base leading-[1.7] text-ink/85">
                     {d.intro}
                   </p>
-                  <span className="btn-aa mt-auto w-full uppercase tracking-[0.15em]">
+                  <span className="btn-aa mt-auto w-full uppercase tracking-[0.08em]">
                     {d.cta} <ArrowRight className="size-4 transition-transform duration-300" />
                   </span>
                 </Link>
