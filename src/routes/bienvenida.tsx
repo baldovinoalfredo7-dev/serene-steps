@@ -71,12 +71,13 @@ function Bienvenida() {
             </InfoBlock>
             <InfoBlock icon={<Mail className="size-5" />} label="Correo electrónico">
               <a
-                href="mailto:area2metropolitana@gmail.com"
+                href={`mailto:${contactConfig.email}`}
                 className="text-brand underline underline-offset-4"
               >
-                area2metropolitana@gmail.com
+                {contactConfig.email}
               </a>
             </InfoBlock>
+
           </div>
 
           <div className="mt-8">
