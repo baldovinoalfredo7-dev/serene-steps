@@ -10,7 +10,7 @@ export const Route = createFileRoute("/grupos")({
   loader: ({ context }) => context.queryClient.ensureQueryData(groupsQueryOptions()),
   head: () => ({
     meta: [
-      { title: "Nuestros grupos" },
+      { title: "Nuestros grupos — AA Área 2 Metropolitana" },
       {
         name: "description",
         content:
