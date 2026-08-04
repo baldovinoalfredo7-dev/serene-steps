@@ -52,14 +52,15 @@
 :root {
   --radius: 0.75rem;
 
-  /* AA Colombia – paleta institucional luminosa */
+  /* AA Colombia – identidad institucional
+     60% blanco · 25% azul muy claro · 10% azul institucional · 5% azul oscuro */
   --paper: oklch(1 0 0);                    /* #ffffff */
-  --soft: oklch(0.968 0.018 240);           /* #eaf3fb azul muy claro */
-  --ink: oklch(0.35 0 0);                   /* #444444 gris oscuro */
-  --brand: oklch(0.56 0.13 250);            /* #2f6fb6 azul institucional */
-  --brand-soft: oklch(0.68 0.11 250);       /* #5f93cf azul secundario */
-  --brand-strong: oklch(0.46 0.14 252);     /* azul institucional intenso */
-  --brand-tint: oklch(0.968 0.018 240);     /* #eaf3fb */
+  --soft: oklch(0.965 0.020 242);           /* #eaf3fb azul muy claro */
+  --ink: oklch(0.35 0 0);                   /* gris oscuro para lectura */
+  --brand: oklch(0.545 0.128 251);          /* #2f6fb6 azul institucional */
+  --brand-soft: oklch(0.685 0.105 250);     /* #5f93cf azul secundario */
+  --brand-strong: oklch(0.375 0.098 254);   /* #1b3a5c azul oscuro (títulos) */
+  --brand-tint: oklch(0.965 0.020 242);     /* #eaf3fb */
 
   --background: var(--paper);
   --foreground: var(--ink);
@@ -70,17 +71,18 @@
   --primary: var(--brand);
   --primary-foreground: var(--paper);
   --secondary: var(--soft);
-  --secondary-foreground: var(--brand);
+  --secondary-foreground: var(--brand-strong);
   --muted: var(--soft);
   --muted-foreground: oklch(0.5 0.01 250);
   --accent: var(--soft);
-  --accent-foreground: var(--brand);
+  --accent-foreground: var(--brand-strong);
   --destructive: oklch(0.55 0.19 25);
   --destructive-foreground: var(--paper);
-  --border: oklch(0.92 0.012 240);
-  --input: oklch(0.92 0.012 240);
+  --border: oklch(0.925 0.016 242);
+  --input: oklch(0.925 0.016 242);
   --ring: var(--brand);
 }
+
 
 
 @layer base {
