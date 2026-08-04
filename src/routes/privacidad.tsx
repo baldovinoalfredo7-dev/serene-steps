@@ -15,9 +15,9 @@ export const Route = createFileRoute("/privacidad")({
         property: "og:description",
         content: "Compromiso con el anonimato y el manejo responsable de datos personales.",
       },
-      { property: "og:url", content: "/privacidad" },
+      { property: "og:url", content: "https://hope-finds-you-here.lovable.app/privacidad" },
     ],
-    links: [{ rel: "canonical", href: "/privacidad" }],
+    links: [{ rel: "canonical", href: "https://hope-finds-you-here.lovable.app/privacidad" }],
   }),
   component: Privacidad,
 });

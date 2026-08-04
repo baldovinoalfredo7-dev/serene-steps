@@ -31,7 +31,7 @@ export const Route = createFileRoute("/contacto")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
-    links: [{ rel: "canonical", href: "/contacto" }],
+    links: [{ rel: "canonical", href: "https://hope-finds-you-here.lovable.app/contacto" }],
   }),
   component: Cooperar,
 });

@@ -21,7 +21,7 @@ export const Route = createFileRoute("/que-es-aa")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
-    links: [{ rel: "canonical", href: "/que-es-aa" }],
+    links: [{ rel: "canonical", href: "https://hope-finds-you-here.lovable.app/que-es-aa" }],
   }),
   component: QueEsAA,
 });

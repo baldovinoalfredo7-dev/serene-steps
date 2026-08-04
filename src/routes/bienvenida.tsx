@@ -25,7 +25,7 @@ export const Route = createFileRoute("/bienvenida")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
-    links: [{ rel: "canonical", href: "/bienvenida" }],
+    links: [{ rel: "canonical", href: "https://hope-finds-you-here.lovable.app/bienvenida" }],
   }),
   component: Bienvenida,
 });

@@ -15,9 +15,9 @@ export const Route = createFileRoute("/necesito-ayuda")({
         content:
           "Dos caminos claros para quien busca ayuda: para mí o para un familiar o un amigo.",
       },
-      { property: "og:url", content: "/necesito-ayuda" },
+      { property: "og:url", content: "https://hope-finds-you-here.lovable.app/necesito-ayuda" },
     ],
-    links: [{ rel: "canonical", href: "/necesito-ayuda" }],
+    links: [{ rel: "canonical", href: "https://hope-finds-you-here.lovable.app/necesito-ayuda" }],
   }),
   component: BuscoAyuda,
 });

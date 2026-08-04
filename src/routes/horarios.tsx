@@ -19,9 +19,9 @@ export const Route = createFileRoute("/horarios")({
         property: "og:description",
         content: "Días y horas de reunión de los grupos del Área 2 Metropolitana.",
       },
-      { property: "og:url", content: "/horarios" },
+      { property: "og:url", content: "https://hope-finds-you-here.lovable.app/horarios" },
     ],
-    links: [{ rel: "canonical", href: "/horarios" }],
+    links: [{ rel: "canonical", href: "https://hope-finds-you-here.lovable.app/horarios" }],
   }),
   errorComponent: ({ error }) => (
     <div className="mx-auto max-w-2xl p-10 text-center text-ink/80">

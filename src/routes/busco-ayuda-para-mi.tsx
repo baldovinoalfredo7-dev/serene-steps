@@ -16,9 +16,9 @@ export const Route = createFileRoute("/busco-ayuda-para-mi")({
         content:
           "Reconocer, reflexionar y encontrar acompañamiento. Podemos ayudarte.",
       },
-      { property: "og:url", content: "/busco-ayuda-para-mi" },
+      { property: "og:url", content: "https://hope-finds-you-here.lovable.app/busco-ayuda-para-mi" },
     ],
-    links: [{ rel: "canonical", href: "/busco-ayuda-para-mi" }],
+    links: [{ rel: "canonical", href: "https://hope-finds-you-here.lovable.app/busco-ayuda-para-mi" }],
   }),
   component: BuscoAyudaParaMi,
 });

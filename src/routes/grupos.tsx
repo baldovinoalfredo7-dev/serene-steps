@@ -22,9 +22,9 @@ export const Route = createFileRoute("/grupos")({
         content:
           "Consulta los horarios de reunión, la dirección y la forma de llegar al grupo que mejor se adapte a tu ubicación.",
       },
-      { property: "og:url", content: "/grupos" },
+      { property: "og:url", content: "https://hope-finds-you-here.lovable.app/grupos" },
     ],
-    links: [{ rel: "canonical", href: "/grupos" }],
+    links: [{ rel: "canonical", href: "https://hope-finds-you-here.lovable.app/grupos" }],
   }),
   errorComponent: ({ error }) => (
     <div className="mx-auto max-w-2xl p-10 text-center text-ink/80">

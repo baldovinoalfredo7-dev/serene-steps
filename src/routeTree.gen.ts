@@ -43,7 +43,6 @@ import { Route as MiembrosDocumentosRouteImport } from './routes/miembros.docume
 import { Route as MiembrosConferenciaRouteImport } from './routes/miembros.conferencia'
 import { Route as MiembrosAsambleaRouteImport } from './routes/miembros.asamblea'
 import { Route as MiembrosAreaRouteImport } from './routes/miembros.area'
-import { Route as MiembrosAprendizajeRouteImport } from './routes/miembros.aprendizaje'
 import { Route as GruposSlugRouteImport } from './routes/grupos.$slug'
 import { Route as EventosSlugRouteImport } from './routes/eventos.$slug'
 import { Route as AuthenticatedServicioRouteImport } from './routes/_authenticated/servicio'
@@ -240,11 +239,6 @@ const MiembrosAreaRoute = MiembrosAreaRouteImport.update({
   path: '/area',
   getParentRoute: () => MiembrosRoute,
 } as any)
-const MiembrosAprendizajeRoute = MiembrosAprendizajeRouteImport.update({
-  id: '/aprendizaje',
-  path: '/aprendizaje',
-  getParentRoute: () => MiembrosRoute,
-} as any)
 const GruposSlugRoute = GruposSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -423,7 +417,6 @@ export interface FileRoutesByFullPath {
   '/servicio': typeof AuthenticatedServicioRouteWithChildren
   '/eventos/$slug': typeof EventosSlugRoute
   '/grupos/$slug': typeof GruposSlugRoute
-  '/miembros/aprendizaje': typeof MiembrosAprendizajeRoute
   '/miembros/area': typeof MiembrosAreaRoute
   '/miembros/asamblea': typeof MiembrosAsambleaRoute
   '/miembros/conferencia': typeof MiembrosConferenciaRoute
@@ -483,7 +476,6 @@ export interface FileRoutesByTo {
   '/perfil': typeof AuthenticatedPerfilRoute
   '/eventos/$slug': typeof EventosSlugRoute
   '/grupos/$slug': typeof GruposSlugRoute
-  '/miembros/aprendizaje': typeof MiembrosAprendizajeRoute
   '/miembros/area': typeof MiembrosAreaRoute
   '/miembros/asamblea': typeof MiembrosAsambleaRoute
   '/miembros/conferencia': typeof MiembrosConferenciaRoute
@@ -545,7 +537,6 @@ export interface FileRoutesById {
   '/_authenticated/servicio': typeof AuthenticatedServicioRouteWithChildren
   '/eventos/$slug': typeof EventosSlugRoute
   '/grupos/$slug': typeof GruposSlugRoute
-  '/miembros/aprendizaje': typeof MiembrosAprendizajeRoute
   '/miembros/area': typeof MiembrosAreaRoute
   '/miembros/asamblea': typeof MiembrosAsambleaRoute
   '/miembros/conferencia': typeof MiembrosConferenciaRoute
@@ -609,7 +600,6 @@ export interface FileRouteTypes {
     | '/servicio'
     | '/eventos/$slug'
     | '/grupos/$slug'
-    | '/miembros/aprendizaje'
     | '/miembros/area'
     | '/miembros/asamblea'
     | '/miembros/conferencia'
@@ -669,7 +659,6 @@ export interface FileRouteTypes {
     | '/perfil'
     | '/eventos/$slug'
     | '/grupos/$slug'
-    | '/miembros/aprendizaje'
     | '/miembros/area'
     | '/miembros/asamblea'
     | '/miembros/conferencia'
@@ -730,7 +719,6 @@ export interface FileRouteTypes {
     | '/_authenticated/servicio'
     | '/eventos/$slug'
     | '/grupos/$slug'
-    | '/miembros/aprendizaje'
     | '/miembros/area'
     | '/miembros/asamblea'
     | '/miembros/conferencia'
@@ -1035,13 +1023,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MiembrosAreaRouteImport
       parentRoute: typeof MiembrosRoute
     }
-    '/miembros/aprendizaje': {
-      id: '/miembros/aprendizaje'
-      path: '/aprendizaje'
-      fullPath: '/miembros/aprendizaje'
-      preLoaderRoute: typeof MiembrosAprendizajeRouteImport
-      parentRoute: typeof MiembrosRoute
-    }
     '/grupos/$slug': {
       id: '/grupos/$slug'
       path: '/$slug'
@@ -1334,7 +1315,6 @@ const MiembrosPrincipiosRouteWithChildren =
   MiembrosPrincipiosRoute._addFileChildren(MiembrosPrincipiosRouteChildren)
 
 interface MiembrosRouteChildren {
-  MiembrosAprendizajeRoute: typeof MiembrosAprendizajeRoute
   MiembrosAreaRoute: typeof MiembrosAreaRoute
   MiembrosAsambleaRoute: typeof MiembrosAsambleaRoute
   MiembrosConferenciaRoute: typeof MiembrosConferenciaRoute
@@ -1349,7 +1329,6 @@ interface MiembrosRouteChildren {
 }
 
 const MiembrosRouteChildren: MiembrosRouteChildren = {
-  MiembrosAprendizajeRoute: MiembrosAprendizajeRoute,
   MiembrosAreaRoute: MiembrosAreaRoute,
   MiembrosAsambleaRoute: MiembrosAsambleaRoute,
   MiembrosConferenciaRoute: MiembrosConferenciaRoute,
@@ -1398,13 +1377,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
