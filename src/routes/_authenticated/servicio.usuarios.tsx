@@ -97,7 +97,7 @@ function UsersPage() {
       )}
 
       {/* Formulario de creación */}
-      <section className="rounded-3xl border border-brand/10 bg-paper p-6 shadow-sm">
+      <section className="card-aa">
         <h2 className="mb-4 flex items-center gap-2 font-serif text-lg text-brand">
           <UserPlus className="size-5" /> Crear nueva cuenta
         </h2>
@@ -162,7 +162,7 @@ function UsersPage() {
       </section>
 
       {/* Lista */}
-      <section className="rounded-3xl border border-brand/10 bg-paper p-6 shadow-sm">
+      <section className="card-aa">
         <h2 className="mb-4 flex items-center gap-2 font-serif text-lg text-brand">
           <UserRound className="size-5" /> Cuentas existentes
         </h2>

@@ -199,7 +199,7 @@ function Section({
 
 function Card({ titulo, texto }: { titulo: string; texto: string }) {
   return (
-    <article className="rounded-2xl border border-brand/10 bg-paper p-6 shadow-sm transition-shadow hover:shadow-lift">
+    <article className="card-aa">
       <p className="font-serif text-lg text-brand">{titulo}</p>
       <p className="mt-2 text-sm leading-relaxed text-ink/85">{texto}</p>
     </article>

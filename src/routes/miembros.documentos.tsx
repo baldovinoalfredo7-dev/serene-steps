@@ -374,7 +374,7 @@ function DocumentCard({
   onPreview: (doc: Doc) => void;
 }) {
   return (
-    <article className="flex flex-col rounded-3xl border border-brand/10 bg-paper p-6 shadow-sm transition-shadow duration-300 hover:shadow-lift">
+    <article className="card-aa flex flex-col">
       <Thumbnail doc={doc} />
       <CategoryBadge category={doc.category} />
       <h3 className="mt-3 font-serif text-lg leading-snug text-brand">{doc.title}</h3>

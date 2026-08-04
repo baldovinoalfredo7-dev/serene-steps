@@ -27,7 +27,7 @@ export function GroupForm({
 
   return (
     <div className="space-y-6">
-      <section className="rounded-2xl border border-brand/10 bg-paper p-6">
+      <section className="card-aa">
         <h2 className="font-serif text-lg text-brand">Datos del grupo</h2>
         <div className="mt-5 grid gap-4 sm:grid-cols-2">
           <Field label="Nombre" required>
@@ -96,7 +96,7 @@ export function GroupForm({
         </div>
       </section>
 
-      <section className="rounded-2xl border border-brand/10 bg-paper p-6">
+      <section className="card-aa">
         <h2 className="font-serif text-lg text-brand">Historia del grupo</h2>
         <p className="mt-1 text-xs text-ink/60">
           Texto opcional que aparecerá en la página pública del grupo.
@@ -110,7 +110,7 @@ export function GroupForm({
         />
       </section>
 
-      <section className="rounded-2xl border border-brand/10 bg-paper p-6">
+      <section className="card-aa">
         <h2 className="font-serif text-lg text-brand">Contacto de Información Pública</h2>
         <p className="mt-1 text-xs text-ink/60">
           Datos del servidor IP que atenderá a personas nuevas.

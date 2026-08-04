@@ -43,7 +43,7 @@ function TercerPasoPage() {
       />
       <section
         aria-label="Texto oficial de la Oración del Tercer Paso"
-        className="rounded-3xl border border-brand/10 bg-paper p-6 sm:p-8 shadow-sm"
+        className="card-aa sm:p-8"
       >
         <div className="space-y-4 font-serif text-lg leading-relaxed text-ink/85 sm:text-xl">
           {versos.map((v, i) => (

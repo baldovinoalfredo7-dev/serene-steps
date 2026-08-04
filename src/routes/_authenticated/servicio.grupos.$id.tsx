@@ -219,7 +219,7 @@ function EditGroupPage() {
         </div>
       </form>
 
-      <section className="rounded-2xl border border-brand/10 bg-paper p-6">
+      <section className="card-aa">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <h2 className="font-serif text-xl text-brand">Reuniones</h2>

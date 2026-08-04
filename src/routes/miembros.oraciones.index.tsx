@@ -54,7 +54,7 @@ function OracionesPage() {
         {cards.map((c) => (
           <article
             key={c.to}
-            className="flex flex-col rounded-3xl border border-brand/10 bg-paper p-6 shadow-sm transition-shadow hover:shadow-lift"
+            className="card-aa flex flex-col"
           >
             <div className="mb-4 flex items-center gap-3">
               <span

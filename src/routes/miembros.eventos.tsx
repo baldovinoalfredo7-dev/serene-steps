@@ -66,7 +66,7 @@ function CalendarioPage() {
           {actividades.map((a) => (
             <article
               key={a.titulo}
-              className="rounded-2xl border border-brand/10 bg-paper p-6 shadow-sm transition-shadow hover:shadow-lift"
+              className="card-aa"
             >
               <h3 className="font-serif text-lg italic text-brand">{a.titulo}</h3>
               <dl className="mt-3 space-y-1 text-sm leading-relaxed text-ink/85">
