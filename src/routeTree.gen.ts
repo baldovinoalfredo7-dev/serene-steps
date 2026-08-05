@@ -20,7 +20,6 @@ import { Route as PreguntasFrecuentesRouteImport } from './routes/preguntas-frec
 import { Route as NecesitoAyudaRouteImport } from './routes/necesito-ayuda'
 import { Route as MiembrosRouteImport } from './routes/miembros'
 import { Route as MapaDelSitioRouteImport } from './routes/mapa-del-sitio'
-import { Route as LiteraturaRouteImport } from './routes/literatura'
 import { Route as HorariosRouteImport } from './routes/horarios'
 import { Route as GruposRouteImport } from './routes/grupos'
 import { Route as EventosRouteImport } from './routes/eventos'
@@ -127,11 +126,6 @@ const MapaDelSitioRoute = MapaDelSitioRouteImport.update({
   path: '/mapa-del-sitio',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LiteraturaRoute = LiteraturaRouteImport.update({
-  id: '/literatura',
-  path: '/literatura',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const HorariosRoute = HorariosRouteImport.update({
   id: '/horarios',
   path: '/horarios',
@@ -192,9 +186,9 @@ const MiembrosIndexRoute = MiembrosIndexRouteImport.update({
   getParentRoute: () => MiembrosRoute,
 } as any)
 const LiteraturaIndexRoute = LiteraturaIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => LiteraturaRoute,
+  id: '/literatura/',
+  path: '/literatura/',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const MiembrosResponsabilidadRoute = MiembrosResponsabilidadRouteImport.update({
   id: '/responsabilidad',
@@ -247,9 +241,9 @@ const MiembrosAreaRoute = MiembrosAreaRouteImport.update({
   getParentRoute: () => MiembrosRoute,
 } as any)
 const LiteraturaSlugRoute = LiteraturaSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => LiteraturaRoute,
+  id: '/literatura/$slug',
+  path: '/literatura/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const GruposSlugRoute = GruposSlugRouteImport.update({
   id: '/$slug',
@@ -413,7 +407,6 @@ export interface FileRoutesByFullPath {
   '/eventos': typeof EventosRouteWithChildren
   '/grupos': typeof GruposRouteWithChildren
   '/horarios': typeof HorariosRoute
-  '/literatura': typeof LiteraturaRouteWithChildren
   '/mapa-del-sitio': typeof MapaDelSitioRoute
   '/miembros': typeof MiembrosRouteWithChildren
   '/necesito-ayuda': typeof NecesitoAyudaRoute
@@ -536,7 +529,6 @@ export interface FileRoutesById {
   '/eventos': typeof EventosRouteWithChildren
   '/grupos': typeof GruposRouteWithChildren
   '/horarios': typeof HorariosRoute
-  '/literatura': typeof LiteraturaRouteWithChildren
   '/mapa-del-sitio': typeof MapaDelSitioRoute
   '/miembros': typeof MiembrosRouteWithChildren
   '/necesito-ayuda': typeof NecesitoAyudaRoute
@@ -601,7 +593,6 @@ export interface FileRouteTypes {
     | '/eventos'
     | '/grupos'
     | '/horarios'
-    | '/literatura'
     | '/mapa-del-sitio'
     | '/miembros'
     | '/necesito-ayuda'
@@ -723,7 +714,6 @@ export interface FileRouteTypes {
     | '/eventos'
     | '/grupos'
     | '/horarios'
-    | '/literatura'
     | '/mapa-del-sitio'
     | '/miembros'
     | '/necesito-ayuda'
@@ -788,7 +778,6 @@ export interface RootRouteChildren {
   EventosRoute: typeof EventosRouteWithChildren
   GruposRoute: typeof GruposRouteWithChildren
   HorariosRoute: typeof HorariosRoute
-  LiteraturaRoute: typeof LiteraturaRouteWithChildren
   MapaDelSitioRoute: typeof MapaDelSitioRoute
   MiembrosRoute: typeof MiembrosRouteWithChildren
   NecesitoAyudaRoute: typeof NecesitoAyudaRoute
@@ -800,6 +789,8 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TengoUnProblemaRoute: typeof TengoUnProblemaRoute
   TestimoniosRoute: typeof TestimoniosRoute
+  LiteraturaSlugRoute: typeof LiteraturaSlugRoute
+  LiteraturaIndexRoute: typeof LiteraturaIndexRoute
   ApiPublicMembersGateCheckRoute: typeof ApiPublicMembersGateCheckRoute
   ApiPublicMembersGateLockRoute: typeof ApiPublicMembersGateLockRoute
   ApiPublicMembersGateUnlockRoute: typeof ApiPublicMembersGateUnlockRoute
@@ -882,13 +873,6 @@ declare module '@tanstack/react-router' {
       path: '/mapa-del-sitio'
       fullPath: '/mapa-del-sitio'
       preLoaderRoute: typeof MapaDelSitioRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/literatura': {
-      id: '/literatura'
-      path: '/literatura'
-      fullPath: '/literatura'
-      preLoaderRoute: typeof LiteraturaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/horarios': {
@@ -977,10 +961,10 @@ declare module '@tanstack/react-router' {
     }
     '/literatura/': {
       id: '/literatura/'
-      path: '/'
+      path: '/literatura'
       fullPath: '/literatura/'
       preLoaderRoute: typeof LiteraturaIndexRouteImport
-      parentRoute: typeof LiteraturaRoute
+      parentRoute: typeof rootRouteImport
     }
     '/miembros/responsabilidad': {
       id: '/miembros/responsabilidad'
@@ -1054,10 +1038,10 @@ declare module '@tanstack/react-router' {
     }
     '/literatura/$slug': {
       id: '/literatura/$slug'
-      path: '/$slug'
+      path: '/literatura/$slug'
       fullPath: '/literatura/$slug'
       preLoaderRoute: typeof LiteraturaSlugRouteImport
-      parentRoute: typeof LiteraturaRoute
+      parentRoute: typeof rootRouteImport
     }
     '/grupos/$slug': {
       id: '/grupos/$slug'
@@ -1313,20 +1297,6 @@ const GruposRouteChildren: GruposRouteChildren = {
 const GruposRouteWithChildren =
   GruposRoute._addFileChildren(GruposRouteChildren)
 
-interface LiteraturaRouteChildren {
-  LiteraturaSlugRoute: typeof LiteraturaSlugRoute
-  LiteraturaIndexRoute: typeof LiteraturaIndexRoute
-}
-
-const LiteraturaRouteChildren: LiteraturaRouteChildren = {
-  LiteraturaSlugRoute: LiteraturaSlugRoute,
-  LiteraturaIndexRoute: LiteraturaIndexRoute,
-}
-
-const LiteraturaRouteWithChildren = LiteraturaRoute._addFileChildren(
-  LiteraturaRouteChildren,
-)
-
 interface MiembrosOracionesRouteChildren {
   MiembrosOracionesSanFranciscoRoute: typeof MiembrosOracionesSanFranciscoRoute
   MiembrosOracionesSeptimoPasoRoute: typeof MiembrosOracionesSeptimoPasoRoute
@@ -1408,7 +1378,6 @@ const rootRouteChildren: RootRouteChildren = {
   EventosRoute: EventosRouteWithChildren,
   GruposRoute: GruposRouteWithChildren,
   HorariosRoute: HorariosRoute,
-  LiteraturaRoute: LiteraturaRouteWithChildren,
   MapaDelSitioRoute: MapaDelSitioRoute,
   MiembrosRoute: MiembrosRouteWithChildren,
   NecesitoAyudaRoute: NecesitoAyudaRoute,
@@ -1420,6 +1389,8 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TengoUnProblemaRoute: TengoUnProblemaRoute,
   TestimoniosRoute: TestimoniosRoute,
+  LiteraturaSlugRoute: LiteraturaSlugRoute,
+  LiteraturaIndexRoute: LiteraturaIndexRoute,
   ApiPublicMembersGateCheckRoute: ApiPublicMembersGateCheckRoute,
   ApiPublicMembersGateLockRoute: ApiPublicMembersGateLockRoute,
   ApiPublicMembersGateUnlockRoute: ApiPublicMembersGateUnlockRoute,

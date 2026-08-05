@@ -85,7 +85,7 @@ function PublicationDetail() {
             <p className="mt-5 text-lg leading-[1.7] text-ink/85">{publication.summary}</p>
 
             <div className="mt-8 space-y-4">
-              {publication.description.map((p) => (
+              {publication.description.map((p: string) => (
                 <p key={p} className="text-base leading-relaxed text-ink/80">
                   {p}
                 </p>
