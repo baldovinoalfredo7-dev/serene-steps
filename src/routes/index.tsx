@@ -249,34 +249,22 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
             </p>
           </div>
 
-          <ul
-            role="list"
-            className="grid gap-px overflow-hidden rounded-2xl border border-brand/10 bg-brand/10 shadow-soft sm:grid-cols-2 lg:grid-cols-4"
-          >
-            {literatura.map((item) => {
-              const Icon = item.icon;
-              return (
-                <li key={item.title} className="bg-paper">
-                  <Link
-                    to="/literatura"
-                    className="flex h-full flex-col gap-5 p-9 transition-all duration-300 hover:bg-soft/70"
-                  >
-                    <Icon className="size-6 text-brand/80" strokeWidth={1.5} />
-                    <h3 className="font-serif text-xl leading-[1.2] text-brand">
-                      {item.title}
-                    </h3>
-                  </Link>
-                </li>
-              );
-            })}
+          <ul role="list" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {visiblePublications.map((item) => (
+              <li key={item.slug} className="h-full">
+                <PublicationCard item={item} />
+              </li>
+            ))}
           </ul>
 
           <div className="mt-10 rounded-2xl border border-brand/10 bg-soft/60 p-7 md:p-8">
-            <h3 className="font-serif text-xl text-brand">¿No sabes por dónde empezar?</h3>
+            <h3 className="font-serif text-xl text-brand">
+              ¿Es tu primer acercamiento a Alcohólicos Anónimos?
+            </h3>
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-ink/80">
-              Si es la primera vez que visitas Alcohólicos Anónimos, el Libro Grande es la obra
-              fundamental donde nació nuestro programa de recuperación. También encontrarás
-              folletos gratuitos con respuestas a las preguntas más frecuentes.
+              Si deseas conocer cómo funciona nuestro programa de recuperación, te recomendamos
+              comenzar por el Libro Grande, la obra donde nació Alcohólicos Anónimos. También
+              encontrarás folletos gratuitos con respuestas a las preguntas más frecuentes.
             </p>
           </div>
 
