@@ -75,12 +75,7 @@ const secondaryDoors: readonly Door[] = [
 ] as const;
 
 
-const literatura = [
-  { title: "Libro Grande", icon: BookOpen },
-  { title: "Doce Pasos y Doce Tradiciones", icon: BookMarked },
-  { title: "Viviendo Sobrio", icon: Sparkles },
-  { title: "Folletos", icon: FileText },
-] as const;
+
 
 function Home() {
   const { data: groups } = useSuspenseQuery(groupsQueryOptions());
