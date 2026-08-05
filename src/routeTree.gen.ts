@@ -20,7 +20,6 @@ import { Route as PreguntasFrecuentesRouteImport } from './routes/preguntas-frec
 import { Route as NecesitoAyudaRouteImport } from './routes/necesito-ayuda'
 import { Route as MiembrosRouteImport } from './routes/miembros'
 import { Route as MapaDelSitioRouteImport } from './routes/mapa-del-sitio'
-import { Route as LiteraturaRouteImport } from './routes/literatura'
 import { Route as HorariosRouteImport } from './routes/horarios'
 import { Route as GruposRouteImport } from './routes/grupos'
 import { Route as EventosRouteImport } from './routes/eventos'
@@ -33,6 +32,7 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as MiembrosIndexRouteImport } from './routes/miembros.index'
+import { Route as LiteraturaIndexRouteImport } from './routes/literatura.index'
 import { Route as MiembrosResponsabilidadRouteImport } from './routes/miembros.responsabilidad'
 import { Route as MiembrosPrincipiosRouteImport } from './routes/miembros.principios'
 import { Route as MiembrosOracionesRouteImport } from './routes/miembros.oraciones'
@@ -43,6 +43,7 @@ import { Route as MiembrosDocumentosRouteImport } from './routes/miembros.docume
 import { Route as MiembrosConferenciaRouteImport } from './routes/miembros.conferencia'
 import { Route as MiembrosAsambleaRouteImport } from './routes/miembros.asamblea'
 import { Route as MiembrosAreaRouteImport } from './routes/miembros.area'
+import { Route as LiteraturaSlugRouteImport } from './routes/literatura.$slug'
 import { Route as GruposSlugRouteImport } from './routes/grupos.$slug'
 import { Route as EventosSlugRouteImport } from './routes/eventos.$slug'
 import { Route as AuthenticatedServicioRouteImport } from './routes/_authenticated/servicio'
@@ -125,11 +126,6 @@ const MapaDelSitioRoute = MapaDelSitioRouteImport.update({
   path: '/mapa-del-sitio',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LiteraturaRoute = LiteraturaRouteImport.update({
-  id: '/literatura',
-  path: '/literatura',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const HorariosRoute = HorariosRouteImport.update({
   id: '/horarios',
   path: '/horarios',
@@ -189,6 +185,11 @@ const MiembrosIndexRoute = MiembrosIndexRouteImport.update({
   path: '/',
   getParentRoute: () => MiembrosRoute,
 } as any)
+const LiteraturaIndexRoute = LiteraturaIndexRouteImport.update({
+  id: '/literatura/',
+  path: '/literatura/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MiembrosResponsabilidadRoute = MiembrosResponsabilidadRouteImport.update({
   id: '/responsabilidad',
   path: '/responsabilidad',
@@ -238,6 +239,11 @@ const MiembrosAreaRoute = MiembrosAreaRouteImport.update({
   id: '/area',
   path: '/area',
   getParentRoute: () => MiembrosRoute,
+} as any)
+const LiteraturaSlugRoute = LiteraturaSlugRouteImport.update({
+  id: '/literatura/$slug',
+  path: '/literatura/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const GruposSlugRoute = GruposSlugRouteImport.update({
   id: '/$slug',
@@ -401,7 +407,6 @@ export interface FileRoutesByFullPath {
   '/eventos': typeof EventosRouteWithChildren
   '/grupos': typeof GruposRouteWithChildren
   '/horarios': typeof HorariosRoute
-  '/literatura': typeof LiteraturaRoute
   '/mapa-del-sitio': typeof MapaDelSitioRoute
   '/miembros': typeof MiembrosRouteWithChildren
   '/necesito-ayuda': typeof NecesitoAyudaRoute
@@ -417,6 +422,7 @@ export interface FileRoutesByFullPath {
   '/servicio': typeof AuthenticatedServicioRouteWithChildren
   '/eventos/$slug': typeof EventosSlugRoute
   '/grupos/$slug': typeof GruposSlugRoute
+  '/literatura/$slug': typeof LiteraturaSlugRoute
   '/miembros/area': typeof MiembrosAreaRoute
   '/miembros/asamblea': typeof MiembrosAsambleaRoute
   '/miembros/conferencia': typeof MiembrosConferenciaRoute
@@ -427,6 +433,7 @@ export interface FileRoutesByFullPath {
   '/miembros/oraciones': typeof MiembrosOracionesRouteWithChildren
   '/miembros/principios': typeof MiembrosPrincipiosRouteWithChildren
   '/miembros/responsabilidad': typeof MiembrosResponsabilidadRoute
+  '/literatura/': typeof LiteraturaIndexRoute
   '/miembros/': typeof MiembrosIndexRoute
   '/servicio/perfil': typeof AuthenticatedServicioPerfilRoute
   '/servicio/usuarios': typeof AuthenticatedServicioUsuariosRoute
@@ -462,7 +469,6 @@ export interface FileRoutesByTo {
   '/eventos': typeof EventosRouteWithChildren
   '/grupos': typeof GruposRouteWithChildren
   '/horarios': typeof HorariosRoute
-  '/literatura': typeof LiteraturaRoute
   '/mapa-del-sitio': typeof MapaDelSitioRoute
   '/necesito-ayuda': typeof NecesitoAyudaRoute
   '/preguntas-frecuentes': typeof PreguntasFrecuentesRoute
@@ -476,6 +482,7 @@ export interface FileRoutesByTo {
   '/perfil': typeof AuthenticatedPerfilRoute
   '/eventos/$slug': typeof EventosSlugRoute
   '/grupos/$slug': typeof GruposSlugRoute
+  '/literatura/$slug': typeof LiteraturaSlugRoute
   '/miembros/area': typeof MiembrosAreaRoute
   '/miembros/asamblea': typeof MiembrosAsambleaRoute
   '/miembros/conferencia': typeof MiembrosConferenciaRoute
@@ -484,6 +491,7 @@ export interface FileRoutesByTo {
   '/miembros/eventos': typeof MiembrosEventosRoute
   '/miembros/grupos': typeof MiembrosGruposRoute
   '/miembros/responsabilidad': typeof MiembrosResponsabilidadRoute
+  '/literatura': typeof LiteraturaIndexRoute
   '/miembros': typeof MiembrosIndexRoute
   '/servicio/perfil': typeof AuthenticatedServicioPerfilRoute
   '/servicio/usuarios': typeof AuthenticatedServicioUsuariosRoute
@@ -521,7 +529,6 @@ export interface FileRoutesById {
   '/eventos': typeof EventosRouteWithChildren
   '/grupos': typeof GruposRouteWithChildren
   '/horarios': typeof HorariosRoute
-  '/literatura': typeof LiteraturaRoute
   '/mapa-del-sitio': typeof MapaDelSitioRoute
   '/miembros': typeof MiembrosRouteWithChildren
   '/necesito-ayuda': typeof NecesitoAyudaRoute
@@ -537,6 +544,7 @@ export interface FileRoutesById {
   '/_authenticated/servicio': typeof AuthenticatedServicioRouteWithChildren
   '/eventos/$slug': typeof EventosSlugRoute
   '/grupos/$slug': typeof GruposSlugRoute
+  '/literatura/$slug': typeof LiteraturaSlugRoute
   '/miembros/area': typeof MiembrosAreaRoute
   '/miembros/asamblea': typeof MiembrosAsambleaRoute
   '/miembros/conferencia': typeof MiembrosConferenciaRoute
@@ -547,6 +555,7 @@ export interface FileRoutesById {
   '/miembros/oraciones': typeof MiembrosOracionesRouteWithChildren
   '/miembros/principios': typeof MiembrosPrincipiosRouteWithChildren
   '/miembros/responsabilidad': typeof MiembrosResponsabilidadRoute
+  '/literatura/': typeof LiteraturaIndexRoute
   '/miembros/': typeof MiembrosIndexRoute
   '/_authenticated/servicio/perfil': typeof AuthenticatedServicioPerfilRoute
   '/_authenticated/servicio/usuarios': typeof AuthenticatedServicioUsuariosRoute
@@ -584,7 +593,6 @@ export interface FileRouteTypes {
     | '/eventos'
     | '/grupos'
     | '/horarios'
-    | '/literatura'
     | '/mapa-del-sitio'
     | '/miembros'
     | '/necesito-ayuda'
@@ -600,6 +608,7 @@ export interface FileRouteTypes {
     | '/servicio'
     | '/eventos/$slug'
     | '/grupos/$slug'
+    | '/literatura/$slug'
     | '/miembros/area'
     | '/miembros/asamblea'
     | '/miembros/conferencia'
@@ -610,6 +619,7 @@ export interface FileRouteTypes {
     | '/miembros/oraciones'
     | '/miembros/principios'
     | '/miembros/responsabilidad'
+    | '/literatura/'
     | '/miembros/'
     | '/servicio/perfil'
     | '/servicio/usuarios'
@@ -645,7 +655,6 @@ export interface FileRouteTypes {
     | '/eventos'
     | '/grupos'
     | '/horarios'
-    | '/literatura'
     | '/mapa-del-sitio'
     | '/necesito-ayuda'
     | '/preguntas-frecuentes'
@@ -659,6 +668,7 @@ export interface FileRouteTypes {
     | '/perfil'
     | '/eventos/$slug'
     | '/grupos/$slug'
+    | '/literatura/$slug'
     | '/miembros/area'
     | '/miembros/asamblea'
     | '/miembros/conferencia'
@@ -667,6 +677,7 @@ export interface FileRouteTypes {
     | '/miembros/eventos'
     | '/miembros/grupos'
     | '/miembros/responsabilidad'
+    | '/literatura'
     | '/miembros'
     | '/servicio/perfil'
     | '/servicio/usuarios'
@@ -703,7 +714,6 @@ export interface FileRouteTypes {
     | '/eventos'
     | '/grupos'
     | '/horarios'
-    | '/literatura'
     | '/mapa-del-sitio'
     | '/miembros'
     | '/necesito-ayuda'
@@ -719,6 +729,7 @@ export interface FileRouteTypes {
     | '/_authenticated/servicio'
     | '/eventos/$slug'
     | '/grupos/$slug'
+    | '/literatura/$slug'
     | '/miembros/area'
     | '/miembros/asamblea'
     | '/miembros/conferencia'
@@ -729,6 +740,7 @@ export interface FileRouteTypes {
     | '/miembros/oraciones'
     | '/miembros/principios'
     | '/miembros/responsabilidad'
+    | '/literatura/'
     | '/miembros/'
     | '/_authenticated/servicio/perfil'
     | '/_authenticated/servicio/usuarios'
@@ -766,7 +778,6 @@ export interface RootRouteChildren {
   EventosRoute: typeof EventosRouteWithChildren
   GruposRoute: typeof GruposRouteWithChildren
   HorariosRoute: typeof HorariosRoute
-  LiteraturaRoute: typeof LiteraturaRoute
   MapaDelSitioRoute: typeof MapaDelSitioRoute
   MiembrosRoute: typeof MiembrosRouteWithChildren
   NecesitoAyudaRoute: typeof NecesitoAyudaRoute
@@ -778,6 +789,8 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TengoUnProblemaRoute: typeof TengoUnProblemaRoute
   TestimoniosRoute: typeof TestimoniosRoute
+  LiteraturaSlugRoute: typeof LiteraturaSlugRoute
+  LiteraturaIndexRoute: typeof LiteraturaIndexRoute
   ApiPublicMembersGateCheckRoute: typeof ApiPublicMembersGateCheckRoute
   ApiPublicMembersGateLockRoute: typeof ApiPublicMembersGateLockRoute
   ApiPublicMembersGateUnlockRoute: typeof ApiPublicMembersGateUnlockRoute
@@ -860,13 +873,6 @@ declare module '@tanstack/react-router' {
       path: '/mapa-del-sitio'
       fullPath: '/mapa-del-sitio'
       preLoaderRoute: typeof MapaDelSitioRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/literatura': {
-      id: '/literatura'
-      path: '/literatura'
-      fullPath: '/literatura'
-      preLoaderRoute: typeof LiteraturaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/horarios': {
@@ -953,6 +959,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MiembrosIndexRouteImport
       parentRoute: typeof MiembrosRoute
     }
+    '/literatura/': {
+      id: '/literatura/'
+      path: '/literatura'
+      fullPath: '/literatura/'
+      preLoaderRoute: typeof LiteraturaIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/miembros/responsabilidad': {
       id: '/miembros/responsabilidad'
       path: '/responsabilidad'
@@ -1022,6 +1035,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/miembros/area'
       preLoaderRoute: typeof MiembrosAreaRouteImport
       parentRoute: typeof MiembrosRoute
+    }
+    '/literatura/$slug': {
+      id: '/literatura/$slug'
+      path: '/literatura/$slug'
+      fullPath: '/literatura/$slug'
+      preLoaderRoute: typeof LiteraturaSlugRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/grupos/$slug': {
       id: '/grupos/$slug'
@@ -1358,7 +1378,6 @@ const rootRouteChildren: RootRouteChildren = {
   EventosRoute: EventosRouteWithChildren,
   GruposRoute: GruposRouteWithChildren,
   HorariosRoute: HorariosRoute,
-  LiteraturaRoute: LiteraturaRoute,
   MapaDelSitioRoute: MapaDelSitioRoute,
   MiembrosRoute: MiembrosRouteWithChildren,
   NecesitoAyudaRoute: NecesitoAyudaRoute,
@@ -1370,6 +1389,8 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TengoUnProblemaRoute: TengoUnProblemaRoute,
   TestimoniosRoute: TestimoniosRoute,
+  LiteraturaSlugRoute: LiteraturaSlugRoute,
+  LiteraturaIndexRoute: LiteraturaIndexRoute,
   ApiPublicMembersGateCheckRoute: ApiPublicMembersGateCheckRoute,
   ApiPublicMembersGateLockRoute: ApiPublicMembersGateLockRoute,
   ApiPublicMembersGateUnlockRoute: ApiPublicMembersGateUnlockRoute,
