@@ -239,8 +239,14 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
               Nuestra literatura
             </span>
             <h2 className="font-serif text-3xl leading-[1.15] text-brand sm:text-4xl">
-              Libros y folletos de A.A.
+              Conoce nuestra literatura
             </h2>
+            <p className="mt-5 text-base leading-relaxed text-ink/80">
+              La literatura de Alcohólicos Anónimos reúne la experiencia, fortaleza y esperanza de
+              miles de personas que encontraron una nueva manera de vivir sin alcohol. A través de
+              libros, folletos y publicaciones, podrás conocer mejor nuestro programa de
+              recuperación y la experiencia compartida de quienes lo viven día a día.
+            </p>
           </div>
 
           <ul
@@ -265,14 +271,29 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
             })}
           </ul>
 
+          <div className="mt-10 rounded-2xl border border-brand/10 bg-soft/60 p-7 md:p-8">
+            <h3 className="font-serif text-xl text-brand">¿No sabes por dónde empezar?</h3>
+            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-ink/80">
+              Si es la primera vez que visitas Alcohólicos Anónimos, el Libro Grande es la obra
+              fundamental donde nació nuestro programa de recuperación. También encontrarás
+              folletos gratuitos con respuestas a las preguntas más frecuentes.
+            </p>
+          </div>
+
           <div className="mt-10">
-            <Link
-              to="/literatura"
-              className="inline-flex items-center gap-2 border-b border-brand/30 pb-1 text-sm font-semibold uppercase tracking-[0.18em] text-brand transition-colors hover:border-brand"
-            >
+            <Link to="/literatura" className="btn-aa">
               Explorar la literatura <ArrowRight className="size-4" />
             </Link>
           </div>
+
+          <figure className="mx-auto mt-16 max-w-2xl border-t border-brand/10 pt-8 text-center">
+            <blockquote className="font-serif text-lg italic leading-relaxed text-brand/90 sm:text-xl">
+              Cada libro, folleto y publicación nace de la experiencia compartida de quienes
+              encontraron una nueva manera de vivir. Quizá en sus páginas encuentres una historia
+              que también hable de ti.
+            </blockquote>
+          </figure>
+
         </div>
       </section>
     </>
