@@ -5,7 +5,9 @@ import heroSalon from "@/assets/hero-salon-area2.jpg";
 import caribeMap from "@/assets/caribe-map.jpg";
 import { groupsQueryOptions } from "@/lib/groups-queries";
 import type { Group } from "@/lib/groups-data";
-import { ArrowRight, BookOpen, BookMarked, Sparkles, FileText } from "lucide-react";
+import { visiblePublications } from "@/lib/literatura-data";
+import { PublicationCard } from "@/components/site/PublicationCard";
+import { ArrowRight } from "lucide-react";
 
 
 export const Route = createFileRoute("/")({
