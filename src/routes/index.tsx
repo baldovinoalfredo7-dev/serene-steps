@@ -64,12 +64,13 @@ const secondaryDoors: readonly Door[] = [
     cta: "Acceder al portal",
   },
   {
-    eyebrow: "Conoce nuestra oficina",
+    eyebrow: "Conoce nuestra literatura",
     intro:
-      "Conoce la ubicación de nuestra oficina, los horarios de atención y los diferentes medios de contacto del Área 2 Metropolitana de Barranquilla.",
-    to: "/bienvenida",
-    cta: "Conocer la oficina",
+      "Descubre los libros, folletos y publicaciones oficiales de Alcohólicos Anónimos. En ellos encontrarás la experiencia, fortaleza y esperanza de quienes han encontrado una nueva manera de vivir.",
+    to: "/literatura",
+    cta: "Explorar la literatura",
   },
+
 
 
 ] as const;
@@ -281,6 +282,25 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
 
         </div>
       </section>
+
+      {/* 9. VISITA NUESTRA OFICINA */}
+      <section className="border-t border-brand/5 bg-soft/40 py-12 md:py-16">
+        <div className="mx-auto max-w-3xl px-6 text-center">
+          <h2 className="mb-6 font-serif text-3xl leading-[1.15] text-brand sm:text-4xl">
+            Visita nuestra oficina
+          </h2>
+          <p className="mx-auto mb-9 max-w-2xl text-pretty text-base leading-[1.7] text-ink/85">
+            Si prefieres recibir orientación personalmente, nuestra Oficina del Área 2
+            Metropolitana de Barranquilla está disponible para atenderte. Allí encontrarás
+            información sobre reuniones, literatura y los diferentes servicios que ofrece nuestra
+            Comunidad.
+          </p>
+          <Link to="/bienvenida" className="btn-aa uppercase tracking-[0.15em]">
+            Conocer la oficina <ArrowRight className="size-4" />
+          </Link>
+        </div>
+      </section>
     </>
   );
 }
+
