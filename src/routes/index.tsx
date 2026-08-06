@@ -66,14 +66,19 @@ const secondaryDoors: readonly Door[] = [
   {
     eyebrow: "Conoce nuestra literatura",
     intro:
-      "Descubre los libros, folletos y publicaciones oficiales de Alcohólicos Anónimos. En ellos encontrarás la experiencia, fortaleza y esperanza de quienes han encontrado una nueva manera de vivir.",
+      "Libros y folletos oficiales de Alcohólicos Anónimos.",
     to: "/literatura",
     cta: "Explorar la literatura",
   },
-
-
-
+  {
+    eyebrow: "Noticias y eventos",
+    intro:
+      "Consulta las próximas actividades, encuentros y eventos del Área 2 Metropolitana.",
+    to: "/eventos",
+    cta: "Ver noticias y eventos",
+  },
 ] as const;
+
 
 
 
@@ -165,18 +170,18 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
         <div className="mx-auto max-w-6xl px-6">
           <ul
             role="list"
-            className="grid items-stretch gap-6 md:grid-cols-3"
+            className="grid items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-4"
           >
             {secondaryDoors.map((d) => (
               <li key={d.to} className="h-full">
                 <Link
                   to={d.to}
-                  className="flex h-full flex-col rounded-2xl border border-brand/10 bg-paper p-10 shadow-soft transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand/20 hover:bg-soft/40 hover:shadow-lift md:p-12"
+                  className="flex h-full flex-col rounded-2xl border border-brand/10 bg-paper p-8 shadow-soft transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand/20 hover:bg-soft/40 hover:shadow-lift"
                 >
-                  <h2 className="mb-4 font-serif text-2xl leading-[1.2] text-brand md:text-[1.75rem]">
+                  <h2 className="mb-3 font-serif text-xl leading-[1.2] text-brand md:text-2xl">
                     {d.eyebrow}
                   </h2>
-                  <p className="mb-8 text-base leading-[1.7] text-ink/85">
+                  <p className="mb-8 text-[0.95rem] leading-[1.7] text-ink/85">
                     {d.intro}
                   </p>
                   <span className="btn-aa mt-auto w-full uppercase tracking-[0.08em]">
@@ -255,30 +260,12 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
             ))}
           </ul>
 
-          <div className="mt-10 rounded-2xl border border-brand/10 bg-soft/60 p-7 md:p-8">
-            <h3 className="font-serif text-xl text-brand">
-              ¿Es tu primer acercamiento a Alcohólicos Anónimos?
-            </h3>
-            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-ink/80">
-              Si deseas conocer cómo funciona nuestro programa de recuperación, te recomendamos
-              comenzar por el Libro Grande, la obra donde nació Alcohólicos Anónimos. También
-              encontrarás folletos gratuitos con respuestas a las preguntas más frecuentes.
-            </p>
-          </div>
-
           <div className="mt-10">
             <Link to="/literatura" className="btn-aa">
               Explorar la literatura <ArrowRight className="size-4" />
             </Link>
           </div>
 
-          <figure className="mx-auto mt-16 max-w-2xl border-t border-brand/10 pt-8 text-center">
-            <blockquote className="font-serif text-lg italic leading-relaxed text-brand/90 sm:text-xl">
-              Cada libro, folleto y publicación nace de la experiencia compartida de quienes
-              encontraron una nueva manera de vivir. Quizá en sus páginas encuentres una historia
-              que también hable de ti.
-            </blockquote>
-          </figure>
 
         </div>
       </section>
