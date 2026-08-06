@@ -176,12 +176,12 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
               <li key={d.to} className="h-full">
                 <Link
                   to={d.to}
-                  className="flex h-full flex-col rounded-2xl border border-brand/10 bg-paper p-10 shadow-soft transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand/20 hover:bg-soft/40 hover:shadow-lift md:p-12"
+                  className="flex h-full flex-col rounded-2xl border border-brand/10 bg-paper p-8 shadow-soft transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand/20 hover:bg-soft/40 hover:shadow-lift"
                 >
-                  <h2 className="mb-4 font-serif text-2xl leading-[1.2] text-brand md:text-[1.75rem]">
+                  <h2 className="mb-3 font-serif text-xl leading-[1.2] text-brand md:text-2xl">
                     {d.eyebrow}
                   </h2>
-                  <p className="mb-8 text-base leading-[1.7] text-ink/85">
+                  <p className="mb-8 text-[0.95rem] leading-[1.7] text-ink/85">
                     {d.intro}
                   </p>
                   <span className="btn-aa mt-auto w-full uppercase tracking-[0.08em]">
