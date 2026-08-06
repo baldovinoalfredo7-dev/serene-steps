@@ -66,14 +66,19 @@ const secondaryDoors: readonly Door[] = [
   {
     eyebrow: "Conoce nuestra literatura",
     intro:
-      "Descubre los libros, folletos y publicaciones oficiales de Alcohólicos Anónimos. En ellos encontrarás la experiencia, fortaleza y esperanza de quienes han encontrado una nueva manera de vivir.",
+      "Libros y folletos oficiales de Alcohólicos Anónimos.",
     to: "/literatura",
     cta: "Explorar la literatura",
   },
-
-
-
+  {
+    eyebrow: "Noticias y eventos",
+    intro:
+      "Consulta las próximas actividades, encuentros y eventos del Área 2 Metropolitana.",
+    to: "/eventos",
+    cta: "Ver noticias y eventos",
+  },
 ] as const;
+
 
 
 
@@ -165,7 +170,7 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
         <div className="mx-auto max-w-6xl px-6">
           <ul
             role="list"
-            className="grid items-stretch gap-6 md:grid-cols-3"
+            className="grid items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-4"
           >
             {secondaryDoors.map((d) => (
               <li key={d.to} className="h-full">
