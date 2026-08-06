@@ -260,30 +260,12 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
             ))}
           </ul>
 
-          <div className="mt-10 rounded-2xl border border-brand/10 bg-soft/60 p-7 md:p-8">
-            <h3 className="font-serif text-xl text-brand">
-              ¿Es tu primer acercamiento a Alcohólicos Anónimos?
-            </h3>
-            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-ink/80">
-              Si deseas conocer cómo funciona nuestro programa de recuperación, te recomendamos
-              comenzar por el Libro Grande, la obra donde nació Alcohólicos Anónimos. También
-              encontrarás folletos gratuitos con respuestas a las preguntas más frecuentes.
-            </p>
-          </div>
-
           <div className="mt-10">
             <Link to="/literatura" className="btn-aa">
               Explorar la literatura <ArrowRight className="size-4" />
             </Link>
           </div>
 
-          <figure className="mx-auto mt-16 max-w-2xl border-t border-brand/10 pt-8 text-center">
-            <blockquote className="font-serif text-lg italic leading-relaxed text-brand/90 sm:text-xl">
-              Cada libro, folleto y publicación nace de la experiencia compartida de quienes
-              encontraron una nueva manera de vivir. Quizá en sus páginas encuentres una historia
-              que también hable de ti.
-            </blockquote>
-          </figure>
 
         </div>
       </section>
