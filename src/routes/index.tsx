@@ -64,12 +64,13 @@ const secondaryDoors: readonly Door[] = [
     cta: "Acceder al portal",
   },
   {
-    eyebrow: "Conoce nuestra oficina",
+    eyebrow: "Conoce nuestra literatura",
     intro:
-      "Conoce la ubicación de nuestra oficina, los horarios de atención y los diferentes medios de contacto del Área 2 Metropolitana de Barranquilla.",
-    to: "/bienvenida",
-    cta: "Conocer la oficina",
+      "Descubre los libros, folletos y publicaciones oficiales de Alcohólicos Anónimos. En ellos encontrarás la experiencia, fortaleza y esperanza de quienes han encontrado una nueva manera de vivir.",
+    to: "/literatura",
+    cta: "Explorar la literatura",
   },
+
 
 
 ] as const;
