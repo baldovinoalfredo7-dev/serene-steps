@@ -143,7 +143,7 @@ function EventDetailPage() {
           </Link>
           <div className="mb-3 flex flex-wrap items-center gap-2">
             {e.isFeatured && (
-              <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2.5 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wide text-amber-700">
+              <span className="inline-flex items-center gap-1 rounded-full bg-brand-tint px-2.5 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wide text-brand-strong">
                 <Star className="size-3" /> Destacado
               </span>
             )}

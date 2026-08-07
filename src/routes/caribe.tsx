@@ -72,7 +72,7 @@ function CaribePage() {
         </div>
       </div>
 
-      <aside className="mx-auto mt-16 max-w-3xl rounded-3xl bg-soft/60 p-8 text-center ring-1 ring-brand/10 sm:p-10">
+      <aside className="mx-auto mt-16 max-w-3xl rounded-2xl bg-soft/60 p-8 text-center ring-1 ring-brand/10 sm:p-10">
         <h2 className="font-serif text-2xl italic leading-tight text-brand sm:text-3xl">
           ¿No encuentras la información que buscas?
         </h2>

@@ -147,7 +147,7 @@ function AyudaFamiliar() {
       {/* 5. Tú también mereces apoyo */}
       <section className="border-t border-brand/5 bg-paper py-16 md:py-24">
         <div className="mx-auto max-w-3xl px-6">
-          <div className="rounded-3xl border border-brand/10 bg-soft/50 p-8 md:p-12">
+          <div className="rounded-2xl border border-brand/10 bg-soft/50 p-8 md:p-12">
             <div className="mb-6 flex items-center gap-4">
               <LifeBuoy className="size-6 text-brand/80" strokeWidth={1.5} />
               <span className="text-xs font-semibold uppercase tracking-[0.28em] text-brand/70">

@@ -100,7 +100,7 @@ export function MeetingFinder({ groups }: { groups: Group[] }) {
 
         <form
           onSubmit={handleSearch}
-          className="rounded-3xl bg-paper p-6 shadow-soft md:p-10"
+          className="rounded-2xl bg-paper p-6 shadow-soft md:p-10"
         >
           <div className="grid gap-5 md:grid-cols-[1fr_1fr_auto] md:items-end">
             <label className="block">
@@ -166,7 +166,7 @@ export function MeetingFinder({ groups }: { groups: Group[] }) {
 
         <div className="mt-10">
           {submitted && results.length === 0 && (
-            <div className="rounded-3xl border border-dashed border-brand/20 bg-paper p-10 text-center">
+            <div className="rounded-2xl border border-dashed border-brand/20 bg-paper p-10 text-center">
               <p className="font-serif text-xl italic text-brand">
                 No encontramos reuniones con estos filtros.
               </p>
@@ -191,7 +191,7 @@ export function MeetingFinder({ groups }: { groups: Group[] }) {
           )}
 
           {!submitted && (
-            <div className="rounded-3xl border border-dashed border-brand/20 bg-paper/60 p-10 text-center">
+            <div className="rounded-2xl border border-dashed border-brand/20 bg-paper/60 p-10 text-center">
               <p className="font-serif text-xl italic text-brand">
                 Los resultados aparecerán aquí.
               </p>
@@ -209,7 +209,7 @@ export function MeetingFinder({ groups }: { groups: Group[] }) {
 
 function ResultCard({ r }: { r: Result }) {
   return (
-    <article className="flex flex-col rounded-3xl bg-paper p-7 shadow-soft transition-all hover:-translate-y-1 hover:shadow-lift md:p-8">
+    <article className="flex flex-col rounded-2xl bg-paper p-7 shadow-soft transition-all hover:-translate-y-1 hover:shadow-lift md:p-8">
       <span className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand/80">
         {r.municipality}
       </span>
@@ -233,7 +233,7 @@ function ResultCard({ r }: { r: Result }) {
           href={r.mapsUrl}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-brand/25 px-5 py-3 text-xs font-semibold uppercase tracking-[0.15em] text-brand transition-colors hover:bg-brand hover:text-paper"
+          className="btn-aa-outline w-full text-xs uppercase tracking-[0.15em]"
         >
           <ExternalLink className="size-4" />
           Ver ubicación en Google Maps

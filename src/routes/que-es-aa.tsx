@@ -112,7 +112,7 @@ function QueEsAA() {
           </div>
         </Block>
 
-        <section className="rounded-3xl bg-soft/60 p-8 text-center sm:p-12">
+        <section className="rounded-2xl bg-soft/60 p-8 text-center sm:p-12">
           <h2 className="font-serif text-2xl italic text-brand sm:text-3xl">
             Si crees que tienes un problema con el alcohol, no estás solo
           </h2>

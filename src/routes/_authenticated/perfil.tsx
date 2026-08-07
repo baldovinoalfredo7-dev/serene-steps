@@ -85,7 +85,7 @@ function ProfilePage() {
       intro="Panel privado para servidores y miembros autorizados del Área 2 Metropolitana."
     >
       <div className="mx-auto max-w-2xl space-y-6">
-        <section className="rounded-3xl border border-brand/10 bg-paper p-8 shadow-lift">
+        <section className="rounded-2xl border border-brand/10 bg-paper p-8 shadow-lift">
           <div className="flex items-start gap-4">
             <span className="grid size-12 place-items-center rounded-full bg-brand/10 text-brand">
               <UserRound className="size-6" />
@@ -118,7 +118,7 @@ function ProfilePage() {
         </section>
 
         {canBootstrap && (
-          <section className="rounded-3xl border-2 border-brand/30 bg-brand/5 p-8">
+          <section className="rounded-2xl border-2 border-brand/30 bg-brand/5 p-8">
             <h3 className="font-serif text-xl text-brand">Bootstrap del primer administrador</h3>
             <p className="mt-2 text-sm text-ink/80">
               Aún no existe ningún administrador en el sistema. Como primer usuario autenticado,
@@ -138,7 +138,7 @@ function ProfilePage() {
         )}
 
         {isAdmin && (
-          <section className="rounded-3xl border border-brand/10 bg-paper p-8">
+          <section className="rounded-2xl border border-brand/10 bg-paper p-8">
             <h3 className="font-serif text-xl text-brand">Panel administrativo</h3>
             <p className="mt-2 text-sm text-ink/70">
               El panel administrativo (CRUD de grupos, reuniones, eventos y documentos) se
@@ -147,7 +147,7 @@ function ProfilePage() {
           </section>
         )}
 
-        <section className="rounded-3xl border border-brand/10 bg-paper p-8">
+        <section className="rounded-2xl border border-brand/10 bg-paper p-8">
           <h3 className="font-serif text-xl text-brand">Sesión</h3>
           <p className="mt-2 text-sm text-ink/70">
             Puedes cambiar tu contraseña desde el flujo de recuperación en la pantalla de acceso, o

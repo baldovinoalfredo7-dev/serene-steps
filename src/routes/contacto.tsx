@@ -133,7 +133,7 @@ function Cooperar() {
         </section>
 
         {/* 4. Principios de cooperación */}
-        <aside className="rounded-3xl bg-soft/60 p-8 sm:p-10 ring-1 ring-brand/10">
+        <aside className="rounded-2xl bg-soft/60 p-8 sm:p-10 ring-1 ring-brand/10">
           <h2 className="font-serif text-2xl italic leading-tight text-brand sm:text-3xl">
             Nuestra cooperación se basa en principios sencillos
           </h2>
@@ -148,7 +148,7 @@ function Cooperar() {
         </aside>
 
         {/* CTA única */}
-        <section className="rounded-3xl bg-paper p-8 text-center ring-1 ring-brand/10 sm:p-12">
+        <section className="rounded-2xl bg-paper p-8 text-center ring-1 ring-brand/10 sm:p-12">
           <h2 className="font-serif text-2xl leading-tight text-brand sm:text-3xl">
             ¿Deseas cooperar con Alcohólicos Anónimos?
           </h2>
@@ -239,7 +239,7 @@ function Cooperar() {
         </section>
 
         {/* 7. Cierre */}
-        <section className="rounded-3xl bg-soft/60 p-8 text-center sm:p-12">
+        <section className="rounded-2xl bg-soft/60 p-8 text-center sm:p-12">
           <p className="mx-auto max-w-2xl text-pretty text-base leading-relaxed text-ink/80">
             Gracias por tu interés en colaborar con Alcohólicos Anónimos. Cada esfuerzo
             conjunto puede ayudar a que una persona encuentre el camino hacia la recuperación.

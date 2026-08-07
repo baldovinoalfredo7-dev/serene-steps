@@ -15,7 +15,7 @@ export function Area3Groups() {
         return (
           <article
             key={g.name}
-            className="flex flex-col rounded-3xl bg-paper p-7 shadow-soft ring-1 ring-black/5 transition-all hover:-translate-y-0.5 hover:shadow-lift md:p-8"
+            className="flex flex-col rounded-2xl bg-paper p-7 shadow-soft ring-1 ring-black/5 transition-all hover:-translate-y-0.5 hover:shadow-lift md:p-8"
           >
             <span className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand/80">
               Barranquilla

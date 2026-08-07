@@ -89,7 +89,7 @@ function ResetPasswordPage() {
             </p>
           </div>
         )}
-        <div className="rounded-3xl border border-brand/10 bg-paper p-8 shadow-lift">
+        <div className="rounded-2xl border border-brand/10 bg-paper p-8 shadow-lift">
           {!ready ? (
             <p className="text-sm text-ink/70">
               Verificando enlace de recuperación… Si llegaste aquí por error, vuelve al{" "}

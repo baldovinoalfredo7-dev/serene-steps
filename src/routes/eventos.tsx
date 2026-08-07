@@ -169,7 +169,7 @@ function EventCard({ e }: { e: PublicEvent }) {
       <div className="min-w-0 flex-1">
         <div className="mb-1 flex flex-wrap items-center gap-2">
           {e.isFeatured && (
-            <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-wide text-amber-700">
+            <span className="inline-flex items-center gap-1 rounded-full bg-brand-tint px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-wide text-brand-strong">
               <Star className="size-3" /> Destacado
             </span>
           )}
