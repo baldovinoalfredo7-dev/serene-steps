@@ -90,7 +90,7 @@ function UsersPage() {
       </header>
 
       {isAdminForbidden && (
-        <div className="flex items-start gap-3 rounded-2xl border border-amber-300/60 bg-amber-50 p-4 text-sm text-amber-900">
+        <div className="flex items-start gap-3 rounded-2xl border border-brand/20 bg-brand-tint p-4 text-sm text-brand-strong">
           <AlertCircle className="mt-0.5 size-5 shrink-0" />
           <p>Solo un administrador puede gestionar usuarios.</p>
         </div>
@@ -234,7 +234,7 @@ function MemberRowItem({
             ))
           )}
           {m.mustChangePassword && (
-            <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[0.65rem] uppercase tracking-wide text-amber-800">
+            <span className="rounded-full bg-brand-tint px-2 py-0.5 text-[0.65rem] uppercase tracking-wide text-brand-strong">
               Pendiente cambio
             </span>
           )}
@@ -272,11 +272,11 @@ function TempPasswordCard({
   onClose: () => void;
 }) {
   return (
-    <div className="mt-5 rounded-2xl border border-emerald-200 bg-emerald-50 p-4">
-      <p className="mb-2 text-sm font-semibold text-emerald-900">
+    <div className="mt-5 rounded-2xl border border-brand/20 bg-brand-tint p-4">
+      <p className="mb-2 text-sm font-semibold text-brand-strong">
         Contraseña temporal generada
       </p>
-      <p className="mb-3 text-xs text-emerald-900/80">
+      <p className="mb-3 text-xs text-brand-strong/80">
         Compártela con <strong>{issued.email}</strong> por un canal seguro. Solo se muestra una vez;
         el usuario deberá cambiarla en su primer inicio de sesión.
       </p>
