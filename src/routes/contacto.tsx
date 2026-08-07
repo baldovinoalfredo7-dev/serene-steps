@@ -175,7 +175,7 @@ function Cooperar() {
             {faqs.map((f) => (
               <details
                 key={f.q}
-                className="group rounded-2xl bg-paper p-6 ring-1 ring-black/5 transition-shadow hover:shadow-lift md:p-8"
+                className="group rounded-2xl bg-paper p-6 ring-1 ring-brand/10 transition-shadow hover:shadow-lift md:p-8"
               >
                 <summary className="flex cursor-pointer list-none items-start justify-between gap-4 font-serif text-lg italic text-brand md:text-xl">
                   {f.q}
@@ -194,7 +194,7 @@ function Cooperar() {
           <h2 className="font-serif text-2xl leading-tight text-brand sm:text-3xl">
             Hablemos
           </h2>
-          <div className="mt-6 rounded-2xl bg-paper p-8 ring-1 ring-black/5 sm:p-10">
+          <div className="mt-6 rounded-2xl bg-paper p-8 ring-1 ring-brand/10 sm:p-10">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand/80">
               Oficina del Área 2 Metropolitana
             </p>
@@ -252,7 +252,7 @@ function Cooperar() {
 
 function CoopCard({ icon: Icon, title, body }: Card) {
   return (
-    <article className="flex flex-col rounded-2xl bg-paper p-8 ring-1 ring-black/5 transition-all hover:-translate-y-0.5 hover:ring-brand/20">
+    <article className="flex flex-col rounded-2xl bg-paper p-8 ring-1 ring-brand/10 transition-all hover:-translate-y-0.5 hover:ring-brand/20">
       <span className="mb-4 grid size-11 place-items-center rounded-full bg-brand/10 text-brand">
         <Icon className="size-5" />
       </span>

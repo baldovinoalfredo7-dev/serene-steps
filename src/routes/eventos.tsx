@@ -130,7 +130,7 @@ function EventosPage() {
       </div>
 
       {current.length === 0 ? (
-        <div className="rounded-2xl bg-paper p-10 text-center text-sm text-ink/60 ring-1 ring-black/5">
+        <div className="rounded-2xl bg-paper p-10 text-center text-sm text-ink/60 ring-1 ring-brand/10">
           {tab === "upcoming"
             ? "No hay eventos próximos publicados."
             : "No hay eventos pasados que mostrar."}
@@ -156,7 +156,7 @@ function EventCard({ e }: { e: PublicEvent }) {
     <Link
       to="/eventos/$slug"
       params={{ slug: e.slug }}
-      className="group flex flex-col gap-4 rounded-2xl bg-paper p-6 ring-1 ring-black/5 transition-shadow hover:shadow-md md:flex-row md:items-center md:gap-8 md:p-8"
+      className="group flex flex-col gap-4 rounded-2xl bg-paper p-6 ring-1 ring-brand/10 transition-shadow hover:shadow-md md:flex-row md:items-center md:gap-8 md:p-8"
     >
       <div className="flex size-20 shrink-0 flex-col items-center justify-center rounded-xl bg-brand text-paper">
         <span className="text-[10px] font-semibold uppercase tracking-widest opacity-70">

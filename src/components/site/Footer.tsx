@@ -13,7 +13,7 @@ export function Footer() {
                 alt=""
                 width={44}
                 height={44}
-                className="h-11 w-auto"
+                className="h-11 w-auto rounded-lg bg-paper p-1"
                 aria-hidden
               />
               <div className="leading-tight">

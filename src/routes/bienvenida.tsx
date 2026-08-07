@@ -41,7 +41,7 @@ function Bienvenida() {
         <h2 className="font-serif text-2xl leading-tight text-brand sm:text-3xl">
           Oficina del Área
         </h2>
-        <div className="mt-6 rounded-2xl bg-paper p-8 ring-1 ring-black/5 sm:p-10">
+        <div className="mt-6 rounded-2xl bg-paper p-8 ring-1 ring-brand/10 sm:p-10">
           <div className="grid gap-8 sm:grid-cols-2">
             <InfoBlock icon={<MapPin className="size-5" />} label="Dirección">
               <a
@@ -91,7 +91,7 @@ function Bienvenida() {
         </div>
       </section>
 
-      <section className="rounded-2xl bg-paper p-8 ring-1 ring-black/5 sm:p-10">
+      <section className="rounded-2xl bg-paper p-8 ring-1 ring-brand/10 sm:p-10">
         <h2 className="font-serif text-2xl leading-tight text-brand sm:text-3xl">
           Alcohólicos Anónimos en Colombia
         </h2>
