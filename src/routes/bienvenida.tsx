@@ -90,6 +90,28 @@ function Bienvenida() {
           </div>
         </div>
       </section>
+
+      <section className="rounded-2xl bg-paper p-8 ring-1 ring-black/5 sm:p-10">
+        <h2 className="font-serif text-2xl leading-tight text-brand sm:text-3xl">
+          Alcohólicos Anónimos en Colombia
+        </h2>
+        <p className="mt-5 max-w-prose text-pretty text-base leading-[1.7] text-ink/85">
+          El Área 2 Metropolitana de Barranquilla hace parte de la comunidad de Alcohólicos Anónimos en Colombia,
+          integrada por Áreas, Distritos y Grupos que trabajan unidos para llevar el mensaje de recuperación a
+          quien aún sufre. Si deseas conocer más sobre la organización nacional, puedes visitar el sitio oficial
+          de la Corporación Nacional de Alcohólicos Anónimos de Colombia.
+        </p>
+        <div className="mt-8">
+          <a
+            href="https://aacolombia.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-aa"
+          >
+            Visitar AA Colombia <ArrowRight className="size-4" />
+          </a>
+        </div>
+      </section>
     </PageShell>
   );
 }
