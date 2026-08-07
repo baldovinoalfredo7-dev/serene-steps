@@ -5,8 +5,6 @@ import heroSalon from "@/assets/hero-salon-area2.jpg";
 import caribeMap from "@/assets/caribe-map.jpg";
 import { groupsQueryOptions } from "@/lib/groups-queries";
 import type { Group } from "@/lib/groups-data";
-import { visiblePublications } from "@/lib/literatura-data";
-import { PublicationCard } from "@/components/site/PublicationCard";
 import { ArrowRight } from "lucide-react";
 
 
@@ -234,43 +232,7 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
         </div>
       </section>
 
-      {/* 8. NUESTRA LITERATURA */}
-      <section className="border-t border-brand/5 bg-paper py-12 md:py-16">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="mb-12 max-w-2xl">
-            <span className="mb-5 block text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand">
-              Nuestra literatura
-            </span>
-            <h2 className="font-serif text-3xl leading-[1.15] text-brand sm:text-4xl">
-              Conoce nuestra literatura
-            </h2>
-            <p className="mt-5 text-base leading-relaxed text-ink/80">
-              La literatura de Alcohólicos Anónimos reúne la experiencia, fortaleza y esperanza de
-              miles de personas que encontraron una nueva manera de vivir sin alcohol. A través de
-              libros, folletos y publicaciones, podrás conocer mejor nuestro programa de
-              recuperación y la experiencia compartida de quienes lo viven día a día.
-            </p>
-          </div>
-
-          <ul role="list" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {visiblePublications.map((item) => (
-              <li key={item.slug} className="h-full">
-                <PublicationCard item={item} />
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-10">
-            <Link to="/literatura" className="btn-aa">
-              Explorar la literatura <ArrowRight className="size-4" />
-            </Link>
-          </div>
-
-
-        </div>
-      </section>
-
-      {/* 9. VISITA NUESTRA OFICINA */}
+      {/* 8. VISITA NUESTRA OFICINA */}
       <section className="border-t border-brand/5 bg-soft/40 py-12 md:py-16">
         <div className="mx-auto max-w-3xl px-6 text-center">
           <h2 className="mb-6 font-serif text-3xl leading-[1.15] text-brand sm:text-4xl">
