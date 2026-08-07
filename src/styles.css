@@ -58,7 +58,7 @@
   --soft: oklch(0.965 0.020 242);           /* #eaf3fb azul muy claro */
   --ink: oklch(0.35 0 0);                   /* gris oscuro para lectura */
   --brand: oklch(0.545 0.128 251);          /* #2f6fb6 azul institucional */
-  --brand-soft: oklch(0.685 0.105 250);     /* #5f93cf azul secundario */
+  --brand-soft: oklch(0.945 0.026 242);     /* azul muy claro (fondos suaves) */
   --brand-strong: oklch(0.375 0.098 254);   /* #1b3a5c azul oscuro (títulos) */
   --brand-tint: oklch(0.965 0.020 242);     /* #eaf3fb */
 
