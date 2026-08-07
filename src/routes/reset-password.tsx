@@ -81,7 +81,7 @@ function ResetPasswordPage() {
     >
       <div className="mx-auto max-w-md">
         {isForced && (
-          <div className="mb-4 flex items-start gap-3 rounded-2xl border border-amber-300/60 bg-amber-50 p-4 text-sm text-amber-900">
+          <div className="mb-4 flex items-start gap-3 rounded-2xl border border-brand/20 bg-brand-tint p-4 text-sm text-brand-strong">
             <ShieldAlert className="mt-0.5 size-5 shrink-0" />
             <p>
               Esta es una contraseña temporal emitida por el Área. Debes cambiarla ahora para
@@ -89,7 +89,7 @@ function ResetPasswordPage() {
             </p>
           </div>
         )}
-        <div className="rounded-3xl border border-brand/10 bg-paper p-8 shadow-lift">
+        <div className="rounded-2xl border border-brand/10 bg-paper p-8 shadow-lift">
           {!ready ? (
             <p className="text-sm text-ink/70">
               Verificando enlace de recuperación… Si llegaste aquí por error, vuelve al{" "}

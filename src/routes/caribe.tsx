@@ -58,7 +58,7 @@ function CaribePage() {
             className="h-full w-full object-cover"
           />
         </div>
-        <div className="rounded-2xl bg-paper p-8 ring-1 ring-black/5 sm:p-10">
+        <div className="rounded-2xl bg-paper p-8 ring-1 ring-brand/10 sm:p-10">
           <h2 className="font-serif text-xl leading-tight text-brand sm:text-2xl">
             Áreas de la Región A – Territorio Norte
           </h2>
@@ -72,7 +72,7 @@ function CaribePage() {
         </div>
       </div>
 
-      <aside className="mx-auto mt-16 max-w-3xl rounded-3xl bg-soft/60 p-8 text-center ring-1 ring-brand/10 sm:p-10">
+      <aside className="mx-auto mt-16 max-w-3xl rounded-2xl bg-soft/60 p-8 text-center ring-1 ring-brand/10 sm:p-10">
         <h2 className="font-serif text-2xl italic leading-tight text-brand sm:text-3xl">
           ¿No encuentras la información que buscas?
         </h2>

@@ -32,7 +32,7 @@ function TengoProblema() {
     >
       <ol className="space-y-6">
         {questions.map((q, i) => (
-          <li key={i} className="flex gap-6 rounded-2xl bg-paper p-6 ring-1 ring-black/5">
+          <li key={i} className="flex gap-6 rounded-2xl bg-paper p-6 ring-1 ring-brand/10">
             <span className="font-serif text-2xl italic text-brand/40">
               {String(i + 1).padStart(2, "0")}
             </span>

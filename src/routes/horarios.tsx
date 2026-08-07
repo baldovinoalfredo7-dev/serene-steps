@@ -45,7 +45,7 @@ function HorariosPage() {
         {groups.map((g) => (
           <article
             key={g.slug}
-            className="flex flex-col rounded-3xl bg-paper p-8 shadow-soft transition-all hover:-translate-y-1 hover:shadow-lift"
+            className="flex flex-col rounded-2xl bg-paper p-8 shadow-soft transition-all hover:-translate-y-1 hover:shadow-lift"
           >
             <span className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand/80">
               {g.municipality}

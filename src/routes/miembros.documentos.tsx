@@ -252,7 +252,7 @@ function DocumentosPage() {
       </div>
 
       {totalResults === 0 && (
-        <p className="rounded-3xl border border-dashed border-brand/20 bg-paper/60 p-6 text-sm leading-relaxed text-ink/70">
+        <p className="rounded-2xl border border-dashed border-brand/20 bg-paper/60 p-6 text-sm leading-relaxed text-ink/70">
           No encontramos documentos que coincidan con tu búsqueda. Intenta con otra
           palabra o selecciona otra categoría.
         </p>
@@ -272,7 +272,7 @@ function DocumentosPage() {
                   ))}
                 </div>
               ) : (
-                <p className="rounded-3xl border border-dashed border-brand/20 bg-paper/60 p-6 text-sm leading-relaxed text-ink/70">
+                <p className="rounded-2xl border border-dashed border-brand/20 bg-paper/60 p-6 text-sm leading-relaxed text-ink/70">
                   Aún no hay documentos publicados en esta categoría. A medida que sean
                   aprobados, se incorporarán aquí para su consulta y descarga.
                 </p>
@@ -394,7 +394,7 @@ function DocumentCard({
           href={doc.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-full border border-brand/30 px-5 py-2 text-sm font-semibold text-brand transition-colors duration-300 hover:bg-brand/10"
+          className="btn-aa-outline"
         >
           <Download className="size-4" /> Descargar
         </a>
@@ -416,7 +416,7 @@ function PreviewDialog({
 
   return (
     <Dialog open={!!doc} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="max-h-[90vh] max-w-3xl overflow-y-auto rounded-3xl bg-paper">
+      <DialogContent className="max-h-[90vh] max-w-3xl overflow-y-auto rounded-2xl bg-paper">
         {doc && (
           <>
             <DialogHeader>
@@ -462,7 +462,7 @@ function PreviewDialog({
                 href={doc.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-brand/30 px-5 py-2 text-sm font-semibold text-brand transition-colors duration-300 hover:bg-brand/10"
+                className="btn-aa-outline"
               >
                 <Download className="size-4" /> Descargar {doc.fileType === "PDF" ? "PDF" : "archivo"}
               </a>
@@ -513,7 +513,7 @@ function FallbackCard({ doc, previewSrc }: { doc: Doc; previewSrc: string | null
             href={doc.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-brand/30 px-4 py-2 text-sm font-semibold text-brand transition-colors duration-300 hover:bg-brand/10"
+            className="btn-aa-outline"
           >
             <Download className="size-4" /> Descargar {doc.fileType === "PDF" ? "PDF" : "archivo"}
           </a>

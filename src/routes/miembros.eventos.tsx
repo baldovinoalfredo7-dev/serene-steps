@@ -95,7 +95,7 @@ function CalendarioPage() {
         </ul>
       </Section>
 
-      <section className="rounded-3xl border border-brand/10 bg-brand-soft/40 p-6">
+      <section className="rounded-2xl border border-brand/10 bg-brand-soft/40 p-6">
         <p className="text-sm leading-relaxed text-ink/85">
           <span className="font-semibold text-brand">Importante:</span> Las fechas de las
           Asambleas de Área corresponden a la programación vigente. Si por alguna circunstancia

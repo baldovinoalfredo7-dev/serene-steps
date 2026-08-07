@@ -105,7 +105,7 @@ function GroupDetail() {
           <div className="space-y-10 lg:col-span-2">
             <div>
               <h2 className="mb-6 font-serif text-2xl italic text-brand">El lugar</h2>
-              <div className="flex aspect-[16/9] w-full items-center justify-center rounded-2xl bg-soft/70 ring-1 ring-black/5">
+              <div className="flex aspect-[16/9] w-full items-center justify-center rounded-2xl bg-soft/70 ring-1 ring-brand/10">
                 <div className="flex flex-col items-center gap-3 text-brand/50">
                   <ImageIcon className="size-10" strokeWidth={1.4} />
                   <span className="text-xs font-medium uppercase tracking-widest">
@@ -117,7 +117,7 @@ function GroupDetail() {
 
             <div>
               <h2 className="mb-6 font-serif text-2xl italic text-brand">Calendario semanal</h2>
-              <div className="overflow-hidden rounded-2xl ring-1 ring-black/5">
+              <div className="overflow-hidden rounded-2xl ring-1 ring-brand/10">
                 <div className="grid grid-cols-7 divide-x divide-brand/5 bg-paper">
                   {weekdayShort.map((short, i) => {
                     const dayMeetings = meetingsByDay[i];
@@ -159,7 +159,7 @@ function GroupDetail() {
 
             <div>
               <h2 className="mb-6 font-serif text-2xl italic text-brand">Horarios de reunión</h2>
-              <ul className="divide-y divide-brand/5 rounded-2xl bg-paper ring-1 ring-black/5">
+              <ul className="divide-y divide-brand/5 rounded-2xl bg-paper ring-1 ring-brand/10">
                 {orderedMeetings.map((m, idx) => (
                   <li key={idx} className="flex items-center justify-between gap-4 px-6 py-4">
                     <div className="font-semibold text-brand">
@@ -187,7 +187,7 @@ function GroupDetail() {
           </div>
 
           <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
-            <div className="overflow-hidden rounded-2xl ring-1 ring-black/5">
+            <div className="overflow-hidden rounded-2xl ring-1 ring-brand/10">
               <iframe
                 title={`Ubicación de ${group.name}`}
                 src={mapEmbedSrc}
@@ -197,7 +197,7 @@ function GroupDetail() {
               />
             </div>
 
-            <div className="rounded-2xl bg-paper p-6 ring-1 ring-black/5">
+            <div className="rounded-2xl bg-paper p-6 ring-1 ring-brand/10">
               <span className="mb-3 block text-xs font-semibold uppercase tracking-widest text-brand/80">
                 Dirección
               </span>

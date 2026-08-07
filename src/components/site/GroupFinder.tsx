@@ -100,7 +100,7 @@ export function GroupFinder({
 
       {/* Resultados */}
       {filtered.length === 0 ? (
-        <div className="rounded-3xl border border-dashed border-brand/20 bg-paper/60 p-10 text-center">
+        <div className="rounded-2xl border border-dashed border-brand/20 bg-paper/60 p-10 text-center">
           <p className="font-serif text-xl italic text-brand">
             No encontramos grupos con esa búsqueda.
           </p>
@@ -141,7 +141,7 @@ function GroupCard({ g, variant }: { g: Group; variant: GroupFinderVariant }) {
       <Link
         to="/grupos/$slug"
         params={{ slug: g.slug }}
-        className="flex h-full flex-col justify-between gap-6 rounded-3xl bg-paper p-7 shadow-soft ring-1 ring-black/5 transition-all hover:-translate-y-0.5 hover:shadow-lift"
+        className="flex h-full flex-col justify-between gap-6 rounded-2xl bg-paper p-7 shadow-soft ring-1 ring-brand/10 transition-all hover:-translate-y-0.5 hover:shadow-lift"
       >
         <div>
           <span className="mb-3 block text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-brand/70">
@@ -160,7 +160,7 @@ function GroupCard({ g, variant }: { g: Group; variant: GroupFinderVariant }) {
   }
 
   return (
-    <article className="flex flex-col rounded-3xl bg-paper p-7 shadow-soft ring-1 ring-black/5 transition-all hover:-translate-y-0.5 hover:shadow-lift md:p-8">
+    <article className="flex flex-col rounded-2xl bg-paper p-7 shadow-soft ring-1 ring-brand/10 transition-all hover:-translate-y-0.5 hover:shadow-lift md:p-8">
       <span className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand/80">
         {g.municipality}
       </span>

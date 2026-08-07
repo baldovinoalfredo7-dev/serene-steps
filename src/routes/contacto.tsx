@@ -133,7 +133,7 @@ function Cooperar() {
         </section>
 
         {/* 4. Principios de cooperación */}
-        <aside className="rounded-3xl bg-soft/60 p-8 sm:p-10 ring-1 ring-brand/10">
+        <aside className="rounded-2xl bg-soft/60 p-8 sm:p-10 ring-1 ring-brand/10">
           <h2 className="font-serif text-2xl italic leading-tight text-brand sm:text-3xl">
             Nuestra cooperación se basa en principios sencillos
           </h2>
@@ -148,7 +148,7 @@ function Cooperar() {
         </aside>
 
         {/* CTA única */}
-        <section className="rounded-3xl bg-paper p-8 text-center ring-1 ring-brand/10 sm:p-12">
+        <section className="rounded-2xl bg-paper p-8 text-center ring-1 ring-brand/10 sm:p-12">
           <h2 className="font-serif text-2xl leading-tight text-brand sm:text-3xl">
             ¿Deseas cooperar con Alcohólicos Anónimos?
           </h2>
@@ -175,7 +175,7 @@ function Cooperar() {
             {faqs.map((f) => (
               <details
                 key={f.q}
-                className="group rounded-2xl bg-paper p-6 ring-1 ring-black/5 transition-shadow hover:shadow-lift md:p-8"
+                className="group rounded-2xl bg-paper p-6 ring-1 ring-brand/10 transition-shadow hover:shadow-lift md:p-8"
               >
                 <summary className="flex cursor-pointer list-none items-start justify-between gap-4 font-serif text-lg italic text-brand md:text-xl">
                   {f.q}
@@ -194,7 +194,7 @@ function Cooperar() {
           <h2 className="font-serif text-2xl leading-tight text-brand sm:text-3xl">
             Hablemos
           </h2>
-          <div className="mt-6 rounded-2xl bg-paper p-8 ring-1 ring-black/5 sm:p-10">
+          <div className="mt-6 rounded-2xl bg-paper p-8 ring-1 ring-brand/10 sm:p-10">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand/80">
               Oficina del Área 2 Metropolitana
             </p>
@@ -239,7 +239,7 @@ function Cooperar() {
         </section>
 
         {/* 7. Cierre */}
-        <section className="rounded-3xl bg-soft/60 p-8 text-center sm:p-12">
+        <section className="rounded-2xl bg-soft/60 p-8 text-center sm:p-12">
           <p className="mx-auto max-w-2xl text-pretty text-base leading-relaxed text-ink/80">
             Gracias por tu interés en colaborar con Alcohólicos Anónimos. Cada esfuerzo
             conjunto puede ayudar a que una persona encuentre el camino hacia la recuperación.
@@ -252,7 +252,7 @@ function Cooperar() {
 
 function CoopCard({ icon: Icon, title, body }: Card) {
   return (
-    <article className="flex flex-col rounded-2xl bg-paper p-8 ring-1 ring-black/5 transition-all hover:-translate-y-0.5 hover:ring-brand/20">
+    <article className="flex flex-col rounded-2xl bg-paper p-8 ring-1 ring-brand/10 transition-all hover:-translate-y-0.5 hover:ring-brand/20">
       <span className="mb-4 grid size-11 place-items-center rounded-full bg-brand/10 text-brand">
         <Icon className="size-5" />
       </span>

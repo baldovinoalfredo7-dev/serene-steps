@@ -70,7 +70,7 @@ function GruposIndex() {
             groups={groups}
             variant="full"
             emptyDirectory={
-              <div className="rounded-3xl border border-dashed border-brand/25 bg-paper/70 p-10 text-center md:p-14">
+              <div className="rounded-2xl border border-dashed border-brand/25 bg-paper/70 p-10 text-center md:p-14">
                 <span className="mb-4 block text-[11px] font-bold uppercase tracking-[0.25em] text-brand/70">
                   Directorio en preparación
                 </span>

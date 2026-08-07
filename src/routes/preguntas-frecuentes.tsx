@@ -68,7 +68,7 @@ function FaqPage() {
         {faqs.map((f) => (
           <details
             key={f.q}
-            className="group rounded-3xl bg-paper p-6 shadow-soft transition-shadow hover:shadow-lift md:p-8"
+            className="group rounded-2xl bg-paper p-6 shadow-soft transition-shadow hover:shadow-lift md:p-8"
           >
             <summary className="flex cursor-pointer list-none items-start justify-between gap-4 font-serif text-lg italic text-brand md:text-xl">
               {f.q}

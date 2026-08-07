@@ -209,7 +209,7 @@ function MembersHome() {
         ))}
       </div>
 
-      <footer className="rounded-3xl border border-brand/10 bg-brand-soft/40 p-6 text-center">
+      <footer className="rounded-2xl border border-brand/10 bg-brand-soft/40 p-6 text-center">
         <p className="text-sm leading-relaxed text-ink/80">
           Gracias por tu servicio. Cada acción fortalece nuestro propósito de
           llevar el mensaje de recuperación a quien aún sufre.

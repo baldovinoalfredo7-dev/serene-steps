@@ -72,7 +72,7 @@ function MembersAccessPage() {
       intro="Este espacio está destinado a los miembros de Alcohólicos Anónimos que participan en las actividades y servicios del Área 2 Metropolitana de Barranquilla."
     >
       <div className="mx-auto max-w-md">
-        <div className="rounded-3xl border border-brand/10 bg-paper p-8 shadow-lift">
+        <div className="rounded-2xl border border-brand/10 bg-paper p-8 shadow-lift">
           <div className="mb-6 flex items-center gap-3">
             <span className="grid size-10 place-items-center rounded-full bg-brand/10 text-brand">
               <Lock className="size-5" />

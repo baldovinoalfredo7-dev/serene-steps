@@ -45,7 +45,7 @@ export function ContactButton() {
         </button>
       </DialogTrigger>
 
-      <DialogContent className="max-w-md rounded-3xl border-none bg-paper p-0 shadow-lift">
+      <DialogContent className="max-w-md rounded-2xl border-none bg-paper p-0 shadow-lift">
         {view === "menu" && (
           <MenuView onPickForm={() => setView("form")} />
         )}
