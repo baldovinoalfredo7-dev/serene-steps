@@ -193,18 +193,94 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
         </div>
       </section>
 
-      {/* 7. AA EN EL CARIBE */}
-      <section id="caribe" className="bg-soft/40 py-12 md:py-16">
+      {/* 7. BIENVENIDO A NUESTRA OFICINA */}
+      <section className="bg-soft/40 py-12 md:py-16">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="grid items-start gap-10 md:grid-cols-2 md:gap-16">
+            <div>
+              <span className="mb-5 block text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand">
+                La Oficina del Área
+              </span>
+              <h2 className="mb-6 font-serif text-3xl leading-[1.15] text-brand sm:text-4xl">
+                Bienvenido a nuestra oficina
+              </h2>
+              <p className="max-w-prose text-pretty text-base leading-[1.7] text-ink/85">
+                Este es un lugar de puertas abiertas para ti. Aquí encontrarás información,
+                orientación y apoyo para tu recuperación y para el servicio a nuestra comunidad.
+              </p>
+              <p className="mt-6 border-l-2 border-brand/30 pl-5 font-serif text-lg italic leading-[1.6] text-brand">
+                Siempre habrá una mano amiga y una puerta abierta.
+              </p>
+              <div className="mt-8">
+                <Link to="/bienvenida" className="btn-aa w-full uppercase tracking-[0.15em] sm:w-auto">
+                  Conocer la oficina <ArrowRight className="size-4" />
+                </Link>
+              </div>
+            </div>
+
+            <ul role="list" className="grid gap-4 sm:grid-cols-2">
+              <OfficeCard icon={<MapPin className="size-4" />} label="Dirección">
+                <a
+                  href={contactConfig.officeMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-brand underline underline-offset-4"
+                >
+                  {contactConfig.officeAddressLine1}, {contactConfig.officeAddressLine2},{" "}
+                  {contactConfig.officeCity}
+                </a>
+              </OfficeCard>
+              <OfficeCard icon={<Clock className="size-4" />} label="Horarios">
+                Lunes a viernes
+                <br />
+                2:00 p. m. – 6:00 p. m.
+              </OfficeCard>
+              <OfficeCard icon={<Phone className="size-4" />} label="Teléfono">
+                <a href={telLink()} className="text-brand underline underline-offset-4">
+                  {contactConfig.phoneDisplay}
+                </a>
+              </OfficeCard>
+              <OfficeCard icon={<MessageCircle className="size-4" />} label="WhatsApp">
+                <a
+                  href={whatsappLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-brand underline underline-offset-4"
+                >
+                  {contactConfig.phoneDisplay}
+                </a>
+              </OfficeCard>
+              <OfficeCard icon={<Mail className="size-4" />} label="Correo electrónico">
+                <a
+                  href={`mailto:${contactConfig.email}`}
+                  className="break-words text-brand underline underline-offset-4"
+                >
+                  {contactConfig.email}
+                </a>
+              </OfficeCard>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* 8. AA EN EL CARIBE */}
+      <section id="caribe" className="border-t border-brand/5 bg-paper py-12 md:py-16">
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
-            <div className="overflow-hidden rounded-2xl bg-soft/60 ring-1 ring-brand/10">
+            <div className="relative overflow-hidden rounded-2xl bg-soft/60 ring-1 ring-brand/10">
               <img
                 src={caribeMap}
-                alt="Mapa ilustrado del Caribe colombiano"
+                alt="Mapa de la región Caribe colombiana, donde Alcohólicos Anónimos tiene presencia"
                 width={1600}
                 height={1000}
                 loading="lazy"
                 className="h-full w-full object-cover"
+              />
+              <img
+                src={logoAA.url}
+                alt=""
+                aria-hidden
+                className="absolute bottom-3 right-3 h-10 w-auto rounded-lg bg-paper/90 p-1 ring-1 ring-brand/10"
               />
             </div>
             <div>
@@ -212,43 +288,49 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
                 Presencia en el Caribe
               </span>
               <h2 className="mb-6 font-serif text-3xl leading-[1.15] text-brand sm:text-4xl">
-                A.A. en el Caribe colombiano
+                Conoce otros grupos en el Caribe colombiano
               </h2>
               <p className="text-pretty text-lg leading-[1.7] text-ink/85">
-                El Área 2 Metropolitana forma parte de una comunidad más amplia
-                de Alcohólicos Anónimos presente en toda la costa Caribe.
-                Dondequiera que estés, es posible que haya un grupo cerca de ti.
+                El Área 2 Metropolitana forma parte de una comunidad más amplia de Alcohólicos
+                Anónimos presente en toda la costa Caribe. Dondequiera que estés, es posible que
+                haya un grupo cerca de ti. No estás solo, estamos juntos en este camino de
+                recuperación.
               </p>
               <div className="mt-8">
-                <Link
-                  to="/caribe"
-                  className="inline-flex items-center gap-2 border-b border-brand/30 pb-1 text-sm font-semibold uppercase tracking-[0.18em] text-brand transition-colors hover:border-brand"
-                >
-                  Conocer más <ArrowRight className="size-4" />
+                <Link to="/caribe" className="btn-aa w-full uppercase tracking-[0.12em] sm:w-auto">
+                  Conoce otros grupos en el Caribe colombiano{" "}
+                  <ArrowRight className="size-4" />
                 </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
+    </>
+  );
+}
 
-      {/* 8. VISITA NUESTRA OFICINA */}
-      <section className="border-t border-brand/5 bg-soft/40 py-12 md:py-16">
-        <div className="mx-auto max-w-3xl px-6 text-center">
-          <h2 className="mb-6 font-serif text-3xl leading-[1.15] text-brand sm:text-4xl">
-            Visita nuestra oficina
-          </h2>
-          <p className="mx-auto mb-9 max-w-2xl text-pretty text-base leading-[1.7] text-ink/85">
-            Si prefieres recibir orientación personalmente, nuestra Oficina del Área 2
-            Metropolitana de Barranquilla está disponible para atenderte. Allí encontrarás
-            información sobre reuniones, literatura y los diferentes servicios que ofrece nuestra
-            Comunidad.
-          </p>
-          <Link to="/bienvenida" className="btn-aa uppercase tracking-[0.15em]">
-            Conocer la oficina <ArrowRight className="size-4" />
-          </Link>
-        </div>
-      </section>
+function OfficeCard({
+  icon,
+  label,
+  children,
+}: {
+  icon: ReactNode;
+  label: string;
+  children: ReactNode;
+}) {
+  return (
+    <li className="card-aa">
+      <span className="mb-3 grid size-9 place-items-center rounded-full bg-brand/10 text-brand">
+        {icon}
+      </span>
+      <span className="block text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-brand/80">
+        {label}
+      </span>
+      <p className="mt-2 text-sm leading-relaxed text-ink/85">{children}</p>
+    </li>
+  );
+}
     </>
   );
 }
