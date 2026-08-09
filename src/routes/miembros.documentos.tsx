@@ -34,6 +34,10 @@ import thumbAutomantenimiento from "@/assets/docs/thumbs/automantenimiento.jpg.a
 import thumbHistoriaRevista from "@/assets/docs/thumbs/historia-revista.jpg.asset.json";
 import thumbNuestraRevista from "@/assets/docs/thumbs/nuestra-revista.jpg.asset.json";
 
+// Manual de Imagen Corporativa
+import manualImagen from "@/assets/docs/manual-imagen-corporativa.pdf.asset.json";
+import thumbManualImagen from "@/assets/docs/thumbs/manual-imagen-corporativa.jpg.asset.json";
+
 export const Route = createFileRoute("/miembros/documentos")({
   head: () => ({
     meta: [
@@ -44,7 +48,7 @@ export const Route = createFileRoute("/miembros/documentos")({
   component: DocumentosPage,
 });
 
-type CategoryKey = "informes" | "talleres" | "formatos";
+type CategoryKey = "informes" | "talleres" | "formatos" | "manual";
 
 const categories: Record<
   CategoryKey,
@@ -71,6 +75,13 @@ const categories: Record<
     intro:
       "Formularios, actas, solicitudes y formatos oficiales utilizados por los grupos, comités y servidores del Área.",
   },
+  manual: {
+    emoji: "🎨",
+    label: "Manual",
+    title: "Manual de Imagen Corporativa",
+    intro:
+      "Documento de referencia institucional sobre el uso correcto del logotipo, los colores y demás elementos de identidad de Alcohólicos Anónimos. Aquí se publica siempre la versión vigente.",
+  },
 };
 
 type Doc = {
@@ -82,10 +93,14 @@ type Doc = {
   previewUrl?: string;
   /** Miniatura de la primera página */
   thumb?: string;
+  /** Mostrar la miniatura completa, sin recortar (conserva las proporciones) */
+  thumbContain?: boolean;
   category: CategoryKey;
   fileType: "PDF" | "PowerPoint";
   pages?: string;
   publishedAt: string;
+  /** Versión vigente del documento (para documentos que se actualizan) */
+  version?: string;
 };
 
 const documents: Doc[] = [
@@ -171,6 +186,19 @@ const documents: Doc[] = [
     pages: "11 diapositivas",
     publishedAt: "3 de agosto de 2026",
   },
+  {
+    title: "Manual de Imagen Corporativa",
+    description:
+      "Manual oficial de identidad visual de Alcohólicos Anónimos: uso correcto del logotipo, proporciones, colores institucionales, tipografía y aplicaciones autorizadas en piezas de comunicación y servicio.",
+    href: manualImagen.url,
+    thumb: thumbManualImagen.url,
+    thumbContain: true,
+    category: "manual",
+    fileType: "PDF",
+    pages: "15 páginas",
+    publishedAt: "2012",
+    version: "Versión vigente",
+  },
 ];
 
 const filters: { key: "todos" | CategoryKey; label: string }[] = [
@@ -178,6 +206,7 @@ const filters: { key: "todos" | CategoryKey; label: string }[] = [
   { key: "informes", label: "📄 Informes" },
   { key: "talleres", label: "🎓 Talleres" },
   { key: "formatos", label: "📝 Formatos" },
+  { key: "manual", label: "🎨 Manual de Imagen" },
 ];
 
 function normalize(value: string) {
@@ -192,7 +221,7 @@ function DocumentosPage() {
   const [filter, setFilter] = useState<"todos" | CategoryKey>("todos");
   const [query, setQuery] = useState("");
 
-  const order: CategoryKey[] = ["informes", "talleres", "formatos"];
+  const order: CategoryKey[] = ["informes", "talleres", "formatos", "manual"];
   const visibleCategories = filter === "todos" ? order : [filter];
 
   const matches = (doc: Doc) => {
@@ -328,7 +357,7 @@ function CategoryBadge({ category }: { category: CategoryKey }) {
 }
 
 function Metadata({ doc }: { doc: Doc }) {
-  const items = [doc.fileType, doc.pages].filter(Boolean) as string[];
+  const items = [doc.fileType, doc.pages, doc.version].filter(Boolean) as string[];
   return (
     <ul className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.7rem] font-medium uppercase tracking-[0.14em] text-ink/55">
       <li className="flex items-center gap-1.5">
@@ -355,7 +384,11 @@ function Thumbnail({ doc }: { doc: Doc }) {
           src={doc.thumb}
           alt={`Primera página de ${doc.title}`}
           loading="lazy"
-          className="h-44 w-full object-cover object-top"
+          className={
+            doc.thumbContain
+              ? "h-44 w-full bg-paper object-contain"
+              : "h-44 w-full object-cover object-top"
+          }
         />
       ) : (
         <div className="grid h-44 w-full place-items-center text-brand/40">
@@ -484,7 +517,11 @@ function FallbackCard({ doc, previewSrc }: { doc: Doc; previewSrc: string | null
             src={doc.thumb}
             alt={`Primera página de ${doc.title}`}
             loading="lazy"
-            className="h-36 w-full object-cover object-top"
+            className={
+              doc.thumbContain
+                ? "h-36 w-full bg-paper object-contain"
+                : "h-36 w-full object-cover object-top"
+            }
           />
         ) : (
           <div className="grid h-36 w-full place-items-center text-brand/40">
