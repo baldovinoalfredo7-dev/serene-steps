@@ -5,7 +5,10 @@ import heroSalon from "@/assets/hero-salon-area2.jpg";
 import caribeMap from "@/assets/caribe-map.jpg";
 import { groupsQueryOptions } from "@/lib/groups-queries";
 import type { Group } from "@/lib/groups-data";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MapPin, Clock, Phone, Mail, MessageCircle } from "lucide-react";
+import type { ReactNode } from "react";
+import logoAA from "@/assets/logo-aa.png.asset.json";
+import { contactConfig, telLink, whatsappLink } from "@/lib/contact-config";
 
 
 export const Route = createFileRoute("/")({
