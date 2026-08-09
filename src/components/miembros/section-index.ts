@@ -11,6 +11,7 @@ export const sectionIndex: Record<string, SubItem[]> = {
     { label: "Informes", hash: "informes" },
     { label: "Talleres", hash: "talleres" },
     { label: "Formatos", hash: "formatos" },
+    { label: "Manual de Imagen Corporativa", hash: "manual" },
   ],
   "/miembros/conferencia": [
     { label: "¿Qué es la Conferencia?", hash: "que-es" },
