@@ -15,7 +15,6 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "../components/site/Header";
 import { Footer } from "../components/site/Footer";
 import { HelpButton } from "../components/site/HelpButton";
-import { ContactButton } from "../components/site/ContactButton";
 import { SiteBreadcrumb } from "../components/site/SiteBreadcrumb";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -178,7 +177,6 @@ function RootComponent() {
         </main>
         <Footer />
         <HelpButton />
-        <ContactButton />
         <Toaster richColors position="top-center" />
       </div>
     </QueryClientProvider>
