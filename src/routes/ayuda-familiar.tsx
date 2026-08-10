@@ -175,12 +175,10 @@ function AyudaFamiliar() {
             </div>
             <div className="mt-10">
               <a
-                href="https://al-anon.org/al-anon-meetings/international-directory/"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="tel:+573015916691"
                 className="inline-flex items-center gap-2 rounded-full border border-brand/30 bg-paper px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-brand transition-colors hover:bg-soft/60"
               >
-                Conocer Al-Anon <ExternalLink className="size-4" />
+                Hablar con alguien <Phone className="size-4" />
               </a>
             </div>
           </div>
