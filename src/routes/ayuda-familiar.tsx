@@ -6,7 +6,7 @@ import {
   HandHeart,
   DoorOpen,
   LifeBuoy,
-  ExternalLink,
+  Phone,
 } from "lucide-react";
 
 
