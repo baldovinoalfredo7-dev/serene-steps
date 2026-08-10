@@ -102,7 +102,7 @@ export function Header() {
                 onClick={() => setOpen(false)}
                 activeProps={{ className: "bg-soft text-brand font-semibold" }}
                 activeOptions={{ exact: l.to === "/" }}
-                className="flex items-center gap-4 rounded-2xl px-4 py-3.5 text-ink/80 transition-colors hover:bg-soft hover:text-brand"
+                className="flex items-center gap-4 rounded-2xl px-4 py-3.5 text-brand-strong transition-colors hover:bg-soft hover:text-brand active:bg-soft active:text-brand"
               >
                 <span className="grid size-9 shrink-0 place-items-center rounded-full bg-brand/10 text-brand">
                   <l.icon className="size-4" strokeWidth={1.8} />
