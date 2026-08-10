@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Heart, Sparkles, Stethoscope, HelpCircle, HandHeart } from "lucide-react";
+import { ArrowRight, Heart, Sparkles, Stethoscope, HelpCircle, HandHeart, Phone } from "lucide-react";
+import { telLink, contactConfig } from "@/lib/contact-config";
 
 export const Route = createFileRoute("/busco-ayuda-para-mi")({
   head: () => ({
