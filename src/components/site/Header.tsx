@@ -61,14 +61,14 @@ export function Header() {
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-6 text-sm font-medium text-ink/70 xl:flex">
+        <nav className="hidden items-center gap-2 text-sm font-medium text-brand-strong xl:flex">
           {navLinks.map((l) => (
             <Link
               key={l.to}
               to={l.to}
               activeProps={{ className: "text-brand" }}
               activeOptions={{ exact: l.to === "/" }}
-              className="transition-colors hover:text-brand"
+              className="rounded-full px-3 py-2 transition-colors hover:bg-soft hover:text-brand active:bg-soft active:text-brand"
             >
               {l.label}
             </Link>
