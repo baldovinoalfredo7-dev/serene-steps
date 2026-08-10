@@ -137,18 +137,18 @@ function BuscoAyudaParaMi() {
             >
               Encuentra un grupo <ArrowRight className="size-4" />
             </Link>
-            <button
-              type="button"
-              disabled
-              className="inline-flex cursor-not-allowed items-center justify-center gap-2 rounded-full border border-brand/30 bg-paper px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-brand/60"
-              title="Disponible próximamente"
+            <a
+              href={telLink()}
+              className="btn-aa-outline inline-flex items-center justify-center gap-2 uppercase tracking-[0.18em]"
             >
-              <HandHeart className="size-4" />
-              Hablar con un miembro de A.A.
-            </button>
+              <Phone className="size-4" />
+              Llamar a la oficina
+            </a>
           </div>
           <p className="mt-4 text-sm text-ink/60">
-            El servicio de acompañamiento telefónico estará disponible próximamente.
+            Puedes llamar directamente a la oficina del Área 2 Metropolitana al{" "}
+            <span className="font-semibold text-ink">{contactConfig.phoneDisplay}</span>.
+            Se respeta el anonimato de quien busca ayuda.
           </p>
         </div>
       </section>
