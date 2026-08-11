@@ -53,7 +53,28 @@ export const asambleas: Assembly[] = [
     id: "2026-08-09",
     date: "2026-08-09",
     label: "9 de agosto de 2026",
-    rsg: [],
+    rsg: [
+      {
+        title: "Grupo Santo Tomás",
+        subtitle: "RSG Geovanny Polo Pertuz",
+        image: flyerSantoTomas.url,
+      },
+      {
+        title: "Grupo Acción de Sabanalarga",
+        subtitle: "RSG Cesar Augusto Sabolza Gómez",
+        image: flyerAccion.url,
+      },
+      {
+        title: "Grupo El Concord",
+        subtitle: "RSG Carlos C.",
+        image: flyerConcord.url,
+      },
+      {
+        title: "Grupo Simón Bolívar",
+        subtitle: "RSG Alonso Rueda Rodríguez",
+        image: flyerSimonBolivar.url,
+      },
+    ],
     comiteArea: [],
     comitesEspeciales: [],
   },
