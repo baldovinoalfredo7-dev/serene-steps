@@ -59,6 +59,7 @@ import { Route as MiembrosOracionesTercerPasoRouteImport } from './routes/miembr
 import { Route as MiembrosOracionesSerenidadRouteImport } from './routes/miembros.oraciones.serenidad'
 import { Route as MiembrosOracionesSeptimoPasoRouteImport } from './routes/miembros.oraciones.septimo-paso'
 import { Route as MiembrosOracionesSanFranciscoRouteImport } from './routes/miembros.oraciones.san-francisco'
+import { Route as MiembrosAsambleaAcercaDeRouteImport } from './routes/miembros.asamblea.acerca-de'
 import { Route as MiembrosAsambleaIdRouteImport } from './routes/miembros.asamblea.$id'
 import { Route as AuthenticatedServicioUsuariosRouteImport } from './routes/_authenticated/servicio.usuarios'
 import { Route as AuthenticatedServicioPerfilRouteImport } from './routes/_authenticated/servicio.perfil'
@@ -330,6 +331,12 @@ const MiembrosOracionesSanFranciscoRoute =
     path: '/san-francisco',
     getParentRoute: () => MiembrosOracionesRoute,
   } as any)
+const MiembrosAsambleaAcercaDeRoute =
+  MiembrosAsambleaAcercaDeRouteImport.update({
+    id: '/acerca-de',
+    path: '/acerca-de',
+    getParentRoute: () => MiembrosAsambleaRoute,
+  } as any)
 const MiembrosAsambleaIdRoute = MiembrosAsambleaIdRouteImport.update({
   id: '/$id',
   path: '/$id',
@@ -450,6 +457,7 @@ export interface FileRoutesByFullPath {
   '/servicio/perfil': typeof AuthenticatedServicioPerfilRoute
   '/servicio/usuarios': typeof AuthenticatedServicioUsuariosRoute
   '/miembros/asamblea/$id': typeof MiembrosAsambleaIdRoute
+  '/miembros/asamblea/acerca-de': typeof MiembrosAsambleaAcercaDeRoute
   '/miembros/oraciones/san-francisco': typeof MiembrosOracionesSanFranciscoRoute
   '/miembros/oraciones/septimo-paso': typeof MiembrosOracionesSeptimoPasoRoute
   '/miembros/oraciones/serenidad': typeof MiembrosOracionesSerenidadRoute
@@ -509,6 +517,7 @@ export interface FileRoutesByTo {
   '/servicio/perfil': typeof AuthenticatedServicioPerfilRoute
   '/servicio/usuarios': typeof AuthenticatedServicioUsuariosRoute
   '/miembros/asamblea/$id': typeof MiembrosAsambleaIdRoute
+  '/miembros/asamblea/acerca-de': typeof MiembrosAsambleaAcercaDeRoute
   '/miembros/oraciones/san-francisco': typeof MiembrosOracionesSanFranciscoRoute
   '/miembros/oraciones/septimo-paso': typeof MiembrosOracionesSeptimoPasoRoute
   '/miembros/oraciones/serenidad': typeof MiembrosOracionesSerenidadRoute
@@ -575,6 +584,7 @@ export interface FileRoutesById {
   '/_authenticated/servicio/perfil': typeof AuthenticatedServicioPerfilRoute
   '/_authenticated/servicio/usuarios': typeof AuthenticatedServicioUsuariosRoute
   '/miembros/asamblea/$id': typeof MiembrosAsambleaIdRoute
+  '/miembros/asamblea/acerca-de': typeof MiembrosAsambleaAcercaDeRoute
   '/miembros/oraciones/san-francisco': typeof MiembrosOracionesSanFranciscoRoute
   '/miembros/oraciones/septimo-paso': typeof MiembrosOracionesSeptimoPasoRoute
   '/miembros/oraciones/serenidad': typeof MiembrosOracionesSerenidadRoute
@@ -641,6 +651,7 @@ export interface FileRouteTypes {
     | '/servicio/perfil'
     | '/servicio/usuarios'
     | '/miembros/asamblea/$id'
+    | '/miembros/asamblea/acerca-de'
     | '/miembros/oraciones/san-francisco'
     | '/miembros/oraciones/septimo-paso'
     | '/miembros/oraciones/serenidad'
@@ -700,6 +711,7 @@ export interface FileRouteTypes {
     | '/servicio/perfil'
     | '/servicio/usuarios'
     | '/miembros/asamblea/$id'
+    | '/miembros/asamblea/acerca-de'
     | '/miembros/oraciones/san-francisco'
     | '/miembros/oraciones/septimo-paso'
     | '/miembros/oraciones/serenidad'
@@ -765,6 +777,7 @@ export interface FileRouteTypes {
     | '/_authenticated/servicio/perfil'
     | '/_authenticated/servicio/usuarios'
     | '/miembros/asamblea/$id'
+    | '/miembros/asamblea/acerca-de'
     | '/miembros/oraciones/san-francisco'
     | '/miembros/oraciones/septimo-paso'
     | '/miembros/oraciones/serenidad'
@@ -1170,6 +1183,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MiembrosOracionesSanFranciscoRouteImport
       parentRoute: typeof MiembrosOracionesRoute
     }
+    '/miembros/asamblea/acerca-de': {
+      id: '/miembros/asamblea/acerca-de'
+      path: '/acerca-de'
+      fullPath: '/miembros/asamblea/acerca-de'
+      preLoaderRoute: typeof MiembrosAsambleaAcercaDeRouteImport
+      parentRoute: typeof MiembrosAsambleaRoute
+    }
     '/miembros/asamblea/$id': {
       id: '/miembros/asamblea/$id'
       path: '/$id'
@@ -1335,11 +1355,13 @@ const GruposRouteWithChildren =
 
 interface MiembrosAsambleaRouteChildren {
   MiembrosAsambleaIdRoute: typeof MiembrosAsambleaIdRoute
+  MiembrosAsambleaAcercaDeRoute: typeof MiembrosAsambleaAcercaDeRoute
   MiembrosAsambleaIndexRoute: typeof MiembrosAsambleaIndexRoute
 }
 
 const MiembrosAsambleaRouteChildren: MiembrosAsambleaRouteChildren = {
   MiembrosAsambleaIdRoute: MiembrosAsambleaIdRoute,
+  MiembrosAsambleaAcercaDeRoute: MiembrosAsambleaAcercaDeRoute,
   MiembrosAsambleaIndexRoute: MiembrosAsambleaIndexRoute,
 }
 

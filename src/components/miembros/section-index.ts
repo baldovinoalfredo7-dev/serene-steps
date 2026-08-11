@@ -35,12 +35,13 @@ export const sectionIndex: Record<string, SubItem[]> = {
     { label: "Reuniones de servicio", hash: "reuniones" },
   ],
   "/miembros/asamblea": [
-    { label: "¿Qué es la Asamblea de Área?", hash: "que-es" },
-    { label: "¿Quiénes participan?", hash: "participantes" },
-    { label: "¿Cómo se desarrolla?", hash: "desarrollo" },
-    { label: "¿Cómo se toman las decisiones?", hash: "decisiones" },
-    { label: "Su importancia", hash: "importancia" },
+    { label: "Informes de los RSG", hash: "rsg" },
+    { label: "Comité de Área", hash: "comiteArea" },
+    { label: "Comités Especiales", hash: "comitesEspeciales" },
+    { label: "Asambleas anteriores", hash: "anteriores" },
+    { label: "¿Qué es la Asamblea de Área?", to: "/miembros/asamblea/acerca-de" },
   ],
+
   "/miembros/eventos": [
     { label: "Actividades de servicio", hash: "actividades" },
     { label: "Próximas Asambleas de Área", hash: "asambleas" },
