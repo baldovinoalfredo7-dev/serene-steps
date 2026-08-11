@@ -59,6 +59,7 @@ import { Route as MiembrosOracionesTercerPasoRouteImport } from './routes/miembr
 import { Route as MiembrosOracionesSerenidadRouteImport } from './routes/miembros.oraciones.serenidad'
 import { Route as MiembrosOracionesSeptimoPasoRouteImport } from './routes/miembros.oraciones.septimo-paso'
 import { Route as MiembrosOracionesSanFranciscoRouteImport } from './routes/miembros.oraciones.san-francisco'
+import { Route as MiembrosAsambleaIdRouteImport } from './routes/miembros.asamblea.$id'
 import { Route as AuthenticatedServicioUsuariosRouteImport } from './routes/_authenticated/servicio.usuarios'
 import { Route as AuthenticatedServicioPerfilRouteImport } from './routes/_authenticated/servicio.perfil'
 import { Route as AuthenticatedServicioReunionesIndexRouteImport } from './routes/_authenticated/servicio.reuniones.index'
@@ -329,6 +330,11 @@ const MiembrosOracionesSanFranciscoRoute =
     path: '/san-francisco',
     getParentRoute: () => MiembrosOracionesRoute,
   } as any)
+const MiembrosAsambleaIdRoute = MiembrosAsambleaIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => MiembrosAsambleaRoute,
+} as any)
 const AuthenticatedServicioUsuariosRoute =
   AuthenticatedServicioUsuariosRouteImport.update({
     id: '/usuarios',
@@ -443,6 +449,7 @@ export interface FileRoutesByFullPath {
   '/miembros/': typeof MiembrosIndexRoute
   '/servicio/perfil': typeof AuthenticatedServicioPerfilRoute
   '/servicio/usuarios': typeof AuthenticatedServicioUsuariosRoute
+  '/miembros/asamblea/$id': typeof MiembrosAsambleaIdRoute
   '/miembros/oraciones/san-francisco': typeof MiembrosOracionesSanFranciscoRoute
   '/miembros/oraciones/septimo-paso': typeof MiembrosOracionesSeptimoPasoRoute
   '/miembros/oraciones/serenidad': typeof MiembrosOracionesSerenidadRoute
@@ -501,6 +508,7 @@ export interface FileRoutesByTo {
   '/miembros': typeof MiembrosIndexRoute
   '/servicio/perfil': typeof AuthenticatedServicioPerfilRoute
   '/servicio/usuarios': typeof AuthenticatedServicioUsuariosRoute
+  '/miembros/asamblea/$id': typeof MiembrosAsambleaIdRoute
   '/miembros/oraciones/san-francisco': typeof MiembrosOracionesSanFranciscoRoute
   '/miembros/oraciones/septimo-paso': typeof MiembrosOracionesSeptimoPasoRoute
   '/miembros/oraciones/serenidad': typeof MiembrosOracionesSerenidadRoute
@@ -566,6 +574,7 @@ export interface FileRoutesById {
   '/miembros/': typeof MiembrosIndexRoute
   '/_authenticated/servicio/perfil': typeof AuthenticatedServicioPerfilRoute
   '/_authenticated/servicio/usuarios': typeof AuthenticatedServicioUsuariosRoute
+  '/miembros/asamblea/$id': typeof MiembrosAsambleaIdRoute
   '/miembros/oraciones/san-francisco': typeof MiembrosOracionesSanFranciscoRoute
   '/miembros/oraciones/septimo-paso': typeof MiembrosOracionesSeptimoPasoRoute
   '/miembros/oraciones/serenidad': typeof MiembrosOracionesSerenidadRoute
@@ -631,6 +640,7 @@ export interface FileRouteTypes {
     | '/miembros/'
     | '/servicio/perfil'
     | '/servicio/usuarios'
+    | '/miembros/asamblea/$id'
     | '/miembros/oraciones/san-francisco'
     | '/miembros/oraciones/septimo-paso'
     | '/miembros/oraciones/serenidad'
@@ -689,6 +699,7 @@ export interface FileRouteTypes {
     | '/miembros'
     | '/servicio/perfil'
     | '/servicio/usuarios'
+    | '/miembros/asamblea/$id'
     | '/miembros/oraciones/san-francisco'
     | '/miembros/oraciones/septimo-paso'
     | '/miembros/oraciones/serenidad'
@@ -753,6 +764,7 @@ export interface FileRouteTypes {
     | '/miembros/'
     | '/_authenticated/servicio/perfil'
     | '/_authenticated/servicio/usuarios'
+    | '/miembros/asamblea/$id'
     | '/miembros/oraciones/san-francisco'
     | '/miembros/oraciones/septimo-paso'
     | '/miembros/oraciones/serenidad'
@@ -1158,6 +1170,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MiembrosOracionesSanFranciscoRouteImport
       parentRoute: typeof MiembrosOracionesRoute
     }
+    '/miembros/asamblea/$id': {
+      id: '/miembros/asamblea/$id'
+      path: '/$id'
+      fullPath: '/miembros/asamblea/$id'
+      preLoaderRoute: typeof MiembrosAsambleaIdRouteImport
+      parentRoute: typeof MiembrosAsambleaRoute
+    }
     '/_authenticated/servicio/usuarios': {
       id: '/_authenticated/servicio/usuarios'
       path: '/usuarios'
@@ -1315,10 +1334,12 @@ const GruposRouteWithChildren =
   GruposRoute._addFileChildren(GruposRouteChildren)
 
 interface MiembrosAsambleaRouteChildren {
+  MiembrosAsambleaIdRoute: typeof MiembrosAsambleaIdRoute
   MiembrosAsambleaIndexRoute: typeof MiembrosAsambleaIndexRoute
 }
 
 const MiembrosAsambleaRouteChildren: MiembrosAsambleaRouteChildren = {
+  MiembrosAsambleaIdRoute: MiembrosAsambleaIdRoute,
   MiembrosAsambleaIndexRoute: MiembrosAsambleaIndexRoute,
 }
 
