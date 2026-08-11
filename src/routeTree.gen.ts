@@ -50,6 +50,7 @@ import { Route as AuthenticatedServicioRouteImport } from './routes/_authenticat
 import { Route as AuthenticatedPerfilRouteImport } from './routes/_authenticated/perfil'
 import { Route as MiembrosPrincipiosIndexRouteImport } from './routes/miembros.principios.index'
 import { Route as MiembrosOracionesIndexRouteImport } from './routes/miembros.oraciones.index'
+import { Route as MiembrosAsambleaIndexRouteImport } from './routes/miembros.asamblea.index'
 import { Route as AuthenticatedServicioIndexRouteImport } from './routes/_authenticated/servicio.index'
 import { Route as MiembrosPrincipiosDoceTradicionesRouteImport } from './routes/miembros.principios.doce-tradiciones'
 import { Route as MiembrosPrincipiosDocePasosRouteImport } from './routes/miembros.principios.doce-pasos'
@@ -275,6 +276,11 @@ const MiembrosOracionesIndexRoute = MiembrosOracionesIndexRouteImport.update({
   path: '/',
   getParentRoute: () => MiembrosOracionesRoute,
 } as any)
+const MiembrosAsambleaIndexRoute = MiembrosAsambleaIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => MiembrosAsambleaRoute,
+} as any)
 const AuthenticatedServicioIndexRoute =
   AuthenticatedServicioIndexRouteImport.update({
     id: '/',
@@ -424,7 +430,7 @@ export interface FileRoutesByFullPath {
   '/grupos/$slug': typeof GruposSlugRoute
   '/literatura/$slug': typeof LiteraturaSlugRoute
   '/miembros/area': typeof MiembrosAreaRoute
-  '/miembros/asamblea': typeof MiembrosAsambleaRoute
+  '/miembros/asamblea': typeof MiembrosAsambleaRouteWithChildren
   '/miembros/conferencia': typeof MiembrosConferenciaRoute
   '/miembros/documentos': typeof MiembrosDocumentosRoute
   '/miembros/el-grupo': typeof MiembrosElGrupoRoute
@@ -445,6 +451,7 @@ export interface FileRoutesByFullPath {
   '/miembros/principios/doce-pasos': typeof MiembrosPrincipiosDocePasosRoute
   '/miembros/principios/doce-tradiciones': typeof MiembrosPrincipiosDoceTradicionesRoute
   '/servicio/': typeof AuthenticatedServicioIndexRoute
+  '/miembros/asamblea/': typeof MiembrosAsambleaIndexRoute
   '/miembros/oraciones/': typeof MiembrosOracionesIndexRoute
   '/miembros/principios/': typeof MiembrosPrincipiosIndexRoute
   '/servicio/eventos/$id': typeof AuthenticatedServicioEventosIdRoute
@@ -484,7 +491,6 @@ export interface FileRoutesByTo {
   '/grupos/$slug': typeof GruposSlugRoute
   '/literatura/$slug': typeof LiteraturaSlugRoute
   '/miembros/area': typeof MiembrosAreaRoute
-  '/miembros/asamblea': typeof MiembrosAsambleaRoute
   '/miembros/conferencia': typeof MiembrosConferenciaRoute
   '/miembros/documentos': typeof MiembrosDocumentosRoute
   '/miembros/el-grupo': typeof MiembrosElGrupoRoute
@@ -503,6 +509,7 @@ export interface FileRoutesByTo {
   '/miembros/principios/doce-pasos': typeof MiembrosPrincipiosDocePasosRoute
   '/miembros/principios/doce-tradiciones': typeof MiembrosPrincipiosDoceTradicionesRoute
   '/servicio': typeof AuthenticatedServicioIndexRoute
+  '/miembros/asamblea': typeof MiembrosAsambleaIndexRoute
   '/miembros/oraciones': typeof MiembrosOracionesIndexRoute
   '/miembros/principios': typeof MiembrosPrincipiosIndexRoute
   '/servicio/eventos/$id': typeof AuthenticatedServicioEventosIdRoute
@@ -546,7 +553,7 @@ export interface FileRoutesById {
   '/grupos/$slug': typeof GruposSlugRoute
   '/literatura/$slug': typeof LiteraturaSlugRoute
   '/miembros/area': typeof MiembrosAreaRoute
-  '/miembros/asamblea': typeof MiembrosAsambleaRoute
+  '/miembros/asamblea': typeof MiembrosAsambleaRouteWithChildren
   '/miembros/conferencia': typeof MiembrosConferenciaRoute
   '/miembros/documentos': typeof MiembrosDocumentosRoute
   '/miembros/el-grupo': typeof MiembrosElGrupoRoute
@@ -567,6 +574,7 @@ export interface FileRoutesById {
   '/miembros/principios/doce-pasos': typeof MiembrosPrincipiosDocePasosRoute
   '/miembros/principios/doce-tradiciones': typeof MiembrosPrincipiosDoceTradicionesRoute
   '/_authenticated/servicio/': typeof AuthenticatedServicioIndexRoute
+  '/miembros/asamblea/': typeof MiembrosAsambleaIndexRoute
   '/miembros/oraciones/': typeof MiembrosOracionesIndexRoute
   '/miembros/principios/': typeof MiembrosPrincipiosIndexRoute
   '/_authenticated/servicio/eventos/$id': typeof AuthenticatedServicioEventosIdRoute
@@ -631,6 +639,7 @@ export interface FileRouteTypes {
     | '/miembros/principios/doce-pasos'
     | '/miembros/principios/doce-tradiciones'
     | '/servicio/'
+    | '/miembros/asamblea/'
     | '/miembros/oraciones/'
     | '/miembros/principios/'
     | '/servicio/eventos/$id'
@@ -670,7 +679,6 @@ export interface FileRouteTypes {
     | '/grupos/$slug'
     | '/literatura/$slug'
     | '/miembros/area'
-    | '/miembros/asamblea'
     | '/miembros/conferencia'
     | '/miembros/documentos'
     | '/miembros/el-grupo'
@@ -689,6 +697,7 @@ export interface FileRouteTypes {
     | '/miembros/principios/doce-pasos'
     | '/miembros/principios/doce-tradiciones'
     | '/servicio'
+    | '/miembros/asamblea'
     | '/miembros/oraciones'
     | '/miembros/principios'
     | '/servicio/eventos/$id'
@@ -752,6 +761,7 @@ export interface FileRouteTypes {
     | '/miembros/principios/doce-pasos'
     | '/miembros/principios/doce-tradiciones'
     | '/_authenticated/servicio/'
+    | '/miembros/asamblea/'
     | '/miembros/oraciones/'
     | '/miembros/principios/'
     | '/_authenticated/servicio/eventos/$id'
@@ -1085,6 +1095,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MiembrosOracionesIndexRouteImport
       parentRoute: typeof MiembrosOracionesRoute
     }
+    '/miembros/asamblea/': {
+      id: '/miembros/asamblea/'
+      path: '/'
+      fullPath: '/miembros/asamblea/'
+      preLoaderRoute: typeof MiembrosAsambleaIndexRouteImport
+      parentRoute: typeof MiembrosAsambleaRoute
+    }
     '/_authenticated/servicio/': {
       id: '/_authenticated/servicio/'
       path: '/'
@@ -1297,6 +1314,17 @@ const GruposRouteChildren: GruposRouteChildren = {
 const GruposRouteWithChildren =
   GruposRoute._addFileChildren(GruposRouteChildren)
 
+interface MiembrosAsambleaRouteChildren {
+  MiembrosAsambleaIndexRoute: typeof MiembrosAsambleaIndexRoute
+}
+
+const MiembrosAsambleaRouteChildren: MiembrosAsambleaRouteChildren = {
+  MiembrosAsambleaIndexRoute: MiembrosAsambleaIndexRoute,
+}
+
+const MiembrosAsambleaRouteWithChildren =
+  MiembrosAsambleaRoute._addFileChildren(MiembrosAsambleaRouteChildren)
+
 interface MiembrosOracionesRouteChildren {
   MiembrosOracionesSanFranciscoRoute: typeof MiembrosOracionesSanFranciscoRoute
   MiembrosOracionesSeptimoPasoRoute: typeof MiembrosOracionesSeptimoPasoRoute
@@ -1336,7 +1364,7 @@ const MiembrosPrincipiosRouteWithChildren =
 
 interface MiembrosRouteChildren {
   MiembrosAreaRoute: typeof MiembrosAreaRoute
-  MiembrosAsambleaRoute: typeof MiembrosAsambleaRoute
+  MiembrosAsambleaRoute: typeof MiembrosAsambleaRouteWithChildren
   MiembrosConferenciaRoute: typeof MiembrosConferenciaRoute
   MiembrosDocumentosRoute: typeof MiembrosDocumentosRoute
   MiembrosElGrupoRoute: typeof MiembrosElGrupoRoute
@@ -1350,7 +1378,7 @@ interface MiembrosRouteChildren {
 
 const MiembrosRouteChildren: MiembrosRouteChildren = {
   MiembrosAreaRoute: MiembrosAreaRoute,
-  MiembrosAsambleaRoute: MiembrosAsambleaRoute,
+  MiembrosAsambleaRoute: MiembrosAsambleaRouteWithChildren,
   MiembrosConferenciaRoute: MiembrosConferenciaRoute,
   MiembrosDocumentosRoute: MiembrosDocumentosRoute,
   MiembrosElGrupoRoute: MiembrosElGrupoRoute,
