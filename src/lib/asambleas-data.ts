@@ -7,6 +7,11 @@
  * `comiteArea` o `comitesEspeciales`). No es necesario modificar las páginas.
  */
 
+import flyerSantoTomas from "@/assets/asambleas/2026-08-09/santo-tomas.png.asset.json";
+import flyerAccion from "@/assets/asambleas/2026-08-09/accion-sabanalarga.png.asset.json";
+import flyerConcord from "@/assets/asambleas/2026-08-09/el-concord.png.asset.json";
+import flyerSimonBolivar from "@/assets/asambleas/2026-08-09/simon-bolivar.jpg.asset.json";
+
 export type Flyer = {
   /** Nombre del grupo, comité o servidor que presenta el informe */
   title: string;
@@ -53,7 +58,28 @@ export const asambleas: Assembly[] = [
     id: "2026-08-09",
     date: "2026-08-09",
     label: "9 de agosto de 2026",
-    rsg: [],
+    rsg: [
+      {
+        title: "Grupo Santo Tomás",
+        subtitle: "RSG Geovanny Polo Pertuz",
+        image: flyerSantoTomas.url,
+      },
+      {
+        title: "Grupo Acción de Sabanalarga",
+        subtitle: "RSG Cesar Augusto Sabolza Gómez",
+        image: flyerAccion.url,
+      },
+      {
+        title: "Grupo El Concord",
+        subtitle: "RSG Carlos C.",
+        image: flyerConcord.url,
+      },
+      {
+        title: "Grupo Simón Bolívar",
+        subtitle: "RSG Alonso Rueda Rodríguez",
+        image: flyerSimonBolivar.url,
+      },
+    ],
     comiteArea: [],
     comitesEspeciales: [],
   },
