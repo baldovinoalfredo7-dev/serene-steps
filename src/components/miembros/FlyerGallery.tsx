@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ImageIcon, X } from "lucide-react";
+import { ImageIcon } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -65,7 +65,6 @@ export function FlyerGallery({ items }: { items: Flyer[] }) {
 
       <Dialog open={open !== null} onOpenChange={(v) => !v && setOpen(null)}>
         <DialogContent
-          showCloseButton={false}
           className="max-h-[92dvh] max-w-3xl overflow-y-auto rounded-2xl bg-paper p-4 sm:p-6"
         >
           <DialogTitle className="pr-10 font-serif text-lg italic text-brand">
@@ -74,14 +73,6 @@ export function FlyerGallery({ items }: { items: Flyer[] }) {
           <DialogDescription className="text-xs text-ink/70">
             {open?.subtitle ?? "Informe presentado en la Asamblea de Área"}
           </DialogDescription>
-          <button
-            type="button"
-            onClick={() => setOpen(null)}
-            className="absolute right-3 top-3 rounded-full bg-soft p-2 text-brand hover:bg-brand hover:text-paper"
-            aria-label="Volver a la galería"
-          >
-            <X className="size-4" />
-          </button>
           {open?.image ? (
             <img
               src={open.image}
