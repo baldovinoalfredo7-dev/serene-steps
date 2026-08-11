@@ -7,6 +7,11 @@
  * `comiteArea` o `comitesEspeciales`). No es necesario modificar las páginas.
  */
 
+import flyerSantoTomas from "@/assets/asambleas/2026-08-09/santo-tomas.png.asset.json";
+import flyerAccion from "@/assets/asambleas/2026-08-09/accion-sabanalarga.png.asset.json";
+import flyerConcord from "@/assets/asambleas/2026-08-09/el-concord.png.asset.json";
+import flyerSimonBolivar from "@/assets/asambleas/2026-08-09/simon-bolivar.jpg.asset.json";
+
 export type Flyer = {
   /** Nombre del grupo, comité o servidor que presenta el informe */
   title: string;
