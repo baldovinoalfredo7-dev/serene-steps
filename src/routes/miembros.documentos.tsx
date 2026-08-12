@@ -34,6 +34,11 @@ import thumbAutomantenimiento from "@/assets/docs/thumbs/automantenimiento.jpg.a
 import thumbHistoriaRevista from "@/assets/docs/thumbs/historia-revista.jpg.asset.json";
 import thumbNuestraRevista from "@/assets/docs/thumbs/nuestra-revista.jpg.asset.json";
 
+// Informes de la Asamblea (agosto 2026)
+import informeDelegado from "@/assets/docs/informe-delegado.png.asset.json";
+import informeCoordinador from "@/assets/docs/informe-coordinador.png.asset.json";
+import informeCCP from "@/assets/docs/informe-ccp.png.asset.json";
+
 // Manual de Imagen Corporativa
 import manualImagen from "@/assets/docs/manual-imagen-corporativa.pdf.asset.json";
 import thumbManualImagen from "@/assets/docs/thumbs/manual-imagen-corporativa.jpg.asset.json";
@@ -96,7 +101,7 @@ type Doc = {
   /** Mostrar la miniatura completa, sin recortar (conserva las proporciones) */
   thumbContain?: boolean;
   category: CategoryKey;
-  fileType: "PDF" | "PowerPoint";
+  fileType: "PDF" | "PowerPoint" | "Imagen";
   pages?: string;
   publishedAt: string;
   /** Versión vigente del documento (para documentos que se actualizan) */
@@ -115,6 +120,39 @@ const documents: Doc[] = [
     fileType: "PDF",
     pages: "216 páginas",
     publishedAt: "2026",
+  },
+  {
+    title: "Informe del Delegado",
+    description:
+      "Informe del Delegado del Área 2 correspondiente al mes de julio de 2026, presentado en la Asamblea del 9 de agosto de 2026.",
+    href: informeDelegado.url,
+    thumb: informeDelegado.url,
+    thumbContain: true,
+    category: "informes",
+    fileType: "Imagen",
+    publishedAt: "9 de agosto de 2026",
+  },
+  {
+    title: "Informe del Coordinador",
+    description:
+      "Informe del Coordinador del Comité de Área 2 presentado en la asamblea informativa del 9 de agosto de 2026.",
+    href: informeCoordinador.url,
+    thumb: informeCoordinador.url,
+    thumbContain: true,
+    category: "informes",
+    fileType: "Imagen",
+    publishedAt: "9 de agosto de 2026",
+  },
+  {
+    title: "Informe de CCP — Cooperación con la Comunidad Profesional",
+    description:
+      "Informe del Comité de Cooperación con la Comunidad Profesional sobre la elaboración de la página web oficial del Área 2.",
+    href: informeCCP.url,
+    thumb: informeCCP.url,
+    thumbContain: true,
+    category: "informes",
+    fileType: "Imagen",
+    publishedAt: "9 de agosto de 2026",
   },
   {
     title: "Taller de Información Pública",
@@ -444,8 +482,11 @@ function PreviewDialog({
   onClose: () => void;
 }) {
   const isMobile = useIsMobile();
-  const previewSrc = doc ? (doc.previewUrl ?? (doc.fileType === "PDF" ? doc.href : null)) : null;
-  const canEmbed = !!previewSrc && !isMobile;
+  const isImage = doc?.fileType === "Imagen";
+  const previewSrc = doc
+    ? (doc.previewUrl ?? (doc.fileType === "PowerPoint" ? null : doc.href))
+    : null;
+  const canEmbed = !!previewSrc && (isImage || !isMobile);
 
   return (
     <Dialog open={!!doc} onOpenChange={(open) => !open && onClose()}>
@@ -466,14 +507,22 @@ function PreviewDialog({
             <Metadata doc={doc} />
             {canEmbed ? (
               <div className="mt-2 overflow-hidden rounded-2xl border border-brand/10 bg-brand-soft/30">
-                <object
-                  data={`${previewSrc}#page=1&toolbar=0&navpanes=0`}
-                  type="application/pdf"
-                  className="h-[55vh] w-full"
-                  aria-label={`Vista previa de ${doc.title}`}
-                >
-                  <FallbackCard doc={doc} previewSrc={previewSrc} />
-                </object>
+                {isImage ? (
+                  <img
+                    src={previewSrc!}
+                    alt={`Vista completa de ${doc.title}`}
+                    className="max-h-[70vh] w-full bg-paper object-contain"
+                  />
+                ) : (
+                  <object
+                    data={`${previewSrc}#page=1&toolbar=0&navpanes=0`}
+                    type="application/pdf"
+                    className="h-[55vh] w-full"
+                    aria-label={`Vista previa de ${doc.title}`}
+                  >
+                    <FallbackCard doc={doc} previewSrc={previewSrc} />
+                  </object>
+                )}
               </div>
             ) : (
               <div className="mt-2">
