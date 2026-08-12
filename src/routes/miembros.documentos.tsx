@@ -101,7 +101,7 @@ type Doc = {
   /** Mostrar la miniatura completa, sin recortar (conserva las proporciones) */
   thumbContain?: boolean;
   category: CategoryKey;
-  fileType: "PDF" | "PowerPoint";
+  fileType: "PDF" | "PowerPoint" | "Imagen";
   pages?: string;
   publishedAt: string;
   /** Versión vigente del documento (para documentos que se actualizan) */
