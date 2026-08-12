@@ -39,7 +39,7 @@ export type Assembly = {
 };
 
 export const categoryLabels: Record<AssemblyCategoryKey, string> = {
-  rsg: "Informes de los RSG",
+  rsg: "Informes de los grupos",
   comiteArea: "Comité de Área",
   comitesEspeciales: "Comités Especiales",
 };
