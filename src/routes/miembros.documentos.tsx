@@ -482,8 +482,11 @@ function PreviewDialog({
   onClose: () => void;
 }) {
   const isMobile = useIsMobile();
-  const previewSrc = doc ? (doc.previewUrl ?? (doc.fileType === "PDF" ? doc.href : null)) : null;
-  const canEmbed = !!previewSrc && !isMobile;
+  const isImage = doc?.fileType === "Imagen";
+  const previewSrc = doc
+    ? (doc.previewUrl ?? (doc.fileType === "PowerPoint" ? null : doc.href))
+    : null;
+  const canEmbed = !!previewSrc && (isImage || !isMobile);
 
   return (
     <Dialog open={!!doc} onOpenChange={(open) => !open && onClose()}>
