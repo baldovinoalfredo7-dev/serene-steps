@@ -28,7 +28,7 @@ function InformesAsambleas() {
         </h1>
         <p className="mt-4 text-base leading-relaxed text-ink/80">
           Archivo digital de los informes presentados en las Asambleas del Área 2
-          Metropolitana de Barranquilla. Toca cualquier flyer para verlo en tamaño completo.
+          Metropolitana de Barranquilla. Toca cualquier informe para verlo en tamaño completo.
         </p>
         <Link to="/miembros/asamblea/acerca-de" className="btn-aa-outline mt-6">
           <BookOpenText className="size-4" />
