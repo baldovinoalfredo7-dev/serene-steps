@@ -34,6 +34,11 @@ import thumbAutomantenimiento from "@/assets/docs/thumbs/automantenimiento.jpg.a
 import thumbHistoriaRevista from "@/assets/docs/thumbs/historia-revista.jpg.asset.json";
 import thumbNuestraRevista from "@/assets/docs/thumbs/nuestra-revista.jpg.asset.json";
 
+// Informes de la Asamblea (agosto 2026)
+import informeDelegado from "@/assets/docs/informe-delegado.png.asset.json";
+import informeCoordinador from "@/assets/docs/informe-coordinador.png.asset.json";
+import informeCCP from "@/assets/docs/informe-ccp.png.asset.json";
+
 // Manual de Imagen Corporativa
 import manualImagen from "@/assets/docs/manual-imagen-corporativa.pdf.asset.json";
 import thumbManualImagen from "@/assets/docs/thumbs/manual-imagen-corporativa.jpg.asset.json";
