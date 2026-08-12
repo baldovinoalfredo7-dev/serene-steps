@@ -120,39 +120,6 @@ const documents: Doc[] = [
     publishedAt: "2026",
   },
   {
-    title: "Informe del Delegado",
-    description:
-      "Informe del Delegado del Área 2 correspondiente al mes de julio de 2026, presentado en la Asamblea del 9 de agosto de 2026.",
-    href: informeDelegado.url,
-    thumb: informeDelegado.url,
-    thumbContain: true,
-    category: "informes",
-    fileType: "Imagen",
-    publishedAt: "9 de agosto de 2026",
-  },
-  {
-    title: "Informe del Coordinador",
-    description:
-      "Informe del Coordinador del Comité de Área 2 presentado en la asamblea informativa del 9 de agosto de 2026.",
-    href: informeCoordinador.url,
-    thumb: informeCoordinador.url,
-    thumbContain: true,
-    category: "informes",
-    fileType: "Imagen",
-    publishedAt: "9 de agosto de 2026",
-  },
-  {
-    title: "Informe de CCP — Cooperación con la Comunidad Profesional",
-    description:
-      "Informe del Comité de Cooperación con la Comunidad Profesional sobre la elaboración de la página web oficial del Área 2.",
-    href: informeCCP.url,
-    thumb: informeCCP.url,
-    thumbContain: true,
-    category: "informes",
-    fileType: "Imagen",
-    publishedAt: "9 de agosto de 2026",
-  },
-  {
     title: "Taller de Información Pública",
     description:
       "Guía de trabajo para preparar y desarrollar actividades de Información Pública. Explica el propósito del comité, las pautas de anonimato y ejemplos prácticos para llevar el mensaje a la comunidad.",
