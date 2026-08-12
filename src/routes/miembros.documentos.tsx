@@ -34,10 +34,8 @@ import thumbAutomantenimiento from "@/assets/docs/thumbs/automantenimiento.jpg.a
 import thumbHistoriaRevista from "@/assets/docs/thumbs/historia-revista.jpg.asset.json";
 import thumbNuestraRevista from "@/assets/docs/thumbs/nuestra-revista.jpg.asset.json";
 
-// Informes de la Asamblea (agosto 2026)
-import informeDelegado from "@/assets/docs/informe-delegado.png.asset.json";
-import informeCoordinador from "@/assets/docs/informe-coordinador.png.asset.json";
-import informeCCP from "@/assets/docs/informe-ccp.png.asset.json";
+
+
 
 // Manual de Imagen Corporativa
 import manualImagen from "@/assets/docs/manual-imagen-corporativa.pdf.asset.json";
@@ -120,39 +118,6 @@ const documents: Doc[] = [
     fileType: "PDF",
     pages: "216 páginas",
     publishedAt: "2026",
-  },
-  {
-    title: "Informe del Delegado",
-    description:
-      "Informe del Delegado del Área 2 correspondiente al mes de julio de 2026, presentado en la Asamblea del 9 de agosto de 2026.",
-    href: informeDelegado.url,
-    thumb: informeDelegado.url,
-    thumbContain: true,
-    category: "informes",
-    fileType: "Imagen",
-    publishedAt: "9 de agosto de 2026",
-  },
-  {
-    title: "Informe del Coordinador",
-    description:
-      "Informe del Coordinador del Comité de Área 2 presentado en la asamblea informativa del 9 de agosto de 2026.",
-    href: informeCoordinador.url,
-    thumb: informeCoordinador.url,
-    thumbContain: true,
-    category: "informes",
-    fileType: "Imagen",
-    publishedAt: "9 de agosto de 2026",
-  },
-  {
-    title: "Informe de CCP — Cooperación con la Comunidad Profesional",
-    description:
-      "Informe del Comité de Cooperación con la Comunidad Profesional sobre la elaboración de la página web oficial del Área 2.",
-    href: informeCCP.url,
-    thumb: informeCCP.url,
-    thumbContain: true,
-    category: "informes",
-    fileType: "Imagen",
-    publishedAt: "9 de agosto de 2026",
   },
   {
     title: "Taller de Información Pública",

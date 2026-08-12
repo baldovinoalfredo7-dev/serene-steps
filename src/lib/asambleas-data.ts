@@ -11,6 +11,9 @@ import flyerSantoTomas from "@/assets/asambleas/2026-08-09/santo-tomas.png.asset
 import flyerAccion from "@/assets/asambleas/2026-08-09/accion-sabanalarga.png.asset.json";
 import flyerConcord from "@/assets/asambleas/2026-08-09/el-concord.png.asset.json";
 import flyerSimonBolivar from "@/assets/asambleas/2026-08-09/simon-bolivar.jpg.asset.json";
+import informeDelegado from "@/assets/docs/informe-delegado.png.asset.json";
+import informeCoordinador from "@/assets/docs/informe-coordinador.png.asset.json";
+import informeCCP from "@/assets/docs/informe-ccp.png.asset.json";
 
 export type Flyer = {
   /** Nombre del grupo, comité o servidor que presenta el informe */
@@ -36,7 +39,7 @@ export type Assembly = {
 };
 
 export const categoryLabels: Record<AssemblyCategoryKey, string> = {
-  rsg: "Informes de los RSG",
+  rsg: "Informes de los grupos",
   comiteArea: "Comité de Área",
   comitesEspeciales: "Comités Especiales",
 };
@@ -80,8 +83,25 @@ export const asambleas: Assembly[] = [
         image: flyerSimonBolivar.url,
       },
     ],
-    comiteArea: [],
-    comitesEspeciales: [],
+    comiteArea: [
+      {
+        title: "Informe del Delegado",
+        subtitle: "Efraín Rueda · Delegado del Área 2",
+        image: informeDelegado.url,
+      },
+      {
+        title: "Informe del Coordinador",
+        subtitle: "Luis Yepes · Coordinador del Comité de Área",
+        image: informeCoordinador.url,
+      },
+    ],
+    comitesEspeciales: [
+      {
+        title: "Informe de CCP — Cooperación con la Comunidad Profesional",
+        subtitle: "Comité de Cooperación con la Comunidad Profesional",
+        image: informeCCP.url,
+      },
+    ],
   },
 ];
 
