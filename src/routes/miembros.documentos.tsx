@@ -507,14 +507,22 @@ function PreviewDialog({
             <Metadata doc={doc} />
             {canEmbed ? (
               <div className="mt-2 overflow-hidden rounded-2xl border border-brand/10 bg-brand-soft/30">
-                <object
-                  data={`${previewSrc}#page=1&toolbar=0&navpanes=0`}
-                  type="application/pdf"
-                  className="h-[55vh] w-full"
-                  aria-label={`Vista previa de ${doc.title}`}
-                >
-                  <FallbackCard doc={doc} previewSrc={previewSrc} />
-                </object>
+                {isImage ? (
+                  <img
+                    src={previewSrc!}
+                    alt={`Vista completa de ${doc.title}`}
+                    className="max-h-[70vh] w-full bg-paper object-contain"
+                  />
+                ) : (
+                  <object
+                    data={`${previewSrc}#page=1&toolbar=0&navpanes=0`}
+                    type="application/pdf"
+                    className="h-[55vh] w-full"
+                    aria-label={`Vista previa de ${doc.title}`}
+                  >
+                    <FallbackCard doc={doc} previewSrc={previewSrc} />
+                  </object>
+                )}
               </div>
             ) : (
               <div className="mt-2">
