@@ -83,8 +83,25 @@ export const asambleas: Assembly[] = [
         image: flyerSimonBolivar.url,
       },
     ],
-    comiteArea: [],
-    comitesEspeciales: [],
+    comiteArea: [
+      {
+        title: "Informe del Delegado",
+        subtitle: "Efraín Rueda · Delegado del Área 2",
+        image: informeDelegado.url,
+      },
+      {
+        title: "Informe del Coordinador",
+        subtitle: "Luis Yepes · Coordinador del Comité de Área",
+        image: informeCoordinador.url,
+      },
+    ],
+    comitesEspeciales: [
+      {
+        title: "Informe de CCP — Cooperación con la Comunidad Profesional",
+        subtitle: "Comité de Cooperación con la Comunidad Profesional",
+        image: informeCCP.url,
+      },
+    ],
   },
 ];
 
