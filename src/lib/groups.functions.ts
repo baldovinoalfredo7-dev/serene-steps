@@ -49,8 +49,6 @@ export const listGroupsFn = createServerFn({ method: "GET" }).handler(async () =
     neighborhood: row.neighborhood ?? undefined,
     addressLine: row.address_line,
     addressFull: row.address_full,
-    lat: row.lat ?? 0,
-    lng: row.lng ?? 0,
     phone: row.phone ?? undefined,
     photoUrl: row.photo_url ?? undefined,
     history: row.history ?? "",
