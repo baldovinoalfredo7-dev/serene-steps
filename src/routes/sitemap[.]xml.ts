@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { listGroupsFn } from "@/lib/groups.functions";
 
-const BASE_URL = "https://hope-finds-you-here.lovable.app";
+const BASE_URL = "https://aaarea2.org";
 
 interface SitemapEntry {
   path: string;
