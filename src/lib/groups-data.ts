@@ -7,12 +7,6 @@ export interface Meeting {
   type: MeetingType;
 }
 
-export interface PublicInfoContact {
-  name?: string;
-  phone?: string;
-  email?: string;
-}
-
 export interface Group {
   slug: string;
   name: string;
@@ -21,13 +15,10 @@ export interface Group {
   neighborhood?: string;
   addressLine: string;
   addressFull: string;
-  lat: number;
-  lng: number;
   phone?: string;
   photoUrl?: string;
   history: string;
   meetings: Meeting[];
-  publicInfo?: PublicInfoContact;
 }
 
 

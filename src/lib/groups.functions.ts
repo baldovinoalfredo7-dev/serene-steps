@@ -60,14 +60,6 @@ export const listGroupsFn = createServerFn({ method: "GET" }).handler(async () =
         type: m.type as MeetingType,
       }))
       .sort((a, b) => a.weekday - b.weekday || a.start.localeCompare(b.start)),
-    publicInfo:
-      row.public_info_name || row.public_info_phone || row.public_info_email
-        ? {
-            name: row.public_info_name ?? undefined,
-            phone: row.public_info_phone ?? undefined,
-            email: row.public_info_email ?? undefined,
-          }
-        : undefined,
   }));
 
   return groups;
