@@ -6,9 +6,6 @@ import {
   ArrowLeft,
   Calendar,
   MapPin,
-  User,
-  Phone,
-  Mail,
   Share2,
   Star,
 } from "lucide-react";
