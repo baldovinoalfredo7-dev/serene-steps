@@ -28,11 +28,11 @@ export const listGroupsFn = createServerFn({ method: "GET" }).handler(async () =
     },
   });
 
+  // Exposición mínima: no se consultan coordenadas exactas ni contactos personales
   const { data, error } = await supabase
     .from("groups")
     .select(
-      `slug, name, area, neighborhood, address_line, address_full, lat, lng, phone, photo_url, history,
-       public_info_name, public_info_phone, public_info_email,
+      `slug, name, area, neighborhood, address_line, address_full, phone, photo_url, history,
        municipality:municipalities ( name ),
        meetings ( weekday, start_time, end_time, type )`,
     )
