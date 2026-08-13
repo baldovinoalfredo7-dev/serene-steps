@@ -212,13 +212,6 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "events_group_id_fkey"
-            columns: ["group_id"]
-            isOneToOne: false
-            referencedRelation: "public_groups"
-            referencedColumns: ["id"]
-          },
-          {
             foreignKeyName: "events_municipality_id_fkey"
             columns: ["municipality_id"]
             isOneToOne: false
@@ -335,13 +328,6 @@ export type Database = {
             columns: ["group_id"]
             isOneToOne: false
             referencedRelation: "groups"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "meetings_group_id_fkey"
-            columns: ["group_id"]
-            isOneToOne: false
-            referencedRelation: "public_groups"
             referencedColumns: ["id"]
           },
         ]
@@ -464,135 +450,7 @@ export type Database = {
       }
     }
     Views: {
-      public_events: {
-        Row: {
-          address_line: string | null
-          description: string | null
-          ends_at: string | null
-          id: string | null
-          image_url: string | null
-          is_featured: boolean | null
-          location: string | null
-          municipality_id: string | null
-          organizer: string | null
-          slug: string | null
-          starts_at: string | null
-          title: string | null
-        }
-        Insert: {
-          address_line?: string | null
-          description?: string | null
-          ends_at?: string | null
-          id?: string | null
-          image_url?: string | null
-          is_featured?: boolean | null
-          location?: string | null
-          municipality_id?: string | null
-          organizer?: string | null
-          slug?: string | null
-          starts_at?: string | null
-          title?: string | null
-        }
-        Update: {
-          address_line?: string | null
-          description?: string | null
-          ends_at?: string | null
-          id?: string | null
-          image_url?: string | null
-          is_featured?: boolean | null
-          location?: string | null
-          municipality_id?: string | null
-          organizer?: string | null
-          slug?: string | null
-          starts_at?: string | null
-          title?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "events_municipality_id_fkey"
-            columns: ["municipality_id"]
-            isOneToOne: false
-            referencedRelation: "municipalities"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      public_groups: {
-        Row: {
-          address_full: string | null
-          address_line: string | null
-          area: number | null
-          history: string | null
-          id: string | null
-          municipality_id: string | null
-          name: string | null
-          neighborhood: string | null
-          phone: string | null
-          photo_url: string | null
-          slug: string | null
-        }
-        Insert: {
-          address_full?: string | null
-          address_line?: string | null
-          area?: number | null
-          history?: string | null
-          id?: string | null
-          municipality_id?: string | null
-          name?: string | null
-          neighborhood?: string | null
-          phone?: string | null
-          photo_url?: string | null
-          slug?: string | null
-        }
-        Update: {
-          address_full?: string | null
-          address_line?: string | null
-          area?: number | null
-          history?: string | null
-          id?: string | null
-          municipality_id?: string | null
-          name?: string | null
-          neighborhood?: string | null
-          phone?: string | null
-          photo_url?: string | null
-          slug?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "groups_municipality_id_fkey"
-            columns: ["municipality_id"]
-            isOneToOne: false
-            referencedRelation: "municipalities"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      public_meetings: {
-        Row: {
-          end_time: string | null
-          group_id: string | null
-          id: string | null
-          start_time: string | null
-          type: Database["public"]["Enums"]["meeting_type"] | null
-          weekday: number | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "meetings_group_id_fkey"
-            columns: ["group_id"]
-            isOneToOne: false
-            referencedRelation: "groups"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "meetings_group_id_fkey"
-            columns: ["group_id"]
-            isOneToOne: false
-            referencedRelation: "public_groups"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
+      [_ in never]: never
     }
     Functions: {
       admin_exists: { Args: never; Returns: boolean }
