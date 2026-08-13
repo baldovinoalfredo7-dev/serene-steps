@@ -6,9 +6,6 @@ import {
   ArrowLeft,
   Calendar,
   MapPin,
-  User,
-  Phone,
-  Mail,
   Share2,
   Star,
 } from "lucide-react";
@@ -205,25 +202,6 @@ function EventDetailPage() {
                 {e.addressLine && (
                   <span className="block text-xs text-ink/60">{e.addressLine}</span>
                 )}
-              </InfoRow>
-            )}
-            {e.contactName && (
-              <InfoRow icon={User} label="Contacto">
-                {e.contactName}
-              </InfoRow>
-            )}
-            {e.contactPhone && (
-              <InfoRow icon={Phone} label="Teléfono">
-                <a href={`tel:${e.contactPhone}`} className="hover:underline">
-                  {e.contactPhone}
-                </a>
-              </InfoRow>
-            )}
-            {e.contactEmail && (
-              <InfoRow icon={Mail} label="Correo">
-                <a href={`mailto:${e.contactEmail}`} className="hover:underline">
-                  {e.contactEmail}
-                </a>
               </InfoRow>
             )}
           </aside>

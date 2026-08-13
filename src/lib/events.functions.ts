@@ -19,9 +19,6 @@ export type PublicEvent = {
   municipalityName: string | null;
   imageUrl: string | null;
   organizer: string | null;
-  contactName: string | null;
-  contactPhone: string | null;
-  contactEmail: string | null;
   isFeatured: boolean;
 };
 
@@ -164,8 +161,8 @@ export const listPublicEvents = createServerFn({ method: "GET" }).handler(
       .from("events")
       .select(
         `id, slug, title, description, starts_at, ends_at, location, address_line,
-         municipality_id, image_url, organizer, contact_name, contact_phone, contact_email,
-         is_featured, municipality:municipalities ( name )`,
+         municipality_id, image_url, organizer, is_featured,
+         municipality:municipalities ( name )`,
       )
       .eq("status", "published")
       .order("starts_at", { ascending: true });
@@ -183,9 +180,6 @@ export const listPublicEvents = createServerFn({ method: "GET" }).handler(
       municipalityName: (r.municipality as { name: string } | null)?.name ?? null,
       imageUrl: r.image_url,
       organizer: r.organizer,
-      contactName: r.contact_name,
-      contactPhone: r.contact_phone,
-      contactEmail: r.contact_email,
       isFeatured: r.is_featured,
     }));
   },
@@ -199,8 +193,8 @@ export const getPublicEvent = createServerFn({ method: "GET" })
       .from("events")
       .select(
         `id, slug, title, description, starts_at, ends_at, location, address_line,
-         municipality_id, image_url, organizer, contact_name, contact_phone, contact_email,
-         is_featured, municipality:municipalities ( name )`,
+         municipality_id, image_url, organizer, is_featured,
+         municipality:municipalities ( name )`,
       )
       .eq("slug", data.slug)
       .eq("status", "published")
@@ -220,9 +214,6 @@ export const getPublicEvent = createServerFn({ method: "GET" })
       municipalityName: (r.municipality as { name: string } | null)?.name ?? null,
       imageUrl: r.image_url,
       organizer: r.organizer,
-      contactName: r.contact_name,
-      contactPhone: r.contact_phone,
-      contactEmail: r.contact_email,
       isFeatured: r.is_featured,
     };
   });

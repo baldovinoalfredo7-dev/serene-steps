@@ -28,11 +28,11 @@ export const listGroupsFn = createServerFn({ method: "GET" }).handler(async () =
     },
   });
 
+  // Exposición mínima: no se consultan coordenadas exactas ni contactos personales
   const { data, error } = await supabase
     .from("groups")
     .select(
-      `slug, name, area, neighborhood, address_line, address_full, lat, lng, phone, photo_url, history,
-       public_info_name, public_info_phone, public_info_email,
+      `slug, name, area, neighborhood, address_line, address_full, phone, photo_url, history,
        municipality:municipalities ( name ),
        meetings ( weekday, start_time, end_time, type )`,
     )
@@ -49,8 +49,6 @@ export const listGroupsFn = createServerFn({ method: "GET" }).handler(async () =
     neighborhood: row.neighborhood ?? undefined,
     addressLine: row.address_line,
     addressFull: row.address_full,
-    lat: row.lat ?? 0,
-    lng: row.lng ?? 0,
     phone: row.phone ?? undefined,
     photoUrl: row.photo_url ?? undefined,
     history: row.history ?? "",
@@ -62,14 +60,6 @@ export const listGroupsFn = createServerFn({ method: "GET" }).handler(async () =
         type: m.type as MeetingType,
       }))
       .sort((a, b) => a.weekday - b.weekday || a.start.localeCompare(b.start)),
-    publicInfo:
-      row.public_info_name || row.public_info_phone || row.public_info_email
-        ? {
-            name: row.public_info_name ?? undefined,
-            phone: row.public_info_phone ?? undefined,
-            email: row.public_info_email ?? undefined,
-          }
-        : undefined,
   }));
 
   return groups;
