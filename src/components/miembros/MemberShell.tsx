@@ -10,6 +10,7 @@ import {
   BookOpenText,
   Building2,
   Landmark,
+  Wallet,
   CalendarDays,
   Home,
   LogOut,
