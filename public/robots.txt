@@ -5,4 +5,4 @@ Disallow: /servicio
 Disallow: /miembros
 Disallow: /reset-password
 
-Sitemap: https://hope-finds-you-here.lovable.app/sitemap.xml
+Sitemap: https://aaarea2.org/sitemap.xml
