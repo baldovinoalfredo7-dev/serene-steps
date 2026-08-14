@@ -37,6 +37,7 @@ import { Route as MiembrosResponsabilidadRouteImport } from './routes/miembros.r
 import { Route as MiembrosPrincipiosRouteImport } from './routes/miembros.principios'
 import { Route as MiembrosOracionesRouteImport } from './routes/miembros.oraciones'
 import { Route as MiembrosGruposRouteImport } from './routes/miembros.grupos'
+import { Route as MiembrosFinanzasRouteImport } from './routes/miembros.finanzas'
 import { Route as MiembrosEventosRouteImport } from './routes/miembros.eventos'
 import { Route as MiembrosElGrupoRouteImport } from './routes/miembros.el-grupo'
 import { Route as MiembrosDocumentosRouteImport } from './routes/miembros.documentos'
@@ -211,6 +212,11 @@ const MiembrosOracionesRoute = MiembrosOracionesRouteImport.update({
 const MiembrosGruposRoute = MiembrosGruposRouteImport.update({
   id: '/grupos',
   path: '/grupos',
+  getParentRoute: () => MiembrosRoute,
+} as any)
+const MiembrosFinanzasRoute = MiembrosFinanzasRouteImport.update({
+  id: '/finanzas',
+  path: '/finanzas',
   getParentRoute: () => MiembrosRoute,
 } as any)
 const MiembrosEventosRoute = MiembrosEventosRouteImport.update({
@@ -448,6 +454,7 @@ export interface FileRoutesByFullPath {
   '/miembros/documentos': typeof MiembrosDocumentosRoute
   '/miembros/el-grupo': typeof MiembrosElGrupoRoute
   '/miembros/eventos': typeof MiembrosEventosRoute
+  '/miembros/finanzas': typeof MiembrosFinanzasRoute
   '/miembros/grupos': typeof MiembrosGruposRoute
   '/miembros/oraciones': typeof MiembrosOracionesRouteWithChildren
   '/miembros/principios': typeof MiembrosPrincipiosRouteWithChildren
@@ -510,6 +517,7 @@ export interface FileRoutesByTo {
   '/miembros/documentos': typeof MiembrosDocumentosRoute
   '/miembros/el-grupo': typeof MiembrosElGrupoRoute
   '/miembros/eventos': typeof MiembrosEventosRoute
+  '/miembros/finanzas': typeof MiembrosFinanzasRoute
   '/miembros/grupos': typeof MiembrosGruposRoute
   '/miembros/responsabilidad': typeof MiembrosResponsabilidadRoute
   '/literatura': typeof LiteraturaIndexRoute
@@ -575,6 +583,7 @@ export interface FileRoutesById {
   '/miembros/documentos': typeof MiembrosDocumentosRoute
   '/miembros/el-grupo': typeof MiembrosElGrupoRoute
   '/miembros/eventos': typeof MiembrosEventosRoute
+  '/miembros/finanzas': typeof MiembrosFinanzasRoute
   '/miembros/grupos': typeof MiembrosGruposRoute
   '/miembros/oraciones': typeof MiembrosOracionesRouteWithChildren
   '/miembros/principios': typeof MiembrosPrincipiosRouteWithChildren
@@ -642,6 +651,7 @@ export interface FileRouteTypes {
     | '/miembros/documentos'
     | '/miembros/el-grupo'
     | '/miembros/eventos'
+    | '/miembros/finanzas'
     | '/miembros/grupos'
     | '/miembros/oraciones'
     | '/miembros/principios'
@@ -704,6 +714,7 @@ export interface FileRouteTypes {
     | '/miembros/documentos'
     | '/miembros/el-grupo'
     | '/miembros/eventos'
+    | '/miembros/finanzas'
     | '/miembros/grupos'
     | '/miembros/responsabilidad'
     | '/literatura'
@@ -768,6 +779,7 @@ export interface FileRouteTypes {
     | '/miembros/documentos'
     | '/miembros/el-grupo'
     | '/miembros/eventos'
+    | '/miembros/finanzas'
     | '/miembros/grupos'
     | '/miembros/oraciones'
     | '/miembros/principios'
@@ -1027,6 +1039,13 @@ declare module '@tanstack/react-router' {
       path: '/grupos'
       fullPath: '/miembros/grupos'
       preLoaderRoute: typeof MiembrosGruposRouteImport
+      parentRoute: typeof MiembrosRoute
+    }
+    '/miembros/finanzas': {
+      id: '/miembros/finanzas'
+      path: '/finanzas'
+      fullPath: '/miembros/finanzas'
+      preLoaderRoute: typeof MiembrosFinanzasRouteImport
       parentRoute: typeof MiembrosRoute
     }
     '/miembros/eventos': {
@@ -1412,6 +1431,7 @@ interface MiembrosRouteChildren {
   MiembrosDocumentosRoute: typeof MiembrosDocumentosRoute
   MiembrosElGrupoRoute: typeof MiembrosElGrupoRoute
   MiembrosEventosRoute: typeof MiembrosEventosRoute
+  MiembrosFinanzasRoute: typeof MiembrosFinanzasRoute
   MiembrosGruposRoute: typeof MiembrosGruposRoute
   MiembrosOracionesRoute: typeof MiembrosOracionesRouteWithChildren
   MiembrosPrincipiosRoute: typeof MiembrosPrincipiosRouteWithChildren
@@ -1426,6 +1446,7 @@ const MiembrosRouteChildren: MiembrosRouteChildren = {
   MiembrosDocumentosRoute: MiembrosDocumentosRoute,
   MiembrosElGrupoRoute: MiembrosElGrupoRoute,
   MiembrosEventosRoute: MiembrosEventosRoute,
+  MiembrosFinanzasRoute: MiembrosFinanzasRoute,
   MiembrosGruposRoute: MiembrosGruposRoute,
   MiembrosOracionesRoute: MiembrosOracionesRouteWithChildren,
   MiembrosPrincipiosRoute: MiembrosPrincipiosRouteWithChildren,
