@@ -7,6 +7,10 @@
 export type SubItem = { label: string; hash?: string; to?: string };
 
 export const sectionIndex: Record<string, SubItem[]> = {
+  "/miembros/finanzas": [
+    { label: "Presupuesto del Área", hash: "presupuesto" },
+    { label: "Informes Financieros Mensuales", hash: "informes" },
+  ],
   "/miembros/documentos": [
     { label: "Informes", hash: "informes" },
     { label: "Talleres", hash: "talleres" },
