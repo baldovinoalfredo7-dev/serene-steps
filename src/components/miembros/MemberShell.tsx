@@ -31,6 +31,7 @@ const items: Item[] = [
   { to: "/miembros/el-grupo", label: "El Grupo", icon: Users },
   { to: "/miembros/area", label: "El Comité de Área y los Comités Especiales", icon: Building2 },
   { to: "/miembros/asamblea", label: "La Asamblea de Área", icon: Users2 },
+  { to: "/miembros/finanzas", label: "Información Financiera del Área 2", icon: Wallet },
   { to: "/miembros/eventos", label: "Calendario de Asambleas y Eventos", icon: CalendarDays },
   { to: "/miembros/conferencia", label: "Conferencia de Servicios Generales", icon: Landmark },
   { to: "/miembros/documentos", label: "Biblioteca de documentos", icon: FileDown },
