@@ -19,6 +19,7 @@ type Card = {
   emoji: string;
   title: string;
   description: string;
+  cta?: string;
 };
 
 type Block = {
@@ -58,6 +59,15 @@ const blocks: Block[] = [
         title: "La Asamblea de Área",
         description:
           "Descubra qué es la Asamblea de Área, quiénes participan, cómo se desarrolla y cuál es su importancia dentro de la estructura de servicio.",
+      },
+      {
+        to: "/miembros/finanzas",
+        icon: Wallet,
+        emoji: "💠",
+        title: "Información Financiera",
+        description:
+          "Consulta el presupuesto y la información financiera del Área 2 de manera clara y transparente.",
+        cta: "Información financiera",
       },
       {
         to: "/miembros/eventos",
