@@ -211,7 +211,7 @@ function MembersHome() {
                     to={c.to}
                     className="btn-aa mt-6 self-start"
                   >
-                    Ingresar <ArrowRight className="size-4" />
+                    {c.cta ?? "Ingresar"} <ArrowRight className="size-4" />
                   </Link>
                 </article>
               ))}
