@@ -9,6 +9,7 @@ import {
   BookOpenText,
   Landmark,
   HandHeart,
+  Wallet,
   ArrowRight,
   type LucideIcon,
 } from "lucide-react";
