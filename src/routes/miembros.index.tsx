@@ -32,10 +32,10 @@ type Block = {
 
 const blocks: Block[] = [
   {
-    id: "estructura",
-    title: "Nuestra estructura de servicio",
+    id: "secciones",
+    title: "Secciones del portal",
     intro:
-      "Un recorrido paso a paso: del grupo al Área, de la Asamblea a la Conferencia.",
+      "Un recorrido paso a paso: del grupo al Área, de la Asamblea a la Conferencia, con los documentos y textos de nuestra Comunidad.",
     cards: [
       {
         to: "/miembros/el-grupo",
@@ -67,7 +67,7 @@ const blocks: Block[] = [
         emoji: "💠",
         title: "Información Financiera",
         description:
-          "Consulta el presupuesto y la información financiera del Área 2 de manera clara y transparente.",
+          "Consulta el presupuesto del Área, los informes financieros y otros documentos financieros autorizados.",
         cta: "Información financiera",
       },
       {
@@ -87,22 +87,6 @@ const blocks: Block[] = [
           "Conoce qué es la Conferencia, cómo está conformada y cuál es su función dentro de la estructura de servicio de A.A. en Colombia.",
       },
       {
-        to: "/miembros/principios",
-        icon: ScrollText,
-        emoji: "📖",
-        title: "Los 36 principios",
-        description:
-          "Consulta los Doce Pasos, las Doce Tradiciones y los Doce Conceptos para el Servicio Mundial.",
-      },
-    ],
-  },
-  {
-    id: "recursos",
-    title: "Biblioteca de documentos",
-    intro:
-      "Documentos de servicio, talleres y material de consulta autorizado por el Área.",
-    cards: [
-      {
         to: "/miembros/documentos",
         icon: FileDown,
         emoji: "📄",
@@ -110,41 +94,18 @@ const blocks: Block[] = [
         description:
           "Accede a actas, circulares, talleres, formatos y demás documentos autorizados por el Área.",
       },
-    ],
-  },
-  {
-    id: "vida-en-aa",
-    title: "Vida en AA",
-    intro:
-      "La vida de nuestros grupos, nuestro compromiso y las oraciones que compartimos.",
-    cards: [
       {
-        to: "/miembros/grupos",
-        icon: Users,
-        emoji: "🏠",
-        title: "Nuestros grupos",
-        description:
-          "Consulta el directorio oficial de grupos del Área 2, horarios y lugares de reunión.",
-      },
-      {
-        to: "/miembros/responsabilidad",
-        icon: HandHeart,
-        emoji: "🤝",
-        title: "Declaración de Responsabilidad",
-        description:
-          "Conoce la Declaración de Responsabilidad y su significado en nuestro compromiso de estar siempre disponibles para quien pide ayuda.",
-      },
-      {
-        to: "/miembros/oraciones",
+        to: "/miembros/oraciones-y-declaraciones",
         icon: BookOpenText,
         emoji: "🙏",
-        title: "Nuestras oraciones",
+        title: "Nuestras oraciones, lemas y declaraciones",
         description:
-          "Consulta las oraciones utilizadas habitualmente en Alcohólicos Anónimos.",
+          "Nuestras oraciones, nuestros lemas, la Declaración de Responsabilidad y los 36 principios reunidos en un solo lugar.",
       },
     ],
   },
 ];
+
 
 export const Route = createFileRoute("/miembros/")({
   head: () => ({
