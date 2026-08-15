@@ -59,7 +59,7 @@ export const sectionIndex: Record<string, SubItem[]> = {
   "/miembros/oraciones-y-declaraciones": [
     { label: "Nuestras oraciones", to: "/miembros/oraciones" },
     { label: "Nuestros lemas", to: "/miembros/lemas" },
-    { label: "Declaración de Responsabilidad", to: "/miembros/responsabilidad" },
+    { label: "Declaración de la Responsabilidad", to: "/miembros/responsabilidad" },
     { label: "Los 36 principios", to: "/miembros/principios" },
   ],
   "/miembros/oraciones": [
