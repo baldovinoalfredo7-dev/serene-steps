@@ -32,15 +32,17 @@ const items: Item[] = [
   { to: "/miembros/el-grupo", label: "El Grupo", icon: Users },
   { to: "/miembros/area", label: "El Comité de Área y los Comités Especiales", icon: Building2 },
   { to: "/miembros/asamblea", label: "La Asamblea de Área", icon: Users2 },
-  { to: "/miembros/finanzas", label: "Información Financiera del Área 2", icon: Wallet },
+  { to: "/miembros/finanzas", label: "Información Financiera", icon: Wallet },
   { to: "/miembros/eventos", label: "Calendario de Asambleas y Eventos", icon: CalendarDays },
   { to: "/miembros/conferencia", label: "Conferencia de Servicios Generales", icon: Landmark },
-  { to: "/miembros/documentos", label: "Biblioteca de documentos", icon: FileDown },
-  { to: "/miembros/grupos", label: "Nuestros grupos", icon: Users },
-  { to: "/miembros/principios", label: "Los 36 Principios", icon: ScrollText },
-  { to: "/miembros/responsabilidad", label: "Declaración de Responsabilidad", icon: HandHeart },
-  { to: "/miembros/oraciones", label: "Nuestras oraciones", icon: BookOpenText },
+  { to: "/miembros/documentos", label: "Documentos para descargar", icon: FileDown },
+  {
+    to: "/miembros/oraciones-y-declaraciones",
+    label: "Nuestras oraciones, lemas y declaraciones",
+    icon: BookOpenText,
+  },
 ];
+
 
 function isActive(pathname: string, to: string): boolean {
   if (to === "/miembros") return pathname === "/miembros" || pathname === "/miembros/";

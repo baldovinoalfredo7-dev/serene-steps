@@ -56,6 +56,12 @@ export const sectionIndex: Record<string, SubItem[]> = {
     { label: "Las Doce Tradiciones", to: "/miembros/principios/doce-tradiciones" },
     { label: "Los Doce Conceptos", to: "/miembros/principios/doce-conceptos" },
   ],
+  "/miembros/oraciones-y-declaraciones": [
+    { label: "Nuestras oraciones", to: "/miembros/oraciones" },
+    { label: "Nuestros lemas", to: "/miembros/lemas" },
+    { label: "Declaración de Responsabilidad", to: "/miembros/responsabilidad" },
+    { label: "Los 36 principios", to: "/miembros/principios" },
+  ],
   "/miembros/oraciones": [
     { label: "Oración de la Serenidad", to: "/miembros/oraciones/serenidad" },
     { label: "Oración del Tercer Paso", to: "/miembros/oraciones/tercer-paso" },
@@ -63,3 +69,4 @@ export const sectionIndex: Record<string, SubItem[]> = {
     { label: "Oración de San Francisco", to: "/miembros/oraciones/san-francisco" },
   ],
 };
+

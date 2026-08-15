@@ -35,7 +35,9 @@ import { Route as MiembrosIndexRouteImport } from './routes/miembros.index'
 import { Route as LiteraturaIndexRouteImport } from './routes/literatura.index'
 import { Route as MiembrosResponsabilidadRouteImport } from './routes/miembros.responsabilidad'
 import { Route as MiembrosPrincipiosRouteImport } from './routes/miembros.principios'
+import { Route as MiembrosOracionesYDeclaracionesRouteImport } from './routes/miembros.oraciones-y-declaraciones'
 import { Route as MiembrosOracionesRouteImport } from './routes/miembros.oraciones'
+import { Route as MiembrosLemasRouteImport } from './routes/miembros.lemas'
 import { Route as MiembrosGruposRouteImport } from './routes/miembros.grupos'
 import { Route as MiembrosFinanzasRouteImport } from './routes/miembros.finanzas'
 import { Route as MiembrosEventosRouteImport } from './routes/miembros.eventos'
@@ -204,9 +206,20 @@ const MiembrosPrincipiosRoute = MiembrosPrincipiosRouteImport.update({
   path: '/principios',
   getParentRoute: () => MiembrosRoute,
 } as any)
+const MiembrosOracionesYDeclaracionesRoute =
+  MiembrosOracionesYDeclaracionesRouteImport.update({
+    id: '/oraciones-y-declaraciones',
+    path: '/oraciones-y-declaraciones',
+    getParentRoute: () => MiembrosRoute,
+  } as any)
 const MiembrosOracionesRoute = MiembrosOracionesRouteImport.update({
   id: '/oraciones',
   path: '/oraciones',
+  getParentRoute: () => MiembrosRoute,
+} as any)
+const MiembrosLemasRoute = MiembrosLemasRouteImport.update({
+  id: '/lemas',
+  path: '/lemas',
   getParentRoute: () => MiembrosRoute,
 } as any)
 const MiembrosGruposRoute = MiembrosGruposRouteImport.update({
@@ -456,7 +469,9 @@ export interface FileRoutesByFullPath {
   '/miembros/eventos': typeof MiembrosEventosRoute
   '/miembros/finanzas': typeof MiembrosFinanzasRoute
   '/miembros/grupos': typeof MiembrosGruposRoute
+  '/miembros/lemas': typeof MiembrosLemasRoute
   '/miembros/oraciones': typeof MiembrosOracionesRouteWithChildren
+  '/miembros/oraciones-y-declaraciones': typeof MiembrosOracionesYDeclaracionesRoute
   '/miembros/principios': typeof MiembrosPrincipiosRouteWithChildren
   '/miembros/responsabilidad': typeof MiembrosResponsabilidadRoute
   '/literatura/': typeof LiteraturaIndexRoute
@@ -519,6 +534,8 @@ export interface FileRoutesByTo {
   '/miembros/eventos': typeof MiembrosEventosRoute
   '/miembros/finanzas': typeof MiembrosFinanzasRoute
   '/miembros/grupos': typeof MiembrosGruposRoute
+  '/miembros/lemas': typeof MiembrosLemasRoute
+  '/miembros/oraciones-y-declaraciones': typeof MiembrosOracionesYDeclaracionesRoute
   '/miembros/responsabilidad': typeof MiembrosResponsabilidadRoute
   '/literatura': typeof LiteraturaIndexRoute
   '/miembros': typeof MiembrosIndexRoute
@@ -585,7 +602,9 @@ export interface FileRoutesById {
   '/miembros/eventos': typeof MiembrosEventosRoute
   '/miembros/finanzas': typeof MiembrosFinanzasRoute
   '/miembros/grupos': typeof MiembrosGruposRoute
+  '/miembros/lemas': typeof MiembrosLemasRoute
   '/miembros/oraciones': typeof MiembrosOracionesRouteWithChildren
+  '/miembros/oraciones-y-declaraciones': typeof MiembrosOracionesYDeclaracionesRoute
   '/miembros/principios': typeof MiembrosPrincipiosRouteWithChildren
   '/miembros/responsabilidad': typeof MiembrosResponsabilidadRoute
   '/literatura/': typeof LiteraturaIndexRoute
@@ -653,7 +672,9 @@ export interface FileRouteTypes {
     | '/miembros/eventos'
     | '/miembros/finanzas'
     | '/miembros/grupos'
+    | '/miembros/lemas'
     | '/miembros/oraciones'
+    | '/miembros/oraciones-y-declaraciones'
     | '/miembros/principios'
     | '/miembros/responsabilidad'
     | '/literatura/'
@@ -716,6 +737,8 @@ export interface FileRouteTypes {
     | '/miembros/eventos'
     | '/miembros/finanzas'
     | '/miembros/grupos'
+    | '/miembros/lemas'
+    | '/miembros/oraciones-y-declaraciones'
     | '/miembros/responsabilidad'
     | '/literatura'
     | '/miembros'
@@ -781,7 +804,9 @@ export interface FileRouteTypes {
     | '/miembros/eventos'
     | '/miembros/finanzas'
     | '/miembros/grupos'
+    | '/miembros/lemas'
     | '/miembros/oraciones'
+    | '/miembros/oraciones-y-declaraciones'
     | '/miembros/principios'
     | '/miembros/responsabilidad'
     | '/literatura/'
@@ -1027,11 +1052,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MiembrosPrincipiosRouteImport
       parentRoute: typeof MiembrosRoute
     }
+    '/miembros/oraciones-y-declaraciones': {
+      id: '/miembros/oraciones-y-declaraciones'
+      path: '/oraciones-y-declaraciones'
+      fullPath: '/miembros/oraciones-y-declaraciones'
+      preLoaderRoute: typeof MiembrosOracionesYDeclaracionesRouteImport
+      parentRoute: typeof MiembrosRoute
+    }
     '/miembros/oraciones': {
       id: '/miembros/oraciones'
       path: '/oraciones'
       fullPath: '/miembros/oraciones'
       preLoaderRoute: typeof MiembrosOracionesRouteImport
+      parentRoute: typeof MiembrosRoute
+    }
+    '/miembros/lemas': {
+      id: '/miembros/lemas'
+      path: '/lemas'
+      fullPath: '/miembros/lemas'
+      preLoaderRoute: typeof MiembrosLemasRouteImport
       parentRoute: typeof MiembrosRoute
     }
     '/miembros/grupos': {
@@ -1433,7 +1472,9 @@ interface MiembrosRouteChildren {
   MiembrosEventosRoute: typeof MiembrosEventosRoute
   MiembrosFinanzasRoute: typeof MiembrosFinanzasRoute
   MiembrosGruposRoute: typeof MiembrosGruposRoute
+  MiembrosLemasRoute: typeof MiembrosLemasRoute
   MiembrosOracionesRoute: typeof MiembrosOracionesRouteWithChildren
+  MiembrosOracionesYDeclaracionesRoute: typeof MiembrosOracionesYDeclaracionesRoute
   MiembrosPrincipiosRoute: typeof MiembrosPrincipiosRouteWithChildren
   MiembrosResponsabilidadRoute: typeof MiembrosResponsabilidadRoute
   MiembrosIndexRoute: typeof MiembrosIndexRoute
@@ -1448,7 +1489,9 @@ const MiembrosRouteChildren: MiembrosRouteChildren = {
   MiembrosEventosRoute: MiembrosEventosRoute,
   MiembrosFinanzasRoute: MiembrosFinanzasRoute,
   MiembrosGruposRoute: MiembrosGruposRoute,
+  MiembrosLemasRoute: MiembrosLemasRoute,
   MiembrosOracionesRoute: MiembrosOracionesRouteWithChildren,
+  MiembrosOracionesYDeclaracionesRoute: MiembrosOracionesYDeclaracionesRoute,
   MiembrosPrincipiosRoute: MiembrosPrincipiosRouteWithChildren,
   MiembrosResponsabilidadRoute: MiembrosResponsabilidadRoute,
   MiembrosIndexRoute: MiembrosIndexRoute,
