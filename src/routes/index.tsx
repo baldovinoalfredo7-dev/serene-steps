@@ -1,18 +1,36 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useSuspenseQuery } from "@tanstack/react-query";
+import { useServerFn } from "@tanstack/react-start";
 import heroSalon from "@/assets/hero-salon-area2.jpg";
-
 import caribeMap from "@/assets/caribe-map.jpg";
+import eventosVideo from "@/assets/eventos-area2.mp4.asset.json";
+import eventosPoster from "@/assets/eventos-poster.jpg.asset.json";
 import { groupsQueryOptions } from "@/lib/groups-queries";
 import type { Group } from "@/lib/groups-data";
-import { ArrowRight, MapPin, Clock, Phone, Mail, MessageCircle } from "lucide-react";
+import { listPublicEvents, type PublicEvent } from "@/lib/events.functions";
+import {
+  ArrowRight,
+  MapPin,
+  Clock,
+  Phone,
+  Mail,
+  MessageCircle,
+  Calendar,
+} from "lucide-react";
 import type { ReactNode } from "react";
 import logoAA from "@/assets/logo-aa.png.asset.json";
 import { contactConfig, telLink, whatsappLink } from "@/lib/contact-config";
 
 
 export const Route = createFileRoute("/")({
-  loader: ({ context }) => context.queryClient.ensureQueryData(groupsQueryOptions()),
+  loader: ({ context }) => {
+    context.queryClient.ensureQueryData(groupsQueryOptions());
+    context.queryClient.ensureQueryData({
+      queryKey: ["public", "events"],
+      queryFn: () => listPublicEvents(),
+    });
+    return;
+  },
   head: () => ({
     meta: [
       { title: "Alcohólicos Anónimos · Área 2 Metropolitana de Barranquilla" },
@@ -86,11 +104,16 @@ const secondaryDoors: readonly Door[] = [
 
 function Home() {
   const { data: groups } = useSuspenseQuery(groupsQueryOptions());
-  return <HomeContent groups={groups} />;
+  const callEvents = useServerFn(listPublicEvents);
+  const { data: events } = useSuspenseQuery({
+    queryKey: ["public", "events"],
+    queryFn: () => callEvents(),
+  });
+  return <HomeContent groups={groups} events={events} />;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-function HomeContent({ groups: _groups }: { groups: Group[] }) {
+function HomeContent({ groups: _groups, events }: { groups: Group[]; events: PublicEvent[] }) {
   return (
     <>
       {/* 1. HERO */}
@@ -165,6 +188,9 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
           </Link>
         </div>
       </section>
+
+      {/* 3.5 CALENDARIO DE ASAMBLEAS Y EVENTOS */}
+      <EventsSection events={events} />
 
       {/* 4-5-6. OTRAS PUERTAS */}
       <section className="border-t border-brand/5 bg-paper py-12 md:py-16">
@@ -311,6 +337,104 @@ function HomeContent({ groups: _groups }: { groups: Group[] }) {
       </section>
     </>
   );
+}
+
+function EventsSection({ events }: { events: PublicEvent[] }) {
+  const now = Date.now();
+  const upcoming = events
+    .filter((e) => new Date(e.endsAt ?? e.startsAt).getTime() >= now)
+    .sort((a, b) => new Date(a.startsAt).getTime() - new Date(b.startsAt).getTime())
+    .slice(0, 3);
+
+  return (
+    <section className="bg-paper py-12 md:py-16">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="mx-auto mb-10 max-w-3xl text-center">
+          <span className="mb-5 block text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand">
+            Calendario de Asambleas y Eventos
+          </span>
+          <h2 className="mb-6 font-serif text-3xl leading-[1.15] text-brand sm:text-4xl md:text-5xl">
+            Próximos eventos y actividades
+          </h2>
+          <p className="mx-auto max-w-2xl text-pretty text-lg leading-[1.7] text-ink/85">
+            Encuentra asambleas, foros, talleres y celebraciones del Área 2 Metropolitana.
+          </p>
+        </div>
+
+        {upcoming.length > 0 && (
+          <ul
+            role="list"
+            className="mb-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+          >
+            {upcoming.map((e) => (
+              <li key={e.id}>
+                <Link
+                  to="/eventos/$slug"
+                  params={{ slug: e.slug }}
+                  className="card-aa flex h-full flex-col transition-all hover:-translate-y-1 hover:shadow-lift"
+                >
+                  <div className="mb-3 flex items-center gap-2 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-brand/80">
+                    <Calendar className="size-3.5" aria-hidden />
+                    {fmtEventDate(e.startsAt)}
+                  </div>
+                  <h3 className="mb-2 font-serif text-lg leading-[1.25] text-brand">
+                    {e.title}
+                  </h3>
+                  <p className="line-clamp-2 flex-1 text-sm leading-relaxed text-ink/75">
+                    {e.location ?? e.municipalityName ?? "Área 2 Metropolitana"}
+                  </p>
+                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand">
+                    Ver detalles <ArrowRight className="size-4" />
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        <div className="mx-auto max-w-4xl">
+          <div className="overflow-hidden rounded-2xl bg-soft/60 ring-1 ring-brand/10">
+            <video
+              src={eventosVideo.url}
+              poster={eventosPoster.url}
+              controls
+              preload="metadata"
+              playsInline
+              className="aspect-video w-full bg-soft"
+              aria-label="Video de asambleas y eventos del Área 2 Metropolitana"
+            >
+              Tu navegador no soporta la reproducción de video. Puedes{" "}
+              <a href={eventosVideo.url} className="text-brand underline">
+                descargar el video
+              </a>{" "}
+              directamente.
+            </video>
+          </div>
+          <p className="mt-3 text-center text-xs text-ink/60">
+            El video se reproduce solo cuando presionas el botón de play.
+          </p>
+        </div>
+
+        <div className="mt-10 text-center">
+          <Link
+            to="/eventos"
+            className="btn-aa uppercase tracking-[0.15em]"
+          >
+            Ver calendario completo <ArrowRight className="size-4" />
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function fmtEventDate(iso: string) {
+  const d = new Date(iso);
+  return d.toLocaleDateString("es-CO", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  });
 }
 
 function OfficeCard({
