@@ -104,11 +104,16 @@ const secondaryDoors: readonly Door[] = [
 
 function Home() {
   const { data: groups } = useSuspenseQuery(groupsQueryOptions());
-  return <HomeContent groups={groups} />;
+  const callEvents = useServerFn(listPublicEvents);
+  const { data: events } = useSuspenseQuery({
+    queryKey: ["public", "events"],
+    queryFn: () => callEvents(),
+  });
+  return <HomeContent groups={groups} events={events} />;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-function HomeContent({ groups: _groups }: { groups: Group[] }) {
+function HomeContent({ groups: _groups, events }: { groups: Group[]; events: PublicEvent[] }) {
   return (
     <>
       {/* 1. HERO */}
