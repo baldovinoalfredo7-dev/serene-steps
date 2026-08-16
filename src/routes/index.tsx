@@ -240,11 +240,6 @@ function HomeContent({ groups: _groups, events }: { groups: Group[]; events: Pub
               <p className="mt-6 border-l-2 border-brand/30 pl-5 font-serif text-lg italic leading-[1.6] text-brand">
                 Siempre habrá una mano amiga y una puerta abierta.
               </p>
-              <div className="mt-8">
-                <Link to="/bienvenida" className="btn-aa w-full uppercase tracking-[0.15em] sm:w-auto">
-                  Conocer la oficina <ArrowRight className="size-4" />
-                </Link>
-              </div>
             </div>
 
             <ul role="list" className="grid gap-4 sm:grid-cols-2">
