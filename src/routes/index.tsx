@@ -1,11 +1,22 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useSuspenseQuery } from "@tanstack/react-query";
+import { useServerFn } from "@tanstack/react-start";
 import heroSalon from "@/assets/hero-salon-area2.jpg";
-
 import caribeMap from "@/assets/caribe-map.jpg";
+import eventosVideo from "@/assets/eventos-area2.mp4.asset.json";
+import eventosPoster from "@/assets/eventos-poster.jpg.asset.json";
 import { groupsQueryOptions } from "@/lib/groups-queries";
 import type { Group } from "@/lib/groups-data";
-import { ArrowRight, MapPin, Clock, Phone, Mail, MessageCircle } from "lucide-react";
+import { listPublicEvents, type PublicEvent } from "@/lib/events.functions";
+import {
+  ArrowRight,
+  MapPin,
+  Clock,
+  Phone,
+  Mail,
+  MessageCircle,
+  Calendar,
+} from "lucide-react";
 import type { ReactNode } from "react";
 import logoAA from "@/assets/logo-aa.png.asset.json";
 import { contactConfig, telLink, whatsappLink } from "@/lib/contact-config";
