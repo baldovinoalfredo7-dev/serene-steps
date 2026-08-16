@@ -189,6 +189,9 @@ function HomeContent({ groups: _groups, events }: { groups: Group[]; events: Pub
         </div>
       </section>
 
+      {/* 3.5 CALENDARIO DE ASAMBLEAS Y EVENTOS */}
+      <EventsSection events={events} />
+
       {/* 4-5-6. OTRAS PUERTAS */}
       <section className="border-t border-brand/5 bg-paper py-12 md:py-16">
         <div className="mx-auto max-w-6xl px-6">
