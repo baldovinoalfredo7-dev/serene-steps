@@ -23,7 +23,14 @@ import { contactConfig, telLink, whatsappLink } from "@/lib/contact-config";
 
 
 export const Route = createFileRoute("/")({
-  loader: ({ context }) => context.queryClient.ensureQueryData(groupsQueryOptions()),
+  loader: ({ context }) => {
+    context.queryClient.ensureQueryData(groupsQueryOptions());
+    context.queryClient.ensureQueryData({
+      queryKey: ["public", "events"],
+      queryFn: () => listPublicEvents(),
+    });
+    return;
+  },
   head: () => ({
     meta: [
       { title: "Alcohólicos Anónimos · Área 2 Metropolitana de Barranquilla" },
