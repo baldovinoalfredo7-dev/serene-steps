@@ -369,7 +369,8 @@ function EventsSection({ events }: { events: PublicEvent[] }) {
             {upcoming.map((e) => (
               <li key={e.id}>
                 <Link
-                  to={`/eventos/${e.slug}`}
+                  to="/eventos/$slug"
+                  params={{ slug: e.slug }}
                   className="card-aa flex h-full flex-col transition-all hover:-translate-y-1 hover:shadow-lift"
                 >
                   <div className="mb-3 flex items-center gap-2 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-brand/80">
