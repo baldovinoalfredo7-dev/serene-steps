@@ -60,43 +60,6 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-type Door = {
-  eyebrow: string;
-  intro: string;
-  to: string;
-  cta: string;
-};
-
-const secondaryDoors: readonly Door[] = [
-  {
-    eyebrow: "Quiero cooperar",
-    intro:
-      "Si deseas conocer cómo Alcohólicos Anónimos coopera con profesionales, instituciones y la comunidad, este espacio es para ti.",
-    to: "/contacto",
-    cta: "Quiero cooperar",
-  },
-  {
-    eyebrow: "Ya soy miembro",
-    intro:
-      "Acceso al portal privado con las credenciales entregadas por tu grupo o por el Área.",
-    to: "/auth",
-    cta: "Acceder al portal",
-  },
-  {
-    eyebrow: "Conoce nuestra literatura",
-    intro:
-      "Libros y folletos oficiales de Alcohólicos Anónimos.",
-    to: "/literatura",
-    cta: "Explorar la literatura",
-  },
-  {
-    eyebrow: "Noticias y eventos",
-    intro:
-      "Consulta las próximas actividades, encuentros y eventos del Área 2 Metropolitana.",
-    to: "/eventos",
-    cta: "Ver noticias y eventos",
-  },
-] as const;
 
 
 
@@ -192,33 +155,63 @@ function HomeContent({ groups: _groups, events }: { groups: Group[]; events: Pub
       {/* 3.5 CALENDARIO DE ASAMBLEAS Y EVENTOS */}
       <EventsSection events={events} />
 
-      {/* 4-5-6. OTRAS PUERTAS */}
+{/* 4. QUIERO COOPERAR */}
       <section className="border-t border-brand/5 bg-paper py-12 md:py-16">
-        <div className="mx-auto max-w-6xl px-6">
-          <ul
-            role="list"
-            className="grid items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-4"
+        <div className="mx-auto max-w-3xl px-6">
+          <Link
+            to="/contacto"
+            className="flex flex-col rounded-2xl border border-brand/10 bg-paper p-8 shadow-soft transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand/20 hover:bg-soft/40 hover:shadow-lift"
           >
-            {secondaryDoors.map((d) => (
-              <li key={d.to} className="h-full">
-                <Link
-                  to={d.to}
-                  className="flex h-full flex-col rounded-2xl border border-brand/10 bg-paper p-8 shadow-soft transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand/20 hover:bg-soft/40 hover:shadow-lift"
-                >
-                  <h2 className="mb-3 font-serif text-xl leading-[1.2] text-brand md:text-2xl">
-                    {d.eyebrow}
-                  </h2>
-                  <p className="mb-8 text-[0.95rem] leading-[1.7] text-ink/85">
-                    {d.intro}
-                  </p>
-                  <span className="btn-aa mt-auto w-full uppercase tracking-[0.08em]">
-                    {d.cta} <ArrowRight className="size-4 transition-transform duration-300" />
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
+            <h2 className="mb-3 font-serif text-xl leading-[1.2] text-brand md:text-2xl">
+              Quiero cooperar
+            </h2>
+            <p className="mb-8 text-[0.95rem] leading-[1.7] text-ink/85">
+              Si deseas conocer cómo Alcohólicos Anónimos coopera con profesionales, instituciones y la comunidad, este espacio es para ti.
+            </p>
+            <span className="btn-aa w-full uppercase tracking-[0.08em]">
+              Quiero cooperar <ArrowRight className="size-4 transition-transform duration-300" />
+            </span>
+          </Link>
+        </div>
+      </section>
 
+      {/* 5. YA SOY MIEMBRO */}
+      <section className="bg-soft/40 py-12 md:py-16">
+        <div className="mx-auto max-w-3xl px-6">
+          <Link
+            to="/auth"
+            className="flex flex-col rounded-2xl border border-brand/10 bg-paper p-8 shadow-soft transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand/20 hover:bg-soft/40 hover:shadow-lift"
+          >
+            <h2 className="mb-3 font-serif text-xl leading-[1.2] text-brand md:text-2xl">
+              Ya soy miembro
+            </h2>
+            <p className="mb-8 text-[0.95rem] leading-[1.7] text-ink/85">
+              Acceso al portal privado con las credenciales entregadas por tu grupo o por el Área.
+            </p>
+            <span className="btn-aa w-full uppercase tracking-[0.08em]">
+              Acceder al portal <ArrowRight className="size-4 transition-transform duration-300" />
+            </span>
+          </Link>
+        </div>
+      </section>
+
+      {/* 6. CONOCE NUESTRA LITERATURA */}
+      <section className="bg-paper py-12 md:py-16">
+        <div className="mx-auto max-w-3xl px-6">
+          <Link
+            to="/literatura"
+            className="flex flex-col rounded-2xl border border-brand/10 bg-paper p-8 shadow-soft transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand/20 hover:bg-soft/40 hover:shadow-lift"
+          >
+            <h2 className="mb-3 font-serif text-xl leading-[1.2] text-brand md:text-2xl">
+              Conoce nuestra literatura
+            </h2>
+            <p className="mb-8 text-[0.95rem] leading-[1.7] text-ink/85">
+              Libros y folletos oficiales de Alcohólicos Anónimos.
+            </p>
+            <span className="btn-aa w-full uppercase tracking-[0.08em]">
+              Explorar la literatura <ArrowRight className="size-4 transition-transform duration-300" />
+            </span>
+          </Link>
         </div>
       </section>
 
