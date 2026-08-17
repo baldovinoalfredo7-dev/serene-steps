@@ -346,13 +346,13 @@ function EventsSection({ events }: { events: PublicEvent[] }) {
       <div className="mx-auto max-w-6xl px-6">
         <div className="mx-auto mb-10 max-w-3xl text-center">
           <span className="mb-5 block text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand">
-            Calendario de Asambleas y Eventos
+            Eventos públicos
           </span>
           <h2 className="mb-6 font-serif text-3xl leading-[1.15] text-brand sm:text-4xl md:text-5xl">
             Próximos eventos y actividades
           </h2>
           <p className="mx-auto max-w-2xl text-pretty text-lg leading-[1.7] text-ink/85">
-            Encuentra asambleas, foros, talleres y celebraciones del Área 2 Metropolitana.
+            Conoce las actividades, encuentros y celebraciones abiertas de nuestra comunidad.
           </p>
         </div>
 
