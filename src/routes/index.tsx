@@ -60,43 +60,6 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-type Door = {
-  eyebrow: string;
-  intro: string;
-  to: string;
-  cta: string;
-};
-
-const secondaryDoors: readonly Door[] = [
-  {
-    eyebrow: "Quiero cooperar",
-    intro:
-      "Si deseas conocer cómo Alcohólicos Anónimos coopera con profesionales, instituciones y la comunidad, este espacio es para ti.",
-    to: "/contacto",
-    cta: "Quiero cooperar",
-  },
-  {
-    eyebrow: "Ya soy miembro",
-    intro:
-      "Acceso al portal privado con las credenciales entregadas por tu grupo o por el Área.",
-    to: "/auth",
-    cta: "Acceder al portal",
-  },
-  {
-    eyebrow: "Conoce nuestra literatura",
-    intro:
-      "Libros y folletos oficiales de Alcohólicos Anónimos.",
-    to: "/literatura",
-    cta: "Explorar la literatura",
-  },
-  {
-    eyebrow: "Noticias y eventos",
-    intro:
-      "Consulta las próximas actividades, encuentros y eventos del Área 2 Metropolitana.",
-    to: "/eventos",
-    cta: "Ver noticias y eventos",
-  },
-] as const;
 
 
 
