@@ -349,7 +349,7 @@ function EventsSection({ events }: { events: PublicEvent[] }) {
             Actividades y eventos
           </span>
           <h2 className="mb-6 font-serif text-3xl leading-[1.15] text-brand sm:text-4xl md:text-5xl">
-            Próximos actividades y eventos
+            Próximas actividades y eventos
           </h2>
           <p className="mx-auto max-w-2xl text-pretty text-lg leading-[1.7] text-ink/85">
             Información pública sobre congresos, aniversarios, actividades de información pública y otros encuentros abiertos de nuestra comunidad.
