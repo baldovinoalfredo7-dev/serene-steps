@@ -6,24 +6,21 @@ import { Calendar, MapPin, Star } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
 import { listPublicEvents, type PublicEvent } from "@/lib/events.functions";
 
+const PUBLIC_INTRO =
+  "Información pública sobre congresos, aniversarios, actividades de información pública y otros encuentros abiertos de nuestra comunidad.";
+
 export const Route = createFileRoute("/eventos")({
   head: () => ({
     meta: [
-      { title: "Eventos — AA Área 2 Metropolitana" },
-      {
-        name: "description",
-        content:
-          "Foros, convenciones, talleres, aniversarios y actividades del Área 2 Metropolitana.",
-      },
-      { property: "og:title", content: "Eventos AA Área 2" },
-      {
-        property: "og:description",
-        content:
-          "Calendario de foros, convenciones, aniversarios y talleres del Área 2.",
-      },
-      { property: "og:url", content: "https://hope-finds-you-here.lovable.app/eventos" },
+      { title: "Actividades y eventos — AA Área 2 Metropolitana" },
+      { name: "description", content: PUBLIC_INTRO },
+      { property: "og:title", content: "Actividades y eventos — AA Área 2" },
+      { property: "og:description", content: PUBLIC_INTRO },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+      { property: "og:url", content: "https://aaarea2.org/eventos" },
     ],
-    links: [{ rel: "canonical", href: "https://hope-finds-you-here.lovable.app/eventos" }],
+    links: [{ rel: "canonical", href: "https://aaarea2.org/eventos" }],
   }),
   loader: ({ context }) =>
     context.queryClient.ensureQueryData({
