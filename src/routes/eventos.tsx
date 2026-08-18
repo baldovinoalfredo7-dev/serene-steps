@@ -39,6 +39,15 @@ export const Route = createFileRoute("/eventos")({
   component: EventosPage,
 });
 
+const publicKinds: readonly string[] = [
+  "Congresos y convenciones abiertas",
+  "Aniversarios de grupos",
+  "Aniversarios de miembros, cuando corresponda su publicación",
+  "Actividades de Información Pública",
+  "Charlas y encuentros abiertos",
+  "Celebraciones de la comunidad",
+];
+
 const monthShort = (d: Date) =>
   d.toLocaleDateString("es-CO", { month: "short" }).replace(".", "");
 
