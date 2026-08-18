@@ -25,7 +25,7 @@ const navLinks: readonly NavLink[] = [
   { to: "/grupos", label: "Encuentra un grupo", icon: MapPin },
   
   { to: "/preguntas-frecuentes", label: "Preguntas frecuentes", icon: HelpCircle },
-  { to: "/eventos", label: "Noticias y eventos", icon: CalendarDays },
+  { to: "/eventos", label: "Actividades y eventos", icon: CalendarDays },
   { to: "/contacto", label: "Quiero cooperar", icon: Mail },
 ] as const;
 
