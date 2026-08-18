@@ -28,7 +28,11 @@ export const Route = createFileRoute("/eventos")({
       queryFn: () => listPublicEvents(),
     }),
   errorComponent: ({ error }) => (
-    <PageShell eyebrow="Calendario" title="Eventos" intro="No pudimos cargar los eventos.">
+    <PageShell
+      eyebrow="Actividades y eventos"
+      title="Actividades y eventos"
+      intro="No pudimos cargar las actividades."
+    >
       <p className="text-sm text-ink/70">{error.message}</p>
     </PageShell>
   ),
