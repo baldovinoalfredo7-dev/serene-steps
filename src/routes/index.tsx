@@ -155,63 +155,62 @@ function HomeContent({ groups: _groups, events }: { groups: Group[]; events: Pub
       {/* 3.5 CALENDARIO DE ASAMBLEAS Y EVENTOS */}
       <EventsSection events={events} />
 
-{/* 4. QUIERO COOPERAR */}
+      {/* 4-6. QUIERO COOPERAR / YA SOY MIEMBRO / LITERATURA — Grid horizontal en escritorio */}
       <section className="border-t border-brand/5 bg-paper py-12 md:py-16">
-        <div className="mx-auto max-w-3xl px-6">
-          <Link
-            to="/contacto"
-            className="flex flex-col rounded-2xl border border-brand/10 bg-paper p-8 shadow-soft transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand/20 hover:bg-soft/40 hover:shadow-lift"
+        <div className="mx-auto max-w-6xl px-6">
+          <ul
+            role="list"
+            className="grid gap-6 md:grid-cols-3"
           >
-            <h2 className="mb-3 font-serif text-xl leading-[1.2] text-brand md:text-2xl">
-              Quiero cooperar
-            </h2>
-            <p className="mb-8 text-[0.95rem] leading-[1.7] text-ink/85">
-              Si deseas conocer cómo Alcohólicos Anónimos coopera con profesionales, instituciones y la comunidad, este espacio es para ti.
-            </p>
-            <span className="btn-aa w-full uppercase tracking-[0.08em]">
-              Quiero cooperar <ArrowRight className="size-4 transition-transform duration-300" />
-            </span>
-          </Link>
-        </div>
-      </section>
-
-      {/* 5. YA SOY MIEMBRO */}
-      <section className="bg-soft/40 py-12 md:py-16">
-        <div className="mx-auto max-w-3xl px-6">
-          <Link
-            to="/auth"
-            className="flex flex-col rounded-2xl border border-brand/10 bg-paper p-8 shadow-soft transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand/20 hover:bg-soft/40 hover:shadow-lift"
-          >
-            <h2 className="mb-3 font-serif text-xl leading-[1.2] text-brand md:text-2xl">
-              Ya soy miembro
-            </h2>
-            <p className="mb-8 text-[0.95rem] leading-[1.7] text-ink/85">
-              Acceso al portal privado con las credenciales entregadas por tu grupo o por el Área.
-            </p>
-            <span className="btn-aa w-full uppercase tracking-[0.08em]">
-              Acceder al portal <ArrowRight className="size-4 transition-transform duration-300" />
-            </span>
-          </Link>
-        </div>
-      </section>
-
-      {/* 6. CONOCE NUESTRA LITERATURA */}
-      <section className="bg-paper py-12 md:py-16">
-        <div className="mx-auto max-w-3xl px-6">
-          <Link
-            to="/literatura"
-            className="flex flex-col rounded-2xl border border-brand/10 bg-paper p-8 shadow-soft transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand/20 hover:bg-soft/40 hover:shadow-lift"
-          >
-            <h2 className="mb-3 font-serif text-xl leading-[1.2] text-brand md:text-2xl">
-              Conoce nuestra literatura
-            </h2>
-            <p className="mb-8 text-[0.95rem] leading-[1.7] text-ink/85">
-              Libros y folletos oficiales de Alcohólicos Anónimos.
-            </p>
-            <span className="btn-aa w-full uppercase tracking-[0.08em]">
-              Explorar la literatura <ArrowRight className="size-4 transition-transform duration-300" />
-            </span>
-          </Link>
+            <li>
+              <Link
+                to="/contacto"
+                className="flex h-full flex-col rounded-2xl border border-brand/10 bg-paper p-8 shadow-soft transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand/20 hover:bg-soft/40 hover:shadow-lift"
+              >
+                <h2 className="mb-3 font-serif text-xl leading-[1.2] text-brand md:text-2xl">
+                  Quiero cooperar
+                </h2>
+                <p className="mb-8 flex-1 text-[0.95rem] leading-[1.7] text-ink/85">
+                  Si deseas conocer cómo Alcohólicos Anónimos coopera con profesionales, instituciones y la comunidad, este espacio es para ti.
+                </p>
+                <span className="btn-aa w-full uppercase tracking-[0.08em]">
+                  Quiero cooperar <ArrowRight className="size-4 transition-transform duration-300" />
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/auth"
+                className="flex h-full flex-col rounded-2xl border border-brand/10 bg-paper p-8 shadow-soft transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand/20 hover:bg-soft/40 hover:shadow-lift"
+              >
+                <h2 className="mb-3 font-serif text-xl leading-[1.2] text-brand md:text-2xl">
+                  Ya soy miembro
+                </h2>
+                <p className="mb-8 flex-1 text-[0.95rem] leading-[1.7] text-ink/85">
+                  Acceso al portal privado con las credenciales entregadas por tu grupo o por el Área.
+                </p>
+                <span className="btn-aa w-full uppercase tracking-[0.08em]">
+                  Acceder al portal <ArrowRight className="size-4 transition-transform duration-300" />
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/literatura"
+                className="flex h-full flex-col rounded-2xl border border-brand/10 bg-paper p-8 shadow-soft transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand/20 hover:bg-soft/40 hover:shadow-lift"
+              >
+                <h2 className="mb-3 font-serif text-xl leading-[1.2] text-brand md:text-2xl">
+                  Conoce nuestra literatura
+                </h2>
+                <p className="mb-8 flex-1 text-[0.95rem] leading-[1.7] text-ink/85">
+                  Libros y folletos oficiales de Alcohólicos Anónimos.
+                </p>
+                <span className="btn-aa w-full uppercase tracking-[0.08em]">
+                  Explorar la literatura <ArrowRight className="size-4 transition-transform duration-300" />
+                </span>
+              </Link>
+            </li>
+          </ul>
         </div>
       </section>
 
