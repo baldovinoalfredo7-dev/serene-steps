@@ -10,16 +10,9 @@ import type { Group } from "@/lib/groups-data";
 import { listPublicEvents, type PublicEvent } from "@/lib/events.functions";
 import {
   ArrowRight,
-  MapPin,
-  Clock,
-  Phone,
-  Mail,
-  MessageCircle,
   Calendar,
 } from "lucide-react";
-import type { ReactNode } from "react";
 import logoAA from "@/assets/logo-aa.png.asset.json";
-import { contactConfig, telLink, whatsappLink } from "@/lib/contact-config";
 
 
 export const Route = createFileRoute("/")({
@@ -380,26 +373,3 @@ function fmtEventDate(iso: string) {
     year: "numeric",
   });
 }
-
-function OfficeCard({
-  icon,
-  label,
-  children,
-}: {
-  icon: ReactNode;
-  label: string;
-  children: ReactNode;
-}) {
-  return (
-    <li className="card-aa">
-      <span className="mb-3 grid size-9 place-items-center rounded-full bg-brand/10 text-brand">
-        {icon}
-      </span>
-      <span className="block text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-brand/80">
-        {label}
-      </span>
-      <p className="mt-2 text-sm leading-relaxed text-ink/85">{children}</p>
-    </li>
-  );
-}
-
