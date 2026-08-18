@@ -89,10 +89,24 @@ function EventosPage() {
 
   return (
     <PageShell
-      eyebrow="Calendario"
-      title="Eventos"
-      intro="Foros, convenciones, talleres y aniversarios del Área 2 Metropolitana."
+      eyebrow="Actividades y eventos"
+      title="Actividades y eventos"
+      intro={PUBLIC_INTRO}
     >
+      <div className="mb-8 rounded-2xl bg-soft/50 p-6 ring-1 ring-brand/10">
+        <h2 className="mb-3 font-serif text-lg italic text-brand">
+          Qué encontrarás aquí
+        </h2>
+        <ul role="list" className="grid gap-2 text-sm leading-relaxed text-ink/85 sm:grid-cols-2">
+          {publicKinds.map((k) => (
+            <li key={k} className="flex gap-2">
+              <span aria-hidden className="mt-2 size-1.5 shrink-0 rounded-full bg-brand/60" />
+              {k}
+            </li>
+          ))}
+        </ul>
+      </div>
+
       <div className="mb-6 flex flex-wrap items-center gap-3">
         <div className="inline-flex rounded-full border border-brand/15 bg-paper p-1 text-sm">
           <button
