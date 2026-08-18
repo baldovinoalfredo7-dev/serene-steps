@@ -126,7 +126,7 @@ function EventosPage() {
               (tab === "upcoming" ? "bg-brand text-paper" : "text-ink/70 hover:text-brand")
             }
           >
-            Próximos ({upcoming.length})
+            Próximas ({upcoming.length})
           </button>
           <button
             type="button"
@@ -136,7 +136,7 @@ function EventosPage() {
               (tab === "past" ? "bg-brand text-paper" : "text-ink/70 hover:text-brand")
             }
           >
-            Pasados ({past.length})
+            Anteriores ({past.length})
           </button>
         </div>
         <select
@@ -156,8 +156,8 @@ function EventosPage() {
       {current.length === 0 ? (
         <div className="rounded-2xl bg-paper p-10 text-center text-sm text-ink/60 ring-1 ring-brand/10">
           {tab === "upcoming"
-            ? "No hay eventos próximos publicados."
-            : "No hay eventos pasados que mostrar."}
+            ? "Por ahora no hay actividades públicas próximas publicadas. Vuelve pronto o comunícate con la oficina del Área."
+            : "No hay actividades anteriores que mostrar."}
         </div>
       ) : (
         <div className="space-y-4">
@@ -168,7 +168,9 @@ function EventosPage() {
       )}
 
       <p className="mx-auto mt-12 max-w-2xl text-center text-sm text-ink/55">
-        Fechas y sedes están sujetas a confirmación por parte de los comités organizadores.
+        Esta página reúne únicamente actividades abiertas al público. Las asambleas, foros y
+        reuniones de servicio se informan a los miembros a través del portal privado. Fechas y
+        sedes están sujetas a confirmación por parte de los comités organizadores.
       </p>
     </PageShell>
   );
