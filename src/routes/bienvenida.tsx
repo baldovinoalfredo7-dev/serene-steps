@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/site/PageShell";
-import { MapPin, Building2, Clock, Phone, Mail, PhoneCall, ArrowRight } from "lucide-react";
+import { MapPin, Building2, Clock, Phone, Mail, PhoneCall, ArrowRight, MessageCircle, Navigation } from "lucide-react";
 import type { ReactNode } from "react";
-import { contactConfig, telLink } from "@/lib/contact-config";
+import { contactConfig, telLink, whatsappLink } from "@/lib/contact-config";
 
 export const Route = createFileRoute("/bienvenida")({
   head: () => ({
@@ -77,15 +77,53 @@ function Bienvenida() {
                 {contactConfig.email}
               </a>
             </InfoBlock>
-
+            <InfoBlock icon={<MessageCircle className="size-5" />} label="WhatsApp">
+              <a
+                href={whatsappLink()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand underline underline-offset-4"
+              >
+                {contactConfig.phoneDisplay}
+              </a>
+            </InfoBlock>
+            <InfoBlock icon={<Navigation className="size-5" />} label="Cómo llegar">
+              <a
+                href={contactConfig.officeMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand underline underline-offset-4"
+              >
+                Ver ruta en el mapa
+              </a>
+            </InfoBlock>
           </div>
 
-          <div className="mt-8">
+          <div className="mt-8 flex flex-wrap gap-3">
             <a
               href={telLink()}
               className="btn-aa"
             >
               <PhoneCall className="size-4" /> Llamar a la oficina
+            </a>
+            <a
+              href={whatsappLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-aa-outline"
+            >
+              <MessageCircle className="size-4" /> Escribir por WhatsApp
+            </a>
+            <a href={`mailto:${contactConfig.email}`} className="btn-aa-outline">
+              <Mail className="size-4" /> Enviar correo
+            </a>
+            <a
+              href={contactConfig.officeMapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-aa-outline"
+            >
+              <Navigation className="size-4" /> Cómo llegar
             </a>
           </div>
         </div>

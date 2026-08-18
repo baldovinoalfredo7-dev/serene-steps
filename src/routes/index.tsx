@@ -10,16 +10,9 @@ import type { Group } from "@/lib/groups-data";
 import { listPublicEvents, type PublicEvent } from "@/lib/events.functions";
 import {
   ArrowRight,
-  MapPin,
-  Clock,
-  Phone,
-  Mail,
-  MessageCircle,
   Calendar,
 } from "lucide-react";
-import type { ReactNode } from "react";
 import logoAA from "@/assets/logo-aa.png.asset.json";
-import { contactConfig, telLink, whatsappLink } from "@/lib/contact-config";
 
 
 export const Route = createFileRoute("/")({
@@ -216,68 +209,25 @@ function HomeContent({ groups: _groups, events }: { groups: Group[]; events: Pub
 
       {/* 7. BIENVENIDO A NUESTRA OFICINA */}
       <section className="bg-soft/40 py-12 md:py-16">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="grid items-start gap-10 md:grid-cols-2 md:gap-16">
-            <div>
-              <span className="mb-5 block text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand">
-                La Oficina del Área
-              </span>
-              <h2 className="mb-6 font-serif text-3xl leading-[1.15] text-brand sm:text-4xl">
-                Bienvenido a nuestra oficina
-              </h2>
-              <p className="max-w-prose text-pretty text-base leading-[1.7] text-ink/85">
-                Este es un lugar de puertas abiertas para ti. Aquí encontrarás información,
-                orientación y apoyo para tu recuperación y para el servicio a nuestra comunidad.
-              </p>
-              <p className="mt-6 border-l-2 border-brand/30 pl-5 font-serif text-lg italic leading-[1.6] text-brand">
-                Siempre habrá una mano amiga y una puerta abierta.
-              </p>
-            </div>
-
-            <ul role="list" className="grid gap-4 sm:grid-cols-2">
-              <OfficeCard icon={<MapPin className="size-4" />} label="Dirección">
-                <a
-                  href={contactConfig.officeMapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-brand underline underline-offset-4"
-                >
-                  {contactConfig.officeAddressLine1}, {contactConfig.officeAddressLine2},{" "}
-                  {contactConfig.officeCity}
-                </a>
-              </OfficeCard>
-              <OfficeCard icon={<Clock className="size-4" />} label="Horarios">
-                Lunes a viernes
-                <br />
-                2:00 p. m. – 6:00 p. m.
-              </OfficeCard>
-              <OfficeCard icon={<Phone className="size-4" />} label="Teléfono">
-                <a href={telLink()} className="text-brand underline underline-offset-4">
-                  {contactConfig.phoneDisplay}
-                </a>
-              </OfficeCard>
-              <OfficeCard icon={<MessageCircle className="size-4" />} label="WhatsApp">
-                <a
-                  href={whatsappLink()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-brand underline underline-offset-4"
-                >
-                  {contactConfig.phoneDisplay}
-                </a>
-              </OfficeCard>
-              <OfficeCard icon={<Mail className="size-4" />} label="Correo electrónico">
-                <a
-                  href={`mailto:${contactConfig.email}`}
-                  className="break-words text-brand underline underline-offset-4"
-                >
-                  {contactConfig.email}
-                </a>
-              </OfficeCard>
-            </ul>
+        <div className="mx-auto max-w-3xl px-6 text-center">
+          <span className="mb-5 block text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand">
+            La Oficina del Área
+          </span>
+          <h2 className="mb-6 font-serif text-3xl leading-[1.15] text-brand sm:text-4xl">
+            Bienvenido a nuestra oficina
+          </h2>
+          <p className="mx-auto max-w-prose text-pretty text-base leading-[1.7] text-ink/85">
+            Este es un lugar de puertas abiertas para ti. Aquí encontrarás información,
+            orientación y apoyo.
+          </p>
+          <div className="mt-8">
+            <Link to="/bienvenida" className="btn-aa w-full uppercase tracking-[0.12em] sm:w-auto">
+              Conoce nuestra oficina <ArrowRight className="size-4" />
+            </Link>
           </div>
         </div>
       </section>
+
 
       {/* 8. AA EN EL CARIBE */}
       <section id="caribe" className="border-t border-brand/5 bg-paper py-12 md:py-16">
@@ -423,26 +373,3 @@ function fmtEventDate(iso: string) {
     year: "numeric",
   });
 }
-
-function OfficeCard({
-  icon,
-  label,
-  children,
-}: {
-  icon: ReactNode;
-  label: string;
-  children: ReactNode;
-}) {
-  return (
-    <li className="card-aa">
-      <span className="mb-3 grid size-9 place-items-center rounded-full bg-brand/10 text-brand">
-        {icon}
-      </span>
-      <span className="block text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-brand/80">
-        {label}
-      </span>
-      <p className="mt-2 text-sm leading-relaxed text-ink/85">{children}</p>
-    </li>
-  );
-}
-
