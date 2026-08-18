@@ -407,7 +407,7 @@ function EventsSection({ events }: { events: PublicEvent[] }) {
             to="/eventos"
             className="btn-aa uppercase tracking-[0.15em]"
           >
-            Ver calendario completo <ArrowRight className="size-4" />
+            Ver actividades y eventos <ArrowRight className="size-4" />
           </Link>
         </div>
       </div>

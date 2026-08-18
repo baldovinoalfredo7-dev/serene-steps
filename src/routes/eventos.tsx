@@ -6,24 +6,21 @@ import { Calendar, MapPin, Star } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
 import { listPublicEvents, type PublicEvent } from "@/lib/events.functions";
 
+const PUBLIC_INTRO =
+  "Información pública sobre congresos, aniversarios, actividades de información pública y otros encuentros abiertos de nuestra comunidad.";
+
 export const Route = createFileRoute("/eventos")({
   head: () => ({
     meta: [
-      { title: "Eventos — AA Área 2 Metropolitana" },
-      {
-        name: "description",
-        content:
-          "Foros, convenciones, talleres, aniversarios y actividades del Área 2 Metropolitana.",
-      },
-      { property: "og:title", content: "Eventos AA Área 2" },
-      {
-        property: "og:description",
-        content:
-          "Calendario de foros, convenciones, aniversarios y talleres del Área 2.",
-      },
-      { property: "og:url", content: "https://hope-finds-you-here.lovable.app/eventos" },
+      { title: "Actividades y eventos — AA Área 2 Metropolitana" },
+      { name: "description", content: PUBLIC_INTRO },
+      { property: "og:title", content: "Actividades y eventos — AA Área 2" },
+      { property: "og:description", content: PUBLIC_INTRO },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+      { property: "og:url", content: "https://aaarea2.org/eventos" },
     ],
-    links: [{ rel: "canonical", href: "https://hope-finds-you-here.lovable.app/eventos" }],
+    links: [{ rel: "canonical", href: "https://aaarea2.org/eventos" }],
   }),
   loader: ({ context }) =>
     context.queryClient.ensureQueryData({
@@ -31,12 +28,25 @@ export const Route = createFileRoute("/eventos")({
       queryFn: () => listPublicEvents(),
     }),
   errorComponent: ({ error }) => (
-    <PageShell eyebrow="Calendario" title="Eventos" intro="No pudimos cargar los eventos.">
+    <PageShell
+      eyebrow="Actividades y eventos"
+      title="Actividades y eventos"
+      intro="No pudimos cargar las actividades."
+    >
       <p className="text-sm text-ink/70">{error.message}</p>
     </PageShell>
   ),
   component: EventosPage,
 });
+
+const publicKinds: readonly string[] = [
+  "Congresos y convenciones abiertas",
+  "Aniversarios de grupos",
+  "Aniversarios de miembros, cuando corresponda su publicación",
+  "Actividades de Información Pública",
+  "Charlas y encuentros abiertos",
+  "Celebraciones de la comunidad",
+];
 
 const monthShort = (d: Date) =>
   d.toLocaleDateString("es-CO", { month: "short" }).replace(".", "");
@@ -88,10 +98,24 @@ function EventosPage() {
 
   return (
     <PageShell
-      eyebrow="Calendario"
-      title="Eventos"
-      intro="Foros, convenciones, talleres y aniversarios del Área 2 Metropolitana."
+      eyebrow="Actividades y eventos"
+      title="Actividades y eventos"
+      intro={PUBLIC_INTRO}
     >
+      <div className="mb-8 rounded-2xl bg-soft/50 p-6 ring-1 ring-brand/10">
+        <h2 className="mb-3 font-serif text-lg italic text-brand">
+          Qué encontrarás aquí
+        </h2>
+        <ul role="list" className="grid gap-2 text-sm leading-relaxed text-ink/85 sm:grid-cols-2">
+          {publicKinds.map((k) => (
+            <li key={k} className="flex gap-2">
+              <span aria-hidden className="mt-2 size-1.5 shrink-0 rounded-full bg-brand/60" />
+              {k}
+            </li>
+          ))}
+        </ul>
+      </div>
+
       <div className="mb-6 flex flex-wrap items-center gap-3">
         <div className="inline-flex rounded-full border border-brand/15 bg-paper p-1 text-sm">
           <button
@@ -102,7 +126,7 @@ function EventosPage() {
               (tab === "upcoming" ? "bg-brand text-paper" : "text-ink/70 hover:text-brand")
             }
           >
-            Próximos ({upcoming.length})
+            Próximas ({upcoming.length})
           </button>
           <button
             type="button"
@@ -112,7 +136,7 @@ function EventosPage() {
               (tab === "past" ? "bg-brand text-paper" : "text-ink/70 hover:text-brand")
             }
           >
-            Pasados ({past.length})
+            Anteriores ({past.length})
           </button>
         </div>
         <select
@@ -132,8 +156,8 @@ function EventosPage() {
       {current.length === 0 ? (
         <div className="rounded-2xl bg-paper p-10 text-center text-sm text-ink/60 ring-1 ring-brand/10">
           {tab === "upcoming"
-            ? "No hay eventos próximos publicados."
-            : "No hay eventos pasados que mostrar."}
+            ? "Por ahora no hay actividades públicas próximas publicadas. Vuelve pronto o comunícate con la oficina del Área."
+            : "No hay actividades anteriores que mostrar."}
         </div>
       ) : (
         <div className="space-y-4">
@@ -144,7 +168,9 @@ function EventosPage() {
       )}
 
       <p className="mx-auto mt-12 max-w-2xl text-center text-sm text-ink/55">
-        Fechas y sedes están sujetas a confirmación por parte de los comités organizadores.
+        Esta página reúne únicamente actividades abiertas al público. Las asambleas, foros y
+        reuniones de servicio se informan a los miembros a través del portal privado. Fechas y
+        sedes están sujetas a confirmación por parte de los comités organizadores.
       </p>
     </PageShell>
   );
